@@ -19,5 +19,6 @@ jobs:
         SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         REMOTE_HOST: ${{secrets.SSH_HOST}}
         REMOTE_USER: ${{ secrets.REMOTE_USER }}
-        ARGS: -rltgoDzvO --exclude .git --exclude .github
         TARGET: ${{ secrets.SSH_TARGET }}
+        SOURCE: 'dist/'
+        EXCLUDE: '/node_modules/'
