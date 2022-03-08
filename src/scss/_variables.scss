@@ -1,0 +1,22 @@
+$black: #121313;
+$red: #ca3018;
+$blue: #2298cd;
+$green: #e1f6b6;
+$white: #fdfefe;
+
+$primary: $blue;
+$neutral: $black;
+
+$good: $green;
+$success: $good;
+$warning: #ff8c00;
+$fail: $red;
+$error: $fail;
+
+// Colours Object
+$coloursList: (
+	'blue': $blue,
+);
+
+$font_headings: 'Playfair Display', serif;
+$font_main: 'PT Sans', sans-serif;

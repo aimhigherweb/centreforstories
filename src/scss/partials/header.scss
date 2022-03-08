@@ -1,0 +1,54 @@
+.header {
+	display: flex;
+	position: relative;
+	align-items: center;
+	justify-content: space-between;
+	padding: 30px;
+
+	nav {
+		position: relative;
+		z-index: 50;
+		align-content: center;
+
+		&.open {
+			ul {
+				display: block;
+			}
+		}
+
+		ul {
+			display: none;
+			position: absolute;
+			z-index: 150;
+			top: 100%;
+			right: 0;
+			width: 50vw;
+			max-width: 400px;
+			background: var.$white;
+		}
+	}
+}
+
+.hamburger {
+	svg {
+		width: auto;
+		height: 12px;
+		margin-right: 6px;
+	}
+}
+
+@media (min-width: 50em) {
+	.header {
+		padding: 20px 50px;
+	}
+
+	.hamburger {
+		display: none;
+	}
+}
+
+@media (min-width: 60em) {
+	.header {
+		padding: 40px 5vw;
+	}
+}

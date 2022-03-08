@@ -1,0 +1,100 @@
+body {
+	color: var.$neutral;
+	font-family: var.$font_main;
+	font-size: 16px;
+	line-height: 1.5;
+	font-weight: 500;
+}
+
+a {
+	color: var.$primary;
+
+	@include mixins.gutenberg_text_colours;
+
+	svg {
+		width: auto;
+		height: 1em;
+		color: inherit;
+	}
+
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+p {
+	@include mixins.gutenberg_text_colours;
+}
+
+h1, h2, h3, h4, h5 {
+	color: var.$neutral;
+	font-family: var.$font_headings;
+
+	a {
+		color: inherit;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+	&.has-text-color {
+		@include mixins.gutenberg_text_colours;
+
+		color: var(--text_colour);
+	}
+}
+
+h1 {
+	font-size: 2em;
+
+	@media(min-width: 60em) {
+		font-size: 3em;
+	}
+}
+
+h1, h2, h3 {
+	line-height: 1.25;
+}
+
+nav {
+	ul, li {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	a {
+		display: block;
+		color: inherit;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+blockquote {
+	@include mixins.child_reset;
+}
+
+.btn, button {
+	display: inline-block;
+	margin: 20px auto;
+	padding: 10px 20px;
+	border: 2px solid var.$blue;
+	border-radius: 8px;
+	background: var.$blue;
+	color: var.$white;
+	font-weight: 600;
+	line-height: 1;
+	text-decoration: none;
+	text-transform: uppercase;
+
+	&:hover {
+		background: var.$white;
+		color: var.$blue;
+	}
+}
