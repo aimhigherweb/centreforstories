@@ -1,0 +1,23 @@
+name: SSH Deploy
+on:
+  push:
+    branches: [ prod ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+        cache: 'npm'
+    - run: npm install
+    - run: npm build
+    - name: Deploy to Server
+      uses: easingthemes/ssh-deploy@v2.2.11
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        REMOTE_HOST: ${{secrets.SSH_HOST}}
+        REMOTE_USER: ${{ secrets.SSH_USER }}
+        ARGS: -rltgoDzvO --exclude .git --exclude .github
+        TARGET: ${{ secrets.SSH_TARGET }}
