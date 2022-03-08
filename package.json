@@ -6,6 +6,7 @@
     "start": "gulp sass && npm run dev",
     "dev": "gulp serve",
     "build": "gulp build",
+    "package": "gulp package",
     "clean": "rm -rf dist *.css *.zip"
   },
   "devDependencies": {

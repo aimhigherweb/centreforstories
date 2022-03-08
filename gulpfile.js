@@ -109,6 +109,8 @@ task('zip' , () => {
 		.pipe(dest('.'))
 })
 
-task('build', series('buildSass', 'buildFiles','zip'))
+task('package', series('buildSass', 'buildFiles','zip'))
+
+task('build', series('buildSass', 'buildFiles'))
 
 task('default', series('serve'))
