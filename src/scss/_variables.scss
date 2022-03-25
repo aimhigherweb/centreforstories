@@ -1,15 +1,34 @@
 $black: #121313;
 $red: #ca3018;
 $blue: #2298cd;
-$green: #e1f6b6;
-$white: #fdfefe;
+$green: #1d6950;
+$white: #ffffff;
+$yellow: #fbbd48;
 
 $primary: $blue;
+$primary_darker: #0c374a;
+$primary_dark: #155d7d;
+$primary_lighter: #4ecfe5;
+$primary_light_50: #5ba8d6;
+$primary_light_25: #85b9de;
+$primary_light_10: #accce8;
+$primary_light_5: #d3e4f2;
+$primary_light: #26b9e5;
+
+$secondary: $yellow;
+
 $neutral: $black;
+$neutral_80: #474b4c;
+$neutral_60: #7d8384;
+$neutral_40: #b4babb;
+$neutral_20: #c5cbcc;
+$neutral_15: #d7dbdc;
+$neutral_10: #e9ecec;
+$neutral_5: #fafafa;
 
 $good: $green;
 $success: $good;
-$warning: #ff8c00;
+$warning: $yellow;
 $fail: $red;
 $error: $fail;
 
@@ -18,5 +37,5 @@ $coloursList: (
 	'blue': $blue,
 );
 
-$font_headings: 'Playfair Display', serif;
-$font_main: 'PT Sans', sans-serif;
+$font_headings: 'Josefin Sans', sans-serif;
+$font_main: 'Roboto', sans-serif;

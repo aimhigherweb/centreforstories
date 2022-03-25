@@ -1,26 +1,33 @@
 {
   "name": "centreforstories",
-  "version": "1.0.0",
+  "version": "0.0.10",
   "author": "AimHigher Web <webmaster@aimhigherweb.design> (https://aimhigherweb.design)",
   "scripts": {
-    "start": "gulp sass && npm run dev",
-    "dev": "gulp serve",
-    "build": "gulp build",
-    "package": "gulp package",
+    "start": "npm run dev",
+    "dev": "gulp",
+    "build": "NODE_ENV=production gulp build",
+    "bundle": "NODE_ENV=production gulp bundle",
     "clean": "rm -rf dist *.css *.zip"
   },
-  "devDependencies": {
-    "browser-sync": "^2.27.4",
-    "dotenv": "^10.0.0",
-    "gulp": "^4.0.0",
-    "gulp-dart-sass": "^1.0.2",
+  "dependencies": {
+    "autoprefixer": "^10.4.4",
+    "browser-sync": "^2.27.9",
+    "dotenv": "^16.0.0",
+    "gulp": "^4.0.2",
+    "gulp-bump": "^3.2.0",
+    "gulp-if": "^3.0.0",
+    "gulp-postcss": "^9.0.1",
     "gulp-replace": "^1.1.3",
+    "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
-    "gulp-stylelint": "^13.0.0",
     "gulp-zip": "^5.1.0",
-    "stylelint": "^13.12.0",
-    "stylelint-config-property-sort-order-smacss": "^7.0.0",
-    "stylelint-order": "^4.1.0",
-    "stylelint-scss": "^3.19.0"
+    "postcss-gap-properties": "^3.0.3",
+    "postcss-rgb": "^1.0.0",
+    "postcss-scss": "^4.0.3",
+    "sass": "^1.49.9",
+    "stylelint": "^14.6.0",
+    "stylelint-config-property-sort-order-smacss": "^9.0.0",
+    "stylelint-order": "^5.0.0",
+    "stylelint-scss": "^4.2.0"
   }
 }
