@@ -6,13 +6,30 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
+    - name: Checkout Code
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+        fetch-depth: 0
+    - name: Setup Node
+      uses: actions/setup-node@v2
       with:
         node-version: '14'
         cache: 'npm'
-    - run: npm install
-    - run: npm run build
+    - name: Install Packages
+      run: npm install
+    - name: Run Build Script
+      run: npm run build
+    - name: Commit Changes
+      run: |
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git commit -m "Bump theme version" -a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
     - name: Deploy to Server
       uses: easingthemes/ssh-deploy@v2.2.11
       env:
