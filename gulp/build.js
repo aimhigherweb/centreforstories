@@ -46,8 +46,8 @@ const zipTheme = () => (
 		.pipe(dest('.'))
 )
 
-const build = series(compileSass, buildFiles)
-const bundle = series(build, incrementVersion, setVersion, zipTheme)
+const build = series(compileSass, buildFiles, incrementVersion, setVersion)
+const bundle = series(build, zipTheme)
 
 module.exports = {
 	build,
