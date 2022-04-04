@@ -40,13 +40,19 @@ const setVersion = (callback) => (
 	}))
 )
 
+const setEnv = () => (
+	src('./dist/**/**/*.php')
+		.pipe(replace(`'env' => 'dev'`, `'env' => 'production'`))
+		.pipe(dest('./dist/'))
+)
+
 const zipTheme = () => (
 	src('./dist/**')
 		.pipe(zip(`${process.env.THEME_NAME}.zip`))
 		.pipe(dest('.'))
 )
 
-const build = series(compileSass, buildFiles, incrementVersion, setVersion)
+const build = series(compileSass, buildFiles, incrementVersion, setVersion, setEnv)
 const bundle = series(build, zipTheme)
 
 module.exports = {

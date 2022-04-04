@@ -15,11 +15,18 @@
 		}
 	}
 
-	function fetch_styles($dir, $template) {
+	function fetch_styles($dir) {
+		preg_match('/(\w+)$/', $dir, $matches);
+
+		$template = $matches[1];
+
 		$modules = new CSS_Modules();
 		$modules->set_path($dir);
        
-        return $modules->styles($template);
+        return array(
+			'styles' => $modules->styles($template),
+			'template' => $template
+		);
     }
 
 ?>

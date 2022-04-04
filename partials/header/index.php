@@ -1,14 +1,22 @@
 <?php
 	$logo = wp_get_attachment_image_src(get_theme_mod( 'custom_logo' ), 'full')[0];
-	$name = get_bloginfo('name');
+	$name = get_bloginfo('name');	
+	
+	$data = fetch_styles(__DIR__);
 
-	$styles = fetch_styles(__DIR__, 'header');
+	$template = $data['template'];
+	$styles = $data['styles'];
 
+	get_template_part(
+		'parts/modules',
+		null,
+		array(
+			'name' => $template,
+			'dir' => __DIR__,
+			'env' => 'dev'
+		)
+	);
 ?>
-
-<style>
-	<?php include 'header.module.css'; ?>
-</style>
 
 <header class="<?php echo $styles['header']; ?>">
 	<a class="logo" href="/">
@@ -22,7 +30,7 @@
 		?>
 	</a>
 	
-	<nav class="main">
+	<nav  class="<?php echo $styles['nav']; ?>">
 		<button class="hamburger" onclick="toggleMenu()">
 			<?php  echo inline_svg(get_template_directory_uri() . '/src/img/hamburger.svg'); ?>
 			Menu

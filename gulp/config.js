@@ -25,10 +25,16 @@ module.exports = {
 		'src/scss/style.scss', 
 		'src/scss/editor.scss',
 		'partials/**/*.scss',
+		'layouts/**/*.scss',
+		'blocks/**/*.scss',
+		'parts/**/*.scss',
 	],
 	sassPartials: [
 		'src/scss/**/*.scss',
-		'partials/**/*.scss'
+		'partials/**/*.scss',
+		'layouts/**/*.scss',
+		'blocks/**/*.scss',
+		'parts/**/*.scss',
 	],
 	browserSync: browserSync.create(),
 }
