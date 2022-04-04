@@ -1,9 +1,16 @@
 <?php
 	$logo = wp_get_attachment_image_src(get_theme_mod( 'custom_logo' ), 'full')[0];
 	$name = get_bloginfo('name');
+
+	$styles = fetch_styles(__DIR__, 'header');
+
 ?>
 
-<header class="header">
+<style>
+	<?php include 'header.module.css'; ?>
+</style>
+
+<header class="<?php echo $styles['header']; ?>">
 	<a class="logo" href="/">
 		<?php 
 			if(preg_match('/\.svg$/', $logo)) {

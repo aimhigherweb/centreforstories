@@ -59,7 +59,7 @@
 				height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<!-- End Google Tag Manager (noscript) -->
 		<?php endif; ?>
-		<?php get_template_part('partials/header'); ?>
+		<?php get_template_part('partials/header/index'); ?>
 
 		<main id="main">
 

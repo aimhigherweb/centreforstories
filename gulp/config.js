@@ -21,7 +21,14 @@ module.exports = {
 	],
 	sourceMaps: '/src/maps',
 	cssFiles: '.',
-	compileFiles: ['src/scss/style.scss', 'src/scss/editor.scss'],
-	sassPartials: 'src/scss/**/*.scss',
+	compileFiles: [
+		'src/scss/style.scss', 
+		'src/scss/editor.scss',
+		'partials/**/*.scss',
+	],
+	sassPartials: [
+		'src/scss/**/*.scss',
+		'partials/**/*.scss'
+	],
 	browserSync: browserSync.create(),
 }

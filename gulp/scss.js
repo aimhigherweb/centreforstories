@@ -15,8 +15,12 @@ const compileSass = () => (
 		.pipe(sass({
 				outputStyle: process.env.NODE_ENV !== 'production' ? 'expanded' : 'compressed'
 			}).on('error', sass.logError))
-		.pipe(sourcemaps.write(sourceMaps))
-		.pipe(dest(cssFiles))
+		.pipe(dest(({path, base}) => {
+			if(path.match(/\/src\/scss/)) {
+				return cssFiles
+			}
+			return base
+		}))
 		.pipe(gulpIf(process.env.NODE_ENV !== 'production', browserSync.stream()))
 )
 

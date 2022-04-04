@@ -23,8 +23,10 @@ node_modules/
 src/maps
 style.css
 editor.css
-centreforstories.zip
+*.module.scss.json
+*.module.css
 
+centreforstories.zip
 dist
 
 .DS_Store

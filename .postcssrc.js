@@ -2,6 +2,7 @@ const stylelint = require("stylelint");
 const rgb = require('postcss-rgb')
 const autoprefixer = require('autoprefixer')
 const gapProperties = require('postcss-gap-properties')
+const modules = require('postcss-modules')
 
 const autoprefixOptions = {
 	grid: false,
@@ -27,6 +28,9 @@ module.exports = ({env}) => ({
 			]
 		}),
 		rgb(),
+		modules({
+			generateScopedName : '[name]__[local]___[hash:base64:5]',
+		}),
 		env === 'production' ? autoprefixer({...autoprefixOptions, env}) : false,
 		env === 'production' ? gapProperties({preserve: true}) : false
 	]
