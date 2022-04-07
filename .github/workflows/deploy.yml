@@ -1,41 +1,49 @@
 name: SSH Deploy
 on:
   push:
-    branches: [ prod ]
+    branches:
+      - prod
 jobs:
+  check:
+    runs-on: ubuntu-latest
+    if: "contains(github.event.head_commit.message, '[complete]')"
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v2
-      with:
-        persist-credentials: false
-        fetch-depth: 0
-    - name: Setup Node
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-        cache: 'npm'
-    - name: Install Packages
-      run: npm install
-    - name: Run Build Script
-      run: npm run build
-    - name: Commit Changes
-      run: |
-        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
-        git commit -m "Bump theme version" package.json
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ github.ref }}
-    - name: Deploy to Server
-      uses: easingthemes/ssh-deploy@v2.2.11
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-        REMOTE_HOST: ${{secrets.SSH_HOST}}
-        REMOTE_USER: ${{ secrets.REMOTE_USER }}
-        TARGET: ${{ secrets.SSH_TARGET }}
-        SOURCE: 'dist/'
-        EXCLUDE: '/node_modules/'
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+          cache: "npm"
+      - name: Install Packages
+        run: npm install
+      - name: build
+        run: npm run build
+      - name: Commit Changes
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -m "Bump theme version" package.json
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+  publish:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@v2.2.11
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          REMOTE_HOST: ${{secrets.SSH_HOST}}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: ${{ secrets.SSH_TARGET }}
+          SOURCE: "dist/"
+          EXCLUDE: "/node_modules/"
