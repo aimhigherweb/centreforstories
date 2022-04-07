@@ -95,25 +95,22 @@ blockquote {
 	@include mixins.blockquote_text;
 }
 
-.btn, button {
+.btn, button, input[type='submit'] {
 	display: inline-block;
+	padding: 15px 24px;
 	border: 2px solid var.$blue;
-	background: var.$blue;
-	color: var.$white;
+	background: var.$white;
+	color: var.$blue;
+	font-family: var.$font_roboto;
 	font-size: 1em;
-	font-weight: 700;
+	font-weight: 500;
 	letter-spacing: 0.07em;
 	line-height: 1;
 	text-decoration: none;
 	text-transform: uppercase;
 
 	&:hover {
-		background: var.$white;
-		color: var.$blue;
-	}
-
-	&.small {
-		font-size: 0.688em;
-		letter-spacing: 2px;
+		background: var.$blue;
+		color: var.$white;
 	}
 }
