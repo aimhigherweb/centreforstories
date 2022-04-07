@@ -1,41 +1,142 @@
-$black: #121313;
-$red: #ca3018;
-$blue: #2298cd;
-$green: #1d6950;
+// Colours
+$forest: #174f45;
+$currant: #6b140f;
+$navy: #283753;
+$seafoam: #d4e5fb;
+$lavender: #e3c5e5;
 $white: #ffffff;
-$yellow: #fbbd48;
+$grey_light_warm: #f0eee9;
+$marigold: #f9aa4f;
+$magenta: #c13481;
+$blue: #189aca;
+$black: #000000;
+
+$green: $forest;
+$red: $currant;
+$pink: $magenta;
+$yellow: $marigold;
 
 $primary: $blue;
-$primary_darker: #0c374a;
-$primary_dark: #155d7d;
-$primary_lighter: #4ecfe5;
-$primary_light_50: #5ba8d6;
-$primary_light_25: #85b9de;
-$primary_light_10: #accce8;
-$primary_light_5: #d3e4f2;
-$primary_light: #26b9e5;
+$neutral: #111827;
 
-$secondary: $yellow;
-
-$neutral: $black;
-$neutral_80: #474b4c;
-$neutral_60: #7d8384;
-$neutral_40: #b4babb;
-$neutral_20: #c5cbcc;
-$neutral_15: #d7dbdc;
-$neutral_10: #e9ecec;
-$neutral_5: #fafafa;
-
-$good: $green;
+$good: #22c55e;
 $success: $good;
-$warning: $yellow;
-$fail: $red;
+$warning: #f59e0b;
+$fail: #ef4444;
 $error: $fail;
+$shadow: #101828;
 
 // Colours Object
 $coloursList: (
+	'forest': $forest,
+	'currant': $currant,
+	'navy': $navy,
+	'seafoam': $seafoam,
+	'lavender': $lavender,
+	'white': $white,
+	'grey_light_warm': $grey_light_warm,
+	'marigold': $marigold,
+	'magenta': $magenta,
 	'blue': $blue,
+	'black': $black,
+	'green': $green,
+	'red': $red,
+	'pink': $pink,
+	'yellow': $yellow,
+	'primary': $primary,
+	'neutral': $neutral,
+	'good': $good,
+	'success': $success,
+	'warning': $warning,
+	'fail': $fail,
+	'error': $error,
 );
 
-$font_headings: 'Josefin Sans', sans-serif;
-$font_main: 'Roboto', sans-serif;
+// Fonts
+$font_abel: 'Abel', sans-serif;
+$font_dm: 'DM Sans', sans-serif;
+$font_inter: 'Inter', sans-serif;
+$font_josefin: 'Josefin Sans', sans-serif;
+$font_lato: 'Lato', sans-serif;
+$font_nunito: 'Nunito', sans-serif;
+$font_opensans: 'Open Sans', sans-serif;
+$font_roboto: 'Roboto', sans-serif;
+$font_sora: 'Sora', sans-serif;
+
+$font_headings: $font_inter;
+$font_main: $font_inter;
+$font_display: $font_inter;
+$font_overline: $font_josefin;
+$font_subheading: $font_inter;
+$font_blockquote: $font_inter;
+
+$font_heading: $font_headings;
+$font_body: $font_main;
+
+// Sizes
+$media_queries: (
+	'large_mobile': 40em,
+	'tablet': 60em,
+	'desktop': 70em,
+	'large_desktop': 80em,
+);
+
+$drop_shadow_sizes: (
+	'xs': 1px 2px,
+	's': 1px 2px -1px,
+	'm': 2px 4px -2px,
+	'l': 4px 6px -4px,
+	'xl': 8px 10px -6px,
+	'xxl': 25px 50px -12px,
+	'f_1': 0 0 1px,
+	'f_4': 0 0 4px,
+);
+
+$font_sizes: (
+	'display': (
+		'l': (4em, 1.125),
+		'm': (3.375em, 1.111),
+		's': (2.75em, 1.09),
+	),
+	'body': (
+		'l': (1.125em, 1.55),
+		'm': (1em, 1.5),
+		's': (0.875em, 1.43),
+		'xs': (0.75em, 1.67)
+	),
+	'overline': (
+		'l': (0.875em, 1.43),
+		's': (0.75em, 1.33),
+	),
+	'subheading': (
+		'l': (1.5em, 1.5),
+		's': (1.125em, 1.55),
+	),
+	'blockquote': (
+		'l': (1.375em, 1.64),
+	),
+	'h1': (
+		'tablet': (2.5em, 1.2),
+		'mobile': (2.25em, 1.22),
+	),
+	'h2': (
+		'tablet': (2.25em, 1.2),
+		'mobile': (2em, 1.25),
+	),
+	'h3': (
+		'tablet': (2em, 1.25),
+		'mobile': (1.75em, 1.3),
+	),
+	'h4': (
+		'tablet': (1.75em, 1.3),
+		'mobile': (1.5em, 1.33),
+	),
+	'h5': (
+		'tablet': (1.5em, 1.33),
+		'mobile': (1.25em, 1.4),
+	),
+	'h6': (
+		'tablet': (1.25em, 1.4),
+		'mobile': (1.125em, 1.33),
+	),
+);

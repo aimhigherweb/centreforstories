@@ -1,0 +1,71 @@
+@function get_sizes($type: 'body', $size: 'm') {
+	$sizes: map.get(var.$font_sizes, $type);
+
+	@return map.get($sizes, $size);
+}
+
+@mixin media_sizes($type: 'body') {
+	$sizes: map.get(var.$font_sizes, $type);
+
+	@each $media, $media_value in var.$media_queries {
+		$values: map.get($sizes, $media);
+
+		@if($values) {
+			@media (min-width: $media_value) {
+				font-size: list.nth($values, 1);
+				line-height: list.nth($values, 2);
+			}
+		}
+	}
+}
+
+@mixin display_text($size: 'm') {
+	$sizes: get_sizes('display', $size);
+
+	font-family: var.$font_display;
+	font-size: list.nth($sizes, 1);
+	letter-spacing: -0.02em;
+	line-height: list.nth($sizes, 2);
+}
+
+@mixin heading_text($type) {
+	font-family: var.$font_headings;
+	letter-spacing: -0.02em;
+
+	@include media_sizes($type);
+}
+
+@mixin text($size: 'm') {
+	$sizes: get_sizes('body', $size);
+
+	font-family: var.$font_main;
+	font-size: list.nth($sizes, 1);
+	line-height: list.nth($sizes, 2);
+}
+
+@mixin overline_text($size: 's') {
+	$sizes: get_sizes('overline', $size);
+
+	font-family: var.$font_overline;
+	font-size: list.nth($sizes, 1);
+	letter-spacing:0.1em;
+	line-height: list.nth($sizes, 2);
+}
+
+@mixin subheading_text($size: 's') {
+	$sizes: get_sizes('subheading', $size);
+
+	font-family: var.$font_subheading;
+	font-size: list.nth($sizes, 1);
+	line-height: list.nth($sizes, 2);
+}
+
+@mixin blockquote_text($size: 'l') {
+	$sizes: get_sizes('blockquote', $size);
+
+	font-family: var.$font_blockquote;
+	font-size: list.nth($sizes, 1);
+	font-style: italic;
+	letter-spacing:-0.03em;
+	line-height: list.nth($sizes, 2);
+}

@@ -1,7 +1,11 @@
-@use './variables.scss' as var;
+@use './variables.scss'as var;
+@use 'sass:map';
+@use 'sass:list';
+
+@import './_mixins/index.scss';
 
 @mixin child_reset {
-	> * {
+	>* {
 		&:first-child {
 			margin-top: 0;
 		}
@@ -13,7 +17,9 @@
 }
 
 @mixin gutenberg_backgrounds {
-	@each $color, $hex in var.$coloursList {
+
+	@each $color,
+		$hex in var.$coloursList {
 		&.has-#{$color}-background-color {
 			--background_colour: #{$hex};
 		}
@@ -21,7 +27,9 @@
 }
 
 @mixin gutenberg_text_colours {
-	@each $color, $hex in var.$coloursList {
+
+	@each $color,
+		$hex in var.$coloursList {
 		&.has-#{$color}-color {
 			--text_colour: #{$hex};
 		}

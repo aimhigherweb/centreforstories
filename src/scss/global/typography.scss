@@ -29,28 +29,9 @@ a {
 
 p {
 	@include mixins.gutenberg_text_colours;
-
-	@media(min-width: 60em) {
-		font-size: 1.125em;
-
-		&.large {
-			font-size: 1.25em;
-		}
-	}
-}
-
-small, .small {
-	font-size: 0.875em;
-
-	@media(min-width: 60em) {
-		font-size: 1em;
-	}
 }
 
 h1, h2, h3, h4, h5 {
-	color: var.$neutral;
-	font-family: var.$font_headings;
-
 	a {
 		color: inherit;
 		text-decoration: none;
@@ -68,67 +49,27 @@ h1, h2, h3, h4, h5 {
 }
 
 h1 {
-	font-size: 2em;
-	font-weight: 600;
-	letter-spacing:-0.01em;
-	line-height: 1.25;
-
-	@media(min-width: 60em) {
-		font-size: 3em;
-		letter-spacing:-0.05em;
-		line-height:115%;
-	}
+	@include mixins.heading_text('h1');
 }
 
 h2 {
-	font-size: 1.5em;
-	line-height: 1.25;
-
-	@media(min-width: 60em) {
-		font-size: 2.25em;
-		font-weight: 600;
-		letter-spacing: -0.05em;
-	}
+	@include mixins.heading_text('h2');
 }
 
 h3 {
-	font-size: 1.312em;
-	line-height: 1.25;
-
-	@media(min-width: 60em) {
-		font-size: 1.5em;
-		font-weight: 600;
-		letter-spacing: -0.06em;
-		line-height: 1.26;
-	}
+	@include mixins.heading_text('h3');
 }
 
 h4 {
-	font-size: 0.875em;
-
-	@media(min-width: 60em) {
-		font-size: 1.312em;
-		letter-spacing: -1px;
-	}
+	@include mixins.heading_text('h4');
 }
 
 h5 {
-	font-size: 0.875em;
-	letter-spacing: 1px;
-
-	@media(min-width: 60em) {
-		font-size: 0.938em;
-		line-height: 1.4;
-	}
+	@include mixins.heading_text('h5');
 }
 
 h6 {
-	font-size: 1em;
-
-	@media(min-width: 60em) {
-		font-size: 1.25em;
-		line-height: 1.75;
-	}
+	@include mixins.heading_text('h6');
 }
 
 nav {
@@ -151,14 +92,7 @@ nav {
 
 blockquote {
 	@include mixins.child_reset;
-	font-size: 1.125em;
-	font-style: italic;
-
-	@media(min-width: 60em) {
-		font-size: 1.125em;
-		font-weight: 700;
-		line-height: 1.75;
-	}
+	@include mixins.blockquote_text;
 }
 
 .btn, button {
@@ -181,17 +115,5 @@ blockquote {
 	&.small {
 		font-size: 0.688em;
 		letter-spacing: 2px;
-	}
-}
-
-.eyebrow {
-	font-family: var.$font_headings;
-	font-size: 0.875em;
-	font-weight: 600;
-	letter-spacing: 0.1em;
-
-	@media(min-width: 60em) {
-		font-size: 1em;
-		letter-spacing: 0.07em;
 	}
 }
