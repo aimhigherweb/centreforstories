@@ -27,8 +27,7 @@ main {
 }
 
 .sr-only {
-	position: absolute;
-	right: -200vw;
+	@include mixins.sr_hide;
 }
 
 @import './fonts.scss';

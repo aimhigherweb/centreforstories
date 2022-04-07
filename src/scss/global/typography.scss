@@ -1,13 +1,14 @@
 body {
-	color: var.$neutral;
+	color: var.$neutral_600;
 	font-family: var.$font_main;
 	font-size: 16px;
-	font-weight: 500;
+	font-weight: 300;
 	line-height: 1.5;
 }
 
 a {
-	color: var.$primary;
+	color: var.$forest;
+	font-weight: 500;
 	text-decoration: underline;
 
 	@include mixins.gutenberg_text_colours;
@@ -28,8 +29,11 @@ p {
 }
 
 h1, h2, h3, h4, h5 {
+	color: var.$neutral_700;
+
 	a {
 		color: inherit;
+		font-weight: inherit;
 		text-decoration: none;
 
 		&:hover {
@@ -46,10 +50,14 @@ h1, h2, h3, h4, h5 {
 
 h1 {
 	@include mixins.heading_text('h1');
+
+	font-weight: 800;
 }
 
 h2 {
 	@include mixins.heading_text('h2');
+
+	font-weight: 700;
 }
 
 h3 {
@@ -92,21 +100,5 @@ blockquote {
 }
 
 .btn, button, input[type='submit'] {
-	display: inline-block;
-	padding: 15px 24px;
-	border: 2px solid var.$blue;
-	background: var.$white;
-	color: var.$blue;
-	font-family: var.$font_roboto;
-	font-size: 1em;
-	font-weight: 500;
-	letter-spacing: 0.07em;
-	line-height: 1;
-	text-decoration: none;
-	text-transform: uppercase;
-
-	&:hover {
-		background: var.$blue;
-		color: var.$white;
-	}
+	@include mixins.button(var.$blue, var.$white, var.$blue);
 }

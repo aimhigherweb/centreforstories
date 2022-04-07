@@ -1,22 +1,29 @@
 form {
-	max-width: 635px;
-	margin: 0 auto;
+	max-width: 700px;
 	padding: 20px 0;
+
+	label, input, textarea, select {
+		@include mixins.text('l');
+	}
 
 	label {
 		display: block;
 		width: 100%;
-		margin: 0;
+		margin: 0 0 10px;
 		padding: 0;
 	}
 
 	input, textarea, select {
 		display: block;
 		width: 100%;
-		padding: 15px;
+		padding: 10px 16px;
+		border: 2px solid var.$navy;
+		border-radius: 0;
+		background: var.$neutral_5;
 
 		&::placeholder {
-			opacity: 0.39;
+			opacity: 1;
+			color: var.$neutral_4;
 		}
 
 		&[type='checkbox'], &[type='radio'] {
@@ -25,34 +32,40 @@ form {
 			pointer-events: none;
 
 			& + label {
+				@include mixins.text('s');
+
 				display: flex;
 				position: relative;
 				align-items: center;
-				margin-bottom: 10px;
-				font-family: var.$font_main;
+				color: var.$neutral_500;
 				font-weight: 500;
-				line-height: 1;
 
 				&:before, &:after {
 					display: block;
-					border-radius: 50%;
+					border-radius: 2px;
 				}
 
 				&:before {
 					content: '';
-					width: 24px;
-					height: 24px;
+					width: 20px;
+					height: 20px;
 					margin-right: 14px;
-					border: 1px solid var.$blue;
+					border: 1px solid var.$neutral_20;
+
 					background: var.$white;
 				}
 
 				&:after {
+					display: flex;
 					position: absolute;
-					left: 3px;
-					width: 18px;
-					height: 18px;
+					left: 0;
+					align-items: center;
+					justify-content: center;
+					width: 20px;
+					height: 20px;
 					background: var.$blue;
+					color: var.$white;
+					font-size: 20px;
 				}
 			}
 
@@ -60,8 +73,15 @@ form {
 				& + label {
 					&:after {
 						content: '';
-						padding-left: 4px;
 					}
+				}
+			}
+		}
+
+		&[type='radio'] {
+			& + label {
+				&:before, &:after {
+					border-radius: 50%;
 				}
 			}
 		}
@@ -94,29 +114,35 @@ form {
 		padding: 10px;
 	}
 
-	button, input {
-		&[type='submit'] {
-			display: inline-block;
-			margin: 20px 0;
-			padding: 10px 20px;
-			border: 2px solid var.$blue;
-			border-radius: 4px;
-			background: var.$blue;
-			color: var.$white;
-			font-weight: 600;
-			line-height: 1;
-			text-decoration: none;
-			text-transform: uppercase;
-			cursor: pointer;
+	textarea {
+		height: 190px;
+	}
+}
 
-			&:hover {
-				background: var.$white;
-				color: var.$blue;
-			}
+.wpforms-field-container {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -15px -40px;
+
+	.wpforms-field {
+		width: 100%;
+		margin: 0 15px 40px;
+
+		&.wpforms-one-half {
+			flex-grow: 1;
+			width: 45%;
 		}
 	}
 
-	textarea {
-		height: 150px;
+	.wpforms-field-checkbox {
+		ul, li {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
 	}
+}
+
+.wpforms-label-hide {
+	@include mixins.sr_hide;
 }

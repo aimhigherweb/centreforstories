@@ -18,6 +18,12 @@ $yellow: $marigold;
 
 $primary: $blue;
 $neutral: #111827;
+$neutral_700: #374151;
+$neutral_600: #4b5563;
+$neutral_500: #6b7280;
+$neutral_4: #b4babb;
+$neutral_5: #fafafa;
+$neutral_20: #c5cbcc;
 
 $good: #22c55e;
 $success: $good;
@@ -74,6 +80,8 @@ $font_heading: $font_headings;
 $font_body: $font_main;
 
 // Sizes
+$max_content: 1216px;
+
 $media_queries: (
 	'large_mobile': 40em,
 	'tablet': 60em,

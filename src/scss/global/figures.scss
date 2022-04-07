@@ -1,15 +1,31 @@
+$youtube_ratio: math.div(281, 500);
+
 figure {
-	margin: 20px auto;
-	text-align: center;
+	&.wp-block-embed {
+		margin: 60px 0;
+
+		iframe {
+			@include mixins.aspect_ratio(calc(100vw - 40px), $youtube_ratio, var.$max_content);
+		}
+	}
 }
 
-.wp-block-image {
-	max-width: 100%;
+@media(min-width: 40em) {
+	figure {
+		&.wp-block-embed {
+			iframe {
+				@include mixins.aspect_ratio(calc(100vw - 120px), $youtube_ratio, var.$max_content);
+			}
+		}
+	}
+}
 
-	img {
-		display: block;
-		width: 100%;
-		max-width: 100%;
-		object-fit: contain;
+@media(min-width: 60em) {
+	figure {
+		&.wp-block-embed {
+			iframe {
+				@include mixins.aspect_ratio(90vw, $youtube_ratio, var.$max_content);
+			}
+		}
 	}
 }

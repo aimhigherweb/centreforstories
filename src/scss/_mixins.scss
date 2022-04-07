@@ -4,6 +4,13 @@
 
 @import './_mixins/index.scss';
 
+@mixin sr_hide {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+}
+
 @mixin child_reset {
 	>* {
 		&:first-child {
@@ -33,5 +40,19 @@
 		&.has-#{$color}-color {
 			--text_colour: #{$hex};
 		}
+	}
+}
+
+@mixin aspect_ratio($width, $ratio, $max_width: 'unset') {
+	width: $width;
+	height: calc($width * $ratio);
+
+	@if($max_width != 'unset') {
+		max-width: $max_width;
+		max-height: calc($max_width * $ratio);
+	}
+
+	@supports(aspect-ratio: 1) {
+		aspect-ratio: $ratio;
 	}
 }

@@ -63,7 +63,7 @@
 
 		<main id="main">
 
-			<?php get_template_part('layouts/' . $template); ?>
+			<?php get_template_part('layouts/' . $template . '/index'); ?>
 		</main>
 
 		<?php get_template_part('partials/footer'); ?>

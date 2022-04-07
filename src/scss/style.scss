@@ -2,6 +2,7 @@
 Theme Name: Centre for Stories
 Version: 1.0.0
 */
+@use 'sass:math';
 
 @use './variables.scss'as var;
 @use './mixins.scss';
