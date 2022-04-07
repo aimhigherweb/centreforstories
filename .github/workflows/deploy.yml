@@ -4,11 +4,9 @@ on:
     branches:
       - prod
 jobs:
-  check:
-    runs-on: ubuntu-latest
-    if: "contains(github.event.head_commit.message, '[complete]')"
   build:
     runs-on: ubuntu-latest
+    if: "contains(github.event.head_commit.message, '[complete]')"
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
