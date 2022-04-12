@@ -1,5 +1,6 @@
 <?php
-	$icon_menus = array('social_menu');
+	global $icon_menus;
+	
 	$menu_locations = [];
 
 	foreach ($icon_menus as $opt) {

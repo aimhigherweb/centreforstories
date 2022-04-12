@@ -9,6 +9,7 @@
 
 	require_once ( ABSPATH . '/wp-admin/includes/file.php' );
 	
+	$logo = wp_get_attachment_image_src(get_theme_mod( 'custom_logo' ), 'full')[0];
 	$template = 'default';
 	$class = '';
 	$page_id = get_the_ID();
@@ -48,11 +49,13 @@
 
 		<title><?php echo wp_get_document_title(); ?></title>
 
+		<link rel="icon" href="<?php echo $logo; ?>" type="image/svg+xml">
+
 		<?php get_template_part('partials/dev-styles'); ?>
 
 	</head>
 
-	<body class="<?php echo $class; ?>">
+	<body class="<?php echo $class; ?>" style="background: <?php echo get_field('page_colour') ?>;">
 		<?php if($gtm_tag) : ?>
 			<!-- Google Tag Manager (noscript) -->
 				<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<?php echo $gtm_tag; ?>"

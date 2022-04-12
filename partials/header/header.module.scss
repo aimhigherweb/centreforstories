@@ -1,0 +1,33 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	padding: 20px;
+
+	nav {
+		position: relative;
+		z-index: 50;
+	}
+}
+
+.logo {
+	path {
+		color: inherit;
+	}
+}
+
+.utility {
+	display: none;
+}
+
+.hamburger {
+	padding: 20px 5px;
+
+	svg {
+		width: auto;
+		height: 1em;
+	}
+
+	.close {
+		display: none;
+	}
+}
