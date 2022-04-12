@@ -100,5 +100,5 @@ blockquote {
 }
 
 .btn, button, input[type='submit'] {
-	@include mixins.button(var.$blue, var.$white, var.$blue);
+	@include mixins.buttons(var.$blue, var.$white, var.$blue);
 }

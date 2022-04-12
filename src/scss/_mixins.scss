@@ -4,13 +4,6 @@
 
 @import './_mixins/index.scss';
 
-@mixin sr_hide {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	opacity: 0;
-}
-
 @mixin child_reset {
 	>* {
 		&:first-child {
@@ -19,26 +12,6 @@
 
 		&:last-child {
 			margin-bottom: 0;
-		}
-	}
-}
-
-@mixin gutenberg_backgrounds {
-
-	@each $color,
-		$hex in var.$coloursList {
-		&.has-#{$color}-background-color {
-			--background_colour: #{$hex};
-		}
-	}
-}
-
-@mixin gutenberg_text_colours {
-
-	@each $color,
-		$hex in var.$coloursList {
-		&.has-#{$color}-color {
-			--text_colour: #{$hex};
 		}
 	}
 }

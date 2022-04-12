@@ -1,0 +1,6 @@
+@mixin sr_only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+}

@@ -27,9 +27,7 @@ form {
 		}
 
 		&[type='checkbox'], &[type='radio'] {
-			position: absolute;
-			opacity: 0;
-			pointer-events: none;
+			@include mixins.sr_only;
 
 			& + label {
 				@include mixins.text('s');
@@ -132,6 +130,22 @@ form {
 			flex-grow: 1;
 			width: 45%;
 		}
+
+		&.wpforms-has-error {
+			outline: 2px solid var.$error;
+		}
+
+		.wpforms-error {
+			background: rgba(var.$error, 0.1);
+
+			&:not(input):not(textarea) {
+				margin-top: 10px;
+				padding: 5px 10px;
+				background: none;
+				color: var.$currant;
+				font-weight: 700;
+			}
+		}
 	}
 
 	.wpforms-field-checkbox {
@@ -143,6 +157,36 @@ form {
 	}
 }
 
+.wpforms-submit-container {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 40px;
+}
+
 .wpforms-label-hide {
-	@include mixins.sr_hide;
+	@include mixins.sr_only;
+}
+
+@media(min-width: 40em) {
+	.wpforms-field-container {
+		position: relative;
+
+		.wpforms-field {
+			&.newsletter {
+				position: absolute;
+				bottom: -35px;
+				width: 50%;
+				margin-bottom: 0;
+
+				label {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+
+	.wpforms-submit-container {
+		max-width: 50%;
+		margin-left: auto;
+	}
 }

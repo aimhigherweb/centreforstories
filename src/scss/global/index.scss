@@ -27,7 +27,7 @@ main {
 }
 
 .sr-only {
-	@include mixins.sr_hide;
+	@include mixins.sr_only;
 }
 
 @import './fonts.scss';
