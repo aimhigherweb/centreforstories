@@ -74,7 +74,7 @@
 
 	<body
 		class="<?php echo classes($class); ?>" 
-		<?php if($colour) { echo 'style="--page_colour: ' . $colour . '; background: ' . $colour . '"'; } ?>
+		<?php if($colour) { echo 'style="--page_colour: ' . $colour . ';'; } ?>
 	>
 		<?php if($gtm_tag) : ?>
 			<!-- Google Tag Manager (noscript) -->

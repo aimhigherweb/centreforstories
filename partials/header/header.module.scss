@@ -3,6 +3,8 @@
 	flex-wrap: wrap;
 	justify-content: space-between;
 	padding: 20px;
+	background: var.$colours_navy;
+	background: var(--page_colour);
 	color: var.$colours_white;
 }
 
@@ -124,6 +126,10 @@
 		width: 100%;
 		height: auto;
 	}
+
+	&:hover {
+		color: var.$colours_blue;
+	}
 }
 
 .utility {
@@ -194,6 +200,7 @@
 	.search {
 		display: block;
 		align-self: center;
+		margin-right: 0;
 		margin-left: 10px;
 
 		form {
@@ -305,6 +312,26 @@
 }
 
 @media(min-width: 60em) {
+	.header {
+		@include mixins.full_background();
+
+		max-width: 1220px;
+		margin: 0 auto;
+		padding: 20px;
+	}
+
+	.main {
+		li {
+			&:not(.search) {
+				margin: 0 5px;
+			}
+		}
+	}
+
+	.utility {
+		@include mixins.full_background();
+	}
+
 	.search {
 		margin-left: 20px;
 
@@ -321,5 +348,21 @@
 				pointer-events: auto;
 			}
 		}
+	}
+}
+
+@media(min-width: 70em) {
+	.main {
+		li {
+			&:not(.search) {
+				margin: 0 15px;
+			}
+		}
+	}
+}
+
+@media(min-width: 80em) {
+	.search {
+		margin-left: 100px;
 	}
 }

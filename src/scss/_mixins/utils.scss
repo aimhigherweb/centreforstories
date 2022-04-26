@@ -10,3 +10,18 @@
 	align-items: center;
 	justify-content: center;
 }
+
+@mixin full_background($colour: inherit) {
+	position: relative;
+
+	&:before {
+		@include position(0, auto, 0, 50%);
+
+		content: '';
+		position: absolute;
+		z-index: -1;
+		width: 100vw;
+		transform: translateX(-50%);
+		background: $colour;
+	}
+}
