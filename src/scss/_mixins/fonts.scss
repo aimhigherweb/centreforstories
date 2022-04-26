@@ -70,7 +70,7 @@
 	line-height: list.nth($sizes, 2);
 }
 
-@mixin buttons($background: var.$white, $colour: var.$blue, $border: var.$blue) {
+@mixin buttons($background: var.$colours_white, $colour: var.$colours_blue, $border: var.$colours_blue) {
 	display: inline-block;
 	padding: 15px 24px;
 	border: 2px solid $border;

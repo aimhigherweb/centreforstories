@@ -7,8 +7,8 @@
 }
 
 .wp-block-buttons {
-	--background_colour: #{var.$blue};
-	--text_colour: #{var.$white};
+	--background_colour: #{var.$colours_blue};
+	--text_colour: #{var.$colours_white};
 
 	justify-content: center;
 	margin: 0 -10px;
@@ -20,18 +20,18 @@
 	.wp-block-button__link {
 		display: inline-block;
 		padding: 10px 20px;
-		border: 2px solid var.$blue;
+		border: 2px solid var.$colours_blue;
 		border-radius: 8px;
-		background: var.$blue;
-		color: var.$white;
+		background: var.$colours_blue;
+		color: var.$colours_white;
 		font-weight: 600;
 		line-height: 1;
 		text-decoration: none;
 		text-transform: uppercase;
 
 		&:hover {
-			background: var.$white;
-			color: var.$blue;
+			background: var.$colours_white;
+			color: var.$colours_blue;
 		}
 
 		&.has-text-color {

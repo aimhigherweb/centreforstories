@@ -1,3 +1,6 @@
-@mixin drop_shadow($size, $colour: $shadow) {
-	box-shadow: 0 map.get($drop_shadow_sizes, $size) $shadow;
+@use '../variables.scss' as var;
+@use 'sass:map';
+
+@mixin drop_shadow($size, $colour: var.$shadow) {
+	box-shadow: map.get(var.$drop_shadow_sizes, $size) $colour;
 }

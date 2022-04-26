@@ -9,7 +9,6 @@ module.exports = {
 				'custom-properties',
 				'declarations'
 			],
-			'function-calc-no-invalid': true,
 			'no-empty-first-line': true,
 			'no-missing-end-of-source-newline': true,
 			'no-eol-whitespace': true,
@@ -55,7 +54,14 @@ module.exports = {
 			'comment-no-empty': true,
 			'selector-type-no-unknown': true,
 			'selector-pseudo-element-no-unknown': true,
-			'selector-pseudo-class-no-unknown': true,
+			'selector-pseudo-class-no-unknown': [
+				true, 
+				{
+					ignorePseudoClasses: [
+						'global'
+					]
+				}
+			],
 			'block-no-empty': true,
 			'declaration-block-no-shorthand-property-overrides': true,
 			'declaration-block-no-duplicate-properties': [true, {ignore: ["consecutive-duplicates"]}],

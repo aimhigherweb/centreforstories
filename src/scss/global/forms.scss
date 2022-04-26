@@ -17,13 +17,13 @@ form {
 		display: block;
 		width: 100%;
 		padding: 10px 16px;
-		border: 2px solid var.$navy;
+		border: 2px solid var.$colours_navy;
 		border-radius: 0;
-		background: var.$neutral_5;
+		background: var.$colours_neutral_5;
 
 		&::placeholder {
 			opacity: 1;
-			color: var.$neutral_4;
+			color: var.$colours_neutral_4;
 		}
 
 		&[type='checkbox'], &[type='radio'] {
@@ -35,7 +35,7 @@ form {
 				display: flex;
 				position: relative;
 				align-items: center;
-				color: var.$neutral_500;
+				color: var.$colours_neutral_500;
 				font-weight: 500;
 
 				&:before, &:after {
@@ -48,9 +48,9 @@ form {
 					width: 20px;
 					height: 20px;
 					margin-right: 14px;
-					border: 1px solid var.$neutral_20;
+					border: 1px solid var.$colours_neutral_20;
 
-					background: var.$white;
+					background: var.$colours_white;
 				}
 
 				&:after {
@@ -61,8 +61,8 @@ form {
 					justify-content: center;
 					width: 20px;
 					height: 20px;
-					background: var.$blue;
-					color: var.$white;
+					background: var.$colours_blue;
+					color: var.$colours_white;
 					font-size: 20px;
 				}
 			}
@@ -96,7 +96,7 @@ form {
 
 		&[type='search'] {
 			padding: 14px;
-			color: var.$black;
+			color: var.$colours_black;
 			font-family: var.$font_main;
 			font-size: 1em;
 			font-weight: 400;
@@ -132,17 +132,17 @@ form {
 		}
 
 		&.wpforms-has-error {
-			outline: 2px solid var.$error;
+			outline: 2px solid var.$colours_error;
 		}
 
 		.wpforms-error {
-			background: rgba(var.$error, 0.1);
+			background: rgba(var.$colours_error, 0.1);
 
 			&:not(input):not(textarea) {
 				margin-top: 10px;
 				padding: 5px 10px;
 				background: none;
-				color: var.$currant;
+				color: var.$colours_currant;
 				font-weight: 700;
 			}
 		}

@@ -9,6 +9,6 @@
 
  
 
-	get_template_part('partials/layout');
+	get_template_part('partials/layout/index');
 
 ?>

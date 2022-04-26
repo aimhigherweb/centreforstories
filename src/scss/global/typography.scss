@@ -1,5 +1,5 @@
 body {
-	color: var.$neutral_600;
+	color: var.$colours_neutral_600;
 	font-family: var.$font_main;
 	font-size: 16px;
 	font-weight: 300;
@@ -7,7 +7,7 @@ body {
 }
 
 a {
-	color: var.$forest;
+	color: var.$colours_forest;
 	font-weight: 500;
 	text-decoration: underline;
 
@@ -29,7 +29,7 @@ p {
 }
 
 h1, h2, h3, h4, h5 {
-	color: var.$neutral_700;
+	color: var.$colours_neutral_700;
 
 	a {
 		color: inherit;
@@ -100,5 +100,9 @@ blockquote {
 }
 
 .btn, button, input[type='submit'] {
-	@include mixins.buttons(var.$blue, var.$white, var.$blue);
+	@include mixins.buttons(var.$colours_blue, var.$colours_white, var.$colours_blue);
+
+	svg {
+		height: 1em;
+	}
 }

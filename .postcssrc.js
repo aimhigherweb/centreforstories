@@ -13,7 +13,6 @@ const autoprefixOptions = {
 
 module.exports = ({env}) => ({
 	syntax: 'postcss-scss',
-	map: false,
 	plugins: [
 		stylelint({
 			failAfterError: false,

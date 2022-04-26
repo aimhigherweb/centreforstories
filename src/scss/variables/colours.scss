@@ -1,0 +1,62 @@
+$forest: #174f45;
+$currant: #6b140f;
+$navy: #283753;
+$seafoam: #d4e5fb;
+$lavender: #e3c5e5;
+$white: #ffffff;
+$grey_light_warm: #f0eee9;
+$marigold: #f9aa4f;
+$magenta: #c13481;
+$blue: #189aca;
+$black: #000000;
+
+$green: $forest;
+$red: $currant;
+$pink: $magenta;
+$yellow: $marigold;
+
+$primary: $blue;
+$primary_700: #0d5670;
+
+$neutral: #111827;
+$neutral_700: #374151;
+$neutral_600: #4b5563;
+$neutral_500: #6b7280;
+$neutral_400: #9ca3af;
+$neutral_4: #b4babb;
+$neutral_5: #fafafa;
+$neutral_20: #c5cbcc;
+$neutral_100: #f3f4f6;
+
+$good: #22c55e;
+$success: $good;
+$warning: #f59e0b;
+$fail: #ef4444;
+$error: $fail;
+$shadow: #101828;
+
+// Colours Object
+$list: (
+	'forest': $forest,
+	'currant': $currant,
+	'navy': $navy,
+	'seafoam': $seafoam,
+	'lavender': $lavender,
+	'white': $white,
+	'grey_light_warm': $grey_light_warm,
+	'marigold': $marigold,
+	'magenta': $magenta,
+	'blue': $blue,
+	'black': $black,
+	'green': $green,
+	'red': $red,
+	'pink': $pink,
+	'yellow': $yellow,
+	'primary': $primary,
+	'neutral': $neutral,
+	'good': $good,
+	'success': $success,
+	'warning': $warning,
+	'fail': $fail,
+	'error': $error,
+);

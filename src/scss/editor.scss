@@ -1,7 +1,4 @@
 /* Custom Editor Styles */
-@use './variables.scss' as var;
-@use './mixins.scss';
-
 @import './global/fonts.scss';
 @import './global/typography.scss';
 @import './global/forms.scss';
@@ -9,14 +6,14 @@
 @import './blocks/index.scss';
 
 .block-editor-writing-flow, .editor-styles-wrapper, .is-root-container[class*='block-editor-block-list'] {
-	color: var.$neutral;
+	color: var.$colours_neutral;
 	font-family: var.$font_main;
 	font-size: 18px;
 	line-height: 1.5;
 
 	.editor-post-title {
 		.editor-post-title__input {
-			color: var.$blue;
+			color: var.$colours_blue;
 			font-family: var.$font_headings;
 			font-size: 3.22em;
 			font-weight: 400;
@@ -39,25 +36,25 @@
 	.wp-block-button__link {
 		display: inline-block;
 		padding: 10px 20px;
-		border: 2px solid var.$blue;
+		border: 2px solid var.$colours_blue;
 		border-radius: 8px;
-		background: var.$blue;
-		color: var.$white;
+		background: var.$colours_blue;
+		color: var.$colours_white;
 		font-weight: 600;
 		line-height: 1;
 		text-decoration: none;
 		text-transform: uppercase;
 
 		&:hover {
-			background: var.$white;
-			color: var.$blue;
+			background: var.$colours_white;
+			color: var.$colours_blue;
 		}
 	}
 
 	.button-primary {
 		padding: 5px 10px;
-		background: var.$blue;
-		color: var.$white;
+		background: var.$colours_blue;
+		color: var.$colours_white;
 	}
 
 	.mce-toolbar {
@@ -65,7 +62,7 @@
 			margin: 0;
 			border-width: 1px;
 			background: transparent;
-			color: var.$neutral;
+			color: var.$colours_neutral;
 		}
 	}
 }
@@ -95,5 +92,4 @@
 
 .iris-picker {
 	display: none;
-	background: rebeccapurple;
 }
