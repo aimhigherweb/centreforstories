@@ -11,16 +11,33 @@
 	
 	$logo = wp_get_attachment_image_src(get_theme_mod( 'custom_logo' ), 'full')[0];
 	$template = 'default';
-	$class = '';
 	$page_id = get_the_ID();
 	$category = null;
+	$colour = get_field('page_colour');
+
+	$data = fetch_styles(__DIR__);
+	
+	$template = $data['template'];
+	$styles = $data['styles'];
+
+	$class = [$styles['body']];
+	
+	get_template_part(
+		'parts/modules',
+		null,
+		array(
+			'name' => $template,
+			'dir' => __DIR__,
+			'env' => 'dev'
+		)
+	);
 
 	if(isset($args, $args['template'])) {
 		$template = $args['template'];
 	}
 
 	if(isset($args, $args['class'])) {
-		$class = $args['class'];
+		array_push($class, $args['class']);
 	}
 
 	$gtm_tag = get_theme_mod('gtm_tag_id');
@@ -51,11 +68,14 @@
 
 		<link rel="icon" href="<?php echo $logo; ?>" type="image/svg+xml">
 
-		<?php get_template_part('partials/dev-styles'); ?>
+		<?php get_template_part('partials/dev-styles/index'); ?>
 
 	</head>
 
-	<body class="<?php echo $class; ?>" style="background: <?php echo get_field('page_colour') ?>;">
+	<body
+		class="<?php echo classes($class); ?>" 
+		<?php if($colour) { echo 'style="--page_colour: ' . $colour . '; background: ' . $colour . '"'; } ?>
+	>
 		<?php if($gtm_tag) : ?>
 			<!-- Google Tag Manager (noscript) -->
 				<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<?php echo $gtm_tag; ?>"
@@ -69,7 +89,7 @@
 			<?php get_template_part('layouts/' . $template . '/index'); ?>
 		</main>
 
-		<?php get_template_part('partials/footer'); ?>
+		<?php get_template_part('partials/footer/index'); ?>
 		<?php wp_footer(); ?>
 		<script src="<?php echo get_template_directory_uri(); ?>/src/js/main.js"></script>
 	</body>
