@@ -84,6 +84,16 @@
 						),
 					),
 				),
+				array(
+					'key' => 'aimhigher_business_info_field_charity_logos',
+					'label' => 'Charity Logo',
+					'name' => 'logo',
+					'type' => 'image',
+					'required' => 0,
+					'return_format' => 'url',
+					'preview_size' => 'medium',
+					'library' => 'all',
+				),
 			),
 			'location' => array(
 				array(

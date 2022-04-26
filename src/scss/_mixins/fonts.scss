@@ -50,6 +50,7 @@
 	font-size: list.nth($sizes, 1);
 	letter-spacing:0.1em;
 	line-height: list.nth($sizes, 2);
+	text-transform: uppercase;
 }
 
 @mixin subheading_text($size: 's') {

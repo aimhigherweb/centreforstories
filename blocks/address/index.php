@@ -12,7 +12,7 @@
 	<address>
 		<a
 			target="_blank"
-			href="tel:<?php echo preg_replace('/\s+/', '', $phone); ?>"
+			href="tel:<?php echo preg_replace('/(\s|\(|\))+/', '', $phone); ?>"
 		>
 			<?php echo inline_svg(get_template_directory_uri() . '/src/img/icons/phone.svg'); ?>
 			<?php echo $phone; ?>

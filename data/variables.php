@@ -9,6 +9,14 @@
 
 	$icon_menus = array('social_menu', 'utility_menu');
 
+	$blocks = array(
+		'address'
+	);
+
+	$widgets = array(
+		'aoc'
+	);
+
 	$page_colours = [
 		[
 			'name'  => 'Forest',
