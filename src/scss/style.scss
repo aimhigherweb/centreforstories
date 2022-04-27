@@ -4,13 +4,6 @@ Version: 1.0.0
 */
 @import './global/index.scss';
 
-@import './partials/layout.scss';
-@import './partials/content.scss';
-
-@import './parts/index.scss';
-
-@import './blocks/index.scss';
-
 body {
 	main {
 		@import './partials/gutenberg.scss';

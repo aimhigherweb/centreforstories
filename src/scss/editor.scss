@@ -3,8 +3,6 @@
 @import './global/typography.scss';
 @import './global/forms.scss';
 
-@import './blocks/index.scss';
-
 .block-editor-writing-flow, .editor-styles-wrapper, .is-root-container[class*='block-editor-block-list'] {
 	color: var.$colours_neutral;
 	font-family: var.$font_main;
