@@ -53,3 +53,15 @@
 		transform: translateX(-50%);
 	}
 }
+
+@media(min-width: 70em) {
+	.title {
+		@include mixins.display_text('m');
+	}
+}
+
+@media(min-width: 80em) {
+	.title {
+		@include mixins.display_text('l');
+	}
+}
