@@ -11,7 +11,7 @@
 @media(min-width: 50em) {
 	%content {
 		p, h2, h3, h4, h5, h6, blockquote {
-			max-width: max_width(100vw, 120px, 7);
+			max-width: max_width(100vw, 120px, 6);
 		}
 
 		> * {
