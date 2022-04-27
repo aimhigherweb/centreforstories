@@ -6,7 +6,7 @@ const {build, bundle} = require('./gulp/build')
 const {compileSass} = require('./gulp/scss')
 const { sassPartials, phpFiles, browserSync} = require('./gulp/config')
 
-const serve = () => {
+const serve = async () => {
 	browserSync.init({
 		port: process.env.PORT || 3000,
 		proxy: process.env.WP_URL,

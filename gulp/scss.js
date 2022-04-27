@@ -23,7 +23,6 @@ const checkFiles = (path) => themeFiles.some((file) => (
 
 const checkVariables = ({path, contents}) => {
 	if (checkFiles(path)) {
-		
 		return false
 	}
 
@@ -35,14 +34,14 @@ const checkVariables = ({path, contents}) => {
 }
 const checkMixins = ({path}) => {
 	if(checkFiles(path)) {
-		
 		return false
 	}
+
 	return true
 }
 
 
-const compileSass = () => (
+const compileSass = async () => (
 	src(compileFiles)
 		.pipe(
 			header(
