@@ -8,7 +8,8 @@ module.exports = {
 		'layouts',
 		'partials',
 		'acf',
-		'parts'
+		'parts',
+		'src'
 	],
 	themeFiles: [
 		'./*.php',
@@ -24,10 +25,11 @@ module.exports = {
 	compileFiles: [
 		'src/scss/style.scss', 
 		'src/scss/editor.scss',
-		'partials/**/*.scss',
-		'layouts/**/*.scss',
-		'blocks/**/*.scss',
-		'parts/**/*.scss',
+		'partials/**/*.module.scss',
+		'layouts/**/*.module.scss',
+		'blocks/**/*.module.scss',
+		'parts/**/*.module.scss',
+		'**/*.module.scss',
 	],
 	sassPartials: [
 		'src/scss/**/*.scss',

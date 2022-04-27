@@ -22,3 +22,4 @@ const serve = async () => {
 exports.build = build
 exports.bundle = bundle
 exports.default = series(compileSass, serve)
+exports.sass = compileSass

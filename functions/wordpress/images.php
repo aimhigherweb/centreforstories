@@ -12,6 +12,6 @@
     add_theme_support( 'post-thumbnails' );
 
     // Custom Image Sizes
-    // add_image_size( 'product_thumbnail', 250, 200, array('center', 'center') );
+    add_image_size( 'header_feature', 488, 520, false );
 
 ?>

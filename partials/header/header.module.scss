@@ -161,6 +161,10 @@
 }
 
 @media(min-width: 50em) {
+	.header {
+		padding: 0 60px 20px;
+	}
+
 	.logo {
 		display: flex;
 		flex-grow: 1;
@@ -283,9 +287,10 @@
 		display: block;
 		flex-shrink: 0;
 		order: -1;
-		width: calc(100% + 40px);
-		padding: 5px 20px;
-		transform: translate(-20px, -20px);
+		width: calc(100% + 120px);
+		margin-bottom: 20px;
+		padding: 5px 60px;
+		transform: translate(-60px, 0);
 		background: var.$colours_neutral_100;
 		color: var.$colours_neutral_600;
 		font-size: 0.75em;
@@ -315,17 +320,8 @@
 	.header {
 		@include mixins.full_background();
 
-		max-width: 1220px;
+		max-width: var.$max_width;
 		margin: 0 auto;
-		padding: 20px;
-	}
-
-	.main {
-		li {
-			&:not(.search) {
-				margin: 0 5px;
-			}
-		}
 	}
 
 	.utility {
@@ -333,10 +329,8 @@
 	}
 
 	.search {
-		margin-left: 20px;
-
 		form {
-			min-width: 200px;
+			min-width: 150px;
 			background: var.$colours_neutral_100;
 
 			input {
@@ -355,14 +349,22 @@
 	.main {
 		li {
 			&:not(.search) {
-				margin: 0 15px;
+				margin: 0 10px;
 			}
+		}
+	}
+
+	.search {
+		margin-left: 20px;
+
+		form {
+			min-width: 200px;
 		}
 	}
 }
 
 @media(min-width: 80em) {
 	.search {
-		margin-left: 100px;
+		margin-left: 80px;
 	}
 }

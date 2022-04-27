@@ -7,7 +7,8 @@
     "dev": "gulp",
     "build": "NODE_ENV=production gulp build",
     "bundle": "NODE_ENV=production gulp bundle",
-    "clean": "rm -rf dist *.css *.zip"
+    "clean": "rm -rf dist *.css *.zip",
+    "dev:sass": "gulp sass"
   },
   "dependencies": {
     "autoprefixer": "^10.4.4",

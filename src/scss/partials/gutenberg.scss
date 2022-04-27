@@ -1,8 +1,28 @@
-.wp-block-columns {
+.wp-block-columns.wp-block-columns {
 	display: block;
 
-	.wp-block-column {
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	.wp-block-column.wp-block-column {
 		margin: 0;
+
+		figure {
+			&.background {
+				width: 100vw;
+				margin: 0 -20px;
+
+				img {
+					display: block;
+					width: 100%;
+					height: 100%;
+					max-height: 300px;
+					object-fit: cover;
+					object-position: center;
+				}
+			}
+		}
 	}
 }
 
@@ -61,21 +81,50 @@
 	}
 }
 
+@media(min-width: 40em) {
+	.wp-block-columns.wp-block-columns {
+		.wp-block-column.wp-block-column {
+			figure {
+				&.background {
+					img {
+						max-height: 500px;
+					}
+				}
+			}
+		}
+	}
+}
+
 @media(min-width: 50em) {
-	.wp-block-columns {
+	.wp-block-columns.wp-block-columns {
 		display: flex;
 		width: calc(100% + 40px);
-		margin: 20px -20px;
+		margin: 0 -20px;
 
-		.wp-block-column {
+		.wp-block-column.wp-block-column {
+			flex-basis: 42% ;
 
-			/* stylelint-disable declaration-no-important */
-			flex-basis: 42% !important;
-
-			/* stylelint-enable declaration-no-important */
 			margin: 0 20px;
 
 			@include mixins.child_reset;
+
+			figure {
+				&.background {
+					width: calc(100% + 60px);
+					height: 100%;
+					margin: 0;
+
+					a {
+						height: 100%;
+					}
+
+					img {
+						height: 100%;
+						max-height: unset;
+						object-position: 50% 50%;
+					}
+				}
+			}
 		}
 
 		h1, h2 {
@@ -88,8 +137,15 @@
 	}
 }
 
-@media(min-width: 60em) {
-	.wp-block-columns {
-		margin: 50px -20px;
+@media(min-width: var.$max_width) {
+	.wp-block-columns.wp-block-columns {
+		.wp-block-column.wp-block-column {
+			figure {
+				&.background {
+					width: calc(100% + 60px + (50vw - (#{var.$max_width} / 2)));
+					max-width: 800px;
+				}
+			}
+		}
 	}
 }

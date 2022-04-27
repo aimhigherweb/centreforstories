@@ -4,3 +4,18 @@
 @mixin drop_shadow($size, $colour: var.$shadow) {
 	box-shadow: map.get(var.$drop_shadow_sizes, $size) $colour;
 }
+
+@mixin underline($size: 4px, $colour: var.$colours_yellow) {
+	position: relative;
+	padding-bottom: 0.4em;
+
+	&:after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100px;
+		height: $size;
+		background: $colour;
+	}
+}

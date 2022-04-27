@@ -21,25 +21,6 @@ const checkFiles = (path) => themeFiles.some((file) => (
 	path.match(RegExp(`${file}(\\/|\\\\)`, 'i'))
 ))
 
-const checkVariables = ({path, contents}) => {
-	if (checkFiles(path)) {
-		return false
-	}
-
-	if(contents.toString().match(/@use 'variables'/)) {
-		return false
-	}
-
-	return true
-}
-const checkMixins = ({path}) => {
-	if(checkFiles(path)) {
-		return false
-	}
-
-	return true
-}
-
 
 const compileSass = async () => (
 	src(compileFiles)
@@ -50,14 +31,8 @@ const compileSass = async () => (
 		)
 		.pipe(
 			gulpIf(
-				(file) => (checkVariables(file)), 
-				header(`@use 'variables' as var;\n`)
-			)
-		)
-		.pipe(
-			gulpIf(
-				(file) => (checkMixins(file)), 
-				header(`@use 'mixins';\n`)
+				({path}) => (!checkFiles(path)), 
+				header(`@use 'variables' as var;\n@use 'mixins';\n`)
 			)
 		)
 		.pipe(
@@ -68,9 +43,7 @@ const compileSass = async () => (
 				outputStyle: process.env.NODE_ENV !== 'production' ? 'expanded' : 'compressed',
 				includePaths: [
 					'src/scss',
-				],
-				quietDeps: true,
-				verbose: true
+				]
 			}).on('error', sass.logError)
 		)
 		.pipe(

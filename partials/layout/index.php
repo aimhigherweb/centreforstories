@@ -10,7 +10,7 @@
 	require_once ( ABSPATH . '/wp-admin/includes/file.php' );
 	
 	$logo = wp_get_attachment_image_src(get_theme_mod( 'custom_logo' ), 'full')[0];
-	$template = 'default';
+	$layout = 'default';
 	$page_id = get_the_ID();
 	$category = null;
 	$colour = get_field('page_colour');
@@ -33,7 +33,7 @@
 	);
 
 	if(isset($args, $args['template'])) {
-		$template = $args['template'];
+		$layout = $args['template'];
 	}
 
 	if(isset($args, $args['class'])) {
@@ -41,6 +41,12 @@
 	}
 
 	$gtm_tag = get_theme_mod('gtm_tag_id');
+
+	$style = '';
+
+	if($colour) {
+		$style = '--page_colour: ' . $colour . ';';
+	}
 ?>
 
 <!DOCTYPE html>
@@ -74,7 +80,7 @@
 
 	<body
 		class="<?php echo classes($class); ?>" 
-		<?php if($colour) { echo 'style="--page_colour: ' . $colour . ';'; } ?>
+		style="<?php echo $style; ?>"
 	>
 		<?php if($gtm_tag) : ?>
 			<!-- Google Tag Manager (noscript) -->
@@ -84,9 +90,9 @@
 		<?php endif; ?>
 		<?php get_template_part('partials/header/index'); ?>
 
-		<main id="main">
-
-			<?php get_template_part('layouts/' . $template . '/index'); ?>
+		<main id="main" class="<?php echo classes([$styles['main']]); ?>">
+			<?php get_template_part('parts/page_header/index'); ?>
+			<?php get_template_part('layouts/' . $layout . '/index'); ?>
 		</main>
 
 		<?php get_template_part('partials/footer/index'); ?>

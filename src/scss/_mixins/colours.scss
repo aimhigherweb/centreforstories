@@ -1,6 +1,6 @@
 @use 'sass:color';
 
-@function colour_rgb ($colour, $opacity: 1) {
+@function colour_rgb($colour, $opacity: 1) {
 	$red: color.red($colour);
 	$green: color.green($colour);
 	$blue: color.blue($colour);

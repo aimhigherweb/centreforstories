@@ -1,8 +1,10 @@
 @use './variables.scss'as var;
 @use 'sass:map';
 @use 'sass:list';
+@use 'sass:math';
 
 @import './_mixins/index.scss';
+@import './defaults/index.scss';
 
 @mixin child_reset {
 	>* {

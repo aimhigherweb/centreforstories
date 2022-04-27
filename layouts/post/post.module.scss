@@ -1,0 +1,18 @@
+.content {
+	@extend %content;
+
+	blockquote {
+		@include mixins.heading_text('h2');
+
+		margin: 0;
+		font-style: normal;
+		font-weight: 700;
+	}
+}
+
+.date {
+	@include mixins.overline_text;
+	margin-top: 60px;
+
+	color: var.$colours_primary_700;
+}

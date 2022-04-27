@@ -49,7 +49,7 @@ if( function_exists('acf_add_local_field_group') ):
 					'class' => '',
 					'id' => '',
 				),
-				'default_value' => '#174f45',
+				'default_value' => '#283753',
 				'enable_opacity' => 0,
 				'return_format' => 'string',
 			),

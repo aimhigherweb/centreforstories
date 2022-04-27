@@ -7,4 +7,5 @@
     require_once(__DIR__ . '/functions/wordpress/index.php');
     require_once(__DIR__ . '/functions/theme/index.php');
     require_once(__DIR__ . '/functions/widgets/index.php');
+    require_once(__DIR__ . '/functions/posts/index.php');
 ?>

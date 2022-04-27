@@ -3,6 +3,11 @@
 	// Check that field has value
     function check_field_value($fields) {
         $exists = true;
+
+        if(!is_array($fields)) {
+            $fields = [$fields];
+        }
+
         foreach($fields as $field) {
             if(
                 !$field // Field doesn't exists

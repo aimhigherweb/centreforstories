@@ -91,3 +91,11 @@
 		color: $background;
 	}
 }
+
+@function max_width($max, $diff: 40px, $width: 6) {
+	@if $diff == 0 {
+		@return calc((#{$max} / 12) * #{$width});
+	}
+
+	@return calc(((#{$max} - #{$diff}) / 12) * #{$width});
+}

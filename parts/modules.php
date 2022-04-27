@@ -18,7 +18,7 @@
 
 	preg_match($theme_regex, $dir, $folder);
 
-	$css_file =  $folder[1] . '/' . $name . '.module.css';
+	$css_file =  $folder[1] . '/' . $name . '.module.css';	
 
 	if($env == 'production'):
 ?>

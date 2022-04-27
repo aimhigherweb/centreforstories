@@ -11,7 +11,7 @@
 	justify-content: center;
 }
 
-@mixin full_background($colour: inherit) {
+@mixin full_background($colour: inherit, $fallback_colour: $colour) {
 	position: relative;
 
 	&:before {
@@ -22,6 +22,7 @@
 		z-index: -1;
 		width: 100vw;
 		transform: translateX(-50%);
+		background: $fallback_colour;
 		background: $colour;
 	}
 }

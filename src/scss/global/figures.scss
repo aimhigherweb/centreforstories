@@ -8,23 +8,17 @@ figure {
 			@include mixins.aspect_ratio(calc(100vw - 40px), $youtube_ratio, var.$max_content);
 		}
 	}
+
+	a {
+		display: block;
+	}
 }
 
-@media(min-width: 40em) {
+@media(min-width: 50em) {
 	figure {
 		&.wp-block-embed {
 			iframe {
 				@include mixins.aspect_ratio(calc(100vw - 120px), $youtube_ratio, var.$max_content);
-			}
-		}
-	}
-}
-
-@media(min-width: 60em) {
-	figure {
-		&.wp-block-embed {
-			iframe {
-				@include mixins.aspect_ratio(90vw, $youtube_ratio, var.$max_content);
 			}
 		}
 	}

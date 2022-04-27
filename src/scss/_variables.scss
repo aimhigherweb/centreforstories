@@ -4,6 +4,7 @@
 
 // Sizes
 $max_content: 1216px;
+$max_width: $max_content + 120px;
 
 $media_queries: (
 	'large_mobile': 40em,

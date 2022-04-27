@@ -1,0 +1,67 @@
+.feature {
+	@include mixins.full_background(var(--page_colour), var.$colours_navy);
+	max-width: 400px;
+
+	margin: 0 auto;
+
+	&:before {
+		z-index: -10;
+		bottom: 70%;
+	}
+}
+
+.image {
+	display: block;
+	width: 100%;
+	height: auto;
+	max-height: 400px;
+	object-fit: contain;
+}
+
+.caption {
+	@include mixins.text('s');
+	padding: 6px 0;
+
+	font-weight: 500;
+	text-align: right;
+}
+
+@media(min-width: 40em) {
+	.feature {
+		max-width: 30vw;
+		margin: -100px 0 20px 20px;
+		float: right;
+
+		&:before {
+			right: -20px;
+			bottom: calc(100% - 60px);
+			left: auto;
+			transform: none;
+		}
+	}
+}
+
+@media(min-width: 50em) {
+	.feature  {
+		&:before {
+			right: -60px;
+		}
+	}
+}
+
+@media(min-width: 60em) {
+	.feature {
+		max-width: mixins.max_width(100vw, 120px, 5);
+		margin: 0 0 40px 40px;
+		// max-width: 488px;
+		transform: translateY(calc(-30% - 60px));
+
+		&:before {
+			content: normal;
+		}
+	}
+
+	.image {
+		max-height: 520px;
+	}
+}
