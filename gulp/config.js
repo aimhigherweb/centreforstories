@@ -9,7 +9,8 @@ module.exports = {
 		'partials',
 		'acf',
 		'parts',
-		'src'
+		'src',
+		'data'
 	],
 	themeFiles: [
 		'./*.php',

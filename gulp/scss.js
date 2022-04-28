@@ -22,7 +22,7 @@ const checkFiles = (path) => themeFiles.some((file) => (
 ))
 
 
-const compileSass = async () => (
+const compileSass = () => (
 	src(compileFiles)
 		.pipe(
 			header(

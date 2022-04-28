@@ -8,27 +8,37 @@ const replace = require('gulp-replace')
 const {compileSass} = require('./scss')
 const {themeFolders, themeFiles} = require('./config')
 
-const buildFiles = () => {
-	themeFolders.forEach((file, i) => {
-		src(`${file}/**`, {
-				allowEmpty: true,
-			})
-			.pipe(dest(`./dist/${file}`))
-	})
+const buildFolders = () => {
+	const folders = themeFolders.map(folder => `${folder}/**/*`)
 
-	return src(themeFiles, {
+	return (
+		src(
+			folders, 
+			{
+				allowEmpty: true,
+				base: '.'
+			}
+		)
+		.pipe(dest(`./dist/`))
+	)
+}
+
+const buildFiles = () => (
+	src(themeFiles, {
 		allowEmpty: true,
 	})
 		.pipe(dest('./dist'))
-}
+)
 
-const incrementVersion = (callback) => (
+
+
+const incrementVersion = () => (
 	src('./package.json')
 		.pipe(bump({type: 'patch'}))
 		.pipe(dest('./'))
 )
 
-const setVersion = (callback) => (
+const setVersion = () => (
 	src('./package.json')
 	.pipe(replace(/"version": "(?<version>(?:\d+\.?){3})",/, (match) => {
 		const version = match.match(/"version": "(?<version>(?:\d+\.?){3})",/)?.groups?.version
@@ -52,7 +62,10 @@ const zipTheme = () => (
 		.pipe(dest('.'))
 )
 
-const build = series(compileSass, buildFiles, incrementVersion, setVersion, setEnv)
+// const build = series(compileSass, buildFolders, buildFiles, incrementVersion, setVersion, setEnv)
+
+const build = series(compileSass, buildFolders, buildFiles, incrementVersion, setVersion, setEnv)
+
 const bundle = series(build, zipTheme)
 
 module.exports = {

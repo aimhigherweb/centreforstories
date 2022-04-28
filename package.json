@@ -7,7 +7,7 @@
     "dev": "gulp",
     "build": "NODE_ENV=production gulp build",
     "bundle": "NODE_ENV=production gulp bundle",
-    "clean": "rm -rf dist *.css *.zip",
+    "clean": "rm -rf dist *.css *.zip, dist",
     "dev:sass": "gulp sass"
   },
   "dependencies": {
