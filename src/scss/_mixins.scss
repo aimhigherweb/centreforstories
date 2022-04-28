@@ -5,29 +5,3 @@
 
 @import './_mixins/index.scss';
 @import './defaults/index.scss';
-
-@mixin child_reset {
-	>* {
-		&:first-child {
-			margin-top: 0;
-		}
-
-		&:last-child {
-			margin-bottom: 0;
-		}
-	}
-}
-
-@mixin aspect_ratio($width, $ratio, $max_width: 'unset') {
-	width: $width;
-	height: calc($width * $ratio);
-
-	@if($max_width != 'unset') {
-		max-width: $max_width;
-		max-height: calc($max_width * $ratio);
-	}
-
-	@supports(aspect-ratio: 1) {
-		aspect-ratio: $ratio;
-	}
-}

@@ -12,12 +12,36 @@
 	$blocks = array(
 		'address',
 		'map',
-		'cta'
+		'cta',
+		'standard'
 	);
 
 	$widgets = array(
 		'aoc'
 	);
+
+	$image_sizes = [
+		array(
+			'name' => 'header_feature',
+			'width' => 488,
+			'height' => 520,
+		),
+		array(
+			'name' => 'block_graphic',
+			'width' => 384,
+			'height' => 384,
+		),
+		array(
+			'name' => 'block_image',
+			'width' => 850,
+			'height' => 850,
+		),
+		array(
+			'name' => 'block_image_small',
+			'width' => 640,
+			'height' => 640,
+		)
+	];
 
 	$custom_info = [
 		array(

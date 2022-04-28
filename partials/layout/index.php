@@ -37,7 +37,7 @@
 	}
 
 	if(isset($args, $args['class'])) {
-		array_push($class, $args['class']);
+		array_push($class, $styles[$args['class']]);
 	}
 
 	$gtm_tag = get_theme_mod('gtm_tag_id');

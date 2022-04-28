@@ -1,7 +1,7 @@
 %content {
 	> * {
 		&:last-child {
-			&:not([class*='wp-block-']) {
+			&:not([class*='wp-block']) {
 				margin-bottom: 60px;
 			}
 		}
@@ -16,7 +16,7 @@
 
 		> * {
 			&:last-child {
-				&:not([class*='wp-block-']) {
+				&:not([class*='wp-block']) {
 					margin-bottom: 120px;
 				}
 			}

@@ -12,6 +12,10 @@
     add_theme_support( 'post-thumbnails' );
 
     // Custom Image Sizes
-    add_image_size( 'header_feature', 488, 520, false );
+	global $image_sizes;
+
+	foreach ($image_sizes as $size) {
+		add_image_size( $size['name'], $size['width'], $size['height'], $size['crop'] );
+	}
 
 ?>

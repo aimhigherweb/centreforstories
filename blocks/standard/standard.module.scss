@@ -1,0 +1,107 @@
+.block {
+	@extend %block;
+
+	display: flex;
+	flex-wrap: wrap;
+
+	&:before {
+		background: var.$colours_grey_light_warm;
+	}
+}
+
+.container {
+
+}
+
+.image {
+	display: block;
+	order: -1;
+	width: 100vw;
+	max-height: 350px;
+	margin-top: -60px;
+	margin-right: -20px;
+	margin-left: -20px;
+
+	img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	&.graphic {
+		position: absolute;
+		z-index: -1;
+		top: 60px;
+		right: 20px;
+		width: 60vw;
+		min-width: 300px;
+		height: 60vw;
+		min-height: 300px;
+		margin: 0;
+		opacity: 0.4;
+
+		img {
+			object-fit: contain;
+		}
+	}
+}
+
+.cta {
+	@extend %block_cta;
+}
+
+.heading {
+	@extend %heading;
+}
+
+.eyebrow {
+	@extend %eyebrow;
+}
+
+.content {
+	@extend %block_content;
+}
+
+@media(min-width: 40em) {
+	.block {
+		flex-wrap: nowrap;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.image {
+		flex-shrink: 0;
+
+		&.graphic {
+			position: static;
+			order: 2;
+			min-width: unset;
+			max-width: mixins.max_width(100%, 0, 4);
+			min-height: unset;
+			max-height: 384px;
+			margin-left: 20px;
+			opacity: 1;
+		}
+	}
+
+	.container {
+		flex-grow: 1;
+	}
+}
+
+@media(min-width: 50em) {
+	.container {
+		max-width: mixins.max_width(100vw, 0, 6);
+
+		p, h2, blockquote {
+			max-width: 100%;
+		}
+	}
+}
+
+@media(min-width: var.$max_width) {
+	.container {
+		max-width: mixins.max_width(var.$max_width, 0, 6);
+	}
+}
