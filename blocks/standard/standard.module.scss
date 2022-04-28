@@ -3,10 +3,6 @@
 
 	display: flex;
 	flex-wrap: wrap;
-
-	&:before {
-		background: var.$colours_grey_light_warm;
-	}
 }
 
 .container {
@@ -18,9 +14,7 @@
 	order: -1;
 	width: 100vw;
 	max-height: 350px;
-	margin-top: -60px;
-	margin-right: -20px;
-	margin-left: -20px;
+	margin: -60px -20px 60px;
 
 	img {
 		display: block;
@@ -72,10 +66,15 @@
 
 	.image {
 		flex-shrink: 0;
+		align-self: stretch;
+		order: 2;
+		width: calc(mixins.max_width(100%, 0, 4) + 20px);
+		height: auto;
+		max-height: unset;
+		margin: -60px -20px -60px 20px;
 
 		&.graphic {
 			position: static;
-			order: 2;
 			min-width: unset;
 			max-width: mixins.max_width(100%, 0, 4);
 			min-height: unset;
@@ -98,10 +97,24 @@
 			max-width: 100%;
 		}
 	}
+
+	.block {
+		justify-content: space-between;
+	}
+
+	.image {
+		width: calc(mixins.max_width(100%, 0, 4) + 60px);
+		margin: -120px -60px -120px 0;
+	}
 }
 
 @media(min-width: var.$max_width) {
 	.container {
 		max-width: mixins.max_width(var.$max_width, 0, 6);
+	}
+
+	.image {
+		width: calc((mixins.max_width(var.$max_width, 0, 4) + 60px) + (50vw - (#{var.$max_width} / 2)));
+		margin-right: calc(-1 * (60px + 50vw - (#{var.$max_width} / 2)));
 	}
 }

@@ -1,14 +1,25 @@
 %block {
-	@include full_background();
+	--block_colour: #{var.$colours_grey_light_warm};
+
+	@include full_background(var(--block_colour), var.$colours_grey_light_warm);
 
 	position: relative;
 	width: 100vw;
 	margin-left: -20px;
 	padding: 60px 20px;
+
+	&.colour {
+		color: var.$colours_white;
+
+		%eyebrow, %heading, %block_content, %block_cta {
+			color: inherit;
+		}
+	}
 }
 
 %eyebrow {
 	@include overline_text('s');
+
 	margin: 0 0 24px;
 }
 

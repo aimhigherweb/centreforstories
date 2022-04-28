@@ -23,15 +23,23 @@
 	$image = get_field('image');
 
 	$image_classes = [$styles['image']];
+	$block_classes = [$styles['block']];
 
 	if(get_field('graphic')) {
 		array_push($image_classes, $styles['graphic']);
+	}
+
+	if(check_field_value(get_field('colour')) && get_field('colour') !== '#f0eee9') {
+		array_push($block_classes, 'colour');
 	}
 	
 ?>
 
 
-<div class="<?php echo classes([$styles['block']]); ?> wp-block">
+<div 
+	class="<?php echo classes($block_classes); ?> wp-block" 
+	style="--block_colour: <?php echo get_field('colour'); ?>;"
+>
 	<div class="<?php echo classes([$styles['container']]); ?>">
 		<p class="<?php echo classes([$styles['eyebrow']]); ?>">
 			<?php echo get_field('eyebrow'); ?>
@@ -55,14 +63,21 @@
 	</div>
 
 	<picture class="<?php echo classes($image_classes); ?>">
-		<source
-			srcset="<?php echo $image['sizes']['block_image_small']; ?>"
-			media="(max-width: 640px)"
-		/>
-		<source
-			srcset="<?php echo $image['sizes']['block_image']; ?>"
-			media="(min-width: 640px)"
-		/>
+		<?php if(get_field('graphic')) : ?>
+			<source
+				srcset="<?php echo $image['sizes']['block_graphic']; ?>"
+				media="(min-width: 300px)"
+			/>
+		<?php else : ?>
+			<source
+				srcset="<?php echo $image['sizes']['block_image_small']; ?>"
+				media="(max-width: 640px)"
+			/>
+			<source
+				srcset="<?php echo $image['sizes']['block_image']; ?>"
+				media="(min-width: 640px)"
+			/>
+		<?php endif; ?>
 		<img
 			alt="<?php echo $image['alt'] ?>"
 			src="<?php echo $image['url'] ?>"
