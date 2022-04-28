@@ -6,6 +6,8 @@
 	require_once(__DIR__ . '/comments.php');
 	require_once(__DIR__ . '/images.php');
 	require_once(__DIR__ . '/customise.php');
-	require_once(__DIR__ . '/gtm.php');
+	require_once(__DIR__ . '/check_field_value.php');
 	require_once(__DIR__ . '/gutenberg.php');
+	require_once(__DIR__ . '/gtm.php');
+	require_once(__DIR__ . '/maps_key.php');
 ?>

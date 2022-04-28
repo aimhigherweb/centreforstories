@@ -1,0 +1,44 @@
+.map {
+	width: 100vw;
+	margin: 0 -20px;
+}
+
+.image {
+	display: block;
+	width: 100%;
+	height: 100%;
+	max-height: 300px;
+	object-fit: cover;
+	object-position: center;
+}
+
+@media(min-width: 40em) {
+	.image {
+		max-height: 500px;
+	}
+}
+
+@media(min-width: 50em) {
+	.map {
+		width: calc(100% + 60px);
+		height: 100%;
+		margin: 0;
+
+		a {
+			height: 100%;
+		}
+	}
+
+	.image {
+		height: 100%;
+		max-height: unset;
+		object-position: 50% 50%;
+	}
+}
+
+@media(min-width: var.$max_width) {
+	.map {
+		width: calc(100% + 60px + (50vw - (#{var.$max_width} / 2)));
+		max-width: 800px;
+	}
+}

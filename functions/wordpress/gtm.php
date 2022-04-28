@@ -1,25 +1,22 @@
 <?php
 
-	// Check that field has value
-    function check_field_value($fields) {
-        $exists = true;
+	// Add Google Tag Manager Tag
+	function custom_ga_gtm_tags ($wp_customize){
+		$wp_customize->add_section('ga_gtm_section', array(
+			'title'          => 'Google Analytics'
+		));
 
-        if(!is_array($fields)) {
-            $fields = [$fields];
-        }
+		$wp_customize->add_setting('gtm_tag_id', array(
+			'default'        => ' GTM-XXXXXX',
+		) );
 
-        foreach($fields as $field) {
-            if(
-                !$field // Field doesn't exists
-                || $field == '' // Field is empty string
-                || (is_array($field)  && count($field) == 0) // Field is empty array
-            ) {
-                $exists = false;
-                break;
-            }
-        }
+		$wp_customize->add_control( 'gtm_tag_id', array(
+			'type' => 'text',
+			'section' => 'ga_gtm_section',
+			'label' => __( 'Enter Google Tag Manager ID' ),
+		) );
 
-        return $exists;
-    }
+	}
+	add_action('customize_register', 'custom_ga_gtm_tags');
 
 ?>

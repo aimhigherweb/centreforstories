@@ -10,7 +10,8 @@
 	$icon_menus = array('social_menu', 'utility_menu');
 
 	$blocks = array(
-		'address'
+		'address',
+		'map'
 	);
 
 	$widgets = array(

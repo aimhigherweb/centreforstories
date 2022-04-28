@@ -1,7 +1,6 @@
 <?php
 
 	$block_vars = array(
-		'name' => 'address_block',
 		'title' => 'Address Block',
 		'description' => 'A block to display the office address on the page',
 		'category' => 'design',
