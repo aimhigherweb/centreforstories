@@ -8,7 +8,7 @@ const replace = require('gulp-replace')
 const {compileSass} = require('./scss')
 const {themeFolders, themeFiles} = require('./config')
 
-const buildFiles = (callback) => {
+const buildFiles = () => {
 	themeFolders.forEach((file, i) => {
 		src(`${file}/**`, {
 				allowEmpty: true,
@@ -33,7 +33,7 @@ const setVersion = (callback) => (
 	.pipe(replace(/"version": "(?<version>(?:\d+\.?){3})",/, (match) => {
 		const version = match.match(/"version": "(?<version>(?:\d+\.?){3})",/)?.groups?.version
 
-		src('./dist/partials/layout.php')
+		src('./dist/partials/layout/index.php')
 			.pipe(replace('/style.css', `/style.css?v${version}`))
 			.pipe(replace(`<?php get_template_part('partials/dev-styles'); ?>`, ''))
 			.pipe(dest('./dist/partials/'))
