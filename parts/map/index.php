@@ -24,7 +24,18 @@
 		$pin = '/pin-s+f9aa4f(' . $map['lng'] . ',' . $map['lat'] . ')';
 	}
 
-	$map_image = 'https://api.mapbox.com/styles/v1/aimhigher/cl2gxmea6000715nzoi13wg7v/static' . $pin . '/' . $map['lng'] . ',' . $map['lat'] . ',' . $map['zoom'] . ',0/800x800?access_token=' . $api_key;
+	$map_details = array(
+		'lat' => $map['lat'],
+		'lng' => $map['lng'],
+		'zoom' => $map['zoom'],
+		'api_key' => $api_key,
+		'pin' => $pin,
+	);
+
+	function map_image($size = '800x800', $map) {
+        return 'https://api.mapbox.com/styles/v1/aimhigher/cl2gxmea6000715nzoi13wg7v/static' . $map['pin'] . '/' . $map['lng'] . ',' . $map['lat'] . ',' . $map['zoom'] . ',0/' . $size . '?access_token=' . $map['api_key'];
+    }
+	
 ?>
 
 <figure class="<?php echo classes([$styles['map']]); ?>">
@@ -33,10 +44,28 @@
 		target="_blank" 
 		rel="noopener"
 	>
-		<img 
-			class="<?php echo classes([$styles['image']]); ?>" 
-			src="<?php echo $map_image; ?>" 
-			alt="Linked map for <?php echo $args['name']; ?>" 
-		/>
+		<picture>
+			<source
+				srcset="<?php echo map_image('640x640', $map_details); ?>"
+				media="(max-width: 640px)"
+			/>
+			<source
+				srcset="<?php echo map_image('800x800', $map_details); ?>"
+				media="(max-width: 800px)"
+			/>
+			<source
+				srcset="<?php echo map_image('1000x1000', $map_details); ?>"
+				media="(max-width: 1000px)"
+			/>
+			<source
+				srcset="<?php echo map_image('1280x1280', $map_details); ?>"
+				media="(min-width: 1000px)"
+			/>
+			<img 
+				class="<?php echo classes([$styles['image']]); ?>" 
+				src="<?php echo map_image('1280x1280', $map_details); ?>" 
+				alt="Linked map for <?php echo $args['name']; ?>" 
+			/>
+		</picture>
 	</a>
 </figure>
