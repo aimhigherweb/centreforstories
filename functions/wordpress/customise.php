@@ -28,5 +28,28 @@
     add_action( 'after_setup_theme', 'custom_logo_setup' );
 
 	 
+    // Adding custom info
+
+    function aimhigher_custom_info ($wp_customize){
+        global $custom_info;
+
+		$wp_customize->add_section('aimhigher_custom_info_section', array(
+			'title'          => 'Custom Site Info'
+		));
+
+		foreach ($custom_info as $control) {
+            $wp_customize->add_setting($control['name'], array(
+                'default'        => $control['default'],
+            ) );
+    
+            $wp_customize->add_control( $control['name'], array(
+                'type' => $control['type'],
+                'section' => 'aimhigher_custom_info_section',
+                'label' => __( $control['label'] ),
+            ) );
+        }
+
+	}
+	add_action('customize_register', 'aimhigher_custom_info');
 
 ?>

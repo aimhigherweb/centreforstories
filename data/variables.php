@@ -18,6 +18,27 @@
 		'aoc'
 	);
 
+	$custom_info = [
+		array(
+			'default' => 'GTM-XXXXXX',
+			'name' => 'gtm_tag_id',
+			'type' => 'text',
+			'label' => 'Enter Google Tag Manager ID',
+		),
+		array(
+			'default' => '',
+			'name' => 'mapbox_api_key',
+			'type' => 'text',
+			'label' => 'Enter Mapbox API Key',
+		),
+		array(
+			'default' => '',
+			'name' => 'google_maps_api_key',
+			'type' => 'text',
+			'label' => 'Enter Google Maps API Key',
+		),
+	];
+
 	$page_colours = [
 		[
 			'name'  => 'Forest',
