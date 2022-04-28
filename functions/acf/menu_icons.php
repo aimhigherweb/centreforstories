@@ -17,8 +17,6 @@
 		);
 	}
 
-	if( function_exists('acf_add_local_field_group') ):
-
 		// Social Menu Icons
 		acf_add_local_field_group(array(
 			'key' => 'group_61b083a9d1829_menu_icons',
@@ -38,6 +36,5 @@
 			),
 			'location' => $menu_locations
 		));
-	endif;
     
 ?>

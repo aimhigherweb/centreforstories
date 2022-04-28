@@ -11,7 +11,8 @@
 
 	$blocks = array(
 		'address',
-		'map'
+		'map',
+		'cta'
 	);
 
 	$widgets = array(
