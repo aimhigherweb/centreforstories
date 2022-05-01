@@ -6,7 +6,12 @@
 
 	&:before {
 		z-index: -10;
+		top: -10px;
 		bottom: 70%;
+	}
+
+	& + p:not([class]) {
+		margin-top: 40px;
 	}
 }
 
@@ -29,7 +34,7 @@
 @media(min-width: 40em) {
 	.feature {
 		max-width: 30vw;
-		margin: -100px 0 20px 20px;
+		margin: -80px 0 20px 20px;
 		float: right;
 
 		&:before {
@@ -54,14 +59,29 @@
 		max-width: mixins.max_width(100vw, 120px, 5);
 		margin: 0 0 40px 40px;
 		// max-width: 488px;
-		transform: translateY(calc(-30% - 60px));
+		transform: translateY(-100px);
 
 		&:before {
 			content: normal;
+			// top: 0;
+		}
+
+		& + p:not([class]) {
+			margin-top: 60px;
 		}
 	}
 
 	.image {
 		max-height: 520px;
+	}
+}
+
+@media(min-width: 70em) {
+	.feature {
+		transform: translateY(calc(-35% - 60px));
+
+		&:before {
+			content: normal;
+		}
 	}
 }

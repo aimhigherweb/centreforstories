@@ -1,0 +1,7 @@
+.video {
+	@extend %video_embed;
+}
+
+.caption {
+	@extend %media_caption;
+}

@@ -1,0 +1,37 @@
+$youtube_ratio: math.div(281, 500);
+
+%video_embed {
+	margin: 60px 0;
+	clear: both;
+
+	iframe, video {
+		@include aspect_ratio(calc(100vw - 40px), $youtube_ratio, var.$max_content);
+	}
+}
+
+%audio {
+	margin: 20px 0;
+
+	iframe, audio {
+		width: 100%;
+	}
+
+	iframe {
+		height: 100px;
+	}
+}
+
+%media_caption {
+	@include text('s');
+	padding: 6px 0;
+
+	font-weight: 500;
+}
+
+@media(min-width: 50em) {
+	%video_embed {
+		iframe, video {
+			@include aspect_ratio(calc(100vw - 120px), $youtube_ratio, var.$max_content);
+		}
+	}
+}

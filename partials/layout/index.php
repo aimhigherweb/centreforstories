@@ -91,7 +91,11 @@
 		<?php get_template_part('partials/header/index'); ?>
 
 		<main id="main" class="<?php echo classes([$styles['main']]); ?>">
-			<?php get_template_part('parts/page_header/index'); ?>
+			<?php 
+				if(!$args['custom_page_header']) {
+					get_template_part('parts/page_header/index');
+				}
+			?>
 			<?php get_template_part('layouts/' . $layout . '/index'); ?>
 		</main>
 

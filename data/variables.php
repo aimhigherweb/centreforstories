@@ -25,6 +25,7 @@
 			'name' => 'header_feature',
 			'width' => 488,
 			'height' => 520,
+			'crop' => true,
 		),
 		array(
 			'name' => 'block_graphic',

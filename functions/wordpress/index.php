@@ -8,4 +8,5 @@
 	require_once(__DIR__ . '/customise.php');
 	require_once(__DIR__ . '/check_field_value.php');
 	require_once(__DIR__ . '/gutenberg.php');
+	require_once(__DIR__ . '/utils.php');
 ?>

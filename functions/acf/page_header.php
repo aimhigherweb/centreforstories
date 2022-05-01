@@ -50,6 +50,16 @@
 					'operator' => '==',
 					'value' => 'page',
 				),
+				array(
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'post',
+				),
+				array(
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'story',
+				),
 			),
 		),
 		'menu_order' => 0,

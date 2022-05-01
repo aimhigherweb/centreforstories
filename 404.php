@@ -8,7 +8,7 @@
  */
 
 	get_template_part(
-		'partials/layout', 
+		'partials/layout/index', 
 		null, 
 		array(
 			'template' => '404',

@@ -1,6 +1,6 @@
 <?php
 /**
- * Single Blog Post
+ * Single Story
  *
  *
  * @package Centre for Stories
@@ -12,8 +12,9 @@
 		'partials/layout/index', 
 		null, 
 		array(
-			'template' => 'post',
-			'class' => 'post'
+			'template' => 'story',
+			'class' => 'story',
+			'custom_page_header' => true
 		)
 	);
 

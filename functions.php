@@ -9,4 +9,6 @@
     require_once(__DIR__ . '/functions/widgets/index.php');
     require_once(__DIR__ . '/functions/posts/index.php');
     require_once(__DIR__ . '/functions/blocks/index.php');
+
+    
 ?>

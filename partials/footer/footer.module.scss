@@ -259,6 +259,7 @@
 	.footer {
 		@include mixins.full_background();
 
+		width: 100vw;
 		max-width: var.$max_width;
 		margin: 0 auto;
 	}

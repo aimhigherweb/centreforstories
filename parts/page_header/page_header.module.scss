@@ -29,10 +29,22 @@
 	}
 }
 
+@media(min-width: 40em) {
+	.header {
+		figure {
+			margin-bottom: 40px;
+		}
+	}
+}
+
 @media(min-width: 50em) {
 	.header {
 		margin-left: -60px;
 		padding: 60px;
+
+		figure {
+			max-width: mixins.max_width(100%, 0, 9);
+		}
 	}
 
 	.title {
@@ -51,10 +63,25 @@
 		max-width: var.$max_width;
 		margin: 0 auto 0 50%;
 		transform: translateX(-50%);
+
+		figure {
+			max-width: mixins.max_width(100%, 0, 6.5);
+			margin-bottom: 60px;
+		}
+	}
+
+	.excerpt {
+		max-width: mixins.max_width(100%, 0, 6.5);
 	}
 }
 
 @media(min-width: 70em) {
+	.header {
+		figure {
+			margin-bottom: 0;
+		}
+	}
+
 	.title {
 		@include mixins.display_text('m');
 	}

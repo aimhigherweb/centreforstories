@@ -30,4 +30,9 @@
 	<div class="<?php echo classes([$styles['excerpt']]); ?>">
 		<?php echo $excerpt; ?>
 	</div>
+	<?php 
+		if(check_field_value([$args, $args['children']])) {
+			echo $args['children'];
+		}
+	?>
 </header>
