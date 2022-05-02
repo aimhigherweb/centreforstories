@@ -1,10 +1,6 @@
 <?php
 	$data = fetch_styles(__DIR__);
 
-	$feature = get_the_post_thumbnail_url(get_the_ID(), 'header_feature');
-	$feature_caption = get_the_post_thumbnail_caption();
-	$feature_alt = get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true);
-
 	$format = get_field('format');
 	$children = false;
 	$audio = false;

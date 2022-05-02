@@ -16,8 +16,6 @@
 
 	$map = $args['map'];
 
-	$api_key = get_theme_mod('mapbox_api_key');
-
 	$pin = '';
 
 	if($args['pin']) {
@@ -28,13 +26,12 @@
 		'lat' => $map['lat'],
 		'lng' => $map['lng'],
 		'zoom' => $map['zoom'],
-		'api_key' => $api_key,
+		'api_key' => get_theme_mod('mapbox_api_key'),
 		'pin' => $pin,
-	);
-	
+	);	
 ?>
 
-<figure class="<?php echo classes([$styles['map']]); ?>">
+<figure class="<?php echo classes([$styles['map'], $args['class']]); ?>">
 	<a
 		href="<?php echo $args['map_link']; ?>" 
 		target="_blank" 

@@ -21,6 +21,8 @@
 
 <div class="<?php echo $styles['content']; ?>">
 	<?php get_template_part('parts/header_image/index'); ?>
-	<p class="<?php echo classes([$styles['date']]); ?>"><?php echo get_the_date('F j, Y'); ?></p>
+	<p class="<?php echo classes([$styles['date']]); ?>">
+		<?php echo get_the_date('F j, Y'); ?>
+	</p>
 	<?php echo the_content(); ?>
 </div>

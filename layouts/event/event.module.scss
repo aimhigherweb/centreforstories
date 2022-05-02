@@ -1,0 +1,62 @@
+.date {
+	@include mixins.overline_text;
+	margin-top: 60px;
+
+	color: var.$colours_primary_700;
+}
+
+.map {
+	width: 100vw;
+	height: 200px;
+}
+
+@media(min-width: 40em) {
+	.map {
+		height: 300px;
+	}
+}
+
+@media(min-width: 50em) {
+	figure.map {
+		width: 100vw;
+		margin-left: -60px;
+	}
+
+	.map {
+		img {
+			object-fit: cover;
+			object-position: center;
+			max-height: 300px;
+		}
+	}
+}
+
+@media(min-width: 60em) {
+	.map {
+		height: 430px;
+
+		img {
+			max-height: 430px;
+		}
+	}
+}
+
+@media(min-width: var.$max_width) {
+	figure.map {
+		max-width: unset;
+		margin-left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
+@media(min-width: 2000px) {
+	figure.map {
+		background: var.$colours_navy;
+		background: var(--page_colour);
+
+		img {
+			max-width: 2000px;
+			margin: 0 auto;
+		}
+	}
+}

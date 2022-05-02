@@ -10,7 +10,9 @@ module.exports = {
 		'acf',
 		'parts',
 		'src',
-		'data'
+		'data',
+		'tribe-events',
+		'woocommerce'
 	],
 	themeFiles: [
 		'./*.php',
