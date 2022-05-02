@@ -1,5 +1,24 @@
 <?php
 
+	$header_pages = [
+		'page', 'post', 'story', 'tribe_events'
+	];
+
+	$header_locations = [];
+
+	foreach ($header_pages as $opt) {
+		array_push(
+			$header_locations,
+			array (
+				array(
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => $opt,
+				),
+			)
+		);
+	}
+
 	acf_add_local_field_group(array(
 		'key' => 'group_626882ab914aa',
 		'title' => 'Header Content',
@@ -43,29 +62,7 @@
 				'maxlength' => '',
 			),
 		),
-		'location' => array(
-			array(
-				array(
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'page',
-				),
-			),
-			array (
-				array(
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'post',
-				),
-			),
-			array (
-				array(
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'story',
-				),
-			),
-		),
+		'location' => $header_locations,
 		'menu_order' => 0,
 		'position' => 'acf_after_title',
 		'style' => 'default',

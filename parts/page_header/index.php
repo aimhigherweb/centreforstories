@@ -22,7 +22,7 @@
 
 ?>
 
-<header class="<?php echo classes([$styles['header']]); ?>">
+<header class="<?php echo classes([$styles['header'], $args['class']]); ?>">
 	<p class="<?php echo classes([$styles['eyebrow']]); ?>"><?php echo get_field('eyebrow'); ?></p>
 	<h1 class="<?php echo classes([$styles['title']]); ?>">
 		<?php echo get_the_title(); ?>

@@ -13,7 +13,7 @@
 		min-height: 400px;
 		clear: both;
 
-		p, h2, h3, h4, h5, h6, blockquote, hr {
+		p, h2, h3, h4, h5, h6, blockquote, hr, ul {
 			max-width: max_width(100vw, 120px, 6);
 		}
 

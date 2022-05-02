@@ -32,6 +32,34 @@
 	}
 
 	$venue = tribe_get_venue_object(tribe_get_venue_id());
+	$organisers = [];
+	$children = false;
+
+	$link = $venue->directions_link;
+
+	if(!get_field('directions', tribe_get_venue_id())) {
+		$link = false;
+	}
+
+	foreach(tribe_get_organizer_ids() as &$organiser) {
+		array_push($organisers, tribe_get_organizer_object($organiser));
+	}
+
+	if($organisers) {
+		$children = '<h2 class="' . $styles['feature_heading'] . '">Featuring</h2><ul class="' . $styles['feature_list'] . '">';
+
+		foreach($organisers as &$organiser) {
+			$children .= '<li><span>' . $organiser->post_title . '</span>';
+
+			if(has_post_thumbnail($organiser->ID)) {
+				$children .= '<img src="' . get_the_post_thumbnail_url($organiser->ID) . '" />';
+			}
+
+			$children .= '</li>';
+		}
+
+		$children .= '</ul>';
+	}
 ?>
 
 <div class="<?php echo $styles['content']; ?>">
@@ -40,11 +68,11 @@
 			'parts/map/index',
 			null,
 			array(
-				'pin' => $venue->geolocation->overwrite_coordinates,
+				'pin' => get_field('pin', tribe_get_venue_id()),
 				'map' => array(
 					'lat' => $venue->geolocation->latitude,
 					'lng' => $venue->geolocation->longitude,
-					'zoom' => 14,
+					'zoom' => get_field('zoom', tribe_get_venue_id()),
 				),
 				'map_link' => $venue->directions_link,
 				'name' => $venue->post_title,
@@ -52,8 +80,16 @@
 			)
 		);
 	?>
-	<?php get_template_part('parts/page_header/index'); ?>
-	<?php get_template_part('parts/header_image/index'); ?>
+	<?php 
+		get_template_part(
+			'parts/page_header/index',
+			null,
+			array(
+				'children' => $children,
+				'class' => $styles['header']
+			)
+		);
+	?>
 	<p class="<?php echo classes([$styles['date']]); ?>">
 		<?php echo $date_time; ?>
 	</p>

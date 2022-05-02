@@ -1,3 +1,7 @@
+.content {
+	@extend %content;
+}
+
 .date {
 	@include mixins.overline_text;
 	margin-top: 60px;
@@ -8,6 +12,61 @@
 .map {
 	width: 100vw;
 	height: 200px;
+}
+
+.feature_heading {
+	@include mixins.overline_text('l');
+	margin: 24px 0;
+
+	color: inherit;
+	font-weight: 700;
+}
+
+.header {
+	> div, > h1, > ul, > p {
+		max-width: mixins.max_width(100%, 0, 10);
+	}
+}
+
+.feature_list {
+	display: flex;
+	flex-wrap: wrap;
+	margin: -10px;
+	padding: 0;
+	list-style: none;
+
+	li {
+		position: relative;
+		width: 80px;
+		height: 80px;
+		margin: 10px;
+
+		span {
+			@include mixins.sr_only;
+		}
+
+		img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+			border-radius: 50%;
+		}
+
+		&:hover {
+			span {
+				@include mixins.sr_only_remove;
+
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: auto;
+				padding: 5px 10px;
+				background: var.$colours_black;
+			}
+		}
+	}
 }
 
 @media(min-width: 40em) {

@@ -5,3 +5,11 @@
 	opacity: 0;
 	pointer-events: none;
 }
+
+@mixin sr_only_remove {
+	position: static;
+	width: auto;
+	height: auto;
+	opacity: 1;
+	pointer-events: auto;
+}
