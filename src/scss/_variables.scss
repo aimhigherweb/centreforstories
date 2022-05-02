@@ -14,13 +14,14 @@ $media_queries: (
 );
 
 $drop_shadow_sizes: (
-	'xs': 0 1px 2px,
-	's': 1px 2px -1px,
-	'm': 2px 4px -2px,
-	'l': 4px 6px -4px,
-	'xl': 8px 10px -6px,
-	'xxl': 25px 50px -12px,
+	'xs': 0 0 1px 2px,
+	's': 0 1px 2px -1px,
+	'm': 0 2px 4px -2px,
+	'l': 0 4px 6px -4px,
+	'xl': 0 8px 10px -6px,
+	'xxl': 0 25px 50px -12px,
 	'f_1': 0 0 1px,
 	'f_4': 0 0 4px,
 	'border_bottom': 0 1px 0,
+	'box': 0 10px 15px -3px,
 );

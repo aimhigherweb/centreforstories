@@ -16,18 +16,9 @@
 
 	// echo tribe( Template_Bootstrap::class )->get_view_html();
 
-	if (tribe_is_list_view()) {
-		get_template_part(
-			'partials/layout/index', 
-			null, 
-			array(
-				'template' => 'event_feed',
-				'class' => 'event',
-				'custom_page_header' => true
-			)
-		);
-	}
-	else if ($wp_query->tribe_is_event) {
+	$view = tribe_context()->get( 'view' );
+
+	if ($view == 'single-event') {
 		get_template_part(
 			'partials/layout/index', 
 			null, 
@@ -35,6 +26,18 @@
 				'template' => 'event',
 				'class' => 'event',
 				'custom_page_header' => true
+			)
+		);
+	}
+	else if (tribe_is_event_query()) {
+		get_template_part(
+			'partials/layout/index', 
+			null, 
+			array(
+				'template' => 'event_feed',
+				'class' => 'event_feed',
+				'custom_page_header' => true,
+				'page_id' => get_page_by_path('events')->ID
 			)
 		);
 	}

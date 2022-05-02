@@ -13,8 +13,7 @@
 	$layout = 'default';
 	$page_id = get_the_ID();
 	$category = null;
-	$colour = get_field('page_colour');
-
+	
 	$data = fetch_styles(__DIR__);
 	
 	$template = $data['template'];
@@ -32,6 +31,10 @@
 		)
 	);
 
+	if(isset($args, $args['page_id'])) {
+		$page_id = $args['page_id'];
+	}
+
 	if(isset($args, $args['template'])) {
 		$layout = $args['template'];
 	}
@@ -43,6 +46,8 @@
 	$gtm_tag = get_theme_mod('gtm_tag_id');
 
 	$style = '';
+
+	$colour = get_field('page_colour', $page_id);
 
 	if($colour) {
 		$style = '--page_colour: ' . $colour . ';';

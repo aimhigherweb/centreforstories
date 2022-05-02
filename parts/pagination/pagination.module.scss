@@ -1,0 +1,59 @@
+.pagination {
+	@include mixins.overline_text('l');
+
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	margin: 50px -8px -8px;
+	color: var.$colours_neutral_700;
+	list-style: none;
+
+	li {
+		display: flex;
+		align-items: center;
+		margin: 8px;
+
+		svg {
+			width: 32px;
+			height: 32px;
+		}
+	}
+
+	a {
+		display: flex;
+		align-items: center;
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.prev {
+		margin-right: 64px;
+
+		svg {
+			margin-right: 32px;
+			transform: rotate(-180deg);
+		}
+	}
+
+	.next {
+		margin-left: 64px;
+
+		svg {
+			margin-left: 32px;
+		}
+	}
+}
+
+.page {
+
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	background: var.$colours_white;
+}
+
+.current {
+
+}

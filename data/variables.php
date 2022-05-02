@@ -41,7 +41,12 @@
 			'name' => 'block_image_small',
 			'width' => 640,
 			'height' => 640,
-		)
+		),
+		array(
+			'name' => 'event_feed_block',
+			'width' => 336,
+			'height' => 290,
+		),
 	];
 
 	$custom_info = [
