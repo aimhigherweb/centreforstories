@@ -10,7 +10,9 @@
 		bottom: 70%;
 	}
 
-	& + p:not([class]) {
+	& + p,
+	& + h2,
+	& + blockquote {
 		margin-top: 40px;
 	}
 }
@@ -66,7 +68,9 @@
 			// top: 0;
 		}
 
-		& + p:not([class]) {
+		& + p,
+		& + h2,
+		& + blockquote {
 			margin-top: 60px;
 		}
 	}

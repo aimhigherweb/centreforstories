@@ -50,11 +50,15 @@
 					'operator' => '==',
 					'value' => 'page',
 				),
+			),
+			array (
 				array(
 					'param' => 'post_type',
 					'operator' => '==',
 					'value' => 'post',
 				),
+			),
+			array (
 				array(
 					'param' => 'post_type',
 					'operator' => '==',

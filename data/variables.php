@@ -83,6 +83,14 @@
 		],
 	];
 
+	$background_colours = [
+		[
+			'name'  => 'Grey Light Warm',
+			'slug'  => 'grey_light_warm',
+			'color' => '#f0eee9',
+		],
+	];
+
 	$other_colours = [
 		[
 			'name'  => 'Seafoam',
@@ -99,11 +107,7 @@
 			'slug'  => 'white',
 			'color' => '#ffffff',
 		],
-		[
-			'name'  => 'Grey Light Warm',
-			'slug'  => 'grey_light_warm',
-			'color' => '#f0eee9',
-		],
+		
 		[
 			'name'  => 'Marigold',
 			'slug'  => 'marigold',
@@ -181,6 +185,6 @@
 		],
 	];
 
-	$colours = array_merge($page_colours, $other_colours);
+	$colours = array_merge($page_colours, $background_colours, $other_colours);
 
 ?>
