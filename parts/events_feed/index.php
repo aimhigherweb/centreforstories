@@ -25,6 +25,8 @@
 	if(!check_field_value([$featured])) {
 		array_push($feed_classes, $styles['featured']);
 	}
+
+	$events_object = array();
 	
 	if($featured) {
 		$events = array_filter($events, function($event) use ($featured) {
@@ -32,30 +34,37 @@
 		});
 	}
 
+	foreach($events as $event) {
+		if($events_object[$event->post_title]) {
+			$details = $events_object[$event->post_title]['events'];
+
+			array_push($details, $event);
+
+			$events_object[$event->post_title]['events'] = $details;
+			$events_object[$event->post_title]['end_date'] = cfs_event_date($event->ID, 'short')['end'];
+			$events_object[$event->post_title]['repeating'] = true;
+		}
+		else {
+			$date = cfs_event_date($event->ID, 'short');
+			$details = array(
+				'post_title' => $event->post_title,
+				'post_name'	=> $event->post_name,
+				'featured_image' => get_post_thumbnail_id($event->ID),
+				'start_date' => $date['start'],
+				'end_date' => $date['end'],
+				'excerpt' => get_the_excerpt($event->ID),
+				'events' => array($event),
+			);
+
+			$events_object[$event->post_title] = $details;
+		}
+	}
 ?>
 
 
-<?php if($events): ?>
+<?php if($events_object): ?>
 	<ul class="<?php echo classes($feed_classes); ?>">
-		<?php foreach($events as $event): 
-
-			$start_date = tribe_get_start_date($event->ID, false, 'j');
-			$end_date = tribe_get_end_date($event->ID, false, 'j');
-			$start_month = tribe_get_start_date($event->ID, false, 'M');
-			$end_month = tribe_get_end_date($event->ID, false, 'M');
-			$start = $start_month . ' <span>' . $start_date . '</span>';
-			$end = $end_month . ' <span>' . $end_date . '</span>';
-			$date = $start . ' - ' . $end;
-			$excerpt = get_field('header_content', $event->ID);
-			
-			if($start == $end) {
-				$date = $start;
-			}
-
-			if(!check_field_value([$excerpt])) {
-				$excerpt = get_the_excerpt($event->ID);
-			}
-		?>
+		<?php foreach($events_object as $event): ?>
 			<li class="<?php echo classes([$styles['event']]); ?>">
 				<?php
 					get_template_part(

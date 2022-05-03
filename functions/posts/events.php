@@ -39,4 +39,32 @@
         );
     }
 
+    function cfs_event_date($event, $format = 'short') {
+        $start_date = tribe_get_start_date($event, false, 'j');
+        $end_date = tribe_get_end_date($event, false, 'j');
+        $start_month = tribe_get_start_date($event, false, 'M');
+        $end_month = tribe_get_end_date($event, false, 'M');
+
+        $start = $start_month . ' <span>' . $start_date . '</span>';
+        $end = $end_month . ' <span>' . $end_date . '</span>';
+
+        return array(
+            'start' => $start,
+            'end' => $end,
+        );
+    }
+
+    function cfs_join_date($date_object) {
+        $start = $date_object['start'];
+        $end = $date_object['end'];
+
+        $date = $start . ' <span>-</span> ' . $end;
+
+        if($start == $end) {
+            $date = $start;
+        }
+
+        return $date;
+    }
+
 ?>

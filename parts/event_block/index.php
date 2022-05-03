@@ -17,36 +17,32 @@
 		)
 	);
 
-	$start_date = tribe_get_start_date($event->ID, false, 'j');
-	$end_date = tribe_get_end_date($event->ID, false, 'j');
-	$start_month = tribe_get_start_date($event->ID, false, 'M');
-	$end_month = tribe_get_end_date($event->ID, false, 'M');
-	$start = $start_month . ' <span>' . $start_date . '</span>';
-	$end = $end_month . ' <span>' . $end_date . '</span>';
-	$date = $start . ' - ' . $end;
-	$excerpt = get_field('header_content', $event->ID);
-	
-	if($start == $end) {
-		$date = $start;
-	}
-
-	if(!check_field_value([$excerpt])) {
-		$excerpt = get_the_excerpt($event->ID);
-	}	
+	$date = cfs_join_date(array(
+		'start' => $event['start_date'],
+		'end' => $event['end_date'],
+	));
 
 ?>
 
 <div class="<?php echo classes([$styles['image']]); ?>">
 	<img  
-		src="<?php echo get_the_post_thumbnail_url($event->ID, 'event_feed_block'); ?>" alt="<?php echo $feature_alt; ?>" 
+		src="<?php echo wp_get_attachment_image_src($event['featured_image'], 'event_feed_block')[0]; ?>" 
+		alt="<?php echo get_post_meta($event['featured_image'], '_wp_attachment_image_alt', TRUE); ?>" 
 	/>
 </div>
 <h3 class="<?php echo classes([$styles['title']]); ?>">
-	<a href="/event/<?php echo $event->post_name ?>">
-		<?php echo $event->post_title; ?>
+	<a href="/event/<?php echo $event['post_name'] ?>">
+		<?php echo $event['post_title']; ?>
 	</a>
 </h3>
-<p class="<?php echo classes([$styles['date']]); ?>"><?php echo $date; ?></p>
+<p class="<?php echo classes([$styles['date']]); ?>">
+	<?php echo $date; ?>
+	<?php
+		if($event['repeating']) {
+			echo inline_svg(get_template_directory_uri() . '/src/img/repeat.svg');
+		}
+	?>
+</p>
 <p class="<?php echo classes([$styles['excerpt']]); ?>">
-	<?php echo $excerpt; ?>
+	<?php echo $event['excerpt']; ?>
 </p>

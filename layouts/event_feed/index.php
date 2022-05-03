@@ -5,7 +5,17 @@
 	$featured = cfs_get_events(true, 1);
 
 	if($featured) {
-		$featured = $featured['events'][0];
+		$event = $featured['events'][0];
+		$date = cfs_event_date($event->ID, 'short');
+		$featured = array(
+			'post_title' => $event->post_title,
+			'post_name'	=> $event->post_name,
+			'featured_image' => get_post_thumbnail_id($event->ID),
+			'start_date' => $date['start'],
+			'end_date' => $date['end'],
+			'excerpt' => get_the_excerpt($event->ID),
+			'events' => array($event),
+		);
 	}
 
 

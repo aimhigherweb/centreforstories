@@ -48,6 +48,13 @@
 		font-size: 1.5em;
 		font-weight: 600;
 	}
+
+	svg {
+		display: block;
+		width: 20px;
+		height: 20px;
+		margin: 10px auto;
+	}
 }
 
 %events_block_excerpt {
