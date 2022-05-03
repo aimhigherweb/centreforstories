@@ -1,25 +1,8 @@
 <?php
-	global $query_string;
-
-	wp_parse_str( $query_string, $search_query );
-
-	$page = 1;
-
-	if(isset($search_query, $search_query['page'])) {
-		$page = $search_query['page'];
-	}
-
-	$post_args = array(
-		'post_type' => $search_query['post_type'],
-		'orderby' => 'date',
-		'order' => 'DESC',
-		'posts_per_page' => 9,
-		'paged' => $page,
-	);
-
-	$post_query = new WP_Query($post_args);
-	$events = $post_query->posts;
-	$pages = $post_query->max_num_pages;
+	$event_data = cfs_get_events();
+	$pages = $event_data['pages'];
+	$page = $event_data['page'];
+	$events = $event_data['events'];
 
 	$data = fetch_styles(__DIR__);
 	
@@ -36,11 +19,17 @@
 		)
 	);
 
+	$feed_classes = [$styles['feed']];
+
+	if(!check_field_value([$args, $args['featured']])) {
+		array_push($feed_classes, $styles['featured']);
+	}
+
 ?>
 
 
 <?php if($events): ?>
-	<ul class="<?php echo classes([$styles['feed']]); ?>">
+	<ul class="<?php echo classes($feed_classes); ?>">
 		<?php foreach($events as $event): 
 			$start_date = tribe_get_start_date($event->ID, false, 'j');
 			$end_date = tribe_get_end_date($event->ID, false, 'j');
@@ -65,7 +54,7 @@
 					src="<?php echo get_the_post_thumbnail_url($event->ID, 'event_feed_block'); ?>" alt="<?php echo $feature_alt; ?>" 
 				/>
 				<h3 class="<?php echo classes([$styles['title']]); ?>">
-					<a href="/event/<?php $product->post_name ?>">
+					<a href="/event/<?php $event->post_name ?>">
 						<?php echo $event->post_title; ?>
 					</a>
 				</h3>

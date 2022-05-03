@@ -4,103 +4,81 @@
 	margin: -15px;
 	padding: 0;
 	list-style: none;
-}
 
-.event {
-	@include mixins.drop_shadow_multiple('box', 'l', rgba(var.$colours_shadow, 0.1));
-	position: relative;
-
-	flex: 1 1 30%;
-	max-width: 33%;
-	margin: 15px;
-	padding: 32px;
-	background: var.$colours_white;
-}
-
-.title {
-	@include mixins.heading_text('h4');
-
-	margin: 0;
-}
-
-.image {
-	display: block;
-	width: calc(100% + 64px);
-	height: 260px;
-	margin: -32px -32px 32px;
-	object-fit: cover;
-	object-position: center;
-}
-
-.date {
-	@include mixins.position(0, 0, auto, auto);
-
-	position: absolute;
-	width: 64px;
-	height: 260px;
-	margin: 0;
-	padding: 30px 0;
-	background: var.$colours_yellow;
-	color: var.$colours_white;
-	font-family: var.$font_headings;
-	font-size: 1em;
-	font-weight: 500;
-	text-align: center;
-	text-transform: uppercase;
-
-	span {
-		display: block;
-		font-size: 1.5em;
-		font-weight: 600;
+	&.featured {
+		> li {
+			&:first-child {
+				@extend %featured_event;
+			}
+		}
 	}
 }
 
+.event {
+	@extend %events_block;
+
+	flex: 1 1 250px;
+	margin: 15px;
+}
+
+.title {
+	@extend %events_block_title;
+}
+
+.image {
+	@extend %events_block_image;
+}
+
+.date {
+	@extend %events_block_date;
+}
+
 .excerpt {
-	margin: 20px 0 0;
+	@extend %events_block_excerpt;
+}
+
+@media(min-width: 30em) {
+	.feed {
+		&.featured {
+			&:before {
+				content: '';
+				flex: 0 0 auto;
+				min-width: mixins.max_width(100vw, 120px, 2);
+			}
+		}
+	}
+}
+
+@media(min-width: 60em) {
+	.feed {
+
+	}
+
+	.event {
+		flex-basis: 25%;
+	}
 }
 
 @supports(grid-template-areas: '.') {
 	.feed {
 		display: grid;
 		grid-gap: 32px;
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 		margin: 0;
+
+		&.featured {
+			&:before {
+				content: normal;
+			}
+		}
 	}
 
 	.event {
-		display: grid;
-		grid-template-areas: 'image date' 'title title' 'excerpt excerpt';
-		grid-template-columns: 1fr 64px;
-		grid-template-rows: 266px auto auto;
 		max-width: unset;
 		margin: 0;
-		padding: 0;
 	}
 
-	.title {
-		grid-area: title;
-		margin: 32px 0 20px;
-		padding: 0 32px;
-	}
-
-	.image {
-		grid-area: image;
-		margin: 0;
-	}
-
-	.excerpt {
-		grid-area: excerpt;
-		margin: 0 0 32px;
-		padding: 0 32px;
-	}
-
-	.date {
-		position: static;
-		grid-area: date;
-		margin: 0;
-	}
-
-	@media(min-width: 50em) {
+	@media(min-width: 70em) {
 		.feed {
 			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 		}

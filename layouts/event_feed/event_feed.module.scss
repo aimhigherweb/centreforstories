@@ -1,0 +1,19 @@
+// .featured {
+// 	@extend %featured_event;
+// }
+
+@media(min-width: 60em) {
+	.header {
+		> p, > h1, > div {
+			max-width: mixins.max_width(100vw, 120px, 8);
+		}
+	}
+}
+
+@media(min-width: var.$max_width) {
+	.header {
+		> p, > h1, > div {
+			max-width: mixins.max_width(var.$max_content, 0, 8);
+		}
+	}
+}

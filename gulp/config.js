@@ -12,7 +12,8 @@ module.exports = {
 		'src',
 		'data',
 		'tribe-events',
-		'woocommerce'
+		'woocommerce',
+		'tribe'
 	],
 	themeFiles: [
 		'./*.php',
