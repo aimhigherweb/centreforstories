@@ -18,7 +18,6 @@
 		);
 	}
 
-
 	$data = fetch_styles(__DIR__);
 	$template = $data['template'];
 	$styles = $data['styles']; 
