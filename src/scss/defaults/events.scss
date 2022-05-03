@@ -10,6 +10,10 @@
 	@include heading_text('h4');
 
 	margin: 0;
+
+	a {
+		@include block_link;
+	}
 }
 
 %events_block_image {

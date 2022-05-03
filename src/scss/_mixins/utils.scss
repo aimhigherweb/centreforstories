@@ -52,3 +52,12 @@
 		aspect-ratio: $ratio;
 	}
 }
+
+@mixin block_link() {
+	&:before {
+		@include position;
+
+		content: '';
+		position: absolute;
+	}
+}
