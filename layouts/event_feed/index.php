@@ -22,9 +22,6 @@
 			'env' => 'dev'
 		)
 	);
-
-	$featured = false;
-
 ?>
 
 <div class="<?php echo $styles['content']; ?>">
@@ -38,38 +35,17 @@
 			)
 		);
 	?>
-	<?php if($featured):
-		$start_date = tribe_get_start_date($featured->ID, false, 'j');
-		$end_date = tribe_get_end_date($featured->ID, false, 'j');
-		$start_month = tribe_get_start_date($featured->ID, false, 'M');
-		$end_month = tribe_get_end_date($featured->ID, false, 'M');
-		$start = $start_month . ' <span>' . $start_date . '</span>';
-		$end = $end_month . ' <span>' . $end_date . '</span>';
-		$date = $start . ' - ' . $end;
-		$excerpt = get_field('header_content', $featured->ID);
-		
-		if($start == $end) {
-			$date = $start;
-		}
-
-		if(!check_field_value([$excerpt])) {
-			$excerpt = get_the_excerpt($featured->ID);
-		}	
-	?>
+	<?php if($featured): ?>
 		<div class="<?php echo classes([$styles['featured']]); ?>">
-			<img 
-				class="<?php echo classes([$styles['image']]); ?>" 
-				src="<?php echo get_the_post_thumbnail_url($featured->ID, 'event_feed_block'); ?>" alt="<?php echo $feature_alt; ?>" 
-			/>
-			<h3 class="<?php echo classes([$styles['title']]); ?>">
-				<a href="/event/<?php $featured->post_name ?>">
-					<?php echo $featured->post_title; ?>
-				</a>
-			</h3>
-			<p class="<?php echo classes([$styles['date']]); ?>"><?php echo $date; ?></p>
-			<p class="<?php echo classes([$styles['excerpt']]); ?>">
-				<?php echo $excerpt; ?>
-			</p>
+			<?php
+				get_template_part(
+					'parts/event_block/index',
+					null,
+					array (
+						'event' => $featured,
+					)
+				);
+			?>
 		</div>
 	<?php endif; ?>
 	<?php

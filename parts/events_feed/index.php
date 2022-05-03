@@ -3,6 +3,7 @@
 	$pages = $event_data['pages'];
 	$page = $event_data['page'];
 	$events = $event_data['events'];
+	$featured = $args['featured'];
 
 	$data = fetch_styles(__DIR__);
 	
@@ -21,8 +22,14 @@
 
 	$feed_classes = [$styles['feed']];
 
-	if(!check_field_value([$args, $args['featured']])) {
+	if(!check_field_value([$featured])) {
 		array_push($feed_classes, $styles['featured']);
+	}
+	
+	if($featured) {
+		$events = array_filter($events, function($event) use ($featured) {
+			return $event->ID !== $featured->ID;
+		});
 	}
 
 ?>
@@ -31,6 +38,7 @@
 <?php if($events): ?>
 	<ul class="<?php echo classes($feed_classes); ?>">
 		<?php foreach($events as $event): 
+
 			$start_date = tribe_get_start_date($event->ID, false, 'j');
 			$end_date = tribe_get_end_date($event->ID, false, 'j');
 			$start_month = tribe_get_start_date($event->ID, false, 'M');
@@ -49,19 +57,15 @@
 			}
 		?>
 			<li class="<?php echo classes([$styles['event']]); ?>">
-				<img 
-					class="<?php echo classes([$styles['image']]); ?>" 
-					src="<?php echo get_the_post_thumbnail_url($event->ID, 'event_feed_block'); ?>" alt="<?php echo $feature_alt; ?>" 
-				/>
-				<h3 class="<?php echo classes([$styles['title']]); ?>">
-					<a href="/event/<?php $event->post_name ?>">
-						<?php echo $event->post_title; ?>
-					</a>
-				</h3>
-				<p class="<?php echo classes([$styles['date']]); ?>"><?php echo $date; ?></p>
-				<p class="<?php echo classes([$styles['excerpt']]); ?>">
-					<?php echo $excerpt; ?>
-				</p>
+				<?php
+					get_template_part(
+						'parts/event_block/index',
+						null,
+						array (
+							'event' => $event,
+						)
+					);
+				?>
 			</li>
 		<?php endforeach; ?>
 	</ul>

@@ -1,6 +1,8 @@
-// .featured {
-// 	@extend %featured_event;
-// }
+.featured {
+	@extend %events_block;
+	@extend %featured_event;
+	margin-bottom: 60px;
+}
 
 @media(min-width: 60em) {
 	.header {

@@ -21,23 +21,7 @@
 	margin: 15px;
 }
 
-.title {
-	@extend %events_block_title;
-}
-
-.image {
-	@extend %events_block_image;
-}
-
-.date {
-	@extend %events_block_date;
-}
-
-.excerpt {
-	@extend %events_block_excerpt;
-}
-
-@media(min-width: 30em) {
+@media(min-width: 50em) {
 	.feed {
 		&.featured {
 			&:before {
@@ -50,10 +34,6 @@
 }
 
 @media(min-width: 60em) {
-	.feed {
-
-	}
-
 	.event {
 		flex-basis: 25%;
 	}

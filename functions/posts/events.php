@@ -22,10 +22,11 @@
 
         $post_args = array(
             'post_type' => $search_query['post_type'],
-            'orderby' => 'date',
-            'order' => 'DESC',
             'posts_per_page' => $limit,
             'paged' => $page,
+            'orderby' => 'meta_value',
+            'order' => 'ASC',
+            'meta_key' => '_EventStartDate',
             'meta_query' => $meta_query,
         );
 

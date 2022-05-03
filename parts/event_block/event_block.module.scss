@@ -1,0 +1,15 @@
+.title {
+	@extend %events_block_title;
+}
+
+.image {
+	@extend %events_block_image;
+}
+
+.date {
+	@extend %events_block_date;
+}
+
+.excerpt {
+	@extend %events_block_excerpt;
+}
