@@ -19,6 +19,14 @@
 
 	flex: 1 1 250px;
 	margin: 15px;
+
+	&:global(.open) {
+		*[class*='module__repetitions'] {
+			max-height: 100vh;
+			margin-top: 20px;
+			margin-bottom: -32px;
+		}
+	}
 }
 
 @media(min-width: 50em) {
@@ -51,11 +59,24 @@
 				content: normal;
 			}
 		}
+
+		&:global(.expanded) {
+			.event {
+				align-self: start;
+			}
+		}
 	}
 
 	.event {
 		max-width: unset;
 		margin: 0;
+
+		&:global(.open) {
+			*[class*='module__repetitions'] {
+				margin-top: -12px;
+				margin-bottom: 0;
+			}
+		}
 	}
 
 	@media(min-width: 70em) {

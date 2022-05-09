@@ -22,6 +22,8 @@
 		'end' => $event['end_date'],
 	));
 
+	
+
 ?>
 
 <div class="<?php echo classes([$styles['image']]); ?>">
@@ -31,9 +33,15 @@
 	/>
 </div>
 <h3 class="<?php echo classes([$styles['title']]); ?>">
-	<a href="/event/<?php echo $event['post_name'] ?>">
-		<?php echo $event['post_title']; ?>
-	</a>
+	<?php if($event['repeating']) : ?>
+		<button onclick="expandRepeatingEvents(<?php echo '`' . $args['event_id'] . '`, ' . '`' . $args['feed'] . '`'; ?>)">
+			<?php echo $event['post_title']; ?>
+		</button>
+	<?php else : ?>
+		<a href="/event/<?php echo $event['post_name'] ?>">
+			<?php echo $event['post_title']; ?>
+		</a>
+	<?php endif; ?>
 </h3>
 <p class="<?php echo classes([$styles['date']]); ?>">
 	<?php echo $date; ?>
@@ -46,3 +54,16 @@
 <p class="<?php echo classes([$styles['excerpt']]); ?>">
 	<?php echo $event['excerpt']; ?>
 </p>
+<?php if($event['repeating']) : ?>
+	<div class="<?php echo classes([$styles['repetitions']]); ?>">
+		<ul>
+			<?php foreach($event['events'] as $version) : ?>
+				<li>
+					<a href="/event/<?php echo $version->post_name ?>">
+						<?php echo cfs_join_date(cfs_event_date($version->ID, 'short')); ?>
+					</a>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	</div>
+<?php endif; ?>

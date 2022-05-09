@@ -64,14 +64,18 @@
 
 <?php if($events_object): ?>
 	<ul class="<?php echo classes($feed_classes); ?>">
-		<?php foreach($events_object as $event): ?>
-			<li class="<?php echo classes([$styles['event']]); ?>">
+		<?php foreach($events_object as $event): 
+			$id = $event['post_name'] . rand();	
+		?>
+			<li id="<?php echo $id; ?>" class="<?php echo classes([$styles['event']]); ?>">
 				<?php
 					get_template_part(
 						'parts/event_block/index',
 						null,
 						array (
 							'event' => $event,
+							'event_id' => $id,
+							'feed' => $styles['feed'],
 						)
 					);
 				?>
