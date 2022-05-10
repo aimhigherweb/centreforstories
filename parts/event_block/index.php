@@ -29,7 +29,7 @@
 <div class="<?php echo classes([$styles['image']]); ?>">
 	<img  
 		src="<?php echo wp_get_attachment_image_src($event['featured_image'], 'event_feed_block')[0]; ?>" 
-		alt="<?php echo get_post_meta($event['featured_image'], '_wp_attachment_image_alt', TRUE); ?>" 
+		alt="<?php echo alt_text($event['featured_image']); ?>" 
 	/>
 </div>
 <h3 class="<?php echo classes([$styles['title']]); ?>">

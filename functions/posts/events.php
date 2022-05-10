@@ -1,5 +1,17 @@
 <?php
 
+    // Add category to tickets in WooCommerce
+    add_action( 'event_tickets_after_save_ticket', function($event_id, $ticket){
+    
+        // The slug of the product category to assign to the ticket product
+        $category_to_add = "Event Ticket";
+
+        if ( ! empty( $ticket ) && isset( $ticket->ID ) ) {
+            wp_add_object_terms( $ticket->ID, $category_to_add, 'product_cat' );
+        }
+
+    }, 10, 2 );
+
     function cfs_get_events($featured = false, $limit = 9) {
         global $query_string;
 

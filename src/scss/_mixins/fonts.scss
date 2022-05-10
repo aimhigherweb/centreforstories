@@ -7,6 +7,13 @@
 @mixin media_sizes($type: 'body') {
 	$sizes: map.get(var.$font_sizes, $type);
 
+	$values: map.get($sizes, 'mobile');
+
+	@if($values) {
+		font-size: list.nth($values, 1);
+		line-height: list.nth($values, 2);
+	}
+
 	@each $media, $media_value in var.$media_queries {
 		$values: map.get($sizes, $media);
 

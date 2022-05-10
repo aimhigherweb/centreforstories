@@ -17,7 +17,16 @@
 			)
 		);
 	}
-	else {
+	if(is_shop()) {
+		get_template_part(
+			'partials/layout/index', 
+			null, 
+			array(
+				'template' => 'shop',
+			)
+		);
+	}
+  	else {
 		get_template_part('partials/layout/index');
 	}
 

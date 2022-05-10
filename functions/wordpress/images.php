@@ -18,4 +18,16 @@
 		add_image_size( $size['name'], $size['width'], $size['height'], $size['crop'] );
 	}
 
+	// Shortcut to get alt text
+	function alt_text($image_id = false) {
+		if($image_id) {
+			$image_id = get_post_thumbnail_id();
+		}
+
+		$alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
+       
+        return $alt;
+       
+    }
+
 ?>

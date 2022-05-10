@@ -1,0 +1,141 @@
+.feed {
+	display: flex;
+	flex-wrap: wrap;
+	margin: -15px;
+	padding: 0;
+	list-style: none;
+
+	> li {
+		&:first-child {
+			@extend %featured_event;
+		}
+	}
+}
+
+.product {
+	@extend %events_block;
+	position: relative;
+	flex: 1 1 250px;
+	flex-direction: column;
+	margin: 15px;
+
+	padding-bottom: 50px;
+}
+
+@media(min-width: 30em) {
+	.feed {
+		> li {
+			&:first-child {
+				min-height: 260px;
+				padding-bottom: 100px;
+
+				*[class*='module__title'] {
+					margin-right: 32px;
+					margin-bottom: 32px;
+					margin-left: 32px - 15px;
+				}
+
+				*[class*='module__price'] {
+					@include mixins.position(auto, 0, 50px, 50%);
+
+					width: 50%;
+					height: auto;
+					padding: 0 32px;
+				}
+
+				*[class*='module__cart'] {
+					left: 50%;
+					width: 50%;
+				}
+			}
+		}
+	}
+}
+
+@media(min-width: 50em) {
+	.feed {
+		&:before {
+			content: '';
+			flex: 0 0 auto;
+			min-width: mixins.max_width(100vw, 120px, 2);
+		}
+
+		> li {
+			&:first-child {
+				min-height: 260px;
+				padding-bottom: 100px;
+
+				*[class*='module__title'] {
+					margin-left: 32px;
+				}
+			}
+		}
+	}
+}
+
+@media(min-width: 60em) {
+	.product {
+		flex-basis: 25%;
+	}
+}
+
+@supports(grid-template-areas: '.') {
+	.feed {
+		display: grid;
+		grid-gap: 32px;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		margin: 0;
+
+		&:before {
+			content: normal;
+		}
+	}
+
+	.product {
+		grid-template-areas: 'image price' 'title title' 'cart cart';
+		grid-template-columns: 1fr 96px;
+		grid-template-rows: 266px 1fr auto;
+		max-width: unset;
+		margin: 0;
+		padding-bottom: 0;
+	}
+
+	@media(min-width: 30em) {
+		.feed {
+			> li {
+				&:first-child {
+					grid-gap: 0;
+					grid-template-areas: 'image title' 'image price' 'image cart';
+					grid-template-columns: 1fr 1fr;
+					grid-template-rows: 1fr auto auto;
+					min-height: 260px;
+					padding-bottom: 0;
+					padding-left: 0;
+
+					*[class*='module__title'] {
+						margin: 0;
+						padding: 32px;
+					}
+
+					*[class*='module__price'] {
+						width: 100%;
+					}
+
+					*[class*='module__image'] {
+						width: 100%;
+					}
+
+					*[class*='module__cart'] {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+
+	@media(min-width: 70em) {
+		.feed {
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		}
+	}
+}
