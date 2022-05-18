@@ -45,7 +45,7 @@ const setVersion = () => (
 
 		src('./dist/partials/layout/index.php')
 			.pipe(replace('/style.css', `/style.css?v${version}`))
-			.pipe(replace(`<?php get_template_part('partials/dev-styles'); ?>`, ''))
+			.pipe(replace(`<?php get_template_part('partials/dev-styles/index'); ?>`, ''))
 			.pipe(dest('./dist/partials/'))
 	}))
 )

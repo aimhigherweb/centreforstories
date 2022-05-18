@@ -1,6 +1,6 @@
 {
   "name": "centreforstories",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "author": "AimHigher Web <webmaster@aimhigherweb.design> (https://aimhigherweb.design)",
   "scripts": {
     "start": "npm run dev",
