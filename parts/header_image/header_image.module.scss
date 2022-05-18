@@ -13,7 +13,9 @@
 	& + p,
 	& + h2,
 	& + blockquote {
-		margin-top: 40px;
+		&:not([class]) {
+			margin-top: 40px;
+		}
 	}
 }
 
@@ -36,12 +38,12 @@
 @media(min-width: 40em) {
 	.feature {
 		max-width: 30vw;
-		margin: -50px 0 20px 20px;
+		margin: -70px 0 20px 20px;
 		float: right;
 
 		&:before {
 			right: -20px;
-			bottom: calc(100% - 60px);
+			bottom: calc(100% - 40px);
 			left: auto;
 			transform: none;
 		}
@@ -50,8 +52,11 @@
 
 @media(min-width: 50em) {
 	.feature  {
+		margin-top: -80px;
+
 		&:before {
 			right: -60px;
+			bottom: calc(100% - 50px);
 		}
 	}
 }
@@ -61,7 +66,7 @@
 		max-width: mixins.max_width(100vw, 120px, 5);
 		margin: 0 0 40px 40px;
 		// max-width: 488px;
-		transform: translateY(-100px);
+		transform: translateY(-80px);
 
 		&:before {
 			content: normal;

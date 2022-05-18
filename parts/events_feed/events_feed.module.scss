@@ -69,6 +69,9 @@
 
 	.event {
 		max-width: unset;
+		height: fit-content(300px);
+		// min-height: fit-content;
+		// max-height: 300px;
 		margin: 0;
 
 		&:global(.open) {

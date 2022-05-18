@@ -6,6 +6,10 @@
 			}
 		}
 	}
+
+	li {
+		margin-bottom: 0.5em;
+	}
 }
 
 @media(min-width: 50em) {
@@ -13,7 +17,16 @@
 		min-height: 400px;
 		clear: both;
 
-		p, h2, h3, h4, h5, h6, blockquote, hr, ul {
+		p,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		blockquote,
+		hr,
+		ul,
+		.wp-block-image {
 			max-width: max_width(100vw, 120px, 6);
 		}
 

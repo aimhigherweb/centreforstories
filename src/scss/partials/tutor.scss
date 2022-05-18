@@ -1,0 +1,91 @@
+.tutor-video-player {
+	@extend %video_embed;
+}
+
+.course_purchase {
+	--block_colour: var(--page_colour);
+
+	@extend %block;
+	@include mixins.list_reset;
+	margin-top: 20px;
+
+	color: var.$colours_white;
+
+	h2 {
+		margin: 0;
+		color: inherit;
+	}
+
+	form {
+		padding: 20px 0;
+
+		button {
+			&:first-child {
+				&:last-child {
+					margin: 0;
+				}
+			}
+		}
+	}
+
+	.tutor-btn {
+		@include mixins.buttons(var.$colours_blue, var.$colours_white);
+
+		&[value='complete_course'] {
+			margin: 0;
+		}
+
+		margin: 20px 0;
+
+		& + form {
+			padding-top: 0;
+		}
+	}
+
+	.amount {
+		display: block;
+		margin: 20px 0 0;
+		color: var.$colours_white;
+		font-family: var.$font_headings;
+		font-size: 2em;
+		font-weight: 800;
+	}
+
+	.tutor-modal {
+		display: none;
+	}
+
+	.tutor-color-muted, .tutor-color-success {
+		color: inherit;
+	}
+
+	.enrolment-expire-info, .update-info {
+		display: flex;
+		align-items: center;
+		margin: 10px 0;
+
+		i {
+			margin-right: 1ch;
+		}
+
+		span {
+			margin-left: 1ch;
+		}
+	}
+
+	.tutor-row {
+		display: flex;
+
+		& > *:first-child {
+			margin-right: 1ch;
+		}
+	}
+}
+
+@media(min-width: 50em) {
+	.course_purchase {
+		margin-top: 60px;
+		padding-top: 60px;
+		padding-bottom: 60px;
+	}
+}

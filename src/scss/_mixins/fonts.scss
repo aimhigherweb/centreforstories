@@ -78,12 +78,23 @@
 	line-height: list.nth($sizes, 2);
 }
 
-@mixin buttons($background: var.$colours_white, $colour: var.$colours_blue, $border: var.$colours_blue) {
-	display: inline-block;
-	padding: 15px 24px;
-	border: 2px solid $border;
+@mixin button_colour($background: var.$colours_white, $colour: var.$colours_blue, $border: $background) {
+	border-color: $border;
 	background: $background;
 	color: $colour;
+
+	&:hover {
+		background: $colour;
+		color: $background;
+	}
+}
+
+@mixin buttons($background: var.$colours_white, $colour: var.$colours_blue, $border: $background) {
+	@include button_colour($background, $colour, $border);
+
+	display: inline-block;
+	padding: 15px 24px;
+	border: 2px solid transparent;
 	font-family: var.$font_roboto;
 	font-size: 1em;
 	font-weight: 500;
@@ -92,11 +103,6 @@
 	text-decoration: none;
 	text-transform: uppercase;
 	cursor: pointer;
-
-	&:hover {
-		background: $colour;
-		color: $background;
-	}
 }
 
 @function max_width($max, $diff: 40px, $width: 6) {

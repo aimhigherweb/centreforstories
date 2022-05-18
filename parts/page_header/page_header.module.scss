@@ -65,13 +65,13 @@
 		transform: translateX(-50%);
 
 		figure {
-			max-width: mixins.max_width(100%, 0, 6.5);
+			max-width: mixins.max_width(100%, 0, 6);
 			margin-bottom: 60px;
 		}
 	}
 
 	.excerpt {
-		max-width: mixins.max_width(100%, 0, 6.5);
+		max-width: mixins.max_width(100%, 0, 6);
 	}
 }
 

@@ -39,6 +39,14 @@
 	}
 }
 
+@mixin list_reset {
+	ul, li {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+}
+
 @mixin aspect_ratio($width, $ratio, $max_width: 'unset') {
 	width: $width;
 	height: calc($width * $ratio);

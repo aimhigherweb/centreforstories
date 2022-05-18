@@ -22,6 +22,8 @@
 	if(is_user_logged_in()) {
 		array_push($nav_class, $styles['loggedIn']);
 	}
+
+	$cart_items = WC()->cart->get_cart_contents_count();
 ?>
 
 <header class="<?php echo $styles['header']; ?>">
@@ -79,6 +81,16 @@
 
 	<nav class="<?php echo classes(array_merge([$styles['utility']], $nav_class)); ?>">
 		<ul class="<?php echo classes([$styles['utility_nav']]); ?>">
+			<?php
+				if($cart_items > 0) : ?>
+					<li>
+						<a href="/cart">
+							<?php echo inline_svg(get_template_directory_uri() . '/src/img/cart.svg'); ?>
+							<span>Cart</span>
+						</a>
+					</li>
+				<?php endif;
+			?>
 			<?php 
 				wp_nav_menu(array(
 					'theme_location' => 'utility_menu',

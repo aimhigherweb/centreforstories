@@ -1,9 +1,24 @@
 figure {
+	display: flex;
+	flex-wrap: wrap;
+
 	&.wp-block-embed {
 		@extend %video_embed;
 	}
 
 	a {
 		display: block;
+	}
+
+	figcaption {
+		width: 100%;
+	}
+
+	&.alignright {
+		justify-content: flex-end;
+	}
+
+	&.aligncenter {
+		justify-content: center;
 	}
 }

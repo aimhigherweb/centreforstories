@@ -48,6 +48,8 @@
 
 		$children .= '</ul>';
 	}
+
+	$tickets = cfs_get_event_ticket($event_id);
 ?>
 
 <div class="<?php echo $styles['content']; ?>">
