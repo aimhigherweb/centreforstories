@@ -68,6 +68,12 @@
 			'type' => 'text',
 			'label' => 'Enter Google Maps API Key',
 		),
+		array(
+			'default' => '',
+			'name' => 'newsletter_form_shortcode',
+			'type' => 'text',
+			'label' => 'Enter the shortcode for the newsletter signup form',
+		),
 	];
 
 	$page_colours = [
