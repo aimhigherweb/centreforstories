@@ -38,7 +38,7 @@
 @media(min-width: 40em) {
 	.feature {
 		max-width: 30vw;
-		margin: -70px 0 20px 20px;
+		margin: -50px 0 20px 20px;
 		float: right;
 
 		&:before {
@@ -52,7 +52,7 @@
 
 @media(min-width: 50em) {
 	.feature  {
-		margin-top: -80px;
+		margin-top: -55px;
 
 		&:before {
 			right: -60px;
@@ -66,7 +66,7 @@
 		max-width: mixins.max_width(100vw, 120px, 5);
 		margin: 0 0 40px 40px;
 		// max-width: 488px;
-		transform: translateY(-80px);
+		transform: translateY(-50%);
 
 		&:before {
 			content: normal;

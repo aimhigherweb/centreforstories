@@ -13,7 +13,8 @@
 		'address',
 		'map',
 		'cta',
-		'standard'
+		'standard',
+		'event_categories',
 	);
 
 	$widgets = array(

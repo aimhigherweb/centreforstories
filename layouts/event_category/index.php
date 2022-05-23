@@ -29,22 +29,15 @@
 			)
 		);
 	?>
-	<?php
-		get_template_part(
-			'parts/header_image/index',
-			null,
-			array(
-				'image' => get_field('image', get_queried_object())
-			)
-		); 
-	?>
-	<?php
-		get_template_part(
-			'parts/events_feed/index',
-			null,
-			array (
-				'featured' => true,
-			)
-		);
-	?>
+	<div class="<?php echo classes([$styles['feed']]); ?>">
+		<?php
+			get_template_part(
+				'parts/events_feed/index',
+				null,
+				array (
+					'featured' => true,
+				)
+			);
+		?>
+	</div>
 </div>
