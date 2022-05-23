@@ -1,5 +1,13 @@
 <?php
-	$event_data = cfs_get_events();
+	$event_data = false;
+
+	if(check_field_value([$args, $args['query']])) {
+		$event_data = cfs_get_events(...$args['query']);
+	}
+	else {
+		$event_data = cfs_get_events();
+	}
+
 	$pages = $event_data['pages'];
 	$page = $event_data['page'];
 	$events = $event_data['events'];

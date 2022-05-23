@@ -17,7 +17,7 @@
 	// echo tribe( Template_Bootstrap::class )->get_view_html();
 
 	$view = tribe_context()->get( 'view' );
-
+	
 	if ($view == 'single-event') {
 		get_template_part(
 			'partials/layout/index', 
@@ -25,6 +25,17 @@
 			array(
 				'template' => 'event',
 				'class' => 'event',
+				'custom_page_header' => true
+			)
+		);
+	}
+	else if (tribe_is_event_category()) {
+		get_template_part(
+			'partials/layout/index', 
+			null, 
+			array(
+				'template' => 'event_category',
+				'class' => 'event_feed',
 				'custom_page_header' => true
 			)
 		);

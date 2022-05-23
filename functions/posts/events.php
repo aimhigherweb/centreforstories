@@ -12,15 +12,20 @@
 
     }, 10, 2 );
 
-    function cfs_get_events($featured = false, $limit = 9) {
+    function cfs_get_events($featured = false, $limit = 9, $category = false) {
         global $query_string;
 
         wp_parse_str( $query_string, $search_query );
         $page = 1;
         $meta_query = false;
+        $tax_query = false;
 
         if(isset($search_query, $search_query['page'])) {
             $page = $search_query['page'];
+        }
+
+        if(isset($search_query, $search_query['tribe_events_cat'])) {
+            $category = [$search_query['tribe_events_cat']];
         }
 
         if($featured) {
@@ -32,6 +37,20 @@
             );
         }
 
+        if($category) {
+            $tax_query = array(
+				array(
+					'taxonomy' => 'tribe_events_cat',
+					'field' => 'slug',
+					'terms' => $category,
+					'include_children' => true,
+					'operator' => 'IN'
+				)
+			);
+        }
+
+        
+
         $post_args = array(
             'post_type' => $search_query['post_type'],
             'posts_per_page' => $limit,
@@ -40,6 +59,7 @@
             'order' => 'ASC',
             'meta_key' => '_EventStartDate',
             'meta_query' => $meta_query,
+            'tax_query' => $tax_query,
         );
 
         $post_query = new WP_Query($post_args);
