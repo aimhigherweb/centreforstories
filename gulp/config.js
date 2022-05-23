@@ -13,7 +13,8 @@ module.exports = {
 		'data',
 		'tribe-events',
 		'woocommerce',
-		'tribe'
+		'tribe',
+		'tutor',
 	],
 	themeFiles: [
 		'./*.php',

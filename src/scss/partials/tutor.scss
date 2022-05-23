@@ -59,17 +59,19 @@
 		color: inherit;
 	}
 
-	.enrolment-expire-info, .update-info {
+	.enrolment-expire-info, .update-info, .tutor-color-muted, .tutor-alert-text {
 		display: flex;
 		align-items: center;
 		margin: 10px 0;
 
-		i {
+		i, *[class*='tutor-icon-'] {
 			margin-right: 1ch;
 		}
 
-		span {
-			margin-left: 1ch;
+		span[class]:not(.tutor-enrolled-info-text) {
+			&:last-child {
+				margin-left: 1ch;
+			}
 		}
 	}
 
@@ -79,6 +81,93 @@
 		& > *:first-child {
 			margin-right: 1ch;
 		}
+	}
+}
+
+.tutor_lesson_sidebar {
+	@include mixins.list_reset;
+
+	.topics {
+		display: none;
+	}
+
+	&.open {
+		.topics {
+			display: block;
+		}
+
+		.hamburger {
+			position: absolute;
+			top: 40px;
+			right: 20px;
+
+			.open {
+				display: none;
+			}
+
+			.close {
+				display: block;
+			}
+		}
+	}
+}
+
+.course_progress {
+	margin: 0 0 20px;
+
+	progress, label {
+		display: block;
+		text-align: center
+	}
+
+	progress {
+		@include mixins.progress_bar();
+		width: 100%;
+
+		margin-top: 5px;
+	}
+}
+
+.pagination {
+	@include mixins.list_reset_internal;
+
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+
+	a {
+		@include mixins.invert_link();
+	}
+
+	.return_course {
+		width: 100%;
+	}
+}
+
+.sidebar_toggle {
+	width: 40px;
+	height: 40px;
+	padding: 10px;
+	border-color: transparent;
+	background: none;
+
+	svg {
+		display: block;
+		width: 100%;
+		height: 100%;
+		color: inherit;
+	}
+
+	.close {
+		display: none;
+	}
+
+	&:hover {
+		background: var(--page_colour);
+		color: var.$colours_white;
 	}
 }
 

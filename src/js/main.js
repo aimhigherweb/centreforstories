@@ -1,5 +1,5 @@
-const toggleMenu = () => {
-	const menu = document.querySelector('nav#main-menu')
+const toggleNav = (menuSelector) => {
+	const menu = document.querySelector(menuSelector)
 	if(menu.classList.contains('open')) {
 		menu.classList.remove('open')
 	}
@@ -8,6 +8,16 @@ const toggleMenu = () => {
 		menu.classList.add('open')
 	}
 }
+
+const toggleMenu = () => {
+	toggleNav('nav#main-menu')
+}
+
+const toggleLessonSidebar = () => {
+	toggleNav('nav#lesson_sidebar')
+}
+
+
 
 const expandRepeatingEvents = (eventId, feedClass) => {
 	const event = document.querySelector(`#${eventId}`)

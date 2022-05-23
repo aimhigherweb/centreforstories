@@ -55,7 +55,7 @@
         <?php tutor_load_template('single.course.course-entry-box'); ?>
         <div class="update-info">
             <i class="tutor-icon-clock-line"></i> Last Updated: 
-            <span>
+            <span class="date">
                 <?php echo date_i18n( get_option( 'date_format' ), strtotime( get_the_modified_date() ) ); ?>
             </span>
         </div>

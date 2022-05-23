@@ -47,6 +47,18 @@
 	}
 }
 
+@mixin list_reset_internal {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+	li {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+}
+
 @mixin aspect_ratio($width, $ratio, $max_width: 'unset') {
 	width: $width;
 	height: calc($width * $ratio);
@@ -68,5 +80,36 @@
 		content: '';
 		position: absolute;
 		z-index: 2;
+	}
+}
+
+@mixin invert_link() {
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+@mixin progress_bar($background: var.$colours_grey_light_warm, $progress: var.$colours_navy) {
+	border: none;
+	border-radius: 0;
+	background: $background;
+	box-shadow: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	accent-color: $progress;
+
+	&::-webkit-progress-bar {
+		background: $background;
+	}
+
+	&::-webkit-progress-value {
+		background: $progress;
+	}
+
+	&::-moz-progress-bar {
+		background: $progress;
 	}
 }
