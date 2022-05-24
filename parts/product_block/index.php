@@ -38,7 +38,7 @@
 	} ?>
 </p>
 <a 
-	href="<?php $product->add_to_cart_url(); ?>"
+	href="<?php echo $product->add_to_cart_url(); ?>"
 	class="<?php echo classes([$styles['cart']]); ?>"
 >
 	Add to Cart

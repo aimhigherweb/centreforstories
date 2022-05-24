@@ -1,5 +1,6 @@
 .block {
 	@extend %block;
+	@include mixins.full_background;
 
 	display: flex;
 	flex-wrap: wrap;
@@ -168,10 +169,6 @@
 		flex-wrap: nowrap;
 		justify-content: center;
 		background: var.$colours_grey_light_warm;
-
-		&:before {
-			content: normal;
-		}
 
 		&[data-newsletter='true'] {
 			background: none;
