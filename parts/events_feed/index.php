@@ -11,7 +11,6 @@
 	$pages = $event_data['pages'];
 	$page = $event_data['page'];
 	$events = $event_data['events'];
-	$featured = $args['featured'];
 
 	$data = fetch_styles(__DIR__);
 	
@@ -30,17 +29,7 @@
 
 	$feed_classes = [$styles['feed']];
 
-	if(!check_field_value([$featured])) {
-		array_push($feed_classes, $styles['featured']);
-	}
-
 	$events_object = array();
-	
-	if($featured) {
-		$events = array_filter($events, function($event) use ($featured) {
-			return $event->ID !== $featured->ID;
-		});
-	}
 
 	foreach($events as $event) {
 		if($events_object[$event->post_title]) {
