@@ -66,4 +66,5 @@
 			)
 		);
 	?>
+	<?php echo page_content($page->ID); ?>
 </div>

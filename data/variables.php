@@ -48,6 +48,12 @@
 			'width' => 336,
 			'height' => 290,
 		),
+		array(
+			'name' => 'festival_block',
+			'width' => 500,
+			'height' => 260,
+			'crop' => true
+		),
 	];
 
 	$custom_info = [

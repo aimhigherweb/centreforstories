@@ -19,9 +19,38 @@
 	$category = get_queried_object();
 	$cat_child = get_term_children($category->term_id, $category->taxonomy);
 	$sub = [];
+	$current = false;
+	$query = false;
 
 	foreach($cat_child as $child) {
-		$sub[] = get_term_by('id', $child, $category->taxonomy);
+		$term = get_term_by('id', $child, $category->taxonomy);
+		$sub[] = $term;
+
+		preg_match(
+			"/^(?:[a-z]|-)+-(\d{4})$/",
+			$term->slug,
+			$matches
+		);
+
+		$year = intval($matches[1]);
+
+		if($year > $current) {
+			$current = $year;
+		}
+	}
+
+	if($current) {
+		$query = array(
+			false,
+			9,
+			$category->slug . '-' . $current
+		);
+	}
+
+	if(!$sub) {
+		foreach(get_term_children($category->parent, $category->taxonomy) as $child) {
+			$sub[] = get_term_by('id', $child, $category->taxonomy);
+		}
 	}
 ?>
 
@@ -41,18 +70,22 @@
 			get_template_part(
 				'parts/events_feed/index',
 				null,
-				array ()
+				array(
+					'query' => $query,
+				)
 			);
 		?>
 	</div>
 	<h2>Archives</h2>
 	<ul>
-		<?php foreach($sub as $cat): ?>
-			<li>
-				<a href="<?php echo get_term_link($cat); ?>">
-					<?php echo $cat->name; ?>
-				</a>
-			</li>
-		<?php endforeach; ?>
+		<?php foreach($sub as $cat):
+			if ($cat->term_id !== $category->term_id) :	?>
+				<li>
+					<a href="<?php echo get_term_link($cat); ?>">
+						<?php echo $cat->name; ?>
+					</a>
+				</li>
+			<?php endif;
+		endforeach; ?>
 	</ul>
 </div>

@@ -1,0 +1,176 @@
+.block {
+	@extend %block;
+	@include mixins.list_reset;
+	@include mixins.full_background(var.$colours_neutral_100);
+
+	padding-bottom: 0;
+
+	.festival {
+		margin-right: auto;
+		margin-left: auto;
+		padding-bottoM: 120px;
+	}
+}
+
+.eyebrow {
+	@extend %eyebrow;
+}
+
+.heading {
+	@extend %heading;
+
+	margin-bottom: 64px;
+}
+
+.festival {
+	max-width: 500px;
+
+	&:nth-child(2n) {
+		@include mixins.full_background(var.$colours_grey_light_warm);
+		padding-top: 120px;
+
+		&:before {
+			width: calc(120vw);
+		}
+
+		.heading {
+			&:after {
+				background-color: var.$colours_magenta;
+			}
+		}
+	}
+}
+
+.festival_block {
+	position: relative;
+	padding: 32px;
+	background: var.$colours_white;
+
+	&:hover {
+		background: var.$colours_blue;
+		color: var.$colours_white;
+	}
+
+	img {
+		display: block;
+		width: calc(100% + 64px);
+		height: 260px;
+		object-fit: cover;
+		margin: -32px -32px 32px;
+	}
+
+	p {
+		margin: 0;
+	}
+
+	a {
+		@include mixins.block_link;
+
+		display: block;
+		margin-top: 50px;
+		color: var.$colours_blue;
+		text-align: right;
+
+		svg {
+			width: 32px;
+			height: 32px;
+		}
+
+		&:hover {
+			color: var.$colours_white;
+		}
+	}
+}
+
+@media(min-width: 40em) {
+	.block {
+		&:before {
+			background: linear-gradient(to right, var.$colours_neutral_100 50%, var.$colours_grey_light_warm 50%);
+		}
+
+		ul {
+			display: flex;
+			justify-content: center;
+			margin: 0 -20px;
+		}
+
+		.festival {
+			margin: 0;
+			padding: 0 20px 120px;
+		}
+	}
+
+	.festival {
+		display: flex;
+		flex: 1 1 45%;
+		flex-direction: column;
+		max-width: unset;
+
+		&:nth-child(2n) {
+			&:before {
+				content: normal;
+			}
+		}
+	}
+
+	.festival_block {
+		position: relative;
+		flex-grow: 1;
+		padding-bottom: 96px;
+
+		a {
+			display: flex;
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			align-items: flex-end;
+			justify-content: flex-end;
+			margin: 0;
+			padding: 0 32px 32px 0;
+		}
+	}
+}
+
+@media(min-width: 50em) {
+	.block {
+		ul {
+			margin-right: -60px;
+			margin-left: -60px;
+		}
+
+		.festival {
+			padding-right: 60px;
+			padding-left: 60px;
+		}
+	}
+}
+
+@media(min-width: 70em) {
+	.block {
+		ul {
+			margin-right: -100px;
+			margin-left: -100px;
+		}
+
+		.festival {
+			padding-right: 100px;
+			padding-left: 100px;
+		}
+	}
+}
+
+@media(min-width: 80em) {
+	.block {
+		ul {
+			margin-right: -120px;
+			margin-left: -120px;
+		}
+
+		.festival {
+			padding-right: 120px;
+			padding-left: 120px;
+		}
+	}
+}

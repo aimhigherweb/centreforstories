@@ -10,4 +10,10 @@
 		return $var;
 	}
 
+	function page_content($page) {
+		$content = get_the_content(null, null, $page);
+
+		echo apply_filters('the_content', $content);
+	}
+
 ?>

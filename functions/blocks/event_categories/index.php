@@ -5,6 +5,7 @@
 		'description' => 'A block that displays a list of festivals',
 		'category' => 'theme',
 		'icon' => 'align-wide',
+		'mode' => 'preview',
 	);
 
 ?>
