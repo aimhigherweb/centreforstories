@@ -85,15 +85,15 @@
 
 <?php
 
-	if($pages > 1) {
+	// if($pages > 1) {
 		get_template_part(
-			'parts/modules',
+			'parts/pagination/index',
 			null,
 			array(
 				'page' => $page,
 				'pages' => $pages,
 			)
 		);
-	}
+	// }
 
 ?>
