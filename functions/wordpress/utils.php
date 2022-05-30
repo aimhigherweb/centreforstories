@@ -22,4 +22,27 @@
         echo '</pre>';
 	}
 
+	function format_price($price) {
+		$decimals = 2;
+
+		if(fmod($price, 1) == 0) {
+			$decimals = 0;
+		}
+
+		return '<span>$</span>' . number_format($price, $decimals, '.',	',');
+	}
+
+	function display_price($price) {
+		$number = false;
+
+		if(is_array($price)) {
+			$number = format_price($price[0]) . ' - ' . format_price($price[1]);
+		}
+		else {
+			$number =  format_price($price);
+		}
+
+		return $number;
+	}
+
 ?>

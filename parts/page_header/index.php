@@ -25,6 +25,11 @@
 	$title = get_the_title($id);
 	$graphic = false;
 	$eyebrow = get_field('eyebrow');
+	$header_classes = [$styles['header']];
+
+	if(check_array_field($args, 'class')) {
+		$header_classes[] = $args['class'];
+	}
 
 	if(!check_field_value($excerpt)) {
 		$excerpt = get_the_excerpt($id);
@@ -48,7 +53,7 @@
 
 ?>
 
-<header class="<?php echo classes([$styles['header'], $args['class']]); ?>">
+<header class="<?php echo classes($header_classes); ?>">
 	<p class="<?php echo classes([$styles['eyebrow']]); ?>">
 		<?php echo $eyebrow; ?>
 	</p>

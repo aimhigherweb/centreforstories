@@ -10,6 +10,8 @@
 		require_once(__DIR__ . '/menu_icons.php');
 		require_once(__DIR__ . '/page_header.php');
 		require_once(__DIR__ . '/stories.php');
+		require_once(__DIR__ . '/festivals.php');
+		require_once(__DIR__ . '/events.php');
 
 	}
 

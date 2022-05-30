@@ -1,6 +1,6 @@
 <?php
 
-	$product_data = cfs_get_products(false, 6);
+	$product_data = cfs_get_products(limit: 6);
 	$pages = $product_data['pages'];
 	$page = $product_data['page'];
 	$products = $product_data['products'];
@@ -47,7 +47,7 @@
 
 	if($pages > 1) {
 		get_template_part(
-			'parts/modules',
+			'parts/pagination/index',
 			null,
 			array(
 				'page' => $page,

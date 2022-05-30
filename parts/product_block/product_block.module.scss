@@ -21,14 +21,12 @@
 }
 
 .price {
-	@extend %events_block_date;
-
-	width: 96px;
+	margin-top: 0;
+	padding: 0 32px;
 	font-size: 2em;
 	font-weight: 800;
 
 	span {
-		display: inline;
 		font-size: 0.8em;
 		font-weight: 500;
 	}

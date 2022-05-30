@@ -15,6 +15,13 @@
 		'cta',
 		'standard',
 		'event_categories',
+		'donations',
+		'programs',
+		'news',
+		'stories',
+		'testimonials',
+		'team',
+		'partners'
 	);
 
 	$widgets = array(
@@ -52,6 +59,12 @@
 			'name' => 'festival_block',
 			'width' => 500,
 			'height' => 260,
+			'crop' => true
+		),
+		array(
+			'name' => 'program_block',
+			'width' => 145,
+			'height' => 145,
 			'crop' => true
 		),
 	];

@@ -1,0 +1,86 @@
+<?php
+
+	acf_add_local_field_group(array(
+		'key' => 'group_626f8d2c1c382',
+		'title' => 'Event',
+		'fields' => array(
+			array(
+				'key' => 'field_626f8d65515b6',
+				'label' => 'Show Map Pin',
+				'name' => 'pin',
+				'type' => 'true_false',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'message' => '',
+				'default_value' => 1,
+				'ui' => 1,
+				'ui_on_text' => 'Show Pin',
+				'ui_off_text' => 'Hide Pin',
+			),
+			array(
+				'key' => 'field_626f8ddf515b7',
+				'label' => 'Link Map Directions',
+				'name' => 'directions',
+				'type' => 'true_false',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'message' => '',
+				'default_value' => 1,
+				'ui' => 1,
+				'ui_on_text' => 'Link Map',
+				'ui_off_text' => 'Don\'t Link Map',
+			),
+			array(
+				'key' => 'field_626f8e0c515b8',
+				'label' => 'Map Zoom',
+				'name' => 'zoom',
+				'type' => 'range',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => 14,
+				'min' => 0,
+				'max' => 20,
+				'step' => 1,
+				'prepend' => '',
+				'append' => '',
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'tribe_venue',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+		'show_in_rest' => 0,
+	));
+	
+?>
