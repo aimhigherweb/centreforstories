@@ -1,7 +1,55 @@
 .block {
 	@extend %block;
+	@include mixins.list_reset;
+
+	.testimonial {
+		margin-top: 64px;
+	}
 }
 
 .heading {
 	@extend %heading;
+
+	margin: 0;
+
+	&:after {
+		background: var.$colours_blue;
+	}
+}
+
+.testimonial {
+	display: flex;
+	align-items: flex-start;
+
+	svg {
+		flex: 0 0 auto;
+		width: 25px;
+		height: 25px;
+		margin-right: 20px;
+		color: var.$colours_blue;
+	}
+
+	blockquote {
+		max-width: unset;
+		margin: 0;
+		color: var.$colours_neutral_500;
+		font-style: italic;
+	}
+
+	cite {
+		display: block;
+		margin-top: 16px;
+		color: var.$colours_neutral_800;
+		font-size: 0.727em;
+		font-style: normal;
+		font-weight: 500;
+	}
+}
+
+@media(min-width: 50em) {
+	.block {
+		ul {
+			max-width: mixins.max_width(100%, 0, 8);
+		}
+	}
 }

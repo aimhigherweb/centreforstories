@@ -319,7 +319,7 @@
 	}
 }
 
-$max_block_width: 810px / 8 * 10;
+$max_block_width: math.div(810px, 8) * 10;
 
 @media(min-width: $max_block_width) {
 	.image_block {
