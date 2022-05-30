@@ -1,11 +1,11 @@
 <?php
-
     function cfs_get_events(
             $featured = false, 
             $limit = 9, 
             $category = false, 
             $children = true, 
-            $past = false
+            $past = false,
+            $future = true
         ) {
 
         global $query_string;
@@ -14,6 +14,8 @@
         $page = 1;
         $meta_query = false;
         $tax_query = false;
+        $post_query = false;
+        $date_query = false;
 
         if(isset($search_query, $search_query['page'])) {
             $page = $search_query['page'];
@@ -23,28 +25,66 @@
             $category = [$search_query['tribe_events_cat']];
         }
 
-        if($featured) {
-            $meta_query = array(
+        if($past || $future) {
+            $date_query = array(
+                'relation' => 'OR'
+            );
+        }
+
+        if($past) {
+            $date_query = set_query(
+                $date_query, 
                 array(
-                  'key' => Tribe__Events__Featured_Events::FEATURED_EVENT_KEY,
-                  'value' => true,
+                    'key' => '_EventStartDate',
+                    'value' => date('Y-m-d'),
+                    'type' => 'date',
+                    'compare' => '<='
                 )
             );
         }
 
-        if($category) {
-            $tax_query = array(
-				array(
-					'taxonomy' => 'tribe_events_cat',
-					'field' => 'slug',
-					'terms' => $category,
-					'include_children' => true,
-					'operator' => 'IN'
-				)
-			);
+        if($future) {
+            $date_query = set_query(
+                $date_query, 
+                array(
+                    'key' => '_EventStartDate',
+                    'value' => date('Y-m-d'),
+                    'type' => 'date',
+                    'compare' => '>='
+                )
+            );
         }
 
-        
+        if($date_query) {
+            $meta_query = set_query(
+                $meta_query,
+                $date_query
+            );
+        }
+
+
+        if($category) {
+            $tax_query = set_query(
+                $tax_query, 
+                array(
+                    'taxonomy' => 'tribe_events_cat',
+                    'field' => 'slug',
+                    'terms' => $category,
+                    'include_children' => true,
+                    'operator' => 'IN'
+                )
+            );
+        }
+
+        if($featured) {
+            $meta_query = set_query(
+                $meta_query, 
+                array(
+                    'key' => Tribe__Events__Featured_Events::FEATURED_EVENT_KEY,
+                    'value' => true,
+                )
+            );
+        }
 
         $post_args = array(
             'post_type' => $search_query['post_type'],
@@ -53,8 +93,8 @@
             'orderby' => 'meta_value',
             'order' => 'ASC',
             'meta_key' => '_EventStartDate',
-            'meta_query' => $meta_query,
             'tax_query' => $tax_query,
+            'meta_query' => $meta_query
         );
 
         $post_query = new WP_Query($post_args);

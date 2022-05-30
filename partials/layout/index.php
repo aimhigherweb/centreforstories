@@ -20,6 +20,8 @@
 	$styles = $data['styles'];
 
 	$class = [$styles['body']];
+
+	$title = wp_get_document_title();
 	
 	get_template_part(
 		'parts/modules',
@@ -31,15 +33,22 @@
 		)
 	);
 
-	if(isset($args, $args['page_id'])) {
+	if(check_array_field($args, 'page_id')) {
 		$page_id = $args['page_id'];
 	}
 
-	if(isset($args, $args['template'])) {
+	if(check_array_field($args, 'template')) {
 		$layout = $args['template'];
 	}
 
-	if(isset($args, $args['class'])) {
+	if(check_array_field($args, 'page_id')) {
+		$title = get_the_title($args['page_id']);
+	}
+
+	if(
+		check_array_field($args, 'class')
+		&& check_array_field($styles, $args['class'])
+	) {
 		array_push($class, $styles[$args['class']]);
 	}
 
@@ -75,7 +84,7 @@
 
 		<?php wp_head(); ?>
 
-		<title><?php echo wp_get_document_title(); ?></title>
+		<title><?php echo $title; ?></title>
 
 		<link rel="icon" href="<?php echo $logo; ?>" type="image/svg+xml">
 
@@ -97,7 +106,7 @@
 
 		<main id="main" class="<?php echo classes([$styles['main']]); ?>">
 			<?php 
-				if(!$args['custom_page_header']) {
+				if(!check_array_field($args, 'custom_page_header')) {
 					get_template_part('parts/page_header/index');
 				}
 			?>

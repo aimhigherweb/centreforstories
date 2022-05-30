@@ -2,7 +2,7 @@
 
 	$id = get_the_ID();
 
-	if(check_field_value([$args, $args['page_id']])) {
+	if(check_array_field($args, 'page_id')) {
 		$id = $args['page_id'];
 	}
 
@@ -23,21 +23,35 @@
 
 	$excerpt = get_field('header_content', $id);
 	$title = get_the_title($id);
+	$graphic = false;
+	$eyebrow = get_field('eyebrow');
 
-	if(check_field_value([$args, $args['taxonomy']])) {
-		$tax = get_queried_object();
-		$title = $tax->name;
-		$excerpt = $tax->description;
+	if(!check_field_value($excerpt)) {
+		$excerpt = get_the_excerpt($id);
 	}
 
-	if(!check_field_value([$excerpt])) {
-		$excerpt = get_the_excerpt($id);
+	if(!check_field_value($eyebrow)) {
+		$eyebrow = 'Centre for Stories';
+	}
+
+	if(check_array_field($args, 'title')) {
+		$title = $args['title'];
+	}
+
+	if(check_array_field($args, 'excerpt')) {
+		$excerpt = $args['excerpt'];
+	}
+
+	if(check_array_field($args, 'graphic')) {
+		$graphic = $args['graphic'];
 	}
 
 ?>
 
 <header class="<?php echo classes([$styles['header'], $args['class']]); ?>">
-	<p class="<?php echo classes([$styles['eyebrow']]); ?>"><?php echo get_field('eyebrow'); ?></p>
+	<p class="<?php echo classes([$styles['eyebrow']]); ?>">
+		<?php echo $eyebrow; ?>
+	</p>
 	<h1 class="<?php echo classes([$styles['title']]); ?>">
 		<?php echo $title; ?>
 	</h1>
@@ -45,8 +59,13 @@
 		<?php echo $excerpt; ?>
 	</div>
 	<?php 
-		if(check_field_value([$args, $args['children']])) {
+		if(check_array_field($args, 'children')) {
 			echo $args['children'];
 		}
 	?>
+	<?php if($graphic) : ?>
+		<div class="<?php echo classes([$styles['graphic']]); ?>">
+			<?php echo inline_svg($graphic); ?>
+		</div>
+	<?php endif; ?>
 </header>

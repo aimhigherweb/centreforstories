@@ -64,7 +64,7 @@
 			<li class="label menu-item menu-item-has-children">
 				<span class="section">Contact Us</span>
 				<ul class="sub-menu">
-					<?php if(check_field_value([$phone])): ?>
+					<?php if(check_field_value($phone)): ?>
 						<li>
 							<address>
 								<a
@@ -76,7 +76,7 @@
 							</address>
 						</li>
 					<?php endif; ?>
-					<?php if(check_field_value([$email])): ?>
+					<?php if(check_field_value($email)): ?>
 						<li>
 							<address>
 								<a

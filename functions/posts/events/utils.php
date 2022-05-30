@@ -20,8 +20,8 @@
 		}
 
 		if($time == true) {
-			$start_time = tribe_get_start_date($event_id, true, 'g:i a');
-			$end_time = tribe_get_end_date($event_id, true, 'g:i a');
+			$start_time = tribe_get_start_date($event, true, 'g:i a');
+			$end_time = tribe_get_end_date($event, true, 'g:i a');
 		}
 		
 		$start = $start_month . ' <span>' . $start_date . '</span>';
@@ -35,11 +35,11 @@
 		);
 	}
 
-	function cfs_join_date($date_object) {
+	function cfs_join_date($date_object) {		
 		$start = $date_object['start'];
 		$end = $date_object['end'];
-		$start_time = $date_object['start_time'];
-		$end_time = $date_object['end_time'];
+		$start_time = $date_object['start_time'] ?? false;
+		$end_time = $date_object['end_time'] ?? false;
 
 		$date = $start . ' <span>-</span> ' . $end;
 
@@ -56,6 +56,18 @@
 		}
 
 		return $date;
+	}
+
+	function set_query($query, $value) {
+		$new_query = $query;
+
+		if(!$new_query) {
+			$new_query = array();
+		}
+
+		$new_query[] = $value;
+
+		return $new_query;
 	}
 
 ?>

@@ -16,6 +16,10 @@
 
 	// echo tribe( Template_Bootstrap::class )->get_view_html();
 
+	// var_dump(tribe_context()->get( 'view' ));
+
+	// dump(tribe_is_past());
+
 	$view = tribe_context()->get( 'view' );
 	
 	if ($view == 'single-event') {
@@ -35,8 +39,20 @@
 			null, 
 			array(
 				'template' => 'event_category',
-				'class' => 'event_feed',
+				'class' => 'festival',
 				'custom_page_header' => true
+			)
+		);
+	}
+	else if (tribe_is_past()) {
+		get_template_part(
+			'partials/layout/index', 
+			null, 
+			array(
+				'template' => 'event_archive',
+				'class' => 'event_feed',
+				'custom_page_header' => true,
+				'page_id' => get_page_by_path('events')->ID
 			)
 		);
 	}

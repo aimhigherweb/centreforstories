@@ -7,7 +7,7 @@
 	$phone = get_field('phone', 'option');
 	$email = get_field('email', 'option');
 ?>
-<?php if(check_field_value([$phone])): ?>
+<?php if(check_field_value($phone)): ?>
 
 	<address>
 		<a
@@ -21,7 +21,7 @@
 
 <?php endif; ?>
 
-<?php if(check_field_value([$email])): ?>
+<?php if(check_field_value($email)): ?>
 
 	<address>
 		<a
@@ -35,7 +35,7 @@
 
 <?php endif; ?>
 
-<?php if(check_field_value([$address, $address['line_1']])): ?>
+<?php if(check_array_field($address, 'line_1')): ?>
 
 	<h2><?php echo get_bloginfo('name'); ?></h2>
 

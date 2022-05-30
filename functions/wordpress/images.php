@@ -15,7 +15,13 @@
 	global $image_sizes;
 
 	foreach ($image_sizes as $size) {
-		add_image_size( $size['name'], $size['width'], $size['height'], $size['crop'] );
+		$crop = false;
+
+		if(array_key_exists('crop', $size)) {
+			$crop = $size['crop'];
+		}
+
+		add_image_size( $size['name'], $size['width'], $size['height'], $crop );
 	}
 
 	// Shortcut to get alt text

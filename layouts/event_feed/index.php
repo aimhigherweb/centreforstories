@@ -2,11 +2,17 @@
 	$event_id = get_the_ID();
 	$page = get_page_by_path('events');
 
-	$featured = cfs_get_events(true, 1);
+	$featured = cfs_get_events(
+		featured: true,
+		limit: 1
+	);
 
-	if($featured) {
+	if($featured && count($featured['events']) <= 0) {
+		$featured = false;
+	}
+	else if($featured) {
 		$event = $featured['events'][0];
-		$date = cfs_event_date($event->ID, 'short');
+		$date = cfs_event_date(event: $event->ID);
 		$featured = array(
 			'post_title' => $event->post_title,
 			'post_name'	=> $event->post_name,
@@ -33,7 +39,7 @@
 	);
 ?>
 
-<div class="<?php echo $styles['content']; ?>">
+<div>
 	<?php 
 		get_template_part(
 			'parts/page_header/index',

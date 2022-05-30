@@ -4,6 +4,12 @@
 	margin-bottom: 60px;
 }
 
+.content {
+	.header {
+		margin-bottom: 60px;
+	}
+}
+
 .cta {
 	@include mixins.buttons(var.$colours_blue, var.$colours_white);
 

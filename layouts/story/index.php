@@ -36,7 +36,7 @@
 			break;
 	}
 
-	if(check_field_value([$audio, $audio['url']])) {
+	if(check_array_field($audio, 'url')) {
 		$children = load_template_part(
 			'parts/soundcloud/index',
 			null,
@@ -44,7 +44,7 @@
 		);
 	}
 	
-	if(check_field_value([$audio, $audio['file']])) {
+	if(check_array_field($audio, 'file')) {
 		$template_part = load_template_part(
 			'parts/audio/index',
 			null,
@@ -74,7 +74,7 @@
 	<?php get_template_part('parts/header_image/index'); ?>
 	<?php echo the_content(); ?>
 	<?php 
-		if(check_field_value([$video, $video['url']])) {
+		if(check_array_field($video, 'url')) {
 			get_template_part(
 				'parts/youtube/index',
 				null,
@@ -83,7 +83,7 @@
 		}
 	?>
 	<?php 
-		if(check_field_value([$video, $video['file']])) {
+		if(check_array_field($video, 'file')) {
 			get_template_part(
 				'parts/video/index',
 				null,

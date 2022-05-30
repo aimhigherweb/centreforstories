@@ -22,4 +22,23 @@
         return $exists;
     }
 
+    function check_array_field($array, $key) {
+        $exists = false;
+
+        if(is_array($array) && (is_string($key) || is_numeric($key))) {
+            if(array_key_exists($key, $array)) {
+                // var_dump($array);
+                // var_dump($key);
+                // var_dump(array_key_exists($key, $array));
+                // var_dump($array[$key]);
+                $exists = check_field_value([$array[$key]]);
+            }
+            else {
+                $exists = false;
+            }
+        }
+
+        return $exists;
+    }
+
 ?>

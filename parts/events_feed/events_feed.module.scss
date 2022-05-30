@@ -82,6 +82,18 @@
 		}
 	}
 
+	@media(min-width: 30em) {
+		.feed {
+			&.featured {
+				> li {
+					&:first-child {
+						padding-left: 0;
+					}
+				}
+			}
+		}
+	}
+
 	@media(min-width: 70em) {
 		.feed {
 			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

@@ -1,8 +1,13 @@
 <?php
 	$event_data = false;
 
-	if(check_field_value([$args, $args['query']])) {
-		$event_data = cfs_get_events(...$args['query']);
+	if(check_array_field($args, 'query')) {
+		$event_data = cfs_get_events(
+			past: $args['query']['past'] ?? false,
+			limit: $args['query']['limit'] ?? false,
+			featured: $args['query']['featured'] ?? false,
+			category: $args['query']['category'] ?? false
+		);
 	}
 	else {
 		$event_data = cfs_get_events();
@@ -31,18 +36,23 @@
 
 	$events_object = array();
 
+	if(!check_array_field($args, 'featured')) {
+		$feed_classes[] = $styles['featured'];
+	}
+
 	foreach($events as $event) {
-		if($events_object[$event->post_title]) {
+		// var_dump($events_object);
+		if(check_array_field($events_object, $event->post_title)) {
 			$details = $events_object[$event->post_title]['events'];
 
 			array_push($details, $event);
 
 			$events_object[$event->post_title]['events'] = $details;
-			$events_object[$event->post_title]['end_date'] = cfs_event_date($event->ID, 'short')['end'];
+			$events_object[$event->post_title]['end_date'] = cfs_event_date($event->ID)['end'];
 			$events_object[$event->post_title]['repeating'] = true;
 		}
 		else {
-			$date = cfs_event_date($event->ID, 'short');
+			$date = cfs_event_date($event->ID);
 			$details = array(
 				'post_title' => $event->post_title,
 				'post_name'	=> $event->post_name,
@@ -85,7 +95,7 @@
 
 <?php
 
-	// if($pages > 1) {
+	if($pages > 1) {
 		get_template_part(
 			'parts/pagination/index',
 			null,
@@ -94,6 +104,6 @@
 				'pages' => $pages,
 			)
 		);
-	// }
+	}
 
 ?>

@@ -26,7 +26,7 @@
 		/>
 		<p>Sorry, your browser doesn't support this file.</p>
 	</audio>
-	<?php if(check_field_value([$args['caption']])) : ?>
+	<?php if(check_array_field($args, 'caption')) : ?>
 		<figcaption class="<?php echo classes([$styles['caption']]); ?>">
 			<?php echo $args['caption']; ?>
 		</figcaption>

@@ -17,7 +17,10 @@
 	);
 
 	$cost = tribe_get_cost( $event_id, true );
-	$date = cfs_join_date(cfs_event_date($event_id, 'short', true));
+	$date = cfs_join_date(cfs_event_date(
+		event: $event_id, 
+		time: true,
+	));
 	$venue = tribe_get_venue_object(tribe_get_venue_id());
 	$organisers = [];
 	$children = false;
@@ -54,21 +57,26 @@
 
 <div class="<?php echo $styles['content']; ?>">
 	<?php
-		get_template_part(
-			'parts/map/index',
-			null,
-			array(
-				'pin' => get_field('pin', tribe_get_venue_id()),
-				'map' => array(
-					'lat' => $venue->geolocation->latitude,
-					'lng' => $venue->geolocation->longitude,
-					'zoom' => get_field('zoom', tribe_get_venue_id()),
-				),
-				'map_link' => $venue->directions_link,
-				'name' => $venue->post_title,
-				'class' => $styles['map'],
-			)
-		);
+		if(check_field_value([
+			$venue,
+			$venue->geolocation,
+		])) {
+			get_template_part(
+				'parts/map/index',
+				null,
+				array(
+					'pin' => get_field('pin', tribe_get_venue_id()),
+					'map' => array(
+						'lat' => $venue->geolocation->latitude,
+						'lng' => $venue->geolocation->longitude,
+						'zoom' => get_field('zoom', tribe_get_venue_id()),
+					),
+					'map_link' => $venue->directions_link,
+					'name' => $venue->post_title,
+					'class' => $styles['map'],
+				)
+			);
+		}
 	?>
 	<?php 
 		get_template_part(

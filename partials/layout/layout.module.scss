@@ -6,6 +6,10 @@
 	background: var.$colours_grey_light_warm;
 }
 
+.festival {
+	--page_colour: #{var.$colours_green};
+}
+
 .main {
 	padding: 0 20px;
 	clear: both;

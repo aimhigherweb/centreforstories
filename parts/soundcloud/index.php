@@ -31,7 +31,7 @@
 		allow="autoplay"
   		src="https://w.soundcloud.com/player/?url=<?php echo urlencode($url); ?>"
 	></iframe>
-	<?php if(check_field_value([$args['caption']])) : ?>
+	<?php if(check_array_field($args, 'caption')) : ?>
 		<figcaption class="<?php echo classes([$styles['caption']]); ?>">
 			<?php echo $args['caption']; ?>
 		</figcaption>

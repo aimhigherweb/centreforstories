@@ -2,6 +2,34 @@
 	margin-top: 40px;
 }
 
+.heading {
+	@include mixins.display_text('s');
+	@include mixins.underline(4px, var.$colours_blue);
+}
+
+.archives {
+	@include mixins.list_reset_internal;
+
+	margin-bottom: 120px;
+
+	li {
+		margin: 12px 0;
+	}
+
+	a {
+		@include mixins.invert_link;
+
+		display: flex;
+		align-items: center;
+		color: inherit;
+
+		svg {
+			margin-right: 25px;
+			color: var.$colours_magenta;
+		}
+	}
+}
+
 @media(min-width: 60em) {
 	.header {
 		> p, > h1, > div {

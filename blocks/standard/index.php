@@ -50,7 +50,7 @@
 		<div class="<?php echo classes([$styles['content']]); ?>">
 			<?php echo get_field('content'); ?>
 		</div>
-		<?php if(check_field_value([$cta])): ?>
+		<?php if(check_field_value($cta)): ?>
 			<a 
 				href="<?php echo $cta['url']; ?>" 
 				class="<?php echo classes([$styles['cta']]); ?>"

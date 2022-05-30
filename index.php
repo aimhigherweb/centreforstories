@@ -7,7 +7,7 @@
  * @version 1.0
  */
 
-	// var_dump(WC()->cart->cart_contents);
+	// var_dump($wp_query);
  
 	if($wp_query->is_posts_page) {
 		get_template_part(
