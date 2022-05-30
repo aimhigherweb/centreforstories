@@ -15,11 +15,21 @@
 	);
 
 	$map = $args['map'];
+	$map_classes = [$styles['map']];
+	$name = '';
 
 	$pin = '';
 
-	if($args['pin']) {
+	if(check_array_field($args, 'pin')) {
 		$pin = '/pin-s+f9aa4f(' . $map['lng'] . ',' . $map['lat'] . ')';
+	}
+
+	if(check_array_field($args, 'class')) {
+		$map_classes[] = $args['class'];
+	}
+
+	if(check_array_field($args, 'name')) {
+		$name = $args['name'];
 	}
 
 	$map_details = array(
@@ -31,7 +41,7 @@
 	);	
 ?>
 
-<figure class="<?php echo classes([$styles['map'], $args['class']]); ?>">
+<figure class="<?php echo classes($map_classes); ?>">
 	<a
 		href="<?php echo $args['map_link']; ?>" 
 		target="_blank" 
@@ -57,7 +67,7 @@
 			<img 
 				class="<?php echo classes([$styles['image']]); ?>" 
 				src="<?php echo map_image('1280x1280', $map_details); ?>" 
-				alt="Linked map for <?php echo $args['name']; ?>" 
+				alt="Linked map for <?php echo $name; ?>" 
 			/>
 		</picture>
 	</a>

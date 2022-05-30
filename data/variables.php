@@ -21,11 +21,15 @@
 		'stories',
 		'testimonials',
 		'team',
-		'partners'
+		'partners',
+		'course',
+		'home_header'
 	);
 
 	$widgets = array(
-		'aoc'
+		'aoc',
+		'event_cta',
+		'news_cta'
 	);
 
 	$image_sizes = [
@@ -66,6 +70,11 @@
 			'width' => 145,
 			'height' => 145,
 			'crop' => true
+		),
+		array(
+			'name' => 'partner_block',
+			'width' => 300,
+			'height' => 120,
 		),
 	];
 

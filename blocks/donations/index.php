@@ -33,7 +33,7 @@
 		<?php foreach($donations as $donation): ?>
 			<li class="<?php echo classes([$styles['donation']]); ?>">
 				<h3 class="<?php echo classes([$styles['eyebrow']]); ?>">
-					<?php echo $donation->post_title; ?>
+					<?php echo $donation->get_name(); ?>
 				</h3>
 				<p class="<?php echo classes([$styles['price']]); ?>">
 					<?php if(check_field_value([

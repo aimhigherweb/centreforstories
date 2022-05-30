@@ -27,13 +27,16 @@
 	$block_classes = [$styles['block']];
 
 	if(check_field_value(get_field('colour')) && get_field('colour') !== '#f0eee9') {
-		array_push($block_classes, 'colour');
+		$block_classes[] = 'colour';
 	}	
 
 	if(check_field_value([get_field('newsletter_signup'), get_theme_mod('newsletter_form_shortcode')])) {
-		array_push($block_classes, 'newsletter');
+		$block_classes[] = 'newsletter';
 
 		$newsletter = true;
+	}
+	else {
+		$block_classes[] = $styles['image_block'];
 	}
 ?>
 
@@ -44,7 +47,7 @@
 	data-newsletter="<?php echo $newsletter ? 'true' : 'false'; ?>"
 >
 	<div class="<?php echo classes([$styles['container']]); ?>">
-		<?php if($newsletter): ?>
+		<?php if(get_field('logo')): ?>
 			<div class="<?php echo classes([$styles['logo']]); ?>">
 				<?php 
 					if(preg_match('/\.svg$/', $logo)) {
@@ -62,7 +65,7 @@
 		<div class="<?php echo classes([$styles['content']]); ?>">
 			<?php echo get_field('content'); ?>
 		</div>
-		<?php if(check_field_value($cta)): ?>
+		<?php if(check_field_value([$cta])): ?>
 			<a 
 				href="<?php echo $cta['url']; ?>" 
 				class="<?php echo classes([$styles['cta']]); ?>"

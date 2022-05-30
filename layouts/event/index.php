@@ -103,4 +103,7 @@
 			);
 		?>
 	<?php endif; ?>
+	<?php if (is_active_sidebar('event_cta')) : ?>
+		<?php dynamic_sidebar('event_cta'); ?>
+	<?php endif; ?>
 </div>
