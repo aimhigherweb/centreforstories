@@ -8,6 +8,7 @@
  */
 
 	// var_dump($wp_query);
+	// dump($wp_query->is_posts_page);
  
 	if($wp_query->is_posts_page) {
 		get_template_part(

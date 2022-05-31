@@ -113,3 +113,11 @@
 		background: $progress;
 	}
 }
+
+@mixin clip_lines($limit: 4) {
+	display: -webkit-box;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 5;
+	-webkit-box-orient: vertical;
+}

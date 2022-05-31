@@ -35,14 +35,11 @@
 
 	if(check_array_field($args, 'page_id')) {
 		$page_id = $args['page_id'];
+		$title = get_the_title($page_id);
 	}
 
 	if(check_array_field($args, 'template')) {
 		$layout = $args['template'];
-	}
-
-	if(check_array_field($args, 'page_id')) {
-		$title = get_the_title($args['page_id']);
 	}
 
 	if(
@@ -107,7 +104,7 @@
 		<main id="main" class="<?php echo classes([$styles['main']]); ?>">
 			<?php 
 				if(!check_array_field($args, 'custom_page_header')) {
-					get_template_part('parts/page_header/index');
+					get_template_part('parts/page_header/index', null, array('page_id' => $page_id));
 				}
 			?>
 			<?php get_template_part('layouts/' . $layout . '/index'); ?>

@@ -30,4 +30,32 @@
 
 	apply_filters( 'excerpt_more', '...' );
 
+	function cfs_get_news($limit = 8) {    
+		global $query_string;
+
+        wp_parse_str( $query_string, $search_query );
+        $page = 1;
+
+        if(isset($search_query, $search_query['page'])) {
+            $page = $search_query['page'];
+        }
+
+		$args = array(
+			'post_type' => 'post',
+			'post_status' => 'publish', 
+			'orderby' => 'publish_date', 
+			'order' => 'ASC',
+			'posts_per_page' => $limit,
+            'paged' => $page,
+		);
+
+		$post_query = new WP_Query($args);
+
+        return array(
+            'page' => $page,
+            'pages' => $post_query->max_num_pages,
+            'posts' => $post_query->posts,
+        );
+    }
+
 ?>
