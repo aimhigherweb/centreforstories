@@ -1,7 +1,59 @@
 .block {
 	@extend %block;
+	@include mixins.list_reset;
+
+	ul {
+		margin: 0 -10px;
+	}
+
+	li {
+		margin: 10px;
+	}
 }
 
 .heading {
 	@extend %heading;
+
+	&:after {
+		background-color: var.$colours_forest;
+	}
+}
+
+.content {
+	width: mixins.max_width(100%, 0, 6);
+	max-width: 600px;
+	font-size: 1.125em;
+
+	> *:first-child {
+		font-size: 1.333em;
+	}
+}
+
+.gallery {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+
+	li {
+		flex: 1 1 200px;
+		max-width: 300px;
+		max-height: 120px;
+		padding: 10px;
+
+		img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+			object-position: center;
+		}
+	}
+}
+
+@media(min-width: 50em) {
+	.block {
+		.gallery {
+			max-width: unset;
+		}
+	}
 }

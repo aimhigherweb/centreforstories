@@ -26,5 +26,20 @@
 <div 
 	class="<?php echo classes($block_classes); ?> wp-block" 
 >
-	<h2 class="<?php echo classes([$styles['heading']]); ?>"></h2>
+	<h2 class="<?php echo classes([$styles['heading']]); ?>">
+		<?php echo get_field('heading'); ?>
+	</h2>
+	<div class="<?php echo classes([$styles['content']]); ?>">
+			<?php echo get_field('content'); ?>
+		</div>
+	<ul class="<?php echo classes([$styles['gallery']]); ?>">
+		<?php foreach(get_field('logos') as $logo): ?>
+			<li>
+				<img
+					alt="<?php echo alt_text($logo); ?>"
+					src="<?php echo wp_get_attachment_image_url($logo, 'partner_block'); ?>"
+				/>
+			</li>
+		<?php endforeach; ?>
+	</ul>
 </div>
