@@ -10,6 +10,27 @@
 	li {
 		margin-bottom: 0.5em;
 	}
+
+	p,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	blockquote,
+	hr,
+	ul,
+	.wp-block-image {
+		& + .wp-block {
+			margin-top: 60px;
+		}
+
+		& + link, & + style {
+			& + .wp-block {
+				margin-top: 60px;
+			}
+		}
+	}
 }
 
 @media(min-width: 50em) {
