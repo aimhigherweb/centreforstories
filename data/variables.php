@@ -23,7 +23,8 @@
 		'team',
 		'partners',
 		'course',
-		'home_header'
+		'home_header',
+		'events',
 	);
 
 	$widgets = array(

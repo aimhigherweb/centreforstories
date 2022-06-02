@@ -5,7 +5,8 @@
             $category = false, 
             $children = true, 
             $past = false,
-            $future = true
+            $future = true,
+            $type = 'tribe_events',
         ) {
 
         global $query_string;
@@ -19,6 +20,10 @@
 
         if(isset($search_query, $search_query['page'])) {
             $page = $search_query['page'];
+        }
+
+        if(!$type && isset($search_query, $search_query['post_type'])) {
+            $type = $search_query['post_type'];
         }
 
         if(isset($search_query, $search_query['tribe_events_cat']) && ! $category) {
@@ -87,7 +92,7 @@
         }
 
         $post_args = array(
-            'post_type' => $search_query['post_type'],
+            'post_type' => $type,
             'posts_per_page' => $limit,
             'paged' => $page,
             'orderby' => 'meta_value',

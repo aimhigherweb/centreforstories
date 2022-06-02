@@ -65,4 +65,6 @@
 		}
 
 	?>
+
+	<?php echo page_content($page_id); ?>
 </div>

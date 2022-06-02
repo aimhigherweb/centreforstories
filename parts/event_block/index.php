@@ -28,6 +28,8 @@
 		$image_src = $image_src[0];
 	}
 
+	
+
 ?>
 
 <div class="<?php echo classes([$styles['image']]); ?>">
