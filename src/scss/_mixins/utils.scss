@@ -15,7 +15,7 @@
 	position: relative;
 
 	&:before {
-		@include position(0, auto, 0, 50%);
+		@include position(0, auto, -1px, 50%);
 
 		content: '';
 		position: absolute;
