@@ -1,13 +1,12 @@
 <?php
+	global $query_string;
+
+	wp_parse_str( $query_string, $search_query );
+
 	$data = fetch_styles(__DIR__);
 
-	$format = get_field('format');
-	$children = false;
-	$audio = false;
-	$video = false;
-
 	$template = $data['template'];
-	$styles = $data['styles']; 
+	$styles = $data['styles'];
 
 	get_template_part(
 		'parts/modules',
@@ -19,76 +18,44 @@
 		)
 	);
 
-	switch ($format) {
-		case 'video':
-			$video = array(
-				'url' => get_field('youtube'),
-				'file' => get_field('video'),
-				'captions' => get_field('caption'),
-			);
-			break;
-		case 'audio':
-			$audio = array(
-				'url' => get_field('soundcloud'),
-				'file' => get_field('audio'),
-				'caption' => get_field('caption'),
-			);
-			break;
+	$page_id = get_the_ID();
+	$collection_page = false;
+
+	if(check_array_field($args, 'page_id')) {
+		$page_id = $args['page_id'];
 	}
 
-	if(check_array_field($audio, 'url')) {
-		$children = load_template_part(
-			'parts/soundcloud/index',
-			null,
-			$audio
-		);
-	}
-	
-	if(check_array_field($audio, 'file')) {
-		$template_part = load_template_part(
-			'parts/audio/index',
-			null,
-			$audio
-		);
+	$story_data = cfs_get_stories();
 
-		if($children) {
-			$children = $children . $template_part;
-		}
-		else {
-			$children = $template_part;
-		}
+	$collections = cfs_get_story_collections();
+
+	if(check_array_field($search_query, 'collection')) {
+		$collection_page = $search_query['collection'];
 	}
 
 ?>
 
 <div class="<?php echo $styles['content']; ?>">
-	<?php 
-		get_template_part(
-			'parts/page_header/index',
-			null,
-			array(
-				'children' => $children,
-			)
-		);
-	?>
-	<?php get_template_part('parts/header_image/index'); ?>
-	<?php echo the_content(); ?>
-	<?php 
-		if(check_array_field($video, 'url')) {
-			get_template_part(
-				'parts/youtube/index',
-				null,
-				$video
-			);
-		}
-	?>
-	<?php 
-		if(check_array_field($video, 'file')) {
-			get_template_part(
-				'parts/video/index',
-				null,
-				$video
-			);
-		}
-	?>
+	<ul class="<?php echo classes([$styles['filters']]); ?>">
+		<?php foreach($collections as $type): ?>
+			<li>
+				<ul>
+					<li class="<?php echo classes([$styles['collection_type']]); ?>"><?php echo $type['name']; ?>s:</li>
+					<?php foreach($type['terms'] as $collection):
+						$current = $collection->slug == $collection_page ? $styles['current'] : '';
+					?>
+						<li>
+							<a
+								class="<?php echo classes([$styles['collection'], $current]); ?>"
+								href="<?php echo $collection->permalink; ?>"
+							>
+								<?php echo $collection->name; ?>
+							</a>
+						</li>
+					<?php endforeach; ?>
+				</ul>
+			</li>
+		<?php endforeach; ?>
+	</ul>
+	<?php echo page_content($page_id); ?>
 </div>

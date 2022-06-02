@@ -188,7 +188,7 @@
 
 	acf_add_local_field_group(array(
 		'key' => 'group_626b4c92dc757',
-		'title' => 'Story Collections',
+		'title' => 'Collections',
 		'fields' => array(
 			array(
 				'key' => 'field_626b4c9ad0736',
@@ -208,6 +208,30 @@
 				'toolbar' => 'basic',
 				'media_upload' => 1,
 				'delay' => 0,
+			),
+			array(
+				'key' => 'field_6298b7d5a1eab',
+				'label' => 'Collection Type',
+				'name' => 'collection_type',
+				'type' => 'radio',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'choices' => array(
+					'story' => 'Story Collection',
+					'interview' => 'Interview Collection',
+				),
+				'allow_null' => 0,
+				'other_choice' => 0,
+				'default_value' => 'story',
+				'layout' => 'vertical',
+				'return_format' => 'array',
+				'save_other_choice' => 0,
 			),
 		),
 		'location' => array(

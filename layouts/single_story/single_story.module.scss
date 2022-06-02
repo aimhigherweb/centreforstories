@@ -1,0 +1,35 @@
+.content {
+	@extend %content;
+
+	blockquote {
+		@include mixins.heading_text('h2');
+
+		margin: 0;
+		font-style: normal;
+		font-weight: 700;
+	}
+
+	header {
+		& + p,
+		& + h2,
+		& + blockquote {
+			&:not([class]) {
+				margin-top: 40px;
+			}
+		}
+	}
+}
+
+@media(min-width: 60em) {
+	.content {
+		header {
+			& + p,
+			& + h2,
+			& + blockquote {
+				&:not([class]) {
+					margin-top: 60px;
+				}
+			}
+		}
+	}
+}

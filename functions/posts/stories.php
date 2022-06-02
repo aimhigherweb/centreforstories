@@ -26,7 +26,7 @@
 			'description'   => $description,
 			'public'        => true,
 			'show_in_rest' => true,
-			'has_archive'   => true,
+			'has_archive'   => 'stories',
 			'menu_icon' => $icon,
 			'supports' => array(
 				'editor',
@@ -101,6 +101,77 @@
     // };
     // add_action('init', 'story_pages_rewrite');
 
+	function cfs_get_stories($limit = 9) {    
+		global $query_string;
+
+        wp_parse_str( $query_string, $search_query );
+        $page = 1;
+		$offset = 0;
+
+        if(isset($search_query, $search_query['paged'])) {
+            $page = $search_query['paged'];
+        }
+
+		// if(get_option('sticky_posts')) {
+		// 	if($page == 1) {
+		// 		// $limit = $limit - 1;
+		// 	}
+		// 	else {
+		// 		// $offset = 1;
+		// 	}
+		// }
+
+		$args = array(
+			'post_type' => 'story',
+			'post_status' => 'publish', 
+			'orderby' => 'post_date', 
+			'order' => 'DESC',
+			'posts_per_page' => $limit,
+            'paged' => $page,
+			// 'ignore_sticky_posts' => true,
+			'offset' => $offset
+		);
+
+		$post_query = new WP_Query($args);
+
+		// dump($post_query);
+
+        return array(
+            'page' => $page,
+            'pages' => $post_query->max_num_pages,
+            'posts' => $post_query->posts,
+        );
+    }
+
+	function cfs_get_story_collections() {
+		$terms = get_terms(array(
+			'taxonomy' => 'collection',
+			'hide_empty' => true,
+		));
+
+		$term_data = array();
+
+		foreach($terms as $term) {
+			$type = get_field('collection_type', $term);
+
+			$term->permalink = str_replace(
+				'/collections/',
+				'/',
+				get_term_link($term),
+			);
+
+			if(!check_array_field($term_data, $type['value'])) {
+				$term_data[$type['value']] = array(
+					'name' => $type['label'],
+					'terms' => array()
+				);
+			}
+
+			$term_data[$type['value']]['terms'][] = $term;
+		}
+
+		return $term_data;
+	}
 
 
 ?>

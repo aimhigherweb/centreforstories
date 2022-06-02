@@ -107,7 +107,13 @@
 					get_template_part('parts/page_header/index', null, array('page_id' => $page_id));
 				}
 			?>
-			<?php get_template_part('layouts/' . $layout . '/index'); ?>
+			<?php 
+				get_template_part(
+					'layouts/' . $layout . '/index',
+					null,
+					$args
+				); 
+			?>
 		</main>
 
 		<?php get_template_part('partials/footer/index'); ?>

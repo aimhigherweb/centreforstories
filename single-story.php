@@ -12,7 +12,7 @@
 		'partials/layout/index', 
 		null, 
 		array(
-			'template' => 'story',
+			'template' => 'single_story',
 			'class' => 'story',
 			'custom_page_header' => true
 		)
