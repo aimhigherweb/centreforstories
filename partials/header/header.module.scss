@@ -1,10 +1,10 @@
 .header {
+	@include mixins.full_background(var(--page_colour), var.$colours_navy);
+
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
 	padding: 20px;
-	background: var.$colours_navy;
-	background: var(--page_colour);
 	color: var.$colours_white;
 }
 
@@ -318,8 +318,6 @@
 
 @media(min-width: 60em) {
 	.header {
-		@include mixins.full_background();
-
 		max-width: var.$max_width;
 		margin: 0 auto;
 	}

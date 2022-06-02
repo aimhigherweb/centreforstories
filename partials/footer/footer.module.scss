@@ -1,6 +1,7 @@
 .footer {
+	@include mixins.full_background(var.$colours_grey_light_warm);
+
 	padding: 20px;
-	background: var.$colours_grey_light_warm;
 }
 
 .aoc {
@@ -257,8 +258,6 @@
 
 @media(min-width: 60em) {
 	.footer {
-		@include mixins.full_background();
-
 		width: 100vw;
 		max-width: var.$max_width;
 		margin: 0 auto;

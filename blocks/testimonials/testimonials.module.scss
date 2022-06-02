@@ -5,6 +5,10 @@
 	.testimonial {
 		margin-top: 64px;
 	}
+
+	&:before {
+		content: normal;
+	}
 }
 
 .heading {
