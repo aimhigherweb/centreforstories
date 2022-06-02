@@ -47,6 +47,14 @@
 	svg {
 		display: none;
 	}
+
+	&:focus {
+		outline: none;
+
+		&:before {
+			outline: 3px solid var.$colours_red;
+		}
+	}
 }
 
 @media(min-width: 30em) {

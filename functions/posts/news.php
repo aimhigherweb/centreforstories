@@ -35,21 +35,35 @@
 
         wp_parse_str( $query_string, $search_query );
         $page = 1;
+		$offset = 0;
 
-        if(isset($search_query, $search_query['page'])) {
-            $page = $search_query['page'];
+        if(isset($search_query, $search_query['paged'])) {
+            $page = $search_query['paged'];
         }
+
+		if(get_option('sticky_posts')) {
+			if($page == 1) {
+				// $limit = $limit - 1;
+			}
+			else {
+				// $offset = 1;
+			}
+		}
 
 		$args = array(
 			'post_type' => 'post',
 			'post_status' => 'publish', 
-			'orderby' => 'publish_date', 
-			'order' => 'ASC',
+			'orderby' => 'post_date', 
+			'order' => 'DESC',
 			'posts_per_page' => $limit,
             'paged' => $page,
+			// 'ignore_sticky_posts' => true,
+			'offset' => $offset
 		);
 
 		$post_query = new WP_Query($args);
+
+		// dump($post_query);
 
         return array(
             'page' => $page,

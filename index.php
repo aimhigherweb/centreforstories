@@ -7,8 +7,9 @@
  * @version 1.0
  */
 
-	// var_dump($wp_query);
 	// dump($wp_query->is_posts_page);
+	// var_dump($wp_query);
+	
  
 	if($wp_query->is_posts_page) {
 		get_template_part(
@@ -20,7 +21,7 @@
 			)
 		);
 	}
-	if(is_shop()) {
+	else if(is_shop()) {
 		get_template_part(
 			'partials/layout/index', 
 			null, 

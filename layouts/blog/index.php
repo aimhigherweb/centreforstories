@@ -19,7 +19,8 @@
 	$post_data = cfs_get_news(limit: 8);
 	$pages = $post_data['pages'];
 	$page = $post_data['page'];
-	$posts = $post_data['posts'];
+	$news = $post_data['posts'];
+
 
 	$feed_classes = [$styles['feed']];
 
@@ -30,16 +31,16 @@
 
 
 <div class="<?php echo classes([$styles['content']]); ?>">
-	<?php if($posts): ?>
+	<?php if($news): ?>
 		<ul class="<?php echo classes($feed_classes); ?>">
-			<?php foreach($posts as $post): ?>
+			<?php foreach($news as $news_item): ?>
 				<li>
 					<?php
 						get_template_part(
 							'parts/news_block/index',
 							null,
 							array (
-								'post' => $post
+								'post' => $news_item
 							)
 						);
 					?>
