@@ -1,5 +1,8 @@
 .block {
 	@extend %block;
+	@include mixins.full_background(linear-gradient(to bottom, var.$colours_lavender 90%, var.$colours_navy 90%));
+
+	color: var.$colours_navy;
 }
 
 .content {
@@ -7,7 +10,18 @@
 }
 
 .image {
+	display: block;
+	width: 100%;
+	max-width: 860px;
+	max-height: 570px;
+	margin-top: 30px;
 
+	img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
 }
 
 .cta {
@@ -16,8 +30,98 @@
 
 .heading {
 	@extend %heading;
+
+	&:after {
+		background: var.$colours_blue;
+	}
 }
 
 .eyebrow {
 	@extend %eyebrow;
+}
+
+.subtitle {
+	@include mixins.heading_text('h2');
+
+	font-weight: 700;
+}
+
+.testimonial {
+	display: flex;
+	align-items: flex-start;
+
+	svg {
+		flex: 0 0 auto;
+		width: 25px;
+		height: 25px;
+		margin-right: 20px;
+		color: var.$colours_neutral_800;
+	}
+
+	blockquote {
+		max-width: unset;
+		margin: 0;
+		color: var.$colours_neutral_500;
+		font-style: italic;
+	}
+
+	cite {
+		display: block;
+		margin-top: 16px;
+		color: var.$colours_neutral_800;
+		font-size: 0.727em;
+		font-style: normal;
+		font-weight: 500;
+	}
+}
+
+@media(min-width: 30em) {
+	.block {
+		&:before {
+			background: linear-gradient(to bottom, var.$colours_lavender 80%, var.$colours_navy 80%);
+		}
+	}
+}
+
+@media(min-width: 45em) {
+	.block {
+		&:before {
+			background: linear-gradient(to right, var.$colours_lavender 70%, var.$colours_navy 70%);
+		}
+	}
+
+	.heading {
+		max-width: mixins.max_width(100vw, 40px, 6);
+		margin-bottom: 80px;
+	}
+
+	.subheading {
+		margin-top: 0;
+	}
+
+	.container {
+		display: flex;
+		align-items: flex-start;
+	}
+
+	.content {
+		flex: 1 1 auto;
+		max-width: 300px;
+		margin-right: 40px;
+	}
+
+	.image {
+		flex: 3 1 auto;
+		margin-top: 0;
+	}
+
+	.testimonial {
+		margin-left: -45px;
+	}
+}
+
+@media(min-width: 60em) {
+	.heading {
+		max-width: mixins.max_width(100%, 0, 5);
+	}
 }

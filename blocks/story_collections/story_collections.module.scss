@@ -199,6 +199,7 @@
 		.collections {
 			grid-auto-rows: minmax(calc(((100vw - 130px) / 12) * 2), $max / 4);
 			grid-template-columns: repeat(2, minmax(mixins.max_width(100vw, 105px, 6), $max));
+			margin-left: 0;
 			background: none;
 
 			li {
