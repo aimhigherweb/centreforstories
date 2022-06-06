@@ -20,8 +20,9 @@
 	);
 
 	$image = get_field('image');
+	$logo = wp_get_attachment_image_src(get_theme_mod( 'custom_logo' ), 'full')[0];
 
-	dump($image);
+	// dump($image);
 	
 ?>
 
@@ -34,8 +35,8 @@
 	<h2 class="<?php echo classes([$styles['heading']]); ?>">
 		<?php echo get_field('heading'); ?>
 	</h2>
-	<figure>
-		<picture class="<?php echo classes([$styles['image']]); ?>">
+	<figure class="<?php echo classes([$styles['image']]); ?>">
+		<picture>
 			<source
 				srcset="<?php echo $image['sizes']['block_image_small']; ?>"
 				media="(max-width: 640px)"
@@ -49,8 +50,18 @@
 				src="<?php echo $image['url'] ?>"
 			/>
 		</picture>
-		<figcaption class="<?php echo classes([$styles['caption']]); ?>">
-			
+		<figcaption>
+			<div class="<?php echo classes([$styles['logo']]); ?>">
+				<?php 
+					if(preg_match('/\.svg$/', $logo)) {
+						echo inline_svg($logo);
+					} 
+					else {
+						echo '<img src="' . $logo . '" />';
+					}
+				?>
+			</div>
+			<span><?php echo wp_get_attachment_caption($image['ID']); ?></span>
 		</figcaption>
 	</figure>
 </div>

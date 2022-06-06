@@ -1,11 +1,105 @@
 .block {
 	@extend %block;
+	@include mixins.full_background(linear-gradient(to bottom, var.$colours_forest 60%, var.$colours_grey_light_warm 60%));
+
+	color: var.$colours_white;
 }
 
 .heading {
 	@extend %heading;
+	@include mixins.display_text('l');
+
+	color: inherit;
+	font-weight: 800;
+
+	&:after {
+		background: var.$colours_blue;
+	}
 }
 
 .eyebrow {
 	@extend %eyebrow;
+}
+
+.image {
+	display: flex;
+	position: relative;
+	max-width: 860px;
+	min-height: 280px;
+	max-height: 570px;
+	margin: 40px auto 0;
+
+	img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	figcaption {
+		@include mixins.position(0, auto, 0, 0);
+		@include mixins.text('l');
+
+		display: flex;
+		position: absolute;
+		flex-direction: column-reverse;
+		align-items: center;
+		justify-content: space-between;
+		width: 64px;
+		// margin-bottom: -64px;
+		padding-top: 24px;
+		// transform: rotate(-90deg);
+		// transform-origin: 0 0;
+		background: var.$colours_yellow;
+		color: var.$colours_neutral_600;
+		font-weight: 600;
+
+		span {
+			display: flex;
+			align-items: center;
+			align-self: flex-end;
+			height: 64px;
+			transform: rotate(-90deg) translateY(-64px);
+			transform-origin: 100% 0%;
+			text-align: right;
+			word-break: keep-all;
+			white-space: nowrap;
+		}
+	}
+}
+
+.logo {
+	width: 64px;
+	height: 64px;
+	padding: 10px;
+	background: var.$colours_blue;
+
+	svg {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+@media(min-width: 50em) {
+	.block {
+		&:before {
+			background: linear-gradient(to bottom, var.$colours_forest 50%, var.$colours_grey_light_warm 50%);
+		}
+	}
+
+	.heading {
+		max-width: mixins.max_width(100vw, 120px, 8);
+	}
+}
+
+@media(min-width: 60em) {
+	.heading {
+		max-width: mixins.max_width(100%, 0, 7);
+	}
+}
+
+@media(min-width: 70em) {
+	.heading {
+		max-width: mixins.max_width(100%, 0, 6);
+	}
 }
