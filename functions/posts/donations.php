@@ -1,6 +1,8 @@
 <?php
 
-    function cfs_get_donations() {        
+    function cfs_get_donations() {   
+		wp_reset_query();
+		     
 		$args = array(
 			'post_type' => 'product',
 			'orderby' => 'name',

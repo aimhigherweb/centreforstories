@@ -26,6 +26,9 @@
 	}
 
 	$story_data = cfs_get_stories();
+	$stories = $story_data['posts'];
+	$page = $story_data['page'];
+	$pages = $story_data['pages'];
 
 	$collections = cfs_get_story_collections();
 
@@ -33,14 +36,28 @@
 		$collection_page = $search_query['collection'];
 	}
 
+	// dump($story_data);
+
 ?>
 
 <div class="<?php echo $styles['content']; ?>">
 	<ul class="<?php echo classes([$styles['filters']]); ?>">
+		
 		<?php foreach($collections as $type): ?>
 			<li>
 				<ul>
-					<li class="<?php echo classes([$styles['collection_type']]); ?>"><?php echo $type['name']; ?>s:</li>
+					
+					<li class="<?php echo classes([$styles['collection_type']]); ?>">
+						<?php echo $type['name']; ?>s:
+					</li>
+					<li>
+						<a
+							class="<?php echo classes([$styles['collection']]); ?>"
+							href="/stories"
+						>
+							All Stories
+						</a>
+					</li>
 					<?php foreach($type['terms'] as $collection):
 						$current = $collection->slug == $collection_page ? $styles['current'] : '';
 					?>
@@ -57,5 +74,37 @@
 			</li>
 		<?php endforeach; ?>
 	</ul>
+	<?php if($stories): ?>
+		<ul class="<?php echo classes([$styles['feed']]); ?>">
+			<?php foreach($stories as $story): ?>
+				<li class="<?php echo classes([$styles['story']]); ?>">
+					<?php
+						get_template_part(
+							'parts/story_block/index',
+							null,
+							array (
+								'story' => $story,
+							)
+						);
+					?>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	<?php else: ?>
+		<p>Looks like we don't have any stories in that category</p>
+	<?php endif; ?>
+	<?php
+		if($pages > 1) {
+			get_template_part(
+				'parts/pagination/index',
+				null,
+				array(
+					'page' => $page,
+					'pages' => $pages,
+				)
+			);
+		}
+
+	?>
 	<?php echo page_content($page_id); ?>
 </div>

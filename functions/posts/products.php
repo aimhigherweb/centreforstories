@@ -15,6 +15,7 @@
 	add_filter( 'posts_orderby', 'cfs_order_featured', 10, 2 );
 
 	function cfs_get_products($featured = false, $limit = 9, $tickets = false, $events = false) {
+		wp_reset_query();
 		global $query_string;
 
 		wp_parse_str( $query_string, $search_query );

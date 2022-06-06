@@ -1,5 +1,57 @@
 <?php
 
+// Custom Collections
+function create_stories_collections() {
+	register_taxonomy(
+		'collection',
+		array('story'),
+		array(
+			'labels' => array(
+				'name'              => 'Collections',
+				'singular_name'     => 'Collection',
+			),
+			'show_ui' =>  true,
+			'show_admin_column' => true,
+			'show_in_rest' => true,
+			'has_archive' => true,
+			'rewrite' => array(
+				'slug' => 'stories/collections',
+				// 'hierarchical' => true,
+				'pages' => true,
+				'with_front' => false
+			),
+			'public' => true,
+			'publicly_queryable' => true,
+		)
+	);
+};
+add_action('init', 'create_stories_collections');
+
+// Custom Tags
+function create_stories_tags() {
+	register_taxonomy(
+		'tag',
+		array('story'),
+		array(
+			'labels' => array(
+				'name'              => 'Tags',
+				'singular_name'     => 'tag',
+			),
+			'show_ui' =>  true,
+			'show_admin_column' => true,
+			'show_in_rest' => true,
+			'has_archive' => false,
+			'rewrite' => array(
+				'slug' => 'stories/tags',
+				'with_front' => false
+			),
+			'public' => true,
+			'publicly_queryable' => true,
+		)
+	);
+};
+add_action('init', 'create_stories_tags');
+
 	function aimhigher_stories_post_type() {
 		$singular = 'Story';
 		$plural = 'Stories';
@@ -49,29 +101,7 @@
   add_action( 'init', 'aimhigher_stories_post_type' );
 
 
-	// Custom Collections
-	function create_stories_collections() {
-		register_taxonomy(
-			'collection',
-			array('story'),
-			array(
-				'labels' => array(
-					'name'              => 'Collections',
-					'singular_name'     => 'Collection',
-				),
-				'show_ui' =>  true,
-				'show_admin_column' => true,
-				'show_in_rest' => true,
-				'rewrite' => array(
-					'slug' => 'stories/collections',
-					'with_front' => false
-				),
-				'public' => true,
-				'publicly_queryable' => true,
-			)
-		);
-	};
-	add_action('init', 'create_stories_collections');
+	
 
 
 	// Change Permalink Structure
@@ -102,24 +132,39 @@
     // add_action('init', 'story_pages_rewrite');
 
 	function cfs_get_stories($limit = 9) {    
+		wp_reset_query();
 		global $query_string;
 
         wp_parse_str( $query_string, $search_query );
         $page = 1;
 		$offset = 0;
+		$tax_query = false;
+		$category = false;
 
         if(isset($search_query, $search_query['paged'])) {
             $page = $search_query['paged'];
         }
 
-		// if(get_option('sticky_posts')) {
-		// 	if($page == 1) {
-		// 		// $limit = $limit - 1;
-		// 	}
-		// 	else {
-		// 		// $offset = 1;
-		// 	}
-		// }
+		// dump($search_query);
+
+
+		if(isset($search_query, $search_query['collection']) && ! $category) {
+            $category = [$search_query['collection']];
+        }
+
+		if($category) {
+            $tax_query = array(
+				array(
+                    'taxonomy' => 'collection',
+                    'field' => 'slug',
+                    'terms' => $category,
+                    'include_children' => true,
+                    'operator' => 'IN'
+                )
+			);
+        }
+
+		// dump($page);
 
 		$args = array(
 			'post_type' => 'story',
@@ -128,22 +173,26 @@
 			'order' => 'DESC',
 			'posts_per_page' => $limit,
             'paged' => $page,
-			// 'ignore_sticky_posts' => true,
-			'offset' => $offset
+			'ignore_sticky_posts' => true,
+			'tax_query' => $tax_query,
 		);
 
-		$post_query = new WP_Query($args);
+		// dump($args);
 
-		// dump($post_query);
+		$story_query = new WP_Query($args);
+
+		// dump($story_query);
 
         return array(
             'page' => $page,
-            'pages' => $post_query->max_num_pages,
-            'posts' => $post_query->posts,
+            'pages' => $story_query->max_num_pages,
+            'posts' => $story_query->posts,
         );
     }
 
 	function cfs_get_story_collections() {
+		wp_reset_query();
+
 		$terms = get_terms(array(
 			'taxonomy' => 'collection',
 			'hide_empty' => true,
@@ -154,12 +203,15 @@
 		foreach($terms as $term) {
 			$type = get_field('collection_type', $term);
 
-			$term->permalink = str_replace(
-				'/collections/',
-				'/',
-				get_term_link($term),
-			);
+			$term->permalink = get_term_link($term);
 
+			if(!$type) {
+				$type = array(
+					'value' => 'story',
+					'label' => 'Story Collection'
+				);
+			}
+			
 			if(!check_array_field($term_data, $type['value'])) {
 				$term_data[$type['value']] = array(
 					'name' => $type['label'],

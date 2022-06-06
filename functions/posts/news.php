@@ -31,6 +31,8 @@
 	apply_filters( 'excerpt_more', '...' );
 
 	function cfs_get_news($limit = 8) {    
+		wp_reset_query();
+		
 		global $query_string;
 
         wp_parse_str( $query_string, $search_query );

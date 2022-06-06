@@ -6,8 +6,9 @@
             $children = true, 
             $past = false,
             $future = true,
-            $type = 'tribe_events',
+            $type = 'tribe_events'
         ) {
+        wp_reset_query();
 
         global $query_string;
 

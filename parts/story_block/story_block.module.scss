@@ -1,0 +1,100 @@
+.block {
+	@extend %events_block;
+
+	position: relative;
+	max-width: 400px;
+	height: 100%;
+	margin: 0 auto;
+
+	&:hover {
+		background: var.$colours_blue;
+		color: var.$colours_white;
+
+		.eyebrow, .cta, .title {
+			color: inherit;
+		}
+	}
+}
+
+.title {
+	@extend %events_block_title;
+
+	margin: 4px 0 12px;
+	font-size: 1.25em;
+}
+
+.eyebrow {
+	@extend %eyebrow;
+
+	position: static;
+	width: 100%;
+	height: auto;
+	margin: 0;
+	color: var.$colours_neutral_500;
+}
+
+.cta {
+	@include mixins.block_link;
+	@include mixins.overline_text('l');
+	@include mixins.invert_link;
+
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	margin-top: 12px;
+	color: var.$colours_blue;
+
+	span {
+		@include mixins.sr_only;
+	}
+
+	svg {
+		display: block;
+		width: 32px;
+		height: 32px;
+		margin-left: 16px;
+	}
+
+	&:focus {
+		outline: none;
+
+		&:before {
+			outline: 3px solid var.$colours_red;
+		}
+	}
+}
+
+.image {
+	@extend %events_block_image;
+}
+
+.excerpt {
+	@extend %events_block_excerpt;
+	@include mixins.clip_lines(5);
+
+	margin: 0;
+}
+
+@supports(grid-template-areas: '.') {
+	.block {
+		grid-template-areas: 'image' 'eyebrow' 'title' 'excerpt';
+		grid-template-columns: 1fr;
+		grid-template-rows: 266px auto auto 1fr auto;
+		margin: 0 auto;
+		padding-bottom: 32px;
+	}
+
+	.image {
+		width: 100%;
+	}
+
+	.eyebrow {
+		grid-area: eyebrow;
+		margin: 32px 0 0;
+		padding: 0 32px;
+	}
+
+	.cta {
+		padding: 0 32px;
+	}
+}

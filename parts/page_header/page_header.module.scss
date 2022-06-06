@@ -37,13 +37,15 @@
 	.header {
 		position: relative;
 
-		h1, *[class*='excerpt'] {
-			max-width: mixins.max_width(100%, 0, 8);
-		}
+
 
 		figure {
 			margin-bottom: 40px;
 		}
+	}
+
+	.title, .excerpt {
+		max-width: mixins.max_width(100%, 0, 8);
 	}
 
 	.graphic {
@@ -88,7 +90,7 @@
 		transform: translateX(-50%);
 
 		figure {
-			max-width: mixins.max_width(100%, 0, 6);
+			max-width: mixins.max_width(100vw, 120px, 6);
 			margin-bottom: 60px;
 		}
 
@@ -98,7 +100,7 @@
 	}
 
 	.excerpt {
-		max-width: mixins.max_width(100%, 0, 6);
+		max-width: mixins.max_width(100vw, 120px, 6);
 	}
 }
 
