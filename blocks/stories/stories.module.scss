@@ -1,7 +1,52 @@
 .block {
 	@extend %block;
+
+	.heading, ul {
+		max-width: unset;
+	}
 }
 
 .heading {
 	@extend %heading;
+
+	&:after {
+		background: var.$colours_blue;
+	}
+}
+
+.feed {
+	@include mixins.list_reset_internal;
+
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: -16px -16px 120px;
+	list-style: none;
+
+	.story {
+		margin: 16px;
+	}
+}
+
+.story {
+	flex: 1 1 250px;
+	color: var.$colours_neutral_700;
+}
+
+@media(min-width: 60em) {
+	.story {
+		flex-basis: 25%;
+	}
+}
+
+@supports(grid-template-areas: '.') {
+	.feed {
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	}
+
+	@media(min-width: 60em) {
+		.feed {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
 }

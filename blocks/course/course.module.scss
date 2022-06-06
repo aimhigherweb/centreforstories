@@ -1,0 +1,23 @@
+.block {
+	@extend %block;
+}
+
+.content {
+
+}
+
+.image {
+
+}
+
+.cta {
+	@extend %block_cta;
+}
+
+.heading {
+	@extend %heading;
+}
+
+.eyebrow {
+	@extend %eyebrow;
+}

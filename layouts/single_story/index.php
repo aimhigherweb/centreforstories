@@ -91,4 +91,7 @@
 			);
 		}
 	?>
+	<?php if (is_active_sidebar('story_cta')) : ?>
+		<?php dynamic_sidebar('story_cta'); ?>
+	<?php endif; ?>
 </div>

@@ -25,12 +25,14 @@
 		'course',
 		'home_header',
 		'events',
+		'story_collections',
 	);
 
 	$widgets = array(
 		'aoc',
 		'event_cta',
-		'news_cta'
+		'news_cta',
+		'story_cta',
 	);
 
 	$image_sizes = [
@@ -76,6 +78,12 @@
 			'name' => 'partner_block',
 			'width' => 300,
 			'height' => 120,
+		),
+		array(
+			'name' => 'course_block',
+			'width' => 860,
+			'height' => 570,
+			'crop' => true
 		),
 	];
 

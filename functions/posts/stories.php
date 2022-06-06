@@ -1,56 +1,56 @@
 <?php
 
-// Custom Collections
-function create_stories_collections() {
-	register_taxonomy(
-		'collection',
-		array('story'),
-		array(
-			'labels' => array(
-				'name'              => 'Collections',
-				'singular_name'     => 'Collection',
-			),
-			'show_ui' =>  true,
-			'show_admin_column' => true,
-			'show_in_rest' => true,
-			'has_archive' => true,
-			'rewrite' => array(
-				'slug' => 'stories/collections',
-				// 'hierarchical' => true,
-				'pages' => true,
-				'with_front' => false
-			),
-			'public' => true,
-			'publicly_queryable' => true,
-		)
-	);
-};
-add_action('init', 'create_stories_collections');
+	// Custom Collections
+	function create_stories_collections() {
+		register_taxonomy(
+			'collection',
+			array('story'),
+			array(
+				'labels' => array(
+					'name'              => 'Collections',
+					'singular_name'     => 'Collection',
+				),
+				'show_ui' =>  true,
+				'show_admin_column' => true,
+				'show_in_rest' => true,
+				'has_archive' => true,
+				'rewrite' => array(
+					'slug' => 'stories/collections',
+					// 'hierarchical' => true,
+					'pages' => true,
+					'with_front' => false
+				),
+				'public' => true,
+				'publicly_queryable' => true,
+			)
+		);
+	};
+	add_action('init', 'create_stories_collections');
 
-// Custom Tags
-function create_stories_tags() {
-	register_taxonomy(
-		'tag',
-		array('story'),
-		array(
-			'labels' => array(
-				'name'              => 'Tags',
-				'singular_name'     => 'tag',
-			),
-			'show_ui' =>  true,
-			'show_admin_column' => true,
-			'show_in_rest' => true,
-			'has_archive' => false,
-			'rewrite' => array(
-				'slug' => 'stories/tags',
-				'with_front' => false
-			),
-			'public' => true,
-			'publicly_queryable' => true,
-		)
-	);
-};
-add_action('init', 'create_stories_tags');
+	// Custom Tags
+	function create_stories_tags() {
+		register_taxonomy(
+			'tag',
+			array('story'),
+			array(
+				'labels' => array(
+					'name'              => 'Tags',
+					'singular_name'     => 'tag',
+				),
+				'show_ui' =>  true,
+				'show_admin_column' => true,
+				'show_in_rest' => true,
+				'has_archive' => false,
+				'rewrite' => array(
+					'slug' => 'stories/tags',
+					'with_front' => false
+				),
+				'public' => true,
+				'publicly_queryable' => true,
+			)
+		);
+	};
+	add_action('init', 'create_stories_tags');
 
 	function aimhigher_stories_post_type() {
 		$singular = 'Story';
@@ -96,12 +96,9 @@ add_action('init', 'create_stories_tags');
 		);
 
 		register_post_type( 'story', $args ); 
-  }
+	}
 
-  add_action( 'init', 'aimhigher_stories_post_type' );
-
-
-	
+	add_action( 'init', 'aimhigher_stories_post_type' );
 
 
 	// Change Permalink Structure
@@ -121,36 +118,26 @@ add_action('init', 'create_stories_tags');
     }
     add_filter('post_type_link', 'change_story_permalink', 1, 3);
 
-	// function story_pages_rewrite() {     
-    //     // Story
-    //     add_rewrite_rule(
-    //         'stories/([^/]+)/([^/]+)/?$',
-    //         'index.php?post_type=story&name=$matches[2]',
-    //         'bottom'
-    //     );              
-    // };
-    // add_action('init', 'story_pages_rewrite');
-
-	function cfs_get_stories($limit = 9) {    
+	function cfs_get_stories($limit = 9, $category = false, $post_in = false) {    
 		wp_reset_query();
 		global $query_string;
-
         wp_parse_str( $query_string, $search_query );
+
         $page = 1;
 		$offset = 0;
 		$tax_query = false;
-		$category = false;
 
         if(isset($search_query, $search_query['paged'])) {
             $page = $search_query['paged'];
         }
 
-		// dump($search_query);
-
-
-		if(isset($search_query, $search_query['collection']) && ! $category) {
+		if(isset($search_query, $search_query['collection']) && !$category) {
             $category = [$search_query['collection']];
         }
+
+		if($post_in) {
+			$category = false;
+		}
 
 		if($category) {
             $tax_query = array(
@@ -164,24 +151,22 @@ add_action('init', 'create_stories_tags');
 			);
         }
 
-		// dump($page);
-
 		$args = array(
 			'post_type' => 'story',
 			'post_status' => 'publish', 
+			'post__in' => $post_in,
 			'orderby' => 'post_date', 
 			'order' => 'DESC',
 			'posts_per_page' => $limit,
             'paged' => $page,
 			'ignore_sticky_posts' => true,
 			'tax_query' => $tax_query,
+			
 		);
 
 		// dump($args);
 
 		$story_query = new WP_Query($args);
-
-		// dump($story_query);
 
         return array(
             'page' => $page,

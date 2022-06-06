@@ -12,7 +12,8 @@
 		null, 
 		array(
 			'class' => 'home',
-			'template' => 'home'
+			'template' => 'home',
+			'custom_page_header' => true
 		)
 	);
 

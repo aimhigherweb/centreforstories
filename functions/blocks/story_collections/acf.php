@@ -1,11 +1,11 @@
 <?php
 
 	acf_add_local_field_group(array(
-		'key' => 'group_62986a47a0e33_news',
-		'title' => 'Blocks - News',
+		'key' => 'group_629e275ae6393',
+		'title' => 'Block - Story Collections',
 		'fields' => array(
 			array(
-				'key' => 'field_626a09519ef3b_news',
+				'key' => 'field_626a09519ef3b_story_collections',
 				'label' => 'Heading',
 				'name' => 'heading',
 				'type' => 'text',
@@ -17,14 +17,14 @@
 					'class' => '',
 					'id' => '',
 				),
-				'default_value' => "",
+				'default_value' => 'Our Stories',
 				'placeholder' => '',
 				'prepend' => '',
 				'append' => '',
 				'maxlength' => '',
 			),
 			array(
-				'key' => 'field_626a095f9ef3c_news',
+				'key' => 'field_626a095f9ef3c_story_collections',
 				'label' => 'Eyebrow',
 				'name' => 'eyebrow',
 				'type' => 'text',
@@ -36,14 +36,29 @@
 					'class' => '',
 					'id' => '',
 				),
-				'default_value' => '',
+				'default_value' => "This month's featured collections",
 				'placeholder' => '',
 				'prepend' => '',
 				'append' => '',
 				'maxlength' => '',
 			),
 			array(
-				'key' => 'field_626a09a89ef3e_news',
+				'key' => 'field_626a09fb9ef41_story_collections',
+				'label' => 'CTA',
+				'name' => 'cta',
+				'type' => 'link',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'return_format' => 'array',
+			),
+			array(
+				'key' => 'field_626a09a89ef3e_story_collections',
 				'label' => 'Content',
 				'name' => 'content',
 				'type' => 'wysiwyg',
@@ -62,28 +77,34 @@
 				'delay' => 0,
 			),
 			array(
-				'key' => 'field_626a09fb9ef41_news',
-				'label' => 'CTA',
-				'name' => 'cta',
-				'type' => 'link',
+				'key' => 'field_6295164178a06_news',
+				'label' => 'Collections',
+				'name' => 'collections',
+				'type' => 'taxonomy',
 				'instructions' => '',
 				'required' => 0,
-				'conditional_logic' => 0,
+				'conditional_logic' => false,
 				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
 				),
-				'return_format' => 'array',
+				'taxonomy' => 'collection',
+				'field_type' => 'checkbox',
+				'add_term' => 0,
+				'save_terms' => 0,
+				'load_terms' => 0,
+				'return_format' => 'object',
+				'multiple' => 1,
+				'allow_null' => 0,
 			),
-			
 		),
 		'location' => array(
 			array(
 				array(
 					'param' => 'block',
 					'operator' => '==',
-					'value' => 'acf/news-block',
+					'value' => 'acf/story-collections-block',
 				),
 			),
 		),
@@ -97,5 +118,6 @@
 		'description' => '',
 		'show_in_rest' => 0,
 	));
+
 
 ?>
