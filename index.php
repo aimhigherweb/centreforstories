@@ -14,7 +14,6 @@
 	// dump(get_the_ID());
 	// dump(get_page_by_path('stories'));
 	// dump(strtok($_SERVER["REQUEST_URI"], '/'));
-	// dump($wp_query);
 	
  
 	if($wp_query->is_posts_page) {
@@ -43,6 +42,16 @@
 			null, 
 			array(
 				'template' => 'shop',
+			)
+		);
+	}
+	else if(is_search()) {
+		get_template_part(
+			'partials/layout/index', 
+			null, 
+			array(
+				'template' => 'search',
+				'custom_page_header' => true
 			)
 		);
 	}

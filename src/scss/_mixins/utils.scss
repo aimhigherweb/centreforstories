@@ -118,6 +118,6 @@
 	display: -webkit-box;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	-webkit-line-clamp: 5;
+	-webkit-line-clamp: $limit;
 	-webkit-box-orient: vertical;
 }

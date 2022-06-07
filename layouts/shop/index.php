@@ -25,4 +25,5 @@
 			)
 		);
 	?>
+	<?php echo the_content(); ?>
 </div>

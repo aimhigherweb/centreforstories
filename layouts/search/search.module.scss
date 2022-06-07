@@ -1,0 +1,68 @@
+.content {
+	@extend %content;
+}
+
+.search {
+	position: relative;
+	margin: 30px 0 0;
+	padding: 0;
+
+	input {
+		width: 100%;
+		padding: 10px;
+		padding-right: 45px;
+		background: none;
+		line-height: 1.25;
+	}
+
+	button {
+		@include mixins.centre;
+		@include mixins.position(0, 0, 0, auto);
+
+		position: absolute;
+		z-index: 5;
+		width: 40px;
+		padding: 12px;
+		border: none;
+		background: var.$colours_navy;
+		color: var.$colours_white;
+
+		&:hover {
+			background: none;
+			color: var.$colours_navy;
+		}
+	}
+}
+
+.results {
+	@include mixins.list_reset_internal;
+
+	margin-top: 60px;
+
+	li {
+		margin: 0 0 30px;
+	}
+}
+
+.page_title {
+	margin: 0 0 10px;
+	font-size: 1.5em;
+}
+
+.excerpt {
+	@include mixins.clip_lines;
+
+	* {
+		margin: 0;
+		padding: 0;
+		color: inherit;
+		font-family: var.$font_main;
+		font-size: 1em;
+		font-weight: 400;
+		text-decoration: none;
+	}
+
+	ul {
+		display: none;
+	}
+}

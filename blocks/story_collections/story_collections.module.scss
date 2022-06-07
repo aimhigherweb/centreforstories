@@ -165,7 +165,7 @@
 
 	.collections {
 		display: grid;
-		grid-auto-rows: minmax(calc(((100vw - 130px) / 12) * 4), $max / 4);
+		grid-auto-rows: minmax(calc(((100vw - 130px) / 12) * 4), math.div($max, 4));
 		grid-column-gap: 16px;
 		grid-template-columns: repeat(auto-fit, minmax(mixins.max_width(100vw, 76px, 12), $max));
 		margin: 0 auto;
@@ -197,7 +197,7 @@
 
 	@media(min-width: 30em) {
 		.collections {
-			grid-auto-rows: minmax(calc(((100vw - 130px) / 12) * 2), $max / 4);
+			grid-auto-rows: minmax(calc(((100vw - 130px) / 12) * 2), math.div($max, 4));
 			grid-template-columns: repeat(2, minmax(mixins.max_width(100vw, 105px, 6), $max));
 			margin-left: 0;
 			background: none;
@@ -221,7 +221,7 @@
 
 	@media(min-width: 40em) {
 		.collections {
-			grid-auto-rows: minmax(100px, $max / 4);
+			grid-auto-rows: minmax(100px, math.div($max, 4));
 			grid-template-columns: repeat(2, 1fr);
 			max-width: calc(632px + 48px);
 
@@ -233,7 +233,7 @@
 
 	@media(min-width: 40em) {
 		.collections {
-			grid-auto-rows: $max / 4;
+			grid-auto-rows: math.div($max, 4);
 			grid-template-columns: repeat(2, minmax(100px, $max));
 			max-width: calc(632px + 48px);
 

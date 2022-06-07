@@ -13,8 +13,11 @@
 			'env' => 'dev'
 		)
 	);
+
+	
 ?>
 
 <div class="<?php echo $styles['content']; ?>">
+	
 	<?php echo the_content(); ?>
 </div>
