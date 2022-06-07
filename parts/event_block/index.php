@@ -45,6 +45,7 @@
 		</button>
 	<?php else : ?>
 		<a href="/event/<?php echo $event['post_name'] ?>">
+			<?php if(tribe_events_has_soldout($event)) {echo 'Sold out';} ?>
 			<?php echo $event['post_title']; ?>
 		</a>
 	<?php endif; ?>

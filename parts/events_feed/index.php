@@ -36,10 +36,6 @@
 
 	$events_object = array();
 
-	if(!check_array_field($args, 'featured')) {
-		$feed_classes[] = $styles['featured'];
-	}
-
 	foreach($events as $event) {
 		// var_dump($events_object);
 		if(check_array_field($events_object, $event->post_title)) {
@@ -102,6 +98,7 @@
 			array(
 				'page' => $page,
 				'pages' => $pages,
+				'query' => true
 			)
 		);
 	}

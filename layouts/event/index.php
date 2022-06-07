@@ -92,7 +92,7 @@
 		<?php echo $date; ?>
 	</p>
 	<?php echo the_content(); ?>
-	<?php if(tribe_events_has_tickets($event_id) && !tribe_is_past_event($event_id)): ?>
+	<?php if(tribe_events_has_tickets($event_id) && !tribe_is_past_event(tribe_get_event($event_id))): ?>
 		<?php 
 			get_template_part(
 				'parts/event_ticket/index',

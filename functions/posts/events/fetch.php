@@ -100,7 +100,8 @@
             'order' => 'ASC',
             'meta_key' => '_EventStartDate',
             'tax_query' => $tax_query,
-            'meta_query' => $meta_query
+            'meta_query' => $meta_query,
+            'ignore_sticky_posts' => true,
         );
 
         $post_query = new WP_Query($post_args);

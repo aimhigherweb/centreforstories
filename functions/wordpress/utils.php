@@ -45,4 +45,14 @@
 		return $number;
 	}
 
+	function highlight_search($result) {
+		$keys = implode('|', array_filter(explode(' ', get_search_query())));
+
+		return preg_replace(
+			'/(' . $keys .')/iu', 
+			'<mark>\0</mark>', 
+			$result
+		);
+	}
+
 ?>

@@ -40,7 +40,26 @@
 	margin-top: 60px;
 
 	li {
+		position: relative;
 		margin: 0 0 30px;
+
+		a {
+			@include mixins.block_link;
+
+			&:hover, &:focus {
+				outline: none;
+
+				&:before {
+					outline: 3px solid var.$colours_red;
+				}
+			}
+		}
+	}
+
+	mark {
+		background: none;
+		color: var.$colours_blue;
+		font-weight: 700;
 	}
 }
 

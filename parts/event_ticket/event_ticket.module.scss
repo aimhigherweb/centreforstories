@@ -24,6 +24,34 @@
 				width: calc(5ch + 30px);
 			}
 		}
+
+		.pwyw {
+			display: flex;
+			position: relative;
+			align-items: center;
+			width: calc(10ch + 30px);
+
+			span {
+				position: absolute;
+				z-index: 5;
+				left: 10px;
+				color: var.$colours_neutral;
+			}
+
+			input {
+				width: 100%;
+				-moz-appearance:textfield;
+				appearance: textfield;
+				padding-left: calc(1ch + 10px);
+
+				&::-webkit-inner-spin-button,
+				&::-webkit-outer-spin-button {
+					-webkit-appearance: none;
+					-moz-appearance: none;
+					appearance: none;
+				}
+			}
+		}
 	}
 
 	li {
@@ -45,6 +73,12 @@
 	flex-shrink: 0;
 
 	margin: 0 2ch;
+}
+
+.cta {
+	@include mixins.buttons(var.$colours_blue, var.$colours_white);
+
+	font-weight: 500;
 }
 
 @media(min-width: 50em) {

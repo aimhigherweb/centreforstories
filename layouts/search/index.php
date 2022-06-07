@@ -15,9 +15,7 @@
 	);
 
 	$results = $wp_query->posts;
-
 	$query = 'Showing ' . count($results) . ' results for <em>' . get_search_query() . '</em>';
-
 	
 ?>
 
@@ -42,15 +40,18 @@
 	</form>
 	<?php if($results): ?>
 		<ul class="<?php echo classes([$styles['results']]); ?>">
-			<?php foreach($results as $result): ?>
+			<?php foreach($results as $result): 
+				$title = highlight_search($result->post_title);
+				$excerpt = highlight_search(get_the_excerpt($result->ID));
+			?>
 				<li>
 					<h2 class="<?php echo classes([$styles['page_title']]); ?>">
 						<a href="<?php echo get_permalink($result->ID); ?>">
-							<?php echo $result->post_title; ?>
+							<?php echo $title; ?>
 						</a>
 					</h2>
 					<div class="<?php echo classes([$styles['excerpt']]); ?>">
-						<?php echo get_the_excerpt($result->ID); ?>
+						<?php echo $excerpt; ?>
 					</div>
 				</li>
 			<?php endforeach; ?>
