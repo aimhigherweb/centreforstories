@@ -36,23 +36,11 @@
 					<?php echo $donation->get_name(); ?>
 				</h3>
 				<p class="<?php echo classes([$styles['price']]); ?>">
-					<?php if(check_field_value([
-						get_post_meta($donation->id, '_min_price'),
-						get_post_meta($donation->id, '_maximum_price')
-					])): ?>
-						<?php echo display_price([
-							get_post_meta($donation->id, '_min_price')[0],
-							get_post_meta($donation->id, '_maximum_price')[0]
-						]); ?>
-					<?php elseif(check_field_value($donation->price)): ?>
-						<?php echo display_price($donation->price); ?>
-					<?php else: ?>
-						Free
-					<?php endif; ?>
+				<?php echo display_price(cfs_product_price($donation)); ?>
 				</p>
-				<p><?php echo $donation->short_description; ?></p>
+				<p><?php echo $donation->get_short_description(); ?></p>
 				<a
-					href="/products/<?php echo $donation->slug; ?>"
+					href="/products/<?php echo $donation->get_slug(); ?>"
 					class="<?php echo classes([$styles['cta']]); ?>"
 				>
 					Donate

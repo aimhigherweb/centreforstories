@@ -73,38 +73,26 @@
 		<ul>
 			<?php foreach($tickets as &$ticket): 
 				$value = 0;
-				$price = $ticket->get_price();
+				$price = display_price(cfs_product_price($ticket));
 				$pwyw = false;
 				$suggested_price = false;
 
-				if(check_field_value([
-					get_post_meta($ticket->id, '_min_price'),
-					get_post_meta($ticket->id, '_maximum_price')
-				])) {
+				if(is_array($price)) {
 					$pwyw = true;
-					$price = [
-						get_post_meta($ticket->id, '_min_price')[0],
-						get_post_meta($ticket->id, '_maximum_price')[0]
-					];
-
-					$suggested_price = get_post_meta($ticket->id, '_suggested_price')[0];
+					$suggested_price = $ticket->get_meta('_suggested_price')[0];
 				}
 
 				if(check_array_field($existing_tickets, $ticket->id)) {
 					$value = $existing_tickets[$ticket->id]['quantity'];
 					$suggested_price = $existing_tickets[$ticket->id]['price'];
 				}
-
-				
-
-				// dump(get_post_meta($ticket->id,));
 			?>
 				<li>
 					<p class="<?php echo classes([$styles['ticket']]); ?>">
 						<?php echo $ticket->name; ?>
 					</p>
 					<p class="<?php echo classes([$styles['price']]); ?>">
-						<?php echo display_price($price); ?>
+						<?php echo $price; ?>
 					</p>
 					<?php if($pwyw): ?>
 						<label

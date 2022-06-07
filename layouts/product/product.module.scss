@@ -1,0 +1,99 @@
+.content {
+	@extend %content;
+
+	blockquote {
+		@include mixins.heading_text('h2');
+
+		margin: 0;
+		font-style: normal;
+		font-weight: 700;
+	}
+
+	header {
+		& + p,
+		& + h2,
+		& + blockquote {
+			&:not([class]) {
+				margin-top: 40px;
+			}
+		}
+	}
+
+	:global(.entry-summary) {
+		margin-bottom: 20px;
+	}
+}
+
+.atc {
+	--block_colour: var(--page_colour);
+
+	@extend %block;
+	@include mixins.list_reset;
+
+	clear: both;
+	color: var.$colours_white;
+
+	h2 {
+		margin-top: 0;
+		margin-bottom: 20px;
+		color: inherit;
+	}
+
+	p, :global(.cart) {
+		max-width: 400px;
+	}
+
+	:global(.cart) {
+		padding: 0;
+
+		button {
+			margin-top: 20px;
+		}
+	}
+}
+
+.price {
+	margin-top: 30px;
+	margin-bottom: 0;
+	font-size: 2em;
+	font-weight: 800;
+
+	span {
+		font-size: 0.8em;
+		font-weight: 500;
+	}
+}
+
+.cta {
+	@include mixins.buttons(var.$colours_blue, var.$colours_white);
+
+	margin-top: 20px;
+}
+
+@media(min-width: 50em) {
+	.content {
+		:global(.entry-summary) {
+			max-width: mixins.max_width(100%, 0, 6);
+			margin-bottom: 60px;
+		}
+	}
+
+	.atc {
+		padding-top: 60px;
+		padding-bottom: 60px;
+	}
+}
+
+@media(min-width: 60em) {
+	.content {
+		header {
+			& + p,
+			& + h2,
+			& + blockquote {
+				&:not([class]) {
+					margin-top: 60px;
+				}
+			}
+		}
+	}
+}

@@ -43,7 +43,7 @@
 		$title = $args['title'];
 	}
 
-	if(check_array_field($args, 'excerpt')) {
+	if(array_key_exists('excerpt', $args) && $args['excerpt'] !== false) {
 		$excerpt = $args['excerpt'];
 	}
 

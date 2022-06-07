@@ -39,26 +39,5 @@
 	}
 		
 	add_filter('template_include', 'cfs_init_cart');
- 
-	function cfs_event_title_cart( $title, $values, $cart_item_key ) {
-			$ticket_meta = get_post_meta( $values['product_id'] );
-
-			if ( array_key_exists( '_tribe_wooticket_for_event', $ticket_meta ) ) {
-				$event_id = absint( $ticket_meta[ '_tribe_wooticket_for_event' ][0] );
-		
-				if ( $event_id ) {
-					$title = sprintf(
-						'%s for <a href="%s" target="_blank"><strong>%s</strong></a>', 
-						$title, 
-						get_permalink( $event_id ), 
-						get_the_title( $event_id ) 
-					);
-				}
-			}
-		
-		return $title;
-	}
-
-	add_filter( 'woocommerce_cart_item_name', 'cfs_event_title_cart', 10, 3 );
 
 ?>
