@@ -49,24 +49,24 @@
 	>
 		<picture>
 			<source
-				srcset="<?php echo map_image('640x640', $map_details); ?>"
+				srcset="<?php echo map_image(size: '640x640', map: $map_details); ?>"
 				media="(max-width: 640px)"
 			/>
 			<source
-				srcset="<?php echo map_image('800x800', $map_details); ?>"
+				srcset="<?php echo map_image(size: '800x800', map: $map_details); ?>"
 				media="(max-width: 800px)"
 			/>
 			<source
-				srcset="<?php echo map_image('1000x1000', $map_details); ?>"
+				srcset="<?php echo map_image(size: '1000x1000', map: $map_details); ?>"
 				media="(max-width: 1000px)"
 			/>
 			<source
-				srcset="<?php echo map_image('1280x1280', $map_details); ?>"
+				srcset="<?php echo map_image(size: '1280x1280', map: $map_details); ?>"
 				media="(min-width: 1000px)"
 			/>
 			<img 
 				class="<?php echo classes([$styles['image']]); ?>" 
-				src="<?php echo map_image('1280x1280', $map_details); ?>" 
+				src="<?php echo map_image(size: '1280x1280', map: $map_details); ?>" 
 				alt="Linked map for <?php echo $name; ?>" 
 			/>
 		</picture>

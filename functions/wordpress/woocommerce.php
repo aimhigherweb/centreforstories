@@ -51,25 +51,29 @@
 	remove_action('woocommerce_proceed_to_checkout', 'wdgk_donation_form_front_html');
 	remove_action('woocommerce_before_checkout_form', 'wdgk_add_donation_on_checkout_page');
 
-	$donation_product = false;
-	$donation_cart = false;
-	$donation_checkout = false;
-	$donation_options = wdgk_get_wc_donation_setting();
-	if (isset($donation_options['Product'])) {
-		$donation_product = $donation_options['Product'];
+	if(function_exists('wdgk_get_wc_donation_setting')) {
+		$donation_product = false;
+		$donation_cart = false;
+		$donation_checkout = false;
+		$donation_options = wdgk_get_wc_donation_setting();
+		if (isset($donation_options['Product'])) {
+			$donation_product = $donation_options['Product'];
+		}
+		if (isset($donation_options['Cart'])) {
+			$donation_cart = $donation_options['Cart'];
+		}
+		if (isset($options['Checkout'])) {
+			$donation_checkout = $donation_options['Checkout'];
+		}
+		if (!empty($donation_product) && $donation_cart == 'on') {
+			add_action( 'woocommerce_cart_collaterals', 'wdgk_donation_form_front_html', 5 );
+		}
+		if (!empty($donation_product) && $donation_checkout == 'on') {
+			add_action('woocommerce_before_order_notes', 'wdgk_add_donation_on_checkout_page');
+		}
 	}
-	if (isset($donation_options['Cart'])) {
-		$donation_cart = $donation_options['Cart'];
-	}
-	if (isset($options['Checkout'])) {
-		$donation_checkout = $donation_options['Checkout'];
-	}
-	if (!empty($donation_product) && $donation_cart == 'on') {
-		add_action( 'woocommerce_cart_collaterals', 'wdgk_donation_form_front_html', 5 );
-	}
-	if (!empty($donation_product) && $donation_checkout == 'on') {
-		add_action('woocommerce_before_order_notes', 'wdgk_add_donation_on_checkout_page');
-	}
+
+	
 
 	
 
