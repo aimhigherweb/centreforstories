@@ -34,8 +34,11 @@
 		color: inherit;
 		font-family: inherit;
 		font-size: inherit;
-		font-weight: inherit;
 		text-decoration: none;
+
+		&:not(strong) {
+			font-weight: inherit;
+		}
 	}
 }
 

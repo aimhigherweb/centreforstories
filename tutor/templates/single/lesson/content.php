@@ -95,28 +95,33 @@
 		<?php endif; ?>
 	</ul>
 
-	<!-- Load Lesson Video -->
 	<?php
 		$video_info = tutor_utils()->get_video_info();
 		$source_key = is_object($video_info) && 'html5' !== $video_info->source ? 'source_'.$video_info->source : null;
 		$has_source = (is_object($video_info) && $video_info->source_video_id) || (isset($source_key) ? $video_info->$source_key : null);
-		
-		if ($has_source) : ?>
-			<input
-				type="hidden" 
-				id="tutor_video_tracking_information" 
-				value="<?php echo esc_attr( json_encode( $jsonData ) ); ?>"
-			/>
-			<?php tutor_lesson_video();
-		endif;
 	?>
 
-	<h2><?php _e( 'About Lesson', 'tutor' ); ?></h2>
-	<?php the_content(); ?>
+	<div class="lesson_content">
+		
+		<!-- Load Lesson Video -->
+		<?php		
+			if ($has_source) : ?>
+				<input
+					type="hidden" 
+					id="tutor_video_tracking_information" 
+					value="<?php echo esc_attr( json_encode( $jsonData ) ); ?>"
+				/>
+				<?php tutor_lesson_video();
+			endif;
+		?>
 
-	<?php if($attachments) : ?>
-		<h2><?php _e( 'Exercise Files', 'tutor' ); ?></h2>
-		<?php get_tutor_posts_attachments(); ?>
-	<?php endif; ?>
+		<h2><?php _e( 'About Lesson', 'tutor' ); ?></h2>
+		<?php the_content(); ?>
 
-	<?php tutor_lesson_mark_complete_html(); ?>
+		<?php if($attachments) : ?>
+			<h2><?php _e( 'Exercise Files', 'tutor' ); ?></h2>
+			<?php get_tutor_posts_attachments(); ?>
+		<?php endif; ?>
+
+		<?php tutor_lesson_mark_complete_html(); ?>
+	</div>

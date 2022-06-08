@@ -49,7 +49,7 @@
 			<span class="close">
 				<?php echo inline_svg(get_template_directory_uri() . '/src/img/cross.svg'); ?>
 			</span>
-			<span class="sr-only">Toggle Lesson Sidebar</span>
+			<span>View All Lessons</span>
 		</button>
 		<ul class="topics">
 			<?php
@@ -65,13 +65,14 @@
 				?>
 
 					<li>
-						<p><?php the_title(); ?></p>
-						<p><?php echo $topic_summery; ?></p>
-						<p>
-							<?php echo $num_lessons_complete . '/' . $num_lessons; ?>
-							<span class="sr-only"> Lessons Completed</span>
+						<p class="topic_title">
+							<?php the_title(); ?>
+							<span class="completed">
+								<?php echo $num_lessons_complete . '/' . $num_lessons; ?>
+								<span class="sr-only"> Lessons Completed</span>
+							</span>
 						</p>
-
+						<p><?php echo $topic_summery; ?></p>
 						<?php
 							$lessons = tutor_utils()->get_course_contents_by_topic( get_the_ID(), -1 );
 							$is_enrolled = tutor_utils()->is_enrolled( $course_id, get_current_user_id() );
@@ -102,7 +103,20 @@
 
 								?>
 
-									<li>
+									<li class="lesson">
+										<input
+											id="<?php echo $post->ID; ?>"
+											<?php echo $is_completed_lesson ? 'checked' : ''; ?> 
+											type='checkbox' 
+											class='tutor-form-check-input tutor-form-check-circle' 
+											disabled 
+											readonly 
+										/>
+										<label for="<?php echo $post->ID; ?>">
+											<span class="sr-only">
+												<?php echo $is_completed_lesson ? 'Lesson is completed' : 'Lesson is not completed'; ?>
+											</span>
+										</label>
 										<a href="<?php echo get_permalink( $post->ID ); ?>" >
 											<?php echo inline_svg(get_template_directory_uri() . '/src/img/' . $icon); ?>
 											<?php echo $post->post_title; ?>
@@ -113,19 +127,6 @@
 												<?php echo tutor_utils()->get_optimized_duration( $play_time ); ?>
 											</span>
 										<?php endif; ?>
-
-										<input
-											id="<?php echo $post->ID; ?>"
-											<?php echo $is_completed_lesson ? 'checked' : ''; ?> 
-											type='checkbox' 
-											class='tutor-form-check-input tutor-form-check-circle' 
-											disabled 
-											readonly 
-										/>
-										<label for="<?php echo $post->ID; ?>" class="sr-only">
-											<?php echo $is_completed_lesson ? 'Lesson is completed' : 'Lesson is not completed'; ?>
-										</label>
-										
 									</li>
 
 								<?php endwhile;	?>

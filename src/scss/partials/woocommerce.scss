@@ -1,6 +1,7 @@
 .woocommerce-form-login-toggle,
 .woocommerce-notices-wrapper,
-.woocommerce-form-coupon-toggle {
+.woocommerce-form-coupon-toggle,
+.woocommerce-message {
 	&:not(:empty) {
 		@include mixins.full_background(var.$colours_grey_light_warm);
 
@@ -13,7 +14,9 @@
 	}
 
 	.woocommerce-info,
-	.woocommerce-message {
+	.woocommerce-message,
+	&.woocommerce-message,
+	&.woocommerce-info {
 		margin: 0;
 		border: none;
 		background: none;
@@ -90,6 +93,11 @@
 
 .woocommerce.woocommerce {
 	margin: 0;
+
+	form {
+		border: none;
+		border-radius: 0;
+	}
 
 	.button, button, .button.alt {
 		@include mixins.buttons(var.$colours_blue, var.$colours_white);
@@ -417,6 +425,41 @@
 
 	.cart_totals.cart_totals {
 		width: 100%;
+	}
+}
+
+.woocommerce-form-row {
+	max-width: unset;
+}
+
+.woocommerce-MyAccount-navigation {
+	margin-top: 30px;
+
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		width: auto;
+		max-width: unset;
+		margin: 0 -10px;
+
+		li {
+			margin: 10px;
+		}
+	}
+}
+
+.woocommerce-MyAccount-content {
+	fieldset {
+		margin: 0;
+		padding: 0;
+		border: none;
+	}
+
+	.woocommerce-message {
+		&:before {
+			content: none;
+		}
 	}
 }
 

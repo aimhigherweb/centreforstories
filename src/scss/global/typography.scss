@@ -24,6 +24,14 @@ a {
 	}
 }
 
+strong {
+	font-weight: 800;
+}
+
+em {
+	font-style: italic;
+}
+
 p {
 	@include mixins.gutenberg_text_colours;
 }

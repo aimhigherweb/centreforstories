@@ -12,7 +12,7 @@
 		null, 
 		array(
 			'template' => 'lesson',
-			'context' => 'lesson'
+			'context' => 'assignment'
 		)
 	);
 

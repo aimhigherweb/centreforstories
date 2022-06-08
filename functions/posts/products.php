@@ -25,7 +25,14 @@
 			array(
 				'taxonomy' => 'product_cat',
 				'field' => 'slug',
-				'terms' => ['event-ticket', 'course'],
+				'terms' => ['event-ticket', 'course', 'donation'],
+				'include_children' => true,
+				'operator' => 'NOT IN'
+			),
+			array(
+				'taxonomy' => 'product_tag',
+				'field' => 'slug',
+				'terms' => ['hidden'],
 				'include_children' => true,
 				'operator' => 'NOT IN'
 			)
@@ -34,6 +41,10 @@
 
 		if(isset($search_query, $search_query['page'])) {
 			$page = $search_query['page'];
+		}
+
+		if(isset($search_query, $search_query['paged'])) {
+			$page = $search_query['paged'];
 		}
 
 		if($featured) {

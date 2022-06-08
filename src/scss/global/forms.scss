@@ -7,11 +7,18 @@ form {
 		@include mixins.text('l');
 	}
 
-	label {
+	label, legend {
 		display: block;
 		width: 100%;
 		margin: 0 0 10px;
 		padding: 0;
+	}
+
+	legend {
+		@include mixins.heading_text('h3');
+
+		margin-top: 30px;
+		font-weight: 600;
 	}
 
 	input, textarea, select {

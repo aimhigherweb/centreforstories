@@ -16,7 +16,7 @@
 
 	// echo tribe( Template_Bootstrap::class )->get_view_html();
 
-	// var_dump(tribe_context()->get( 'view' ));
+	var_dump(tribe_context()->get( 'view' ));
 
 	// dump(tribe_is_past());
 

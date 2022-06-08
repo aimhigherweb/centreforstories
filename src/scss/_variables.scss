@@ -1,10 +1,11 @@
 @forward './variables/colours.scss' as colours_*;
-
 @forward './variables/fonts.scss' as font_*;
+@use 'sass:math';
 
 // Sizes
 $max_content: 1216px;
 $max_width: $max_content + 120px;
+$youtube_ratio: math.div(281, 500);
 
 $media_queries: (
 	'large_mobile': 40em,

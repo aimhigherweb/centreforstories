@@ -1,5 +1,10 @@
 .content {
-	@extend %content;
-
 	position: relative;
+}
+
+@media(min-width: 70em) {
+	.content {
+		display: flex;
+		flex-wrap: wrap;
+	}
 }

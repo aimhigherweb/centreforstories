@@ -19,6 +19,7 @@
 
 	$image = $product->get_image_id();
 
+
 ?>
 
 <div class="<?php echo classes([$styles['image']]); ?>">

@@ -39,7 +39,9 @@
 	$path = $path_matches[1];
 	$max_pages = 10;
 	$range = 3;
-	$page_path = '/page/';
+	$page_path = $path . '/page/';
+
+	
 
 	if(check_array_field($args, 'query')) {
 		$page_path = $path . '/?page=';

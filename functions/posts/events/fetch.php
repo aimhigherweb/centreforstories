@@ -23,6 +23,10 @@
             $page = $search_query['page'];
         }
 
+        if(isset($search_query, $search_query['paged'])) {
+			$page = $search_query['paged'];
+		}
+
         if(!$type && isset($search_query, $search_query['post_type'])) {
             $type = $search_query['post_type'];
         }

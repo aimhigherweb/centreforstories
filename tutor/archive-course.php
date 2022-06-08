@@ -11,10 +11,9 @@
 		'partials/layout/index', 
 		null, 
 		array(
-			'template' => 'lesson',
-			'context' => 'lesson'
+			'template' => 'courses',
+			'page_id' => get_page_by_path($_SERVER["REQUEST_URI"])->ID
 		)
 	);
 
 ?>
-

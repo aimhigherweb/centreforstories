@@ -14,6 +14,13 @@
 					'terms' => ['donation'],
 					'include_children' => true,
 					'operator' => 'IN'
+				),
+				array(
+					'taxonomy' => 'product_tag',
+					'field' => 'slug',
+					'terms' => ['hidden'],
+					'include_children' => true,
+					'operator' => 'NOT IN'
 				)
 			)
 		);
