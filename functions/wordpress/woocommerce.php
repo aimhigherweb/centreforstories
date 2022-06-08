@@ -5,11 +5,11 @@
 
 		if(check_field_value([
 			$item->get_meta('_min_price'),
-			$item->get_meta('_max_price'),
+			$item->get_meta('_maximum_price'),
 		])) {
 			$price = [
-				$item->get_meta('_min_price')[0],
-				$item->get_meta('_max_price')[0]
+				$item->get_meta('_min_price'),
+				$item->get_meta('_maximum_price')
 			];
 		}
 
@@ -46,6 +46,32 @@
 
 	// Remove add to cart
 	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
+
+	// Move Donation form above cart totals
+	remove_action('woocommerce_proceed_to_checkout', 'wdgk_donation_form_front_html');
+	remove_action('woocommerce_before_checkout_form', 'wdgk_add_donation_on_checkout_page');
+
+	$donation_product = false;
+	$donation_cart = false;
+	$donation_checkout = false;
+	$donation_options = wdgk_get_wc_donation_setting();
+	if (isset($donation_options['Product'])) {
+		$donation_product = $donation_options['Product'];
+	}
+	if (isset($donation_options['Cart'])) {
+		$donation_cart = $donation_options['Cart'];
+	}
+	if (isset($options['Checkout'])) {
+		$donation_checkout = $donation_options['Checkout'];
+	}
+	if (!empty($donation_product) && $donation_cart == 'on') {
+		add_action( 'woocommerce_cart_collaterals', 'wdgk_donation_form_front_html', 5 );
+	}
+	if (!empty($donation_product) && $donation_checkout == 'on') {
+		add_action('woocommerce_before_order_notes', 'wdgk_add_donation_on_checkout_page');
+	}
+
+	
 
 	// Link to product/event in cart
 	function cfs_event_title_cart( $title, $values, $cart_item_key ) {
