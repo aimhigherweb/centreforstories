@@ -98,7 +98,8 @@
 				'parts/event_ticket/index',
 				null,
 				array(
-					'tickets' => $tickets
+					'tickets' => $tickets,
+					'event' => $event_id,
 				)
 			);
 		?>

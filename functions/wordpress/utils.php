@@ -24,12 +24,20 @@
 
 	function format_price($price) {
 		$decimals = 2;
+		$string = false;
 
 		if(fmod($price, 1) == 0) {
 			$decimals = 0;
 		}
 
-		return '<span>$</span>' . number_format($price, $decimals, '.',	',');
+		if($price == 0) {
+			$string = 'Free';
+		}
+		else {
+			$string = '<span>$</span>' . number_format($price, $decimals, '.',	',');
+		}
+
+		return $string;
 	}
 
 	function display_price($price) {

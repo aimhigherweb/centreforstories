@@ -64,3 +64,20 @@
 		}
 	}
 }
+
+@media(min-width: var.$max_width) {
+	%content {
+		p,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		blockquote,
+		hr,
+		ul,
+		.wp-block-image {
+			max-width: max_width(var.$max_content, 0, 6);
+		}
+	}
+}

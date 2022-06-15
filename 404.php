@@ -7,7 +7,7 @@
  * @version 1.0
  */
 
-dump($wp_query);
+// dump($wp_query);
 
 	get_template_part(
 		'partials/layout/index', 

@@ -40,7 +40,6 @@
 }
 
 .cta {
-	@include mixins.block_link;
 	@include mixins.overline_text('l');
 	@include mixins.invert_link;
 

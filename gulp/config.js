@@ -20,6 +20,7 @@ module.exports = {
 		'./*.php',
 		'./*.css',
 		'./screenshot.png',
+		'./screenshot.jpg',
 	],
 	phpFiles: [
 		'./*.php',

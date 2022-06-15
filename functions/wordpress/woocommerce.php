@@ -1,5 +1,11 @@
 <?php
 
+	function aimhigher_add_woocommerce_support() {
+		add_theme_support( 'woocommerce' );
+	}
+
+	add_action( 'after_setup_theme', 'aimhigher_add_woocommerce_support' );
+
 	function cfs_product_price($item) {
 		$price = $item->get_price();
 

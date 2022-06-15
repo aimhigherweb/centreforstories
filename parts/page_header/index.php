@@ -32,7 +32,7 @@
 	}
 
 	if(!check_field_value($excerpt)) {
-		$excerpt = get_the_excerpt($id);
+		$excerpt = get_the_excerpt(post: $id);
 	}
 
 	if(!check_field_value($eyebrow)) {
