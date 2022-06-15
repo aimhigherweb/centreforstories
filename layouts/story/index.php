@@ -20,6 +20,7 @@
 
 	$page_id = get_the_ID();
 	$collection_page = false;
+	$collection_data = false;
 
 	if(check_array_field($args, 'page_id')) {
 		$page_id = $args['page_id'];
@@ -32,15 +33,30 @@
 
 	$collections = cfs_get_story_collections();
 
+	$header_args = array(
+		'title' => get_the_title($args['page_id']),
+		'excerpt' => get_field('header_content', $args['page_id']),
+		'class' => $styles['header']
+	);
+
 	if(check_array_field($search_query, 'collection')) {
 		$collection_page = $search_query['collection'];
-	}
+		$collection_data = get_queried_object();
 
-	// dump($story_data);
+		$header_args['title'] = 'Stories - ' . $collection_data->name;
+		$header_args['excerpt'] = $collection_data->description;
+	}
 
 ?>
 
 <div class="<?php echo $styles['content']; ?>">
+	<?php 
+		get_template_part(
+			'parts/page_header/index',
+			null,
+			$header_args
+		);
+	?>
 	<ul class="<?php echo classes([$styles['filters']]); ?>">
 		
 		<?php foreach($collections as $type): ?>

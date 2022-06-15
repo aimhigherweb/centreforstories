@@ -2,7 +2,6 @@
 	@extend %content;
 	@include mixins.full_background(var.$colours_grey_light_warm);
 
-	padding-top: 1px;
 	padding-bottom: 1px;
 
 	ul {
@@ -83,9 +82,23 @@
 	color: var.$colours_neutral_700;
 }
 
+.header {
+	*[class*='module__title'],
+	*[class*='module__excerpt'] {
+		max-width: mixins.max_width(100%, 0, 8);
+	}
+}
+
 @media(min-width: 60em) {
 	.story {
 		flex-basis: 25%;
+	}
+
+	.header {
+		*[class*='module__title'],
+		*[class*='module__excerpt'] {
+			max-width: mixins.max_width(100%, 0, 9);
+		}
 	}
 }
 

@@ -28,13 +28,21 @@
 			)
 		);
 	}
-	else if (is_archive()) {		
+	else if (is_archive()) {
+		$post_type = get_post_type();
+		$custom_page_header = false;
+
+		if($post_type == 'story') {
+			$custom_page_header = true;
+		}
+		
 		get_template_part(
 			'partials/layout/index', 
 			null, 
 			array(
-				'template' => get_post_type(),
-				'page_id' => get_page_by_path(strtok($_SERVER["REQUEST_URI"], '/'))
+				'template' => $post_type,
+				'page_id' => get_page_by_path(strtok($_SERVER["REQUEST_URI"], '/'))->ID,
+				'custom_page_header' => $custom_page_header
 			)
 		);
 	}
