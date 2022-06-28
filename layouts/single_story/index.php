@@ -91,6 +91,14 @@
 			);
 		}
 	?>
+	<?php if(get_field('transcript')): ?>
+		<details>
+			<summary>View Story Transcript</summary>
+			<div>
+				<?php echo get_field('transcript'); ?>
+			</div>
+		</details>
+	<?php endif; ?>
 	<?php if (is_active_sidebar('story_cta')) : ?>
 		<?php dynamic_sidebar('story_cta'); ?>
 	<?php endif; ?>

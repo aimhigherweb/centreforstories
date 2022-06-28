@@ -85,8 +85,6 @@
 
 		<link rel="icon" href="<?php echo $logo; ?>" type="image/svg+xml">
 
-		<?php get_template_part('partials/dev-styles/index'); ?>
-
 	</head>
 
 	<body

@@ -27,6 +27,11 @@
 
 		ul {
 			display: block;
+
+			&.social_nav {
+				display: flex;
+				flex-wrap: wrap;
+			}
 		}
 
 		.hamburger {
@@ -92,6 +97,10 @@
 			display: none;
 		}
 	}
+}
+
+.social_nav {
+
 }
 
 .loggedIn {
@@ -176,7 +185,7 @@
 	}
 
 	.nav {
-		.hamburger, .utility_mobile {
+		.hamburger, .utility_mobile, .social_mobile {
 			display: none;
 		}
 
@@ -284,8 +293,10 @@
 	}
 
 	.utility {
-		display: block;
+		display: flex;
 		flex-shrink: 0;
+		align-items: center;
+		justify-content: space-between;
 		order: -1;
 		width: calc(100% + 120px);
 		margin-bottom: 20px;
@@ -301,7 +312,7 @@
 		}
 	}
 
-	.utility_nav {
+	.utility_nav, .social_nav {
 		li {
 			margin: 0 5px;
 		}

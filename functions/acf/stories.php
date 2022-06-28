@@ -165,6 +165,25 @@
 				'append' => '',
 				'maxlength' => '',
 			),
+			array(
+				'key' => 'field_626b4c9ad0736_transcript',
+				'label' => 'Story Transcript',
+				'name' => 'transcript',
+				'type' => 'wysiwyg',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'tabs' => 'all',
+				'toolbar' => 'basic',
+				'media_upload' => 1,
+				'delay' => 0,
+			),
 		),
 		'location' => array(
 			array(

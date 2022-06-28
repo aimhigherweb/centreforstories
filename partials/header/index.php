@@ -77,9 +77,31 @@
 				));
 			?>
 		</ul>
+
+		<ul class="<?php echo classes([$styles['utility_mobile'], $styles['social_nav'], $styles['social_mobile']]); ?>">
+			<?php 
+				wp_nav_menu(array(
+					'theme_location' => 'social_menu',
+					'container' => false,
+					'items_wrap' => '%3$s'
+				));
+			?>
+		</ul>
 	</nav>
 
 	<nav class="<?php echo classes(array_merge([$styles['utility']], $nav_class)); ?>">
+		<ul
+			class="<?php echo classes([$styles['social_nav']]); ?>"
+		>
+			<?php 
+				wp_nav_menu(array(
+					'theme_location' => 'social_menu',
+					'container' => false,
+					'items_wrap' => '%3$s'
+				));
+			?>
+		</ul>
+
 		<ul class="<?php echo classes([$styles['utility_nav']]); ?>">
 			<?php
 				if($cart_items > 0) : ?>

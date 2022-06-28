@@ -30,6 +30,20 @@
 					margin-top: 60px;
 				}
 			}
+
+			figure {
+				max-width: mixins.max_width(100vw, 120px, 6);
+			}
+		}
+	}
+}
+
+@media(min-width: var.$max_width) {
+	.content {
+		header {
+			figure {
+				max-width: mixins.max_width(var.$max_content, 120px, 6);
+			}
 		}
 	}
 }
