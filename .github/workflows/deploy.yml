@@ -32,12 +32,10 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
-      - name: Deploy to Server
-        uses: easingthemes/ssh-deploy@v2.2.11
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-          REMOTE_HOST: ${{secrets.SSH_HOST}}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: ${{ secrets.SSH_TARGET }}
-          SOURCE: "dist/"
-          EXCLUDE: "/node_modules/"
+      - name: GitHub Action Deploy to WP Engine
+        uses: wpengine/github-action-wpe-site-deploy@v3.0
+        with:
+          WPE_SSHG_KEY_PRIVATE: ${{ secrets.PRIVATE_KEY }}
+          WPE_ENV: "stg"
+          SRC_PATH: "dist"
+          REMOTE_PATH: "wp-content/themes/centreforstories/"
