@@ -21,6 +21,14 @@
 		color: inherit;
 		font: inherit;
 		text-transform: inherit;
+
+		&:focus {
+			outline: none;
+
+			&:before {
+				outline: 3px solid var.$colours_red;
+			}
+		}
 	}
 }
 

@@ -19,7 +19,6 @@
 			'env' => 'dev'
 		)
 	);
-
 ?>
 
 <?php if($products): ?>
@@ -52,6 +51,7 @@
 			array(
 				'page' => $page,
 				'pages' => $pages,
+				'query' => true,
 			)
 		);
 	}

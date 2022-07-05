@@ -19,6 +19,11 @@
 		display: none;
 		padding: 0 5px;
 		background: mixins.colour_rgb(var.$colours_neutral, 0.2);
+
+		&.social_nav {
+			margin-left: -5px;
+			padding: 0 20px 12px;
+		}
 	}
 
 	&:global(.open) {
@@ -100,7 +105,25 @@
 }
 
 .social_nav {
+	li {
+		margin: 5px;
+	}
 
+	a {
+		padding: 10px;
+
+		svg {
+			height: 16px;
+		}
+
+		span {
+			@include mixins.sr_only;
+		}
+
+		&:hover {
+			color: var.$colours_blue;
+		}
+	}
 }
 
 .loggedIn {
@@ -194,6 +217,10 @@
 			width: auto;
 			padding: 0;
 			background: none;
+
+			&.social_nav {
+				padding: 0;
+			}
 		}
 
 		&:global(.open) {
@@ -204,7 +231,7 @@
 				display: flex;
 			}
 
-			.utility_mobile, .hamburger {
+			.hamburger, .utility_mobile, .social_mobile {
 				display: none;
 			}
 		}
@@ -266,6 +293,7 @@
 	}
 
 	.main_menu {
+		font-size: 0.8em;
 		font-weight: 500;
 
 		li {
@@ -325,6 +353,18 @@
 			}
 		}
 	}
+
+	.social_nav {
+		a {
+			&:hover {
+				background: currentColor;
+
+				svg {
+					color: var.$colours_grey_light_warm;
+				}
+			}
+		}
+	}
 }
 
 @media(min-width: 60em) {
@@ -351,6 +391,10 @@
 				pointer-events: auto;
 			}
 		}
+	}
+
+	.main_menu {
+		font-size: 1em;
 	}
 }
 

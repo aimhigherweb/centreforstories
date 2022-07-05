@@ -21,12 +21,20 @@
 	}
 
 	.wp-block {
-		&[data-type='acf/logos-block'], &[data-type='acf/services-block'], &[data-type='acf/block-standard'] {
+		&[data-type='acf/home-header-block'] {
+			width: 1000px;
+
 			.acf-editor-wrap {
 				iframe {
 					min-height: unset;
 					max-height: 150px;
 				}
+			}
+
+			.wp-block {
+				max-width: 100%;
+				margin-left: 0;
+				transform: none;
 			}
 		}
 	}

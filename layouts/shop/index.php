@@ -25,5 +25,5 @@
 			)
 		);
 	?>
-	<?php echo the_content(); ?>
+	<?php echo page_content($args['page_id']); ?>
 </div>

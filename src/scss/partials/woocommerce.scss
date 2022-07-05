@@ -358,9 +358,12 @@
 				font-weight: 500;
 			}
 		}
+	}
 
-		form.cart {
+	form {
+		&.cart {
 			min-height: unset;
+			color: inherit;
 
 			button {
 				margin-top: 30px;
@@ -371,6 +374,19 @@
 			// 	height: auto;
 			// 	max-height: max-content;
 			// }
+		}
+	}
+
+	.woocommerce-tabs {
+		margin-top: -20px;
+		margin-bottom: 20px;
+
+		.wc-tabs {
+			display: none;
+		}
+
+		.woocommerce-product-attributes {
+			text-align: left;
 		}
 	}
 }
@@ -475,6 +491,13 @@
 			.button {
 				margin: 0;
 			}
+		}
+	}
+
+	.product {
+		.woocommerce-tabs {
+			margin-top: -60px;
+			margin-bottom: 60px;
 		}
 	}
 }

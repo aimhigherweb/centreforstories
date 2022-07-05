@@ -52,6 +52,9 @@
 
 		<div class="<?php echo classes([$styles['atc']]); ?> wp-block">
 			<h2>Add to Cart</h2>
+			<p class="<?php echo $styles['cart_price']; ?>">
+				<?php echo $price; ?>
+			</p>
 			<?php if($existing_items): ?>
 				<p>Looks like you've already got this in your cart.</p>
 				<a class="<?php echo classes([$styles['cta']]); ?>" href="/cart">
