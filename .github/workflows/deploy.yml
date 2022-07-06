@@ -36,6 +36,6 @@ jobs:
         uses: wpengine/github-action-wpe-site-deploy@v3.0
         with:
           WPE_SSHG_KEY_PRIVATE: ${{ secrets.PRIVATE_KEY }}
-          WPE_ENV: "centreforststg"
-          SRC_PATH: "dist"
+          WPE_ENV: centreforststg
+          SRC_PATH: dist
           REMOTE_PATH: "wp-content/themes/centreforstories/"
