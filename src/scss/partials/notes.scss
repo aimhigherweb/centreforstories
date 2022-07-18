@@ -1,0 +1,84 @@
+.nt-note-tab {
+	display: flex;
+	align-items: center;
+	padding: 25px;
+	background: var.$colours_blue;
+
+	.nticon-doc {
+		margin-right: 1ch;
+		padding: 0;
+		background: none;
+		font-size: 1.5em;
+	}
+
+	.nt-screen-reader-text {
+		display: inline;
+		padding: 0;
+	}
+}
+
+.nt-note-wrapper {
+	top: auto !important;
+	bottom: 20px;
+	border-radius: 0;
+
+	.note-body {
+		form {
+			padding: 0;
+		}
+	}
+
+	#nt-note-title-bar {
+		@include mixins.overline_text('l');
+
+		border-radius: 0;
+		background: var.$colours_blue;
+		font-size: 1.2em;
+		font-weight: 700;
+	}
+
+	#nt-note-title-field {
+		background: var.$colours_neutral_5;
+	}
+
+	#nt-note-submit {
+		@include mixins.buttons(var.$colours_blue, var.$colours_white, var.$colours_blue);
+	}
+
+	#nt-note-actions {
+		li {
+			border: none;
+
+			a {
+				@include mixins.buttons(var.$colours_white, var.$colours_blue, var.$colours_blue);
+
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+		}
+	}
+
+	#nt-utility-links {
+		border-radius: 0;
+
+		a {
+			@include mixins.buttons(var.$colours_neutral, var.$colours_white, var.$colours_neutral);
+
+			display: block;
+			font-size: 0.8em;
+		}
+	}
+}
+
+#ldnt-shortcode {
+	form {
+		max-width: unset;
+	}
+
+	input {
+		&[type='checkbox'] {
+			@include mixins.sr_only_remove;
+		}
+	}
+}

@@ -113,4 +113,36 @@
 
 add_filter( 'woocommerce_cart_item_name', 'cfs_event_title_cart', 10, 3 );
 
+
+function cfs_add_account_links( $menu_links ){
+ 	$new_links = array( 
+		'courses' => 'Courses',
+		'notes' => 'Notes'
+	);
+	$position = 1;
+
+	$menu_links = array_merge(
+		array_slice($menu_links, 0, $position), 
+		$new_links, 
+		array_slice($menu_links, $position)
+	);
+ 
+	return $menu_links;
+}
+
+add_filter ( 'woocommerce_account_menu_items', 'cfs_add_account_links' );
+ 
+
+function cfs_account_hook_endpoint( $url, $endpoint, $value, $permalink ){
+	$custom_pages = ['courses', 'notes'];
+
+	if( in_array($endpoint, $custom_pages) ) {
+		$url = site_url() . '/' . $endpoint;
+	}
+
+	return $url;
+}
+
+add_filter( 'woocommerce_get_endpoint_url', 'cfs_account_hook_endpoint', 10, 4 );
+
 ?>
