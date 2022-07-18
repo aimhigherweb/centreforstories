@@ -92,7 +92,7 @@
 		}
 	?>
 	<?php if(get_field('transcript')): ?>
-		<details>
+		<details class="<?php echo classes([$styles['transcript']]); ?>">
 			<summary>View Story Transcript</summary>
 			<div>
 				<?php echo get_field('transcript'); ?>

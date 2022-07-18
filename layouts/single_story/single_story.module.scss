@@ -20,6 +20,21 @@
 	}
 }
 
+.transcript {
+	clear: both;
+
+	summary {
+		@include mixins.buttons(var.$colours_blue, var.$colours_white, var.$colours_blue);
+
+		list-style: none;
+
+
+		& + * {
+			margin-top: 50px;
+		}
+	}
+}
+
 @media(min-width: 60em) {
 	.content {
 		header {
