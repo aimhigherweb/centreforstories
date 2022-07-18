@@ -1,0 +1,27 @@
+.content {
+	@extend %content;
+
+	h2 {
+		display: none;
+	}
+
+	:global(#nt-note-submit) {
+		@include mixins.buttons(var.$colours_blue, var.$colours_white, var.$colours_blue);
+	}
+
+	:global(#nt-note-actions) {
+		margin-top: 20px;
+
+		li {
+			border: none;
+
+			a {
+				@include mixins.buttons(var.$colours_white, var.$colours_blue, var.$colours_blue);
+
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+		}
+	}
+}

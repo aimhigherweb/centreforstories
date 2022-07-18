@@ -15,6 +15,7 @@ module.exports = {
 		'woocommerce',
 		'tribe',
 		'tutor',
+		'templates',
 	],
 	themeFiles: [
 		'./*.php',
@@ -29,7 +30,7 @@ module.exports = {
 	sourceMaps: '/src/maps',
 	cssFiles: '.',
 	compileFiles: [
-		'src/scss/style.scss', 
+		'src/scss/style.scss',
 		'src/scss/editor.scss',
 		'partials/**/*.module.scss',
 		'layouts/**/*.module.scss',
