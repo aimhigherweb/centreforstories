@@ -76,9 +76,77 @@
 		max-width: unset;
 	}
 
-	input {
-		&[type='checkbox'] {
-			@include mixins.sr_only_remove;
+	table {
+		&.notes-listing.notes-listing {
+			thead, tbody {
+				tr {
+					&:first-child {
+						th {
+							&:first-child {
+								display: none;
+							}
+						}
+					}
+
+					td, th {
+						background: none;
+					}
+				}
+			}
+
+			thead {
+				text-align: left;
+
+				tr {
+					background: var.$colours_navy;
+				}
+			}
+
+			tbody {
+				tr {
+					background: rgba(var.$colours_grey_light_warm, 0.7);
+
+					&:nth-child(2n) {
+						background: var.$colours_white;
+
+						td {
+							background: none;
+						}
+					}
+
+					td {
+						width: auto;
+					}
+				}
+			}
+
+			.nl-user {
+				span.nl-username {
+					background: none;
+				}
+			}
 		}
+	}
+
+	.nl-select {
+		display: none;
+	}
+
+	.nl-note-title {
+		pointer-events: none;
+	}
+
+	.nl-body {
+		position: relative;
+	}
+
+	.nl-location {
+		a {
+			@include mixins.block_link;
+		}
+	}
+
+	.lds-bulk-download {
+		display: none;
 	}
 }

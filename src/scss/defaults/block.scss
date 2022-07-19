@@ -34,6 +34,10 @@
 %block_content {
 	@include subheading_text('s');
 	@include child_reset;
+
+	a {
+		color: inherit;
+	}
 }
 
 %block_cta {

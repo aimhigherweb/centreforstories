@@ -23,14 +23,14 @@
 
 
 <figure class="<?php echo classes([$styles['audio']]); ?>">
-	<iframe
+	<iframe 
+		src="https://w.soundcloud.com/player/?url=<?php echo urlencode($url); ?>&amp;color=%238494b4&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=false" 
 		width="100%" 
 		height="166" 
-		scrolling="no" 
 		frameborder="no" 
-		allow="autoplay"
-  		src="https://w.soundcloud.com/player/?url=<?php echo urlencode($url); ?>"
+		scrolling="no"
 	></iframe>
+
 	<?php if(check_array_field($args, 'caption')) : ?>
 		<figcaption class="<?php echo classes([$styles['caption']]); ?>">
 			<?php echo $args['caption']; ?>
