@@ -11,7 +11,6 @@
 
 		if(check_field_value([
 			$item->get_meta('_min_price'),
-			$item->get_meta('_maximum_price'),
 		])) {
 			$price = [
 				$item->get_meta('_min_price'),

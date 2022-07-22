@@ -22,7 +22,7 @@
 	$block_classes = [$styles['block']];
 
 	$donations = cfs_get_donations();
-	
+	$cta = get_field('cta');
 ?>
 
 <div 
@@ -49,5 +49,15 @@
 			</li>
 		<?php endforeach; ?>
 	</ul>
+	<?php if(check_field_value([$cta])): ?>
+			<a 
+				href="<?php echo $cta['url']; ?>" 
+				class="<?php echo classes([$styles['main_cta']]); ?>"
+				target="<?php echo $cta['target']; ?>"
+			>
+				<?php echo $cta['title']; ?>
+				<?php echo inline_svg(get_template_directory_uri() . '/src/img/arrow_circle.svg'); ?>
+			</a>
+		<?php endif; ?>
 	<p class="<?php echo classes([$styles['disclaimer']]); ?>"><?php echo get_field('disclaimer'); ?></p>
 </div>

@@ -1,0 +1,66 @@
+.popup {
+	@include mixins.position(50%, 20px, 70px, 50%);
+
+	display: none;
+	position: fixed;
+	z-index: 50;
+	width: 90vw;
+	max-width: 600px;
+	height: max-content;
+	max-height: 90vh;
+	padding: 20px 20px 50px;
+	transform: translateX(-50%) translateY(-50%);
+	text-align: right;
+
+	&:before, &:after {
+		content: '';
+	}
+
+	&:before {
+		@include mixins.position;
+
+		position: absolute;
+		z-index: -5;
+		background: var.$colours_white;
+		box-shadow: 0 1px 3px rgba(var.$colours_neutral, 0.15), 0 0 8px rgba(var.$colours_neutral, 0.1);
+	}
+
+	&:after {
+		@include mixins.position(50%, auto, auto, 50%);
+
+		position: fixed;
+		z-index: -10;
+		width: 100vw;
+		height: 100vh;
+		transform: translateX(-50%) translateY(-50%);
+		opacity: 0.8;
+		background: var.$colours_black;
+		pointer-events: none;
+	}
+
+	&:global(.open) {
+		display: block;
+	}
+}
+
+.close {
+	@include mixins.buttons(var.$colours_white, var.$colours_navy);
+
+	padding: 10px;
+}
+
+.content {
+	text-align: center;
+}
+
+@media(min-width: 50em) {
+	.popup {
+		bottom: 20px;
+	}
+}
+
+@media(min-width: 60em) {
+	.popup {
+		max-height: 600px
+	}
+}

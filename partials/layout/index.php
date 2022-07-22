@@ -115,6 +115,9 @@
 		</main>
 
 		<?php get_template_part('partials/footer/index'); ?>
+		<?php if (is_active_sidebar('aoc')) : ?>
+			<?php get_template_part('parts/popup/index'); ?>
+		<?php endif; ?>
 		<?php wp_footer(); ?>
 		<script src="<?php echo get_template_directory_uri(); ?>/src/js/main.js"></script>
 	</body>

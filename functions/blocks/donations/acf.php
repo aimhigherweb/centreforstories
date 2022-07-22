@@ -5,6 +5,21 @@
 		'title' => 'Block - Donations',
 		'fields' => array(
 			array(
+				'key' => 'field_626a09fb9ef41_donations',
+				'label' => 'CTA',
+				'name' => 'cta',
+				'type' => 'link',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'return_format' => 'array',
+			),
+			array(
 				'key' => 'field_6294d895d21fd',
 				'label' => 'Disclaimer',
 				'name' => 'disclaimer',

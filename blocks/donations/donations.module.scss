@@ -3,10 +3,13 @@
 	@include mixins.list_reset;
 	@include mixins.full_background(var.$colours_grey_light_warm);
 
+	text-align: center;
+
 	ul {
 		display: flex;
 		flex-wrap: wrap;
 		margin: -16px;
+		text-align: left;
 	}
 
 	.donation {
@@ -24,8 +27,30 @@
 .heading {
 	@extend %heading;
 
+	text-align: left;
+
 	&:after {
 		background: var.$colours_blue;
+	}
+}
+
+.main_cta {
+	@extend %block_cta;
+	@include mixins.buttons(var.$colours_navy, var.$colours_lavender);
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin: 50px auto 0;
+	padding: 15px;
+	font-size: 0.9em;
+	text-align: center;
+	justify-items: center;
+
+	svg {
+		height: auto;
+		margin-left: 2ch;
+		color: currentColor
 	}
 }
 
@@ -90,7 +115,13 @@
 .disclaimer {
 	margin: 64px 0 0;
 	color: var.$colours_neutral_500;
-	text-align: center;
+}
+
+@media(min-width: 30em) {
+	.main_cta {
+		padding: 15px 24px;
+		font-size: 1em;
+	}
 }
 
 @media(min-width: 45em) {
@@ -102,6 +133,10 @@
 @media(min-width: 50em) {
 	.heading {
 		margin-bottom: 64px;
+	}
+
+	.main_cta {
+		margin-top: 60px;
 	}
 
 	.block {

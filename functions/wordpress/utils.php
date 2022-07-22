@@ -44,7 +44,15 @@
 		$number = false;
 
 		if(is_array($price)) {
-			$number = format_price($price[0]) . ' - ' . format_price($price[1]);
+			if(!is_numeric($price[1])) {
+				$number = format_price($price[0]) . '+';
+			}
+			else if(!is_numeric($price[0])) {
+				$number = '<' . format_price($price[1]);
+			}
+			else {
+				$number = format_price($price[0]) . ' - ' . format_price($price[1]);
+			}
 		}
 		else {
 			$number =  format_price($price);

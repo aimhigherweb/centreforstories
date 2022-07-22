@@ -25,4 +25,7 @@
 		<?php echo get_the_date('F j, Y'); ?>
 	</p>
 	<?php echo the_content(); ?>
+	<?php if (is_active_sidebar('news_cta')) : ?>
+		<?php dynamic_sidebar('news_cta'); ?>
+	<?php endif; ?>
 </div>

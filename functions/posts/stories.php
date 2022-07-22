@@ -183,6 +183,15 @@
 			'hide_empty' => true,
 		));
 
+		// $terms = get_terms(
+		// 	'collection',
+		// 	array( 
+		// 		'post_types' => 'series', 
+		// 		'orderby' => 'post_date', 
+		// 		'order' => 'DESC' 
+		// 	)
+		// );
+
 		$term_data = array();
 
 		foreach($terms as $term) {
@@ -206,6 +215,8 @@
 
 			$term_data[$type['value']]['terms'][] = $term;
 		}
+
+		// dump($terms);
 
 		return $term_data;
 	}
