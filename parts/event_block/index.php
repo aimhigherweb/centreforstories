@@ -28,6 +28,22 @@
 		$image_src = $image_src[0];
 	}
 
+	$tickets = cfs_get_event_ticket($event['events'][0]->ID);
+	$ticket_message = false;
+
+	if($tickets && !check_array_field($event, 'repeating')) {
+		$tickets = $tickets[0]->stock_quantity;
+
+		if($tickets == 0) {
+			$ticket_message = 'Sold Out';
+		}
+		else if($tickets  < 5) {
+			$ticket_message = 'Almost Gone';
+		}
+	}
+
+	$tags = wp_get_post_terms($event['events'][0]->ID, 'post_tag');
+
 ?>
 
 <div class="<?php echo classes([$styles['image']]); ?>">
@@ -43,7 +59,11 @@
 		</button>
 	<?php else : ?>
 		<a href="/event/<?php echo $event['post_name'] ?>">
-			<?php if(tribe_events_has_soldout($event)) {echo 'Sold out';} ?>
+			<?php if($ticket_message): ?>
+				<span class="<?php echo classes([$styles['label']]); ?>">
+					<?php echo $ticket_message; ?>
+				</span>
+			<?php endif; ?>
 			<?php echo $event['post_title']; ?>
 		</a>
 	<?php endif; ?>
@@ -56,16 +76,46 @@
 		}
 	?>
 </p>
-<p class="<?php echo classes([$styles['excerpt']]); ?>">
-	<?php echo $event['excerpt']; ?>
-</p>
+
+<div class="<?php echo classes([$styles['excerpt']]); ?>">
+	<?php if($tags): ?>
+		<ul class="<?php echo classes([$styles['tags']]); ?>">
+			<?php foreach($tags as $tag): ?>
+				<li class="<?php echo classes([$styles['tag']]); ?>">
+					<a href="/events/<?php echo $tag->slug; ?>">
+						<?php echo '#' . $tag->name; ?>
+					</a>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	<?php endif; ?>
+	<p><?php echo $event['excerpt']; ?></p>
+</div>
 <?php if(check_array_field($event, 'repeating')) : ?>
 	<div class="<?php echo classes([$styles['repetitions']]); ?>">
 		<ul>
-			<?php foreach($event['events'] as $version) : ?>
+			<?php foreach($event['events'] as $version) : 
+				$repeat_tickets = cfs_get_event_ticket($version->ID);
+				$repeat_tickets_message = false;
+
+				if($repeat_tickets) {
+					$repeat_tickets_message = $repeat_tickets[0]->stock_quantity;
+
+					if($repeat_tickets == 0) {
+						$repeat_tickets_message = 'Sold Out';
+					}
+					else if($repeat_tickets  < 5) {
+						$repeat_tickets_message = 'Almost Gone';
+					}
+				}	
+			?>
 				<li>
 					<a href="/events/<?php echo $version->post_name ?>">
 						<?php echo cfs_join_date(cfs_event_date($version->ID)); ?>
+						<?php if($repeat_tickets_message): ?>
+							<?php echo ' - ' . $repeat_tickets_message; ?>
+						<?php endif; ?>
+						
 					</a>
 				</li>
 			<?php endforeach; ?>
