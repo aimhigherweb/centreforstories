@@ -119,7 +119,21 @@ ul {
 		margin-bottom: 120px;
 
 		li {
+			display: flex;
+			align-items: center;
 			margin: 12px 0;
+
+			&:before {
+				content: '';
+				display: block;
+				width: 46px;
+				height: 1em;
+				margin-right: 25px;
+				background: url(var.$img + 'long_arrow_colour.svg');
+				background-repeat: no-repeat;
+				background-position: right center;
+				background-size: auto 100%;
+			}
 		}
 
 		a {

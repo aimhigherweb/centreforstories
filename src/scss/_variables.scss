@@ -2,6 +2,11 @@
 @forward './variables/fonts.scss' as font_*;
 @use 'sass:math';
 
+// Folders
+$src: './src/';
+$fonts: $src + 'fonts/';
+$img: $src + 'img/';
+
 // Sizes
 $max_content: 1216px;
 $max_width: $max_content + 120px;
