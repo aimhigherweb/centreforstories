@@ -119,16 +119,18 @@ ul {
 		margin-bottom: 120px;
 
 		li {
-			display: flex;
-			align-items: center;
+			position: relative;
 			margin: 12px 0;
+			padding-left: 70px;
 
 			&:before {
 				content: '';
 				display: block;
+				position: absolute;
+				top: 0.25em;
+				left: 0;
 				width: 46px;
 				height: 1em;
-				margin-right: 25px;
 				background: url(var.$img + 'long_arrow_colour.svg');
 				background-repeat: no-repeat;
 				background-position: right center;
@@ -139,14 +141,7 @@ ul {
 		a {
 			@include mixins.invert_link;
 
-			display: flex;
-			align-items: center;
 			color: inherit;
-
-			svg {
-				margin-right: 25px;
-				color: var.$colours_magenta;
-			}
 		}
 	}
 }
