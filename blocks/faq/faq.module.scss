@@ -1,14 +1,61 @@
 .details {
+	margin: 10px 0;
+
 	summary {
+		display: flex;
+		position: relative;
+		align-items: center;
+		padding: 5px 15px 5px 60px;
+		font-size: 1.2em;
 		font-weight: 700;
+		list-style: none;
+		appearance: none;
+		cursor: pointer;
+
+		&::marker,
+		&::-webkit-details-marker {
+			display: none;
+		}
 
 		svg {
-			width: auto;
-			height: 1em;
-			margin-right: 25px;
+			position: absolute;
+			left: -10px;
+			width: 55px;
+			height: auto;
 			color: var.$colours_magenta;
+			clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
+		}
+
+		&:focus {
+			outline: none;
+			background: var.$colours_seafoam;
+		}
+	}
+
+	&:nth-of-type(2n) {
+		summary {
+			background: var.$colours_grey_light_warm;
+
+			&:focus {
+				background: var.$colours_seafoam;
+			}
+		}
+	}
+
+	&[open] {
+		summary {
+			svg {
+				left: 0;
+				align-self: flex-end;
+				overflow: hidden;
+				transform: rotate(90deg) translateX(-30%) translateY(-5px);
+				transform-origin: center;
+				// clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
+			}
 		}
 	}
 }
 
-.content {}
+.content {
+	padding: 10px;
+}

@@ -1,5 +1,5 @@
 %content {
-	> * {
+	>* {
 		&:last-child {
 			&:not([class*='wp-block']):not(.woocommerce) {
 				margin-bottom: 60px;
@@ -20,13 +20,15 @@
 	blockquote,
 	hr,
 	ul,
+	details,
 	.wp-block-image {
-		& + .wp-block {
+		&+.wp-block {
 			margin-top: 60px;
 		}
 
-		& + link, & + style {
-			& + .wp-block {
+		&+link,
+		&+style {
+			&+.wp-block {
 				margin-top: 60px;
 			}
 		}
@@ -47,6 +49,7 @@
 		blockquote,
 		hr,
 		ul,
+		details,
 		.wp-block-image {
 			max-width: max_width(100vw, 120px, 6);
 		}
@@ -55,7 +58,7 @@
 			margin-left: 0;
 		}
 
-		> * {
+		>* {
 			&:last-child {
 				&:not([class*='wp-block']):not(.woocommerce) {
 					margin-bottom: 120px;
@@ -76,6 +79,7 @@
 		blockquote,
 		hr,
 		ul,
+		details,
 		.wp-block-image {
 			max-width: max_width(var.$max_content, 0, 6);
 		}
