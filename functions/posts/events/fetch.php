@@ -18,6 +18,9 @@
         $tax_query = false;
         $post_query = false;
         $date_query = false;
+        $order = 'ASC';
+
+        // dump($search_query);
 
         if(isset($search_query, $search_query['page'])) {
             $page = $search_query['page'];
@@ -51,6 +54,10 @@
                     'compare' => '<='
                 )
             );
+
+            if(!$future) {
+                $order = 'DESC';
+            }
         }
 
         if($future) {
@@ -64,6 +71,8 @@
                 )
             );
         }
+
+        
 
         if($date_query) {
             $meta_query = set_query(
@@ -101,12 +110,14 @@
             'posts_per_page' => $limit,
             'paged' => $page,
             'orderby' => 'meta_value',
-            'order' => 'ASC',
+            'order' => $order,
             'meta_key' => '_EventStartDate',
             'tax_query' => $tax_query,
             'meta_query' => $meta_query,
             'ignore_sticky_posts' => true,
         );
+
+        // dump($post_args);
 
         $post_query = new WP_Query($post_args);
 

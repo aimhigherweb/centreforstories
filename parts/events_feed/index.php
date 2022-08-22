@@ -3,10 +3,11 @@
 
 	if(check_array_field($args, 'query')) {
 		$event_data = cfs_get_events(
-			past: $args['query']['past'] ?? false,
-			limit: $args['query']['limit'] ?? false,
-			featured: $args['query']['featured'] ?? false,
-			category: $args['query']['category'] ?? false
+			past: $args['query']['past'] ?? null,
+			future: $args['query']['future'] ?? null,
+			limit: $args['query']['limit'] ?? null,
+			featured: $args['query']['featured'] ?? null,
+			category: $args['query']['category'] ?? null
 		);
 	}
 	else {

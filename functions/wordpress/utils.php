@@ -71,4 +71,17 @@
 		);
 	}
 
+	function build_pagination($page_number = 1, $is_query = false, $path, $page_query = []) {
+		$url_path = $path . $page_number . '/?';
+
+		if($is_query) {
+			$page_query['page'] = $page_number;
+			$url_path = $path . '?';
+		}
+
+		$url_path = $url_path . http_build_query($page_query);
+
+		return $url_path;
+	}
+
 ?>

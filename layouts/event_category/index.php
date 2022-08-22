@@ -70,6 +70,8 @@
 
 		$current = intval($matches[1]);
 	}
+
+	
 ?>
 
 <div>

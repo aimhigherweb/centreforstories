@@ -15,6 +15,8 @@
 			'env' => 'dev'
 		)
 	);
+
+	
 ?>
 
 <div class="<?php echo classes([$styles['content']]); ?>">
@@ -33,7 +35,17 @@
 		get_template_part(
 			'parts/events_feed/index',
 			null,
+			array(
+				'query' => array(
+					'past' => true,
+					'future' => false,
+				)
+			)
 		);
 	?>
-	<?php echo page_content($page->ID); ?>
+	<h2>Upcoming Events</h2>
+	<a href="/events" class="<?php echo classes([$styles['future']]); ?>">
+		<?php echo inline_svg(get_template_directory_uri() . '/src/img/arrow_long.svg'); ?>
+		Future Events
+	</a>
 </div>

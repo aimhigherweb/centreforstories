@@ -78,6 +78,7 @@
 </p>
 
 <div class="<?php echo classes([$styles['excerpt']]); ?>">
+	<p><?php echo $event['excerpt']; ?></p>
 	<?php if($tags): ?>
 		<ul class="<?php echo classes([$styles['tags']]); ?>">
 			<?php foreach($tags as $tag): ?>
@@ -89,7 +90,6 @@
 			<?php endforeach; ?>
 		</ul>
 	<?php endif; ?>
-	<p><?php echo $event['excerpt']; ?></p>
 </div>
 <?php if(check_array_field($event, 'repeating')) : ?>
 	<div class="<?php echo classes([$styles['repetitions']]); ?>">

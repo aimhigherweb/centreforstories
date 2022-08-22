@@ -11,9 +11,24 @@
 	transform: translateY(-80px);
 }
 
+.past {
+	@include mixins.invert_link;
+
+	display: flex;
+	align-items: center;
+	color: inherit;
+
+	svg {
+		margin-right: 25px;
+		color: var.$colours_magenta;
+	}
+}
+
 @media(min-width: 60em) {
 	.header {
-		> p, > h1, > div {
+		>p,
+		>h1,
+		>div {
 			max-width: mixins.max_width(100vw, 120px, 8);
 		}
 	}
@@ -21,7 +36,9 @@
 
 @media(min-width: var.$max_width) {
 	.header {
-		> p, > h1, > div {
+		>p,
+		>h1,
+		>div {
 			max-width: mixins.max_width(var.$max_content, 0, 8);
 		}
 	}
