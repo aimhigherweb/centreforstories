@@ -26,7 +26,8 @@
 		'home_header',
 		'events',
 		'story_collections',
-		'faq'
+		'faq',
+		'blocks'
 	);
 
 	$widgets = array(

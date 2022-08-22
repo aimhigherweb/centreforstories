@@ -1,9 +1,31 @@
 <?php
 
+	$today = new DateTime();
+	$today = $today->format('Y-m-d');
+
 	acf_add_local_field_group(array(
 		'key' => 'group_626b332c9538f',
 		'title' => 'Story',
 		'fields' => array(
+			array(
+				'key' => 'field_6303270b5c7ee_stories',
+				'label' => 'Show Collection Description',
+				'name' => 'collection_desc',
+				'type' => 'true_false',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'message' => '',
+				'default_value' => 0,
+				'ui' => 1,
+				'ui_on_text' => 'Yes',
+				'ui_off_text' => 'No',
+			),
 			array(
 				'key' => 'field_626b33356cd44',
 				'label' => 'Story Format',
@@ -275,6 +297,43 @@
 				'layout' => 'vertical',
 				'return_format' => 'array',
 				'save_other_choice' => 0,
+			),
+			array(
+				'key' => 'field_6303270b5c7ee',
+				'label' => 'Archived',
+				'name' => 'archived',
+				'type' => 'true_false',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'message' => '',
+				'default_value' => 0,
+				'ui' => 1,
+				'ui_on_text' => 'Archived',
+				'ui_off_text' => 'Current',
+			),
+			array(
+				'key' => 'field_630327375c7ef',
+				'label' => 'Published Date',
+				'name' => 'date',
+				'type' => 'date_picker',
+				'instructions' => "This is only being used to order collections, there's likely no need to change this",
+				'required' => 1,
+				'conditional_logic' => 0,
+				'default_value' => $today,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'display_format' => 'j F, Y',
+				'return_format' => 'Y-m-d',
+				'first_day' => 1,
 			),
 		),
 		'location' => array(

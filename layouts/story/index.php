@@ -26,12 +26,16 @@
 		$page_id = $args['page_id'];
 	}
 
-	$story_data = cfs_get_stories();
+	$collection_data = cfs_get_story_collections();
+	$collection_slugs = $collection_data['collections'];
+	$collections = $collection_data['terms'];
+
+	$story_data = cfs_get_stories(collections: $collection_slugs);
 	$stories = $story_data['posts'];
 	$page = $story_data['page'];
 	$pages = $story_data['pages'];
 
-	$collections = cfs_get_story_collections();
+	
 
 	$header_args = array(
 		'title' => get_the_title($args['page_id']),

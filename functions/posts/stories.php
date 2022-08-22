@@ -118,7 +118,7 @@
     }
     add_filter('post_type_link', 'change_story_permalink', 1, 3);
 
-	function cfs_get_stories($limit = 9, $category = false, $post_in = false) {    
+	function cfs_get_stories($limit = 9, $category = false, $collections = false, $post_in = false) {    
 		wp_reset_query();
 		global $query_string;
         wp_parse_str( $query_string, $search_query );
@@ -133,6 +133,10 @@
 
 		if(isset($search_query, $search_query['collection']) && !$category) {
             $category = [$search_query['collection']];
+        }
+
+		if($collections && !$category) {
+            $category = $collections;
         }
 
 		if($post_in) {
@@ -181,6 +185,17 @@
 		$terms = get_terms(array(
 			'taxonomy' => 'collection',
 			'hide_empty' => true,
+			'meta_key' => 'date',
+			'orderby' => 'meta_value',
+			'order' => 'DESC',
+			'meta_query'	=> array(
+				'relation'		=> 'AND',
+				array(
+					'key'	  	=> 'archived',
+					'value'	  	=> true,
+					'compare' 	=> '!=',
+				),
+			),
 		));
 
 		// $terms = get_terms(
@@ -193,9 +208,14 @@
 		// );
 
 		$term_data = array();
+		$collection_slugs = array();
 
 		foreach($terms as $term) {
 			$type = get_field('collection_type', $term);
+
+			// dump($term);
+
+			$collection_slugs[] = $term->slug;
 
 			$term->permalink = get_term_link($term);
 
@@ -218,7 +238,10 @@
 
 		// dump($terms);
 
-		return $term_data;
+		return array(
+			'terms' => $term_data,
+			'collections' => $collection_slugs
+		);
 	}
 
 

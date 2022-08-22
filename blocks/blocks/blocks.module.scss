@@ -1,0 +1,165 @@
+.block {
+	@extend %block;
+	@include mixins.full_background(linear-gradient(to bottom, var.$colours_navy 55%, var.$colours_lavender 55%));
+	@include mixins.list_reset;
+
+	color: var.$colours_white;
+
+	ul {
+		margin: 16px -16px -16px;
+	}
+
+	.program {
+		margin: 16px;
+		padding: 32px;
+	}
+}
+
+.heading {
+	@extend %heading;
+
+	color: inherit;
+}
+
+.container {}
+
+.image {
+	width: 140px;
+	height: 140px;
+	margin-right: 20px;
+	float: left;
+	overflow: hidden;
+	background: var.$colours_navy;
+
+	img {
+		object-fit: cover;
+		object-position: center;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.eyebrow {
+	@extend %eyebrow;
+}
+
+.content {
+	@extend %block_content;
+
+	>*:first-child {
+		font-size: 1.33em;
+	}
+}
+
+.subheading {
+	margin: 0 0 16px;
+}
+
+.program {
+	clear: both;
+	overflow: hidden;
+	border: 16px solid var.$colours_marigold;
+	background: var.$colours_white;
+	color: var.$colours_navy;
+
+	&:nth-child(4n),
+	&:nth-child(4n - 3) {
+		border-color: var.$colours_blue;
+	}
+}
+
+.cta {
+	@include mixins.buttons(transparent, currentColor, currentColor);
+
+	display: inline-flex;
+	align-items: center;
+	margin-top: 24px;
+	margin-left: auto;
+	padding: 10px;
+	border-width: 1px;
+	font-size: 0.875em;
+	text-align: right;
+
+	svg {
+		width: 32px;
+		height: 32px;
+		margin-left: 16px;
+		color: var.$colours_blue;
+	}
+
+	&:hover {
+		background: var.$colours_navy;
+		color: var.$colours_white;
+	}
+}
+
+@media(min-width: 30em) {
+	.block {
+		ul {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+
+		.program {
+			padding-bottom: 100px;
+		}
+	}
+
+	.program {
+		position: relative;
+		min-width: 300px;
+		max-width: 500px
+	}
+
+	.cta {
+		position: absolute;
+		right: 32px;
+		bottom: 32px;
+		margin: 0;
+	}
+}
+
+@media(min-width: 50em) {
+	.block {
+		ul {
+			max-width: unset;
+		}
+	}
+}
+
+@media(min-width: 60em) {
+	.program {
+		flex: 1 1 40%;
+	}
+}
+
+@media(min-width: 70em) {
+	.block {
+		padding-bottom: 80px;
+
+		ul {
+			justify-content: flex-end;
+		}
+	}
+
+	.content {
+		max-width: mixins.max_width(100%, 0, 6);
+	}
+
+	.program {
+		flex-basis: 25%;
+
+		&:nth-child(4n),
+		&:nth-child(4n - 3) {
+			border-color: var.$colours_marigold;
+		}
+
+		&:nth-child(6n),
+		&:nth-child(6n - 2),
+		&:nth-child(6n - 4) {
+			border-color: var.$colours_blue;
+		}
+	}
+}
