@@ -40,6 +40,7 @@
 	$max_pages = 10;
 	$range = 3;
 	$page_path = $path . '/page/';
+	
 
 	
 
@@ -60,15 +61,22 @@
 	<?php endif; ?>
 	<?php $i = 0;
 		while($i < $pages):
+		$page_classes = [$styles['page']];
 		$i++; 
 		if(
 			$pages <= $max_pages ||
 			$i == 1 ||
 			$i == $pages ||
 			($i > $page - $range && $i < $page + $range)
-		): ?>
-			<li class="<?php echo classes([$styles['page']]); ?>">
-				<a href="<?php echo $page_path . $i; ?>">
+		): 
+			if($i == $page) {
+				$page_classes[] = $styles['current'];
+			}
+		?>
+			<li class="<?php echo classes($page_classes); ?>">
+				<a
+					href="<?php echo $page_path . $i; ?>"
+				>
 					<?php echo $i; ?>
 				</a>
 			</li>

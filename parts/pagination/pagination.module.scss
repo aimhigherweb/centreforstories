@@ -15,6 +15,7 @@
 		align-items: center;
 		margin: 8px;
 		color: var.$colours_neutral_4;
+		font-weight: 600;
 
 		svg {
 			width: 32px;
@@ -26,6 +27,7 @@
 		display: flex;
 		align-items: center;
 		color: var.$colours_neutral_700;
+		font-weight: inherit;
 		text-decoration: none;
 
 		&:hover {
@@ -61,5 +63,10 @@
 }
 
 .current {
+	background: var.$colours_neutral_700;
+	color: var.$colours_white;
 
+	a {
+		color: inherit;
+	}
 }
