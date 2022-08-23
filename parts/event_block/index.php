@@ -83,7 +83,7 @@
 		<ul class="<?php echo classes([$styles['tags']]); ?>">
 			<?php foreach($tags as $tag): ?>
 				<li class="<?php echo classes([$styles['tag']]); ?>">
-					<a href="/events/<?php echo $tag->slug; ?>">
+					<a href="/events/tag/<?php echo $tag->slug; ?>">
 						<?php echo '#' . $tag->name; ?>
 					</a>
 				</li>

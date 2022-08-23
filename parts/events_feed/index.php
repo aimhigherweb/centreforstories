@@ -7,7 +7,8 @@
 			future: $args['query']['future'] ?? null,
 			limit: $args['query']['limit'] ?? null,
 			featured: $args['query']['featured'] ?? null,
-			category: $args['query']['category'] ?? null
+			category: $args['query']['category'] ?? null,
+			tag: $args['query']['tag'] ?? null,
 		);
 	}
 	else {

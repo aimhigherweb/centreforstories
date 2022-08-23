@@ -7,6 +7,7 @@
  * @version 1.0
  */
 
+
 	get_template_part(
 		'partials/layout/index', 
 		null, 
@@ -15,11 +16,6 @@
 			'title' => '404 - Page not found'
 		)
 	);
+	
 
 ?>
-
-<!-- 
-
-http://localhost:3000/courses/the-art-and-science-of-storytelling/lesson/a-moment-i-will-never-forget-is/
-
- -->

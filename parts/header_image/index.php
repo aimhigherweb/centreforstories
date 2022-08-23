@@ -9,6 +9,11 @@
 		$feature_caption = wp_get_attachment_caption($args['image']['ID']);
 	}
 
+	if(check_array_field($args, 'page_id')) {
+		$feature = get_the_post_thumbnail_url($args['page_id'], 'header_feature');
+		$feature_caption = get_the_post_thumbnail_caption($args['page_id']);
+	}
+
 	$template = $data['template'];
 	$styles = $data['styles'];
 
@@ -21,6 +26,7 @@
 			'env' => 'dev'
 		)
 	);
+
 ?>
 
 <?php if($feature): ?>

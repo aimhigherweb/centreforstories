@@ -18,6 +18,6 @@
 ?>
 
 <div class="<?php echo $styles['content']; ?>">
-	
+	<?php get_template_part('parts/header_image/index'); ?>
 	<?php echo the_content(); ?>
 </div>

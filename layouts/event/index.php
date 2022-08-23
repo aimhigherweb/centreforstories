@@ -25,6 +25,8 @@
 	$organisers = [];
 	$children = false;
 
+	// dump(get_post_meta($event_id, '_EventVenueID'));
+
 	$link = $venue->directions_link;
 
 	if(!get_field('directions', tribe_get_venue_id())) {

@@ -14,7 +14,8 @@
 		line-height: list.nth($values, 2);
 	}
 
-	@each $media, $media_value in var.$media_queries {
+	@each $media,
+		$media_value in var.$media_queries {
 		$values: map.get($sizes, $media);
 
 		@if($values) {
@@ -55,7 +56,7 @@
 
 	font-family: var.$font_overline;
 	font-size: list.nth($sizes, 1);
-	letter-spacing:0.1em;
+	letter-spacing: 0.1em;
 	line-height: list.nth($sizes, 2);
 	text-transform: uppercase;
 }
@@ -74,7 +75,7 @@
 	font-family: var.$font_blockquote;
 	font-size: list.nth($sizes, 1);
 	font-style: italic;
-	letter-spacing:-0.03em;
+	letter-spacing: -0.03em;
 	line-height: list.nth($sizes, 2);
 }
 
@@ -107,10 +108,10 @@
 	cursor: pointer;
 }
 
-@function max_width($max, $diff: 40px, $width: 6) {
-	@if $diff == 0 {
-		@return calc((#{$max} / 12) * #{$width});
+@function max_width($max, $diff: 40px, $width: 6, $modifier: 1) {
+	@if $diff ==0 {
+		@return calc($modifier * ((#{$max} / 12) * #{$width}));
 	}
 
-	@return calc(((#{$max} - #{$diff}) / 12) * #{$width});
+	@return calc($modifier * (((#{$max} - #{$diff}) / 12) * #{$width}));
 }

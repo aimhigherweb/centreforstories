@@ -4,9 +4,11 @@
             $limit = 9, 
             $category = false, 
             $children = true, 
-            $past = false,
+            $past = true,
             $future = true,
-            $type = 'tribe_events'
+            $type = 'tribe_events',
+            $tag = false,
+            $venue = false,
         ) {
         wp_reset_query();
 
@@ -36,6 +38,14 @@
 
         if(isset($search_query, $search_query['tribe_events_cat']) && ! $category) {
             $category = [$search_query['tribe_events_cat']];
+        }
+
+        if(isset($search_query, $search_query['tag']) && ! $tag) {
+            $tag = [$search_query['tag']];
+        }
+
+        if(isset($search_query, $search_query['tribe_venue']) && ! $venue) {
+            $venue = [$search_query['tribe_venue']];
         }
 
         if($past || $future) {
@@ -95,6 +105,39 @@
             );
         }
 
+        if($tag) {
+            $tax_query = set_query(
+                $tax_query, 
+                array(
+                    'taxonomy' => 'post_tag',
+                    'field' => 'slug',
+                    'terms' => $tag,
+                    'include_children' => true,
+                    'operator' => 'IN'
+                )
+            );
+        }
+
+        if($venue) {
+            $venues = get_posts(array(
+                'post_name__in' => $venue,
+                'post_type' => 'tribe_venue',
+                'posts_per_page' => 1
+            ));
+
+            $venue = $venues[0]->ID;
+
+            $meta_query = set_query(
+                $meta_query, 
+                array(
+                    'key' => '_EventVenueID',
+                    'value' => $venue,
+                    'compare' => 'LIKE'
+                )
+            );
+        }
+
+
         if($featured) {
             $meta_query = set_query(
                 $meta_query, 
@@ -117,14 +160,14 @@
             'ignore_sticky_posts' => true,
         );
 
-        // dump($post_args);
-
         $post_query = new WP_Query($post_args);
 
         return array(
             'page' => $page,
             'pages' => $post_query->max_num_pages,
             'events' => $post_query->posts,
+            'venue' => $venue,
+            'tag' => $tag
         );
     }
 

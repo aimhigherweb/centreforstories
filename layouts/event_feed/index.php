@@ -6,8 +6,19 @@
 		featured: true,
 		limit: 1
 	);
+	$venue = false;
+	$tag = false;
 
-	if($featured && count($featured['events']) <= 0) {
+	if($featured && $featured['venue']) {
+		$venue = tribe_get_venue_object($featured['venue']);
+		$featured = false;
+	}
+	else if($featured && $featured['tag'] && count($featured['tag']) > 0) {
+		// dump($featured['tag'][0]);
+		$tag = get_term_by('name', $featured['tag'][0], 'post_tag');
+		$featured = false;
+	}
+	else if($featured && count($featured['events']) <= 0) {
 		$featured = false;
 	}
 	else if($featured) {
@@ -37,6 +48,20 @@
 			'env' => 'dev'
 		)
 	);
+
+
+	$title = false;
+
+	// dump($tag);
+
+	if($venue) {
+		$title = 'Upcoming Events - ' . $venue->post_title;
+	}
+
+	if($tag) {
+		$title = 'Upcoming Events - #' . $tag->name;
+	}
+
 ?>
 
 <div>
@@ -46,7 +71,8 @@
 			null,
 			array(
 				'class' => $styles['header'],
-				'page_id' => $page->ID
+				'page_id' => $page->ID,
+				'title' => $title
 			)
 		);
 	?>

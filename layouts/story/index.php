@@ -51,6 +51,8 @@
 		$header_args['excerpt'] = $collection_data->description;
 	}
 
+	// dump();
+
 ?>
 
 <div class="<?php echo $styles['content']; ?>">
@@ -60,6 +62,15 @@
 			null,
 			$header_args
 		);
+	?>
+	<?php 
+		get_template_part(
+			'parts/header_image/index',
+			null,
+			array(
+				'page_id' => get_page_by_path( '/stories' )->ID,
+			)
+		); 
 	?>
 	<ul class="<?php echo classes([$styles['filters']]); ?>">
 		
