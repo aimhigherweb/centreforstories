@@ -93,6 +93,9 @@
 	<p class="<?php echo classes([$styles['date']]); ?>">
 		<?php echo $date; ?>
 	</p>
+	<p class="<?php echo classes([$styles['venue']]); ?>">
+		<?php echo $venue->post_title; ?>
+	</p>
 	<?php echo the_content(); ?>
 	<?php if(tribe_events_has_tickets($event_id) && !tribe_is_past_event(tribe_get_event($event_id))): ?>
 		<?php 

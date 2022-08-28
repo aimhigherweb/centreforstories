@@ -26,7 +26,7 @@
 <div 
 	class="<?php echo classes($block_classes); ?> wp-block" 
 >
-	<div class="<?php echo classes([$styles['container']]); ?>">
+	<div>
 		<p class="<?php echo classes([$styles['eyebrow']]); ?>">
 			<?php echo get_field('eyebrow'); ?>
 		</p>

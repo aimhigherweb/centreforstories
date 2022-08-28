@@ -1,8 +1,8 @@
 <?php
 
 	$block_vars = array(
-		'title' => 'Team Block',
-		'description' => 'A block that displays team profiles',
+		'title' => 'People Block',
+		'description' => 'A block that displays people profiles',
 		'category' => 'theme',
 		'icon' => 'grid-view',
 		'mode' => 'preview',

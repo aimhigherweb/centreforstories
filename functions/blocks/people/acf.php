@@ -1,11 +1,11 @@
 <?php
 
 	acf_add_local_field_group(array(
-		'key' => 'group_62954b5ff192b',
-		'title' => 'Block - Team',
+		'key' => 'group_62954b5ff192b_people',
+		'title' => 'Block - People',
 		'fields' => array(
 			array(
-				'key' => 'field_62954b7169329',
+				'key' => 'field_62954b7169329_people',
 				'label' => 'Heading',
 				'name' => 'heading',
 				'type' => 'text',
@@ -24,7 +24,7 @@
 				'maxlength' => '',
 			),
 			array(
-				'key' => 'field_62954b7b6932a',
+				'key' => 'field_62954b7b6932a_people',
 				'label' => 'Team Profiles',
 				'name' => 'profiles',
 				'type' => 'repeater',
@@ -43,7 +43,7 @@
 				'button_label' => '',
 				'sub_fields' => array(
 					array(
-						'key' => 'field_62954b9f6932b',
+						'key' => 'field_62954b9f6932b_people',
 						'label' => 'Name',
 						'name' => 'name',
 						'type' => 'text',
@@ -62,7 +62,7 @@
 						'maxlength' => '',
 					),
 					array(
-						'key' => 'field_62954baa6932c',
+						'key' => 'field_62954baa6932c_people',
 						'label' => 'Role',
 						'name' => 'role',
 						'type' => 'text',
@@ -81,7 +81,7 @@
 						'maxlength' => '',
 					),
 					array(
-						'key' => 'field_62954bb16932d',
+						'key' => 'field_62954bb16932d_people',
 						'label' => 'Bio',
 						'name' => 'bio',
 						'type' => 'textarea',
@@ -100,7 +100,7 @@
 						'new_lines' => '',
 					),
 					array(
-						'key' => 'field_62954bc06932e',
+						'key' => 'field_62954bc06932e_people',
 						'label' => 'Image',
 						'name' => 'image',
 						'type' => 'image',
@@ -131,7 +131,7 @@
 				array(
 					'param' => 'block',
 					'operator' => '==',
-					'value' => 'acf/team-block',
+					'value' => 'acf/people-block',
 				),
 			),
 		),

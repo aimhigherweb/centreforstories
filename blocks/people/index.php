@@ -43,9 +43,24 @@
 						/>
 					<?php endif; ?>
 				</div>
-				<h3><?php the_sub_field('name'); ?></h3>
-				<p class="<?php echo classes([$styles['role']]); ?>"><?php the_sub_field('role'); ?></p>
-				<p><?php the_sub_field('bio'); ?></p>
+				<details>
+					<summary>
+						<h3><?php the_sub_field('name'); ?></h3>
+						<p class="<?php echo classes([$styles['role']]); ?>"><?php the_sub_field('role'); ?></p>
+						<span class="<?php echo classes([$styles['toggle']]); ?>">
+							<span class="<?php echo classes([$styles['expand']]); ?>">
+								<span class="sr-only">Expand Bio</span>
+							</span>
+							<span class="<?php echo classes([$styles['collapse']]); ?>">
+								<span class="sr-only">Collapse Bio</span>
+							</span>
+						</span>
+					</summary>
+					<p><?php the_sub_field('bio'); ?></p>
+				</details>
+				
+				
+				
 			</li>
 		<?php endwhile; ?>
 		</ul>

@@ -23,6 +23,8 @@
 
 .testimonial {
 	display: flex;
+
+	flex-wrap: wrap;
 	align-items: flex-start;
 
 	svg {
@@ -34,6 +36,7 @@
 	}
 
 	blockquote {
+		flex: 1 1 70%;
 		max-width: unset;
 		margin: 0;
 		color: var.$colours_neutral_500;
@@ -50,10 +53,44 @@
 	}
 }
 
+.image {
+	flex-shrink: 0;
+	width: 200px;
+	height: 200px;
+	margin: 2em auto 0;
+	border: 10px solid var.$colours_lavender;
+	background: var.$colours_navy;
+
+	img {
+		object-fit: cover;
+		object-position: center;
+		width: 100%;
+		height: 100%;
+	}
+}
+
 @media(min-width: 50em) {
 	.block {
 		ul {
-			max-width: mixins.max_width(100%, 0, 8);
+			max-width: mixins.max_width(100%, 0, 12);
+		}
+	}
+
+	.testimonial {
+		flex-wrap: nowrap;
+	}
+
+	.image {
+		margin-top: auto;
+		margin-bottom: auto;
+		margin-left: 40px;
+	}
+}
+
+@media(min-width: 70em) {
+	.block {
+		ul {
+			max-width: mixins.max_width(100%, 0, 10);
 		}
 	}
 }

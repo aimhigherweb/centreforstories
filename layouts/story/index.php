@@ -21,12 +21,17 @@
 	$page_id = get_the_ID();
 	$collection_page = false;
 	$collection_data = false;
+	$archived = false;
 
 	if(check_array_field($args, 'page_id')) {
 		$page_id = $args['page_id'];
 	}
 
-	$collection_data = cfs_get_story_collections();
+	if(check_array_field($search_query, 'collection') && $search_query['collection'] == 'archived') {
+		$archived = true;
+	}
+
+	$collection_data = cfs_get_story_collections($archived);
 	$collection_slugs = $collection_data['collections'];
 	$collections = $collection_data['terms'];
 
@@ -34,7 +39,7 @@
 	$stories = $story_data['posts'];
 	$page = $story_data['page'];
 	$pages = $story_data['pages'];
-
+	$header_image = false;
 	
 
 	$header_args = array(
@@ -43,19 +48,27 @@
 		'class' => $styles['header']
 	);
 
-	if(check_array_field($search_query, 'collection')) {
+	if(check_array_field($search_query, 'collection') && get_queried_object()) {
 		$collection_page = $search_query['collection'];
 		$collection_data = get_queried_object();
 
 		$header_args['title'] = 'Stories - ' . $collection_data->name;
 		$header_args['excerpt'] = $collection_data->description;
+		$header_image = get_field('image', $collection_data);
+	}
+	else {
+		$page_id = get_page_by_path( '/stories' )->ID;
 	}
 
-	// dump();
+	$content_classes = [$styles['content']];
+
+	if($archived) {
+		$content_classes[] = $styles['archived'];
+	}
 
 ?>
 
-<div class="<?php echo $styles['content']; ?>">
+<div class="<?php echo classes($content_classes); ?>">
 	<?php 
 		get_template_part(
 			'parts/page_header/index',
@@ -63,15 +76,18 @@
 			$header_args
 		);
 	?>
-	<?php 
-		get_template_part(
-			'parts/header_image/index',
-			null,
-			array(
-				'page_id' => get_page_by_path( '/stories' )->ID,
-			)
-		); 
-	?>
+	<?php if(!$archived): ?>
+		<?php 
+			get_template_part(
+				'parts/header_image/index',
+				null,
+				array(
+					'page_id' => $page_id,
+					'image' => $header_image,
+				)
+			); 
+		?>
+	<?php endif; ?>
 	<ul class="<?php echo classes([$styles['filters']]); ?>">
 		
 		<?php foreach($collections as $type): ?>
@@ -137,6 +153,17 @@
 		}
 
 	?>
+	<?php if($archived): ?>
+		<a href="/stories" class="<?php echo classes([$styles['past']]); ?>">
+			<?php echo inline_svg(get_template_directory_uri() . '/src/img/arrow_long.svg'); ?>
+			Featured Collections
+		</a>
+	<?php else: ?>
+		<a href="/stories/archived" class="<?php echo classes([$styles['past']]); ?>">
+			<?php echo inline_svg(get_template_directory_uri() . '/src/img/arrow_long.svg'); ?>
+			Story Archive
+		</a>
+	<?php endif;?>
 	<?php echo page_content($page_id); ?>
 	
 </div>

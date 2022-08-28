@@ -27,7 +27,8 @@
 		'events',
 		'story_collections',
 		'faq',
-		'blocks'
+		'blocks',
+		'people'
 	);
 
 	$widgets = array(

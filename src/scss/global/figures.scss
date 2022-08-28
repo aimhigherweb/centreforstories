@@ -3,7 +3,18 @@ figure {
 	flex-wrap: wrap;
 
 	&.wp-block-embed {
-		@extend %video_embed;
+		&.is-provider-youtube,
+		&.is-provider-vimeo {
+			@extend %video_embed;
+		}
+
+		&.is-provider-soundcloud {
+			@extend %audio_embed;
+		}
+
+		.wp-block-embed__wrapper {
+			width: 100%;
+		}
 	}
 
 	a {

@@ -59,6 +59,12 @@
 		}
 	}
 
+	$collection = get_the_terms($post, 'collection');
+
+	if($collection && count($collection) > 0) {
+		$collection = $collection[0];
+	}
+
 ?>
 
 <div class="<?php echo $styles['content']; ?>">
@@ -72,6 +78,12 @@
 		);
 	?>
 	<?php get_template_part('parts/header_image/index'); ?>
+	<?php if(get_field('collection_desc')): ?>
+		<aside class="<?php echo classes([$styles['collection']]); ?>">
+			<h2><?php echo $collection->name; ?></h2>
+			<p><?php echo $collection->description; ?></p>
+		</aside>
+	<?php endif; ?>
 	<?php echo the_content(); ?>
 	<?php 
 		if(check_array_field($video, 'url')) {

@@ -55,6 +55,12 @@ const togglePopup = (popupID) => {
 
 	if (!popup) return;
 
+	if (popup.classList.contains('open')) {
+		trigger(popup)
+
+		return
+	}
+
 	const prevView = window.localStorage.getItem('popupNotice')
 
 	console.log({ popup, prevView })
@@ -65,8 +71,7 @@ const togglePopup = (popupID) => {
 		trigger(popup)
 		return
 	}
-
-	if ((prevView + 2592000000) < Date.parse(new Date())) { //Previous date plus 30 days
+	else if ((prevView + 2592000000) < Date.parse(new Date())) { //Previous date plus 30 days
 		console.log(`Popup has changed`)
 		trigger(popup)
 		return

@@ -35,20 +35,34 @@
 		$excerpt = get_the_excerpt(post: $id);
 	}
 
-	if(!check_field_value($eyebrow)) {
-		$eyebrow = 'Centre for Stories';
-	}
-
 	if(check_array_field($args, 'title')) {
 		$title = $args['title'];
 	}
 
-	if(array_key_exists('excerpt', $args) && $args['excerpt'] !== false) {
+	if(check_array_field($args, 'excerpt')) {
 		$excerpt = $args['excerpt'];
 	}
 
 	if(check_array_field($args, 'graphic')) {
 		$graphic = $args['graphic'];
+	}
+
+	// dump(get_field('eyebrow'));
+
+	// dump(is_array(get_field('eyebrow')));
+
+	if(is_array($eyebrow)) {
+		
+
+		if($eyebrow['title']) {
+			$eyebrow = '<a href="' . $eyebrow['url'] . '">' . $eyebrow['title'] . '</a>';
+		}
+		else {
+			$eyebrow = $eyebrow['url'];
+		}
+	}
+	else if(!check_field_value($eyebrow)) {
+		$eyebrow = '<a href="/">Centre for Stories</a>';
 	}
 
 ?>

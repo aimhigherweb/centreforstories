@@ -9,6 +9,12 @@
 	color: var.$colours_primary_700;
 }
 
+.venue {
+	@include mixins.overline_text;
+
+	color: var.$colours_primary_700;
+}
+
 .map {
 	width: 100vw;
 	height: 200px;
@@ -28,7 +34,10 @@
 }
 
 .header {
-	> div, > h1, > ul, > p {
+	>div,
+	>h1,
+	>ul,
+	>p {
 		max-width: mixins.max_width(100%, 0, 10);
 	}
 }

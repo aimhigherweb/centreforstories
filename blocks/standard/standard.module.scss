@@ -5,10 +5,6 @@
 	flex-wrap: wrap;
 }
 
-.container {
-
-}
-
 .image {
 	display: block;
 	order: -1;
@@ -93,7 +89,9 @@
 	.container {
 		max-width: mixins.max_width(100vw, 0, 6);
 
-		p, h2, blockquote {
+		p,
+		h2,
+		blockquote {
 			max-width: 100%;
 		}
 	}

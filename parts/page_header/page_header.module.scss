@@ -18,6 +18,16 @@
 .eyebrow {
 	@include mixins.overline_text('l');
 	margin: 0 0 1em;
+
+	a {
+		color: inherit;
+		font-weight: inherit;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
 }
 
 .excerpt {
@@ -55,7 +65,8 @@
 		}
 	}
 
-	.title, .excerpt {
+	.title,
+	.excerpt {
 		max-width: mixins.max_width(100%, 0, 8);
 	}
 

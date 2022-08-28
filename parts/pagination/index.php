@@ -22,14 +22,14 @@
 
 
 	preg_match(
-		"/^\/((?:\w|\/|-)+?)(?:\/page)?(?:\/\d+)?\/?$/",
+		"/^\/((?:\w|\/|-)+?)(?:\/page)?(?:\/\d+)?\/?\??$/",
 		$_SERVER["REQUEST_URI"],
 		$path_matches
 	);
 
 	if(!check_array_field($path_matches, 1)) {
 		preg_match(
-			"/^\/((?:\w|\/|-)+?)(?:\/\?page=\d+)?\/?$/",
+			"/^\/((?:\w|\/|-)+?)(?:\/\?page=\d+)?\/?\??$/",
 			$_SERVER["REQUEST_URI"],
 			$path_matches
 		);
@@ -55,7 +55,6 @@
 	if($query_pagination) {
 		$page_path = $path . '/';
 	}
-
 ?>
 
 <ul class="<?php echo classes([$styles['pagination']]); ?>">

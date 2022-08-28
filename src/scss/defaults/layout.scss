@@ -21,6 +21,7 @@
 	hr,
 	ul,
 	details,
+	aside,
 	.wp-block-image {
 		&+.wp-block {
 			margin-top: 60px;
@@ -50,8 +51,9 @@
 		hr,
 		ul,
 		details,
+		aside,
 		.wp-block-image {
-			max-width: max_width(100vw, 120px, 6);
+			max-width: max_width(100vw, 120px, 8);
 		}
 
 		hr {
@@ -80,8 +82,9 @@
 		hr,
 		ul,
 		details,
+		aside,
 		.wp-block-image {
-			max-width: max_width(var.$max_content, 0, 6);
+			max-width: max_width(var.$max_content, 0, 8);
 		}
 	}
 }

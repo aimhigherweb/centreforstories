@@ -70,7 +70,6 @@
 			'parts/page_header/index',
 			null,
 			array(
-				'class' => $styles['header'],
 				'page_id' => $page->ID,
 				'title' => $title
 			)
@@ -98,10 +97,10 @@
 			)
 		);
 	?>
-	<?php echo page_content($page->ID); ?>
 	<h2>Past Events</h2>
 	<a href="/events/past" class="<?php echo classes([$styles['past']]); ?>">
 		<?php echo inline_svg(get_template_directory_uri() . '/src/img/arrow_long.svg'); ?>
 		Events Archive
 	</a>
+	<?php echo page_content($page->ID); ?>
 </div>

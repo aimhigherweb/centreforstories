@@ -2,15 +2,17 @@
 	margin: 60px 0;
 	clear: both;
 
-	iframe, video {
+	iframe,
+	video {
 		@include aspect_ratio(calc(100vw - 40px), var.$youtube_ratio, var.$max_content);
 	}
 }
 
-%audio {
+%audio_embed {
 	margin: 20px 0;
 
-	iframe, audio {
+	iframe,
+	audio {
 		width: 100%;
 	}
 
@@ -28,7 +30,8 @@
 
 @media(min-width: 50em) {
 	%video_embed {
-		iframe, video {
+		iframe,
+		video {
 			@include aspect_ratio(calc(100vw - 120px), var.$youtube_ratio, var.$max_content);
 		}
 	}

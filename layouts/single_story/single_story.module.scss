@@ -2,17 +2,24 @@
 	@extend %content;
 
 	blockquote {
-		@include mixins.heading_text('h2');
+		@include mixins.overline_text('xl');
 
-		margin: 0;
+		margin: 2em 0;
+		padding-left: 20px;
+		clear: both;
+		border-left: 10px solid var.$colours_marigold;
 		font-style: normal;
 		font-weight: 700;
+
+		p {
+			max-width: unset;
+		}
 	}
 
 	header {
-		& + p,
-		& + h2,
-		& + blockquote {
+		&+p,
+		&+h2,
+		&+blockquote {
 			&:not([class]) {
 				margin-top: 40px;
 			}
@@ -28,9 +35,43 @@
 
 		list-style: none;
 
-
-		& + * {
+		&+* {
 			margin-top: 50px;
+		}
+	}
+}
+
+.collection {
+	@include mixins.overline_text('s');
+
+	margin-top: 2em;
+	padding-left: 10px;
+	border-left: 10px solid var.$colours_navy;
+	border-color: var(--page_colour);
+	color: var.$colours_navy;
+
+	h2 {
+		font-size: 1.1em;
+	}
+}
+
+@media(min-width: 40em) {
+	.collection {
+		max-width: mixins.max_width(70vw, 20px + 40px, 12);
+	}
+}
+
+@media(min-width: 50em) {
+	aside.collection {
+		max-width: mixins.max_width(70vw, 20px + 120px, 12);
+	}
+
+	.content {
+		blockquote {
+			max-width: mixins.max_width(100vw, 120px, 10);
+			margin-left: 10vw;
+			padding-left: 60px;
+			border-left-width: 64px;
 		}
 	}
 }
@@ -38,9 +79,9 @@
 @media(min-width: 60em) {
 	.content {
 		header {
-			& + p,
-			& + h2,
-			& + blockquote {
+			&+p,
+			&+h2,
+			&+blockquote {
 				&:not([class]) {
 					margin-top: 60px;
 				}
@@ -51,6 +92,12 @@
 			}
 		}
 	}
+
+	aside.collection {
+		max-width: mixins.max_width(100vw, 120px, 6);
+		padding: 10px 20px;
+		font-size: 1em;
+	}
 }
 
 @media(min-width: var.$max_width) {
@@ -60,5 +107,14 @@
 				max-width: mixins.max_width(var.$max_content, 120px, 6);
 			}
 		}
+
+		blockquote {
+			max-width: mixins.max_width(var.$max_content, 0, 10);
+			margin-left: 150px;
+		}
+	}
+
+	aside.collection {
+		max-width: mixins.max_width(100%, 0, 6);
 	}
 }

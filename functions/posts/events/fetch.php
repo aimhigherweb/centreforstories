@@ -4,7 +4,7 @@
             $limit = 9, 
             $category = false, 
             $children = true, 
-            $past = true,
+            $past = false,
             $future = true,
             $type = 'tribe_events',
             $tag = false,
@@ -22,7 +22,8 @@
         $date_query = false;
         $order = 'ASC';
 
-        // dump($search_query);
+        // dump($past);
+        // dump($future);
 
         if(isset($search_query, $search_query['page'])) {
             $page = $search_query['page'];
@@ -159,6 +160,8 @@
             'meta_query' => $meta_query,
             'ignore_sticky_posts' => true,
         );
+
+        // dump($post_args);
 
         $post_query = new WP_Query($post_args);
 

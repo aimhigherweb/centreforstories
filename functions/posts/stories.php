@@ -131,12 +131,12 @@
             $page = $search_query['paged'];
         }
 
-		if(isset($search_query, $search_query['collection']) && !$category) {
-            $category = [$search_query['collection']];
-        }
-
 		if($collections && !$category) {
             $category = $collections;
+        }
+
+		if(isset($search_query, $search_query['collection']) && !$category) {
+            $category = [$search_query['collection']];
         }
 
 		if($post_in) {
@@ -168,8 +168,6 @@
 			
 		);
 
-		// dump($args);
-
 		$story_query = new WP_Query($args);
 
         return array(
@@ -179,8 +177,26 @@
         );
     }
 
-	function cfs_get_story_collections() {
+	function cfs_get_story_collections($archived = false) {
 		wp_reset_query();
+
+		$meta_query = array(
+			'relation'		=> 'AND',
+		);
+
+		if(!$archived) {
+			$meta_query = set_query(
+                $meta_query, 
+                array(
+					'key'	  	=> 'archived',
+					'value'	  	=> true,
+					'compare' 	=> '!=',
+				),
+            );
+		}
+
+		// dump($meta_query);
+		// dump($archived);
 
 		$terms = get_terms(array(
 			'taxonomy' => 'collection',
@@ -188,14 +204,7 @@
 			'meta_key' => 'date',
 			'orderby' => 'meta_value',
 			'order' => 'DESC',
-			'meta_query'	=> array(
-				'relation'		=> 'AND',
-				array(
-					'key'	  	=> 'archived',
-					'value'	  	=> true,
-					'compare' 	=> '!=',
-				),
-			),
+			'meta_query'	=> $meta_query,
 		));
 
 		// $terms = get_terms(

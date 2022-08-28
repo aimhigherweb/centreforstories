@@ -15,7 +15,7 @@
 	);
 ?>
 
-<div class="<?php echo $styles['content']; ?>">
+<div>
 	<?php
 		get_template_part(
 			'parts/products_feed/index',

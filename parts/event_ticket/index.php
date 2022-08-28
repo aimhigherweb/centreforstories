@@ -80,11 +80,18 @@
 					$price = display_price(cfs_product_price($ticket));
 					$pwyw = false;
 					$suggested_price = false;
+					$quantity = ticket->get_stock_quantity();
 
-					if(is_array($price)) {
+					dump($quantity);
+
+					if(is_array(cfs_product_price($ticket))) {
 						$pwyw = true;
 						$suggested_price = $ticket->get_meta('_suggested_price')[0];
 					}
+
+					// dump($pwyw);
+					// dump($price);
+					// dump(cfs_product_price($ticket));
 
 					if(check_array_field($existing_tickets, $ticket->get_id())) {
 						$value = $existing_tickets[$ticket->get_id()]['quantity'];
@@ -133,7 +140,7 @@
 							id="quantity_<?php echo $ticket->get_id(); ?>" 
 							step="1" 
 							min="0" 
-							max="<?php echo $ticket->get_stock_quantity(); ?>" 
+							max="<?php echo $quantity; ?>" 
 							name="<?php echo $ticket->get_id(); ?>" 
 							value="<?php echo $value; ?>" 
 							inputmode="numeric" 
