@@ -41,51 +41,64 @@
 	$image_sizes = [
 		array(
 			'name' => 'header_feature',
-			'width' => 488,
-			'height' => 520,
+			'width' => 805.2,
+			'height' => 858,
 			'crop' => true,
 		),
 		array(
 			'name' => 'block_graphic',
-			'width' => 384,
-			'height' => 384,
+			'width' => 633.6,
+			'height' => 633.6,
 		),
 		array(
 			'name' => 'block_image',
-			'width' => 850,
-			'height' => 850,
+			'width' => 1387.5,
+			'height' => 1387.5,
 		),
 		array(
 			'name' => 'block_image_small',
-			'width' => 640,
-			'height' => 640,
+			'width' => 1056,
+			'height' => 1056,
 		),
 		array(
 			'name' => 'event_feed_block',
-			'width' => 336,
-			'height' => 290,
+			'width' => 576,
+			'height' => 478.5,
+			'crop' => true
+		),
+		array(
+			'name' => 'people_block',
+			'width' => 660,
+			'height' => 577.5,
+			'crop' => true
 		),
 		array(
 			'name' => 'festival_block',
-			'width' => 500,
-			'height' => 260,
+			'width' => 825,
+			'height' => 429,
 			'crop' => true
 		),
 		array(
 			'name' => 'program_block',
-			'width' => 145,
-			'height' => 145,
+			'width' => 239.25,
+			'height' => 239.25,
 			'crop' => true
 		),
 		array(
 			'name' => 'partner_block',
-			'width' => 300,
-			'height' => 120,
+			'width' => 495,
+			'height' => 198,
 		),
 		array(
 			'name' => 'course_block',
-			'width' => 860,
-			'height' => 570,
+			'width' => 1419,
+			'height' => 940.5,
+			'crop' => true
+		),
+		array(
+			'name' => 'banner_image',
+			'width' => 1419,
+			'height' => 940.5,
 			'crop' => true
 		),
 	];

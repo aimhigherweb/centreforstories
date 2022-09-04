@@ -1,5 +1,7 @@
 <?php
 
+	global $woocommerce;
+
 	$data = fetch_styles(__DIR__);
 
 	$template = $data['template'];
@@ -80,9 +82,7 @@
 					$price = display_price(cfs_product_price($ticket));
 					$pwyw = false;
 					$suggested_price = false;
-					$quantity = ticket->get_stock_quantity();
-
-					dump($quantity);
+					$quantity = $ticket->get_stock_quantity();
 
 					if(is_array(cfs_product_price($ticket))) {
 						$pwyw = true;

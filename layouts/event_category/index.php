@@ -22,6 +22,7 @@
 	$current = false;
 	$query = array(
 		'past' => true,
+		'future' => true,
 		'limit' => -1
 	);
 	$title = $category->name;
@@ -80,7 +81,6 @@
 			'parts/page_header/index',
 			null,
 			array(
-				'class' => $styles['header'],
 				'title' => $title,
 				'excerpt' => $excerpt,
 				'graphic' => $graphic

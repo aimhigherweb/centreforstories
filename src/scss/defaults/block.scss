@@ -11,7 +11,10 @@
 	&.colour {
 		color: var.$colours_white;
 
-		%eyebrow, %heading, %block_content, %block_cta {
+		%eyebrow,
+		%heading,
+		%block_content,
+		%block_cta {
 			color: inherit;
 		}
 	}
@@ -88,10 +91,10 @@
 	}
 
 	%eyebrow {
-		@include overline_text('l');
+		@include overline_text('m');
 	}
 
 	%block_cta {
-		@include overline_text('l');
+		@include overline_text('m');
 	}
 }

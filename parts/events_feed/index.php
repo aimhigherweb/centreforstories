@@ -15,6 +15,9 @@
 		$event_data = cfs_get_events();
 	}
 
+	// dump($args);
+	// dump($event_data);
+
 	$pages = $event_data['pages'];
 	$page = $event_data['page'];
 	$events = $event_data['events'];

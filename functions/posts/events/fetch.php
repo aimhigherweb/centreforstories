@@ -8,7 +8,7 @@
             $future = true,
             $type = 'tribe_events',
             $tag = false,
-            $venue = false,
+            $venue = false
         ) {
         wp_reset_query();
 

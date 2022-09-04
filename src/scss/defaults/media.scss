@@ -35,4 +35,16 @@
 			@include aspect_ratio(calc(100vw - 120px), var.$youtube_ratio, var.$max_content);
 		}
 	}
+
+	%audio_embed {
+		max-width: max_width(100vw, 120px, 8);
+	}
+}
+
+@media(min-width: var.$max_width) {
+	%content {
+		%audio_embed {
+			max-width: max_width(var.$max_content, 0, 8);
+		}
+	}
 }

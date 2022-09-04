@@ -10,7 +10,9 @@
 		background: var.$colours_blue;
 		color: var.$colours_white;
 
-		.eyebrow, .cta, .title {
+		.eyebrow,
+		.cta,
+		.title {
 			color: inherit;
 		}
 	}
@@ -35,7 +37,7 @@
 
 .cta {
 	@include mixins.block_link;
-	@include mixins.overline_text('l');
+	@include mixins.overline_text('m');
 	@include mixins.invert_link;
 
 	display: flex;
@@ -70,6 +72,7 @@
 
 .excerpt {
 	@extend %events_block_excerpt;
+	@include mixins.child_reset;
 	@include mixins.clip_lines(5);
 
 	margin: 0;
@@ -77,7 +80,7 @@
 
 @supports(grid-template-areas: '.') {
 	.block {
-		grid-template-areas: 'image' 'eyebrow' 'title' 'excerpt';
+		grid-template-areas: 'image''eyebrow''title''excerpt';
 		grid-template-columns: 1fr;
 		grid-template-rows: 266px auto auto 1fr auto;
 		margin: 0 auto;

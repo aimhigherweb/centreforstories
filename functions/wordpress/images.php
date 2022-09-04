@@ -11,6 +11,8 @@
 	// Support Featured Images
     add_theme_support( 'post-thumbnails' );
 
+	add_filter( 'big_image_size_threshold', '__return_false' );
+
     // Custom Image Sizes
 	global $image_sizes;
 

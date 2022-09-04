@@ -135,7 +135,9 @@
             $category = $collections;
         }
 
-		if(isset($search_query, $search_query['collection']) && !$category) {
+		// dump($search_query['collection']);
+
+		if(isset($search_query, $search_query['collection']) && $search_query['collection'] !== 'archived') {
             $category = [$search_query['collection']];
         }
 
@@ -167,6 +169,8 @@
 			'tax_query' => $tax_query,
 			
 		);
+
+		// dump($args);
 
 		$story_query = new WP_Query($args);
 

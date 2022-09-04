@@ -25,6 +25,10 @@
 	$category = false;
 	$post_in = false;
 
+	if(check_array_field($fetch_type, 'value')) {
+		$fetch_type = $fetch_type['value'];
+	}
+
 	if($fetch_type == 'collections') {
 		$cat = get_term_by(
 			'id',
@@ -44,8 +48,6 @@
 		post_in: $post_in
 	);
 	$stories = $story_data['posts'];
-	
-	
 ?>
 
 <div 

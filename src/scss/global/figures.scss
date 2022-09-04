@@ -33,3 +33,23 @@ figure {
 		justify-content: center;
 	}
 }
+
+@media(min-width: 50em) {
+	figure {
+		&.wp-block-embed {
+			&.is-provider-soundcloud {
+				max-width: max_width(100vw, 120px, 8);
+			}
+		}
+	}
+}
+
+@media(min-width: 50em) {
+	figure {
+		&.wp-block-embed {
+			&.is-provider-soundcloud {
+				max-width: max_width(var.$max_content, 0, 8);
+			}
+		}
+	}
+}

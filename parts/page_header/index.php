@@ -24,7 +24,7 @@
 	$excerpt = get_field('header_content', $id);
 	$title = get_the_title($id);
 	$graphic = false;
-	$eyebrow = get_field('eyebrow');
+	$eyebrow = get_field('eyebrow', $id);
 	$header_classes = [$styles['header']];
 
 	if(check_array_field($args, 'class')) {
@@ -47,14 +47,8 @@
 		$graphic = $args['graphic'];
 	}
 
-	// dump(get_field('eyebrow'));
-
-	// dump(is_array(get_field('eyebrow')));
-
 	if(is_array($eyebrow)) {
-		
-
-		if($eyebrow['title']) {
+		if($eyebrow['title'] && $eyebrow['url']) {
 			$eyebrow = '<a href="' . $eyebrow['url'] . '">' . $eyebrow['title'] . '</a>';
 		}
 		else {

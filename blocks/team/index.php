@@ -39,7 +39,7 @@
 					<?php if(check_array_field($image, 'sizes')): ?>
 						<img
 							alt="<?php echo $image['alt'] || ''; ?>"
-							src="<?php echo $image['sizes']['event_feed_block']; ?>"
+							src="<?php echo $image['sizes']['people_block']; ?>"
 						/>
 					<?php endif; ?>
 				</div>

@@ -3,11 +3,15 @@ form {
 	margin: 0;
 	padding: 60px 0;
 
-	label, input, textarea, select {
+	label,
+	input,
+	textarea,
+	select {
 		@include mixins.text('l');
 	}
 
-	label, legend {
+	label,
+	legend {
 		display: block;
 		width: 100%;
 		margin: 0 0 10px;
@@ -21,7 +25,9 @@ form {
 		font-weight: 600;
 	}
 
-	input, textarea, select {
+	input,
+	textarea,
+	select {
 		display: block;
 		width: 100%;
 		padding: 10px 16px;
@@ -34,70 +40,35 @@ form {
 			color: var.$colours_neutral_600;
 		}
 
-		&[type='checkbox'], &[type='radio'] {
+		&[type='checkbox'],
+		&[type='radio'] {
 			@include mixins.sr_only;
 
-			& + label {
-				@include mixins.text('s');
-
-				display: flex;
-				position: relative;
-				align-items: center;
+			&+label {
 				color: var.$colours_neutral_500;
-				font-weight: 500;
-
-				&:before, &:after {
-					display: block;
-					border-radius: 2px;
-				}
-
-				&:before {
-					content: '';
-					width: 20px;
-					height: 20px;
-					margin-right: 14px;
-					border: 1px solid var.$colours_neutral_20;
-
-					background: var.$colours_white;
-				}
-
-				&:after {
-					display: flex;
-					position: absolute;
-					left: 0;
-					align-items: center;
-					justify-content: center;
-					width: 20px;
-					height: 20px;
-					background: var.$colours_blue;
-					color: var.$colours_white;
-					font-size: 20px;
-				}
-			}
-
-			&:checked {
-				& + label {
-					&:after {
-						content: '';
-					}
-				}
 			}
 		}
 
 		&[type='radio'] {
-			& + label {
-				&:before, &:after {
-					border-radius: 50%;
+			&+label {
+				@include mixins.radio_input();
+			}
+
+			&:checked {
+				&+label {
+					@include mixins.radio_input_active();
 				}
 			}
 		}
 
 		&[type='checkbox'] {
+			&+label {
+				@include mixins.check_input();
+			}
+
 			&:checked {
-				& + label {
-					&:after {
-						content: '✓';
-					}
+				&+label {
+					@include mixins.check_input_active();
 				}
 			}
 		}
@@ -157,7 +128,8 @@ form {
 	}
 
 	.wpforms-field-checkbox {
-		ul, li {
+		ul,
+		li {
 			margin: 0;
 			padding: 0;
 			list-style: none;

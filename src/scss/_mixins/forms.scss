@@ -1,0 +1,70 @@
+@mixin radio_checkbox() {
+	@include text('s');
+
+	display: flex;
+	position: relative;
+	align-items: center;
+	font-weight: 500;
+
+	&:before,
+	&:after {
+		display: block;
+		border-radius: 2px;
+	}
+
+	&:before {
+		content: '';
+		width: 20px;
+		height: 20px;
+		margin-right: 14px;
+		border: 1px solid var.$colours_neutral_20;
+
+		background: var.$colours_white;
+	}
+
+	&:after {
+		display: flex;
+		position: absolute;
+		left: 0;
+		align-items: center;
+		justify-content: center;
+		width: 20px;
+		height: 20px;
+		background: var.$colours_blue;
+		color: var.$colours_white;
+		font-size: 20px;
+	}
+}
+
+@mixin radio_input() {
+	@include radio_checkbox();
+
+	&:before,
+	&:after {
+		border-radius: 50%;
+	}
+
+	&:after {
+		left: 2px;
+		width: 16px;
+		height: 16px;
+	}
+}
+
+@mixin radio_input_active() {
+	&:after {
+		content: '';
+	}
+}
+
+@mixin check_input() {
+	@include radio_checkbox();
+}
+
+@mixin check_input_active() {
+	@include check_input();
+
+	&:after {
+		content: '✓';
+	}
+}

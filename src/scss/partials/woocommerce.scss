@@ -21,12 +21,13 @@
 		border: none;
 		background: none;
 
-		&:before, &:after {
+		&:before,
+		&:after {
 			content: normal;
 		}
 	}
 
-	& ~ * {
+	&~* {
 		&.woocommerce-form-login-toggle,
 		&.woocommerce-notices-wrapper,
 		&.woocommerce-form-coupon-toggle {
@@ -71,6 +72,27 @@
 		}
 	}
 
+	.wcsatt-options {
+		padding: 0;
+
+		input {
+			&[type='radio'] {
+				+span {
+					@include mixins.radio_input();
+
+					margin-bottom: 5px;
+					padding-left: 0;
+				}
+
+				&:checked {
+					&+span {
+						@include mixins.radio_input_active();
+					}
+				}
+			}
+		}
+	}
+
 	.product-thumbnail {
 		img {
 			max-width: 200px;
@@ -99,7 +121,9 @@
 		border-radius: 0;
 	}
 
-	.button, button, .button.alt {
+	.button,
+	button,
+	.button.alt {
 		@include mixins.buttons(var.$colours_blue, var.$colours_white);
 
 		margin-top: 20px;
@@ -122,10 +146,11 @@
 
 	label {
 		input {
-			&[type='checkbox'], &[type='radio'] {
+			&[type='checkbox'],
+			&[type='radio'] {
 				@include mixins.sr_only;
 
-				& + span {
+				&+span {
 					@include mixins.text('s');
 
 					display: flex;
@@ -134,7 +159,8 @@
 					color: var.$colours_neutral_500;
 					font-weight: 500;
 
-					&:before, &:after {
+					&:before,
+					&:after {
 						display: block;
 						border-radius: 2px;
 					}
@@ -164,7 +190,7 @@
 				}
 
 				&:checked {
-					& + label {
+					&+label {
 						&:after {
 							content: '';
 						}
@@ -173,8 +199,9 @@
 			}
 
 			&[type='radio'] {
-				& + span {
-					&:before, &:after {
+				&+span {
+					&:before,
+					&:after {
 						border-radius: 50%;
 					}
 				}
@@ -182,7 +209,7 @@
 
 			&[type='checkbox'] {
 				&:checked {
-					& + span {
+					&+span {
 						&:after {
 							content: '✓';
 						}
@@ -209,7 +236,8 @@
 		}
 	}
 
-	.woocommerce-checkout-payment, #payment {
+	.woocommerce-checkout-payment,
+	#payment {
 		@include mixins.full_background(var(--page_colour), var.$colours_navy);
 		padding: 60px 0;
 
@@ -237,7 +265,8 @@
 			background: none;
 			color: inherit;
 
-			&:before, &:after {
+			&:before,
+			&:after {
 				content: normal;
 			}
 		}
@@ -248,7 +277,8 @@
 			}
 		}
 
-		.button, button {
+		.button,
+		button {
 			@include mixins.button_colour();
 		}
 
@@ -257,7 +287,7 @@
 				&[type='radio'] {
 					@include mixins.sr_only;
 
-					& + label {
+					&+label {
 						@include mixins.text('s');
 
 						display: flex;
@@ -267,7 +297,8 @@
 						font-size: 1.2em;
 						font-weight: 500;
 
-						&:before, &:after {
+						&:before,
+						&:after {
 							display: block;
 							border-radius: 50%;
 						}
@@ -298,7 +329,7 @@
 					}
 
 					&:checked {
-						& + label {
+						&+label {
 							&:after {
 								content: '';
 							}
@@ -368,12 +399,6 @@
 			button {
 				margin-top: 30px;
 			}
-
-			// .quantity.quantity {
-			// 	display: inline;
-			// 	height: auto;
-			// 	max-height: max-content;
-			// }
 		}
 	}
 
@@ -413,7 +438,10 @@
 			}
 		}
 
-		label, input, textarea, select {
+		label,
+		input,
+		textarea,
+		select {
 			@include mixins.text('l');
 		}
 
@@ -424,7 +452,9 @@
 			padding: 0;
 		}
 
-		input, textarea, select {
+		input,
+		textarea,
+		select {
 			display: block;
 			width: 100%;
 			padding: 10px 16px;
@@ -481,8 +511,9 @@
 
 @media(min-width: 50em) {
 	.woocommerce.woocommerce {
-		.woocommerce-checkout-payment, #payment {
-			> * {
+		.woocommerce-checkout-payment,
+		#payment {
+			>* {
 				max-width: mixins.max_width(100%, 0, 6);
 			}
 		}

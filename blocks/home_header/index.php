@@ -41,10 +41,17 @@
 				srcset="<?php echo $image['sizes']['block_image_small']; ?>"
 				media="(max-width: 640px)"
 			/>
+			<?php if(check_array_field($image['sizes'], 'banner_image')): ?>
+				<source
+					srcset="<?php echo $image['sizes']['banner_image']; ?>"
+					media="(min-width: 640px)"
+				/>
+			<?php endif; ?>
 			<source
 				srcset="<?php echo $image['sizes']['block_image']; ?>"
 				media="(min-width: 640px)"
 			/>
+			
 			<img
 				alt="<?php echo $image['alt'] ?>"
 				src="<?php echo $image['url'] ?>"

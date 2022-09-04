@@ -29,7 +29,7 @@
 	}
 
 	#nt-note-title-bar {
-		@include mixins.overline_text('l');
+		@include mixins.overline_text('m');
 
 		border-radius: 0;
 		background: var.$colours_blue;
@@ -78,7 +78,8 @@
 
 	table {
 		&.notes-listing.notes-listing {
-			thead, tbody {
+			thead,
+			tbody {
 				tr {
 					&:first-child {
 						th {
@@ -88,7 +89,8 @@
 						}
 					}
 
-					td, th {
+					td,
+					th {
 						background: none;
 					}
 				}

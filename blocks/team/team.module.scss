@@ -42,7 +42,7 @@
 
 .image {
 	width: calc(100% + 50px);
-	height: 300px;
+	height: auto;
 	margin: -25px -25px 25px;
 	background: var.$colours_navy;
 
@@ -59,6 +59,19 @@
 	@extend %eyebrow;
 
 	margin: 12px 0;
+}
+
+@media(min-width: 30em) {
+	.image {
+		width: calc(100% + 50px);
+		height: auto;
+		margin: -25px -25px 25px;
+
+		img {
+			height: auto;
+			object-fit: contain;
+		}
+	}
 }
 
 @media(min-width: 50em) {

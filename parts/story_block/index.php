@@ -51,9 +51,9 @@
 		<?php echo $item->post_title; ?>
 	</h2>
 
-	<p class="<?php echo classes([$styles['excerpt']]); ?>">
+	<div class="<?php echo classes([$styles['excerpt']]); ?>">
 		<?php echo $excerpt; ?>
-	</p>
+	</div>
 	<a href="<?php echo get_permalink( $item ); ?>" class="<?php echo classes([$styles['cta']]); ?>">
 		<span>Read More</span>
 		<?php echo inline_svg(get_template_directory_uri() . '/src/img/arrow_circle.svg'); ?>

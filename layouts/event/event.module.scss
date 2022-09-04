@@ -3,14 +3,14 @@
 }
 
 .date {
-	@include mixins.overline_text;
-	margin-top: 60px;
+	@include mixins.overline_text('l');
 
+	margin-top: 60px;
 	color: var.$colours_primary_700;
 }
 
 .venue {
-	@include mixins.overline_text;
+	@include mixins.overline_text('l');
 
 	color: var.$colours_primary_700;
 }
@@ -26,7 +26,7 @@
 }
 
 .feature_heading {
-	@include mixins.overline_text('l');
+	@include mixins.overline_text('m');
 	margin: 24px 0;
 
 	color: inherit;
@@ -55,10 +55,6 @@
 		height: 80px;
 		margin: 10px;
 
-		span {
-			@include mixins.sr_only;
-		}
-
 		img {
 			display: block;
 			width: 100%;
@@ -69,7 +65,7 @@
 		}
 
 		&:hover {
-			span {
+			.tooltip {
 				@include mixins.sr_only_remove;
 
 				position: absolute;
@@ -81,6 +77,11 @@
 			}
 		}
 	}
+}
+
+.tooltip {
+	@include mixins.sr_only;
+	color: var.$colours_white;
 }
 
 @media(min-width: 40em) {

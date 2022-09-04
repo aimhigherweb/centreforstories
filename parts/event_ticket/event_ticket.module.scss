@@ -40,7 +40,7 @@
 
 			input {
 				width: 100%;
-				-moz-appearance:textfield;
+				-moz-appearance: textfield;
 				appearance: textfield;
 				padding-left: calc(1ch + 10px);
 
@@ -63,13 +63,13 @@
 }
 
 .ticket {
-	@include mixins.overline_text('l');
+	@include mixins.overline_text('m');
 
 	margin: 0 auto 0 0;
 }
 
 .price {
-	@include mixins.overline_text('l');
+	@include mixins.overline_text('m');
 	flex-shrink: 0;
 
 	margin: 0 2ch;
@@ -83,7 +83,6 @@
 
 @media(min-width: 50em) {
 	.tickets {
-		margin-top: 60px;
 		padding-top: 60px;
 		padding-bottom: 60px;
 

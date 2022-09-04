@@ -10,9 +10,9 @@
 	}
 
 	header {
-		& + p,
-		& + h2,
-		& + blockquote {
+		&+p,
+		&+h2,
+		&+blockquote {
 			&:not([class]) {
 				margin-top: 40px;
 			}
@@ -39,7 +39,8 @@
 		color: inherit;
 	}
 
-	p, :global(.cart) {
+	p,
+	:global(.cart) {
 		max-width: 400px;
 	}
 
@@ -53,6 +54,23 @@
 			color: var.$colours_white;
 			font-weight: 500;
 			text-align: left;
+
+			input {
+				&[type='radio'] {
+					+span {
+						@include mixins.radio_input();
+						margin-bottom: 5px;
+
+						padding-left: 0;
+					}
+
+					&:checked {
+						&+span {
+							@include mixins.radio_input_active();
+						}
+					}
+				}
+			}
 		}
 
 		button {
@@ -63,7 +81,8 @@
 			width: 100%;
 			vertical-align: middle;
 
-			th, td {
+			th,
+			td {
 				border-bottom: 10px solid transparent;
 			}
 
@@ -121,9 +140,9 @@
 @media(min-width: 60em) {
 	.content {
 		header {
-			& + p,
-			& + h2,
-			& + blockquote {
+			&+p,
+			&+h2,
+			&+blockquote {
 				&:not([class]) {
 					margin-top: 60px;
 				}
