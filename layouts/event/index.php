@@ -58,9 +58,11 @@
 			}
 
 			$children .= '</li>';
+
+			$people_data[] = $person_data;
 		}
 
-		$people_data[] = $person_data;
+		
 
 		$children .= '</ul>';
 	}

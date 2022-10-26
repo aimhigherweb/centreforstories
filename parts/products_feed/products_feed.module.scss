@@ -45,9 +45,9 @@
 	}
 
 	.product {
-		grid-template-areas: 'image image' 'title title' 'price price' 'cart cart';
+		grid-template-areas: 'image image''title title''price price''excerpt excerpt''cart cart';
 		grid-template-columns: 1fr 96px;
-		grid-template-rows: 266px 1fr auto auto;
+		grid-template-rows: 266px auto auto 1fr auto;
 		max-width: unset;
 		margin: 0;
 		padding-bottom: 0;

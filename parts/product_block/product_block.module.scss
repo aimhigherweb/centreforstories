@@ -9,6 +9,14 @@
 	width: calc(100% + 64px - 96px);
 }
 
+.excerpt {
+	@extend %events_block_excerpt;
+	@include mixins.clip_lines(3);
+
+	grid-area: excerpt;
+	margin: 0 0 12px;
+}
+
 .cart {
 	@include mixins.buttons(var.$colours_blue, var.$colours_white, var.$colours_blue);
 	@include mixins.position(auto, 0, 0, 0);
@@ -23,13 +31,8 @@
 .price {
 	margin-top: 0;
 	padding: 0 32px;
-	font-size: 2em;
-	font-weight: 800;
-
-	span {
-		font-size: 0.8em;
-		font-weight: 500;
-	}
+	font-size: 1.5em;
+	font-weight: 500;
 }
 
 @supports(grid-template-areas: '.') {
