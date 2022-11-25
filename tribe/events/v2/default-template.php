@@ -11,18 +11,11 @@
  * @version 1.0
  */
 
-	// use Tribe\Events\Views\V2\Template_Bootstrap;
-
-
-	// echo tribe( Template_Bootstrap::class )->get_view_html();
-
-	// var_dump(tribe_context()->get( 'view' ));
-
-	// dump(tribe_is_past());
+	use Tribe\Events\Views\V2\Template_Bootstrap;
 
 	$view = tribe_context()->get( 'view' );
 	
-	if ($view == 'single-event') {
+	if (tribe( Template_Bootstrap::class )->is_single_event()) {
 		get_template_part(
 			'partials/layout/index', 
 			null, 

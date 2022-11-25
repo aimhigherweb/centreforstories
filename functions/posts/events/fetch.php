@@ -22,9 +22,6 @@
         $date_query = false;
         $order = 'ASC';
 
-        // dump($past);
-        // dump($future);
-
         if(isset($search_query, $search_query['page'])) {
             $page = $search_query['page'];
         }
@@ -160,8 +157,6 @@
             'meta_query' => $meta_query,
             'ignore_sticky_posts' => true,
         );
-
-        // dump($post_args);
 
         $post_query = new WP_Query($post_args);
 

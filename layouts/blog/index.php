@@ -60,7 +60,6 @@
 				array(
 					'page' => $page,
 					'pages' => $pages,
-					// 'query' => true
 				)
 			);
 		}

@@ -14,7 +14,6 @@
 		$featured = false;
 	}
 	else if($featured && $featured['tag'] && count($featured['tag']) > 0) {
-		// dump($featured['tag'][0]);
 		$tag = get_term_by('name', $featured['tag'][0], 'post_tag');
 		$featured = false;
 	}
@@ -51,8 +50,6 @@
 
 
 	$title = false;
-
-	// dump($tag);
 
 	if($venue) {
 		$title = 'Upcoming Events - ' . $venue->post_title;

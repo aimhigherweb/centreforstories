@@ -40,9 +40,6 @@
 		$offset = 0;
 		$ignore_sticky = true;
 
-		// dump($page);
-		// dump($search_query);
-
 		if(isset($search_query, $search_query['page'])) {
             $page = $search_query['page'];
         }
@@ -51,15 +48,9 @@
             $page = $search_query['paged'];
         }
 
-		// dump($page);
-
 		if(get_option('sticky_posts')) {
 			if($page == 1) {
-				// $limit = $limit - 1;
 				$ignore_sticky = false;
-			}
-			else {
-				// $offset = 1;
 			}
 		}
 
@@ -71,10 +62,7 @@
 			'posts_per_page' => $limit,
             'paged' => $page,
 			'ignore_sticky_posts' => true,
-			// 'offset' => $offset
 		);
-
-		// dump($args);
 
 		$post_query = new WP_Query($args);
 

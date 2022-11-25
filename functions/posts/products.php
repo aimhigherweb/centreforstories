@@ -75,12 +75,7 @@
 		}
 
 		if($events && is_array($events)) {
-			// $meta_query = array(
-            //     array(
-            //       'key' => Tribe__Events__Featured_Events::FEATURED_EVENT_KEY,
-            //       'value' => true,
-            //     )
-            // );
+
 		}
 		else if ($events) {
 			$meta_query = array(

@@ -6,16 +6,6 @@
  * @package Centre for Stories
  * @version 1.0
  */
-
-	// dump($wp_query->is_posts_page);
-	// dump(is_category());
-	// dump(is_tag());
-	// dump(is_archive(  ));
-	// dump(get_the_ID());
-	// dump(get_page_by_path('stories'));
-	// dump(strtok($_SERVER["REQUEST_URI"], '/'));
-	// dump($wp_query);
-	
 	
  
 	if($wp_query->is_posts_page) {

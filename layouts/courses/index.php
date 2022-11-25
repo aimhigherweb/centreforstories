@@ -15,7 +15,7 @@
 		)
 	);
 
-	$page = get_page_by_path($_SERVER["REQUEST_URI"]);
+	$page = get_page_by_path(current_page());
 
 	$courses = $wp_query->posts;
 

@@ -17,11 +17,6 @@
 		)
 	);
 
-	// $date = cfs_join_date(array(
-	// 	'start' => $event['start_date'],
-	// 	'end' => $event['end_date'],
-	// ));
-
 	$image_src = get_the_post_thumbnail_url($item->ID, 'event_feed_block');
 
 	if(check_array_field($image_src, 0)) {

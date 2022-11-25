@@ -22,8 +22,6 @@
 	$block_classes = [$styles['block']];
 
 	$festivals = cfs_get_festivals();
-
-	// dump($festivals);
 	
 ?>
 

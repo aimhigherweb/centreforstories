@@ -16,7 +16,6 @@
 				'has_archive' => true,
 				'rewrite' => array(
 					'slug' => 'stories/collections',
-					// 'hierarchical' => true,
 					'pages' => true,
 					'with_front' => false
 				),
@@ -135,7 +134,6 @@
             $category = $collections;
         }
 
-		// dump($search_query['collection']);
 
 		if(isset($search_query, $search_query['collection']) && $search_query['collection'] !== 'archived') {
             $category = [$search_query['collection']];
@@ -170,8 +168,6 @@
 			
 		);
 
-		// dump($args);
-
 		$story_query = new WP_Query($args);
 
         return array(
@@ -199,9 +195,6 @@
             );
 		}
 
-		// dump($meta_query);
-		// dump($archived);
-
 		$terms = get_terms(array(
 			'taxonomy' => 'collection',
 			'hide_empty' => true,
@@ -211,22 +204,11 @@
 			'meta_query'	=> $meta_query,
 		));
 
-		// $terms = get_terms(
-		// 	'collection',
-		// 	array( 
-		// 		'post_types' => 'series', 
-		// 		'orderby' => 'post_date', 
-		// 		'order' => 'DESC' 
-		// 	)
-		// );
-
 		$term_data = array();
 		$collection_slugs = array();
 
 		foreach($terms as $term) {
 			$type = get_field('collection_type', $term);
-
-			// dump($term);
 
 			$collection_slugs[] = $term->slug;
 
@@ -248,8 +230,6 @@
 
 			$term_data[$type['value']]['terms'][] = $term;
 		}
-
-		// dump($terms);
 
 		return array(
 			'terms' => $term_data,

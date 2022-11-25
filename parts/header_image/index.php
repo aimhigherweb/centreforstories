@@ -4,8 +4,6 @@
 	$feature = get_the_post_thumbnail_url(get_the_ID(), 'header_feature');
 	$feature_caption = get_the_post_thumbnail_caption();
 
-	// dump($args);
-
 	if(check_array_field($args, 'image') && $args['image'] !== false) {
 		$feature = wp_get_attachment_image_url($args['image']['ID'], 'header_feature');
 		$feature_caption = wp_get_attachment_caption($args['image']['ID']);

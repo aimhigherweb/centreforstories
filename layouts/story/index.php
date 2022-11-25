@@ -35,8 +35,6 @@
 	$collection_slugs = $collection_data['collections'];
 	$collections = $collection_data['terms'];
 
-	// dump($collection_slugs);
-
 	$story_data = cfs_get_stories(collections: $collection_slugs);
 	$stories = $story_data['posts'];
 	$page = $story_data['page'];
@@ -49,8 +47,6 @@
 		'excerpt' => get_field('header_content', $args['page_id']),
 		'class' => $styles['header']
 	);
-
-	// dump($search_query);
 
 	if(check_array_field($search_query, 'collection') && get_queried_object()) {
 		$collection_page = $search_query['collection'];
@@ -71,8 +67,6 @@
 		$content_classes[] = $styles['archived'];
 		$page_id = get_page_by_path( '/stories' )->ID;
 	}
-
-	// dump($header_image);
 
 ?>
 

@@ -29,7 +29,7 @@
 	$next_id = $contents->next_id;
 
 	$enable_spotlight_mode = tutor_utils()->get_option( 'enable_spotlight_mode' );
-	extract(array('context' => 'lesson')); // $context, $html_content	
+	extract(array('context' => 'lesson'));
 
 	function tutor_course_single_sidebar( $echo = true, $context='desktop' ) {
 		ob_start();

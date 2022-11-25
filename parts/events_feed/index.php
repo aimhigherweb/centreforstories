@@ -15,9 +15,6 @@
 		$event_data = cfs_get_events();
 	}
 
-	// dump($args);
-	// dump($event_data);
-
 	$pages = $event_data['pages'];
 	$page = $event_data['page'];
 	$events = $event_data['events'];
@@ -42,7 +39,6 @@
 	$events_object = array();
 
 	foreach($events as $event) {
-		// var_dump($events_object);
 		if(check_array_field($events_object, $event->post_title)) {
 			$details = $events_object[$event->post_title]['events'];
 

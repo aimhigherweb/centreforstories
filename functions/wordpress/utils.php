@@ -84,4 +84,8 @@
 		return $url_path;
 	}
 
+	function current_page() {
+		return explode('?', $_SERVER["REQUEST_URI"])[0];
+	}
+
 ?>

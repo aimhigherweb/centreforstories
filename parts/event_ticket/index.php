@@ -18,7 +18,6 @@
 	);
 
 	if($_POST) {
-		// dump($_POST);
 		foreach(array_keys($_POST) as $item) {
 			if(!preg_match('/^price_/', $item)) {
 				$item_price = 'price_' . $item;
@@ -28,9 +27,6 @@
 				if(check_array_field($_POST, $item_price)) {
 					$cart_item_data['pwyw_price'] = $_POST[$item_price];
 				}
-
-				// dump($item);
-				// dump($variation);
 
 				WC()->cart->add_to_cart(
 					product_id: $item,
@@ -88,10 +84,6 @@
 						$pwyw = true;
 						$suggested_price = $ticket->get_meta('_suggested_price')[0];
 					}
-
-					// dump($pwyw);
-					// dump($price);
-					// dump(cfs_product_price($ticket));
 
 					if(check_array_field($existing_tickets, $ticket->get_id())) {
 						$value = $existing_tickets[$ticket->get_id()]['quantity'];
