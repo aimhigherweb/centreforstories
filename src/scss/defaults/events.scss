@@ -11,7 +11,8 @@
 
 	margin: 0;
 
-	a, button {
+	a,
+	button {
 		@include block_link;
 
 		display: inline;
