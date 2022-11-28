@@ -1,5 +1,4 @@
 <?php
-	$logo = wp_get_attachment_image_src(get_theme_mod( 'custom_logo' ), 'full')[0];
 	$name = get_bloginfo('name');
 	$address = get_field('address', 'option');
 	$phone = get_field('phone', 'option');

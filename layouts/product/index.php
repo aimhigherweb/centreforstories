@@ -17,7 +17,6 @@
 	$product = wc_get_product();
 	$price = display_price(cfs_product_price($product));
 
-	$children = '<p class="' . $styles['price'] . '"><span>Price: </span>' . $price . '</p>';
 	$cart = WC()->cart->get_cart_contents();
 	$existing_items = false;
 
@@ -37,8 +36,7 @@
 			'parts/page_header/index',
 			null,
 			array(
-				'children' => $children,
-				'excerpt' => ''
+				'excerpt' => ' '
 			)
 		);
 	?>

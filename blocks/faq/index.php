@@ -3,8 +3,6 @@
  * Block Name: CTA Block
  * 
  */
-	$logo = wp_get_attachment_image_src(get_theme_mod( 'custom_logo' ), 'full')[0];
-
 	$data = fetch_styles(__DIR__);
 
 	$template = $data['template'];

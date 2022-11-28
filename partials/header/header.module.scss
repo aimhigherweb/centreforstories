@@ -98,7 +98,8 @@
 	}
 
 	li {
-		&:global(.logout), &:global(.account) {
+		&:global(.logout),
+		&:global(.account) {
 			display: none;
 		}
 	}
@@ -131,7 +132,8 @@
 
 	.utility_nav {
 		li {
-			&:global(.logout), &:global(.account) {
+			&:global(.logout),
+			&:global(.account) {
 				display: block;
 			}
 
@@ -208,7 +210,9 @@
 	}
 
 	.nav {
-		.hamburger, .utility_mobile, .social_mobile {
+		.hamburger,
+		.utility_mobile,
+		.social_mobile {
 			display: none;
 		}
 
@@ -231,7 +235,9 @@
 				display: flex;
 			}
 
-			.hamburger, .utility_mobile, .social_mobile {
+			.hamburger,
+			.utility_mobile,
+			.social_mobile {
 				display: none;
 			}
 		}
@@ -258,7 +264,8 @@
 				line-height: 1.25;
 			}
 
-			&:focus-within, &:focus {
+			&:focus-within,
+			&:focus {
 				width: 15vw;
 				max-width: 200px;
 				background: var.$colours_neutral_100;
@@ -287,7 +294,8 @@
 			}
 		}
 
-		form, button {
+		form,
+		button {
 			width: 40px;
 		}
 	}
@@ -316,6 +324,10 @@
 					content: '';
 					background: var.$colours_blue;
 				}
+
+				&:focus {
+					outline: none;
+				}
 			}
 		}
 	}
@@ -340,7 +352,8 @@
 		}
 	}
 
-	.utility_nav, .social_nav {
+	.utility_nav,
+	.social_nav {
 		li {
 			margin: 0 5px;
 		}

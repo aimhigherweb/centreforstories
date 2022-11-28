@@ -10,6 +10,7 @@
 	@extend %events_block;
 
 	flex: 1 1 250px;
+	max-width: 400px;
 	margin: 15px;
 
 	&:global(.open) {
@@ -42,10 +43,7 @@
 	}
 
 	.event {
-		max-width: unset;
 		height: fit-content(300px);
-		// min-height: fit-content;
-		// max-height: 300px;
 		margin: 0;
 
 		&:global(.open) {

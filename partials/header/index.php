@@ -27,6 +27,7 @@
 ?>
 
 <header class="<?php echo $styles['header']; ?>">
+	<a href="#main" class="sr-only">Skip to content</a>
 	<a class="<?php echo $styles['logo']; ?>" href="/">
 		<?php 
 			if(preg_match('/\.svg$/', $logo)) {

@@ -149,6 +149,10 @@
 		width: 100%;
 		height: 100%;
 	}
+
+	:global(.logo_path) {
+		color: inherit;
+	}
 }
 
 .heading {

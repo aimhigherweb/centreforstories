@@ -58,6 +58,15 @@
 	if($colour) {
 		$style = '--page_colour: ' . $colour . ';';
 	}
+
+	$current_page = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+	if($_SERVER['HTTPS']) {
+		$current_page = 'https://' . $current_page;
+	}
+	else {
+		$current_page = 'http://' . $current_page;
+	}
 ?>
 
 <!DOCTYPE html>
@@ -112,6 +121,10 @@
 					$args
 				); 
 			?>
+			<a href="<?php echo preg_replace('/\/$/', "", $current_page); ?>#main" class="<?php echo classes([$styles['btt']]); ?>">
+			<?php echo inline_svg(get_template_directory_uri() . '/src/img/chevron.svg'); ?>
+				<span class="sr-only">Back to Top</span>
+			</a>
 		</main>
 
 		<?php get_template_part('partials/footer/index'); ?>
