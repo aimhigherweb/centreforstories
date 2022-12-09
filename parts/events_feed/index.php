@@ -2,14 +2,17 @@
 	$event_data = false;
 
 	if(check_array_field($args, 'query')) {
-		$event_data = cfs_get_events(
-			past: $args['query']['past'] ?? null,
-			future: $args['query']['future'] ?? null,
-			limit: $args['query']['limit'] ?? null,
-			featured: $args['query']['featured'] ?? null,
-			category: $args['query']['category'] ?? null,
-			tag: $args['query']['tag'] ?? null,
-		);
+		// $event_data = cfs_get_events(
+		// 	past: $args['query']['past'] ?? null,
+		// 	future: $args['query']['future'] ?? null,
+		// 	limit: $args['query']['limit'] ?? null,
+		// 	featured: $args['query']['featured'] ?? null,
+		// 	category: $args['query']['category'] ?? null,
+		// 	tag: $args['query']['tag'] ?? null,
+		// 	series: $args['query']['series'] ?? null,
+		// );
+
+		$event_data = call_user_func_array('cfs_get_events', $args['query']);
 	}
 	else {
 		$event_data = cfs_get_events();
@@ -36,40 +39,18 @@
 
 	$feed_classes = [$styles['feed']];
 
-	$events_object = array();
 
-	foreach($events as $event) {
-		if(check_array_field($events_object, $event->post_title)) {
-			$details = $events_object[$event->post_title]['events'];
-
-			array_push($details, $event);
-
-			$events_object[$event->post_title]['events'] = $details;
-			$events_object[$event->post_title]['end_date'] = cfs_event_date($event->ID)['end'];
-			$events_object[$event->post_title]['repeating'] = true;
-		}
-		else {
-			$date = cfs_event_date($event->ID);
-			$details = array(
-				'post_title' => $event->post_title,
-				'post_name'	=> $event->post_name,
-				'featured_image' => get_post_thumbnail_id($event->ID),
-				'start_date' => $date['start'],
-				'end_date' => $date['end'],
-				'excerpt' => get_the_excerpt($event->ID),
-				'events' => array($event),
-			);
-
-			$events_object[$event->post_title] = $details;
-		}
-	}
+	// dump($events);
+	
 ?>
 
 
-<?php if($events_object): ?>
+<?php if($events): ?>
 	<ul class="<?php echo classes($feed_classes); ?>">
-		<?php foreach($events_object as $event): 
+		<?php foreach($events as $event): 
 			$id = $event['post_name'] . rand();	
+
+			// dump($event);
 		?>
 			<li id="<?php echo $id; ?>" class="<?php echo classes([$styles['event']]); ?>">
 				<?php

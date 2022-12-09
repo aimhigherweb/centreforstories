@@ -8,7 +8,8 @@
             $future = true,
             $type = 'tribe_events',
             $tag = false,
-            $venue = false
+            $venue = false,
+            $series = false
         ) {
         wp_reset_query();
 
@@ -148,7 +149,7 @@
 
         $post_args = array(
             'post_type' => $type,
-            'posts_per_page' => $limit,
+            'posts_per_page' => -1,
             'paged' => $page,
             'orderby' => 'meta_value',
             'order' => $order,
@@ -160,10 +161,83 @@
 
         $post_query = new WP_Query($post_args);
 
+        $pages = $post_query->max_num_pages;
+        $events = $post_query->posts;
+
+        $i = 0;
+
+        $events = array();
+
+        // dump($series);
+
+        foreach($post_query->posts as $e) {
+            $event = tribe_get_event($e->ID);
+
+            $event->post_content = false;
+
+            // dump($event);
+
+            // check_array_field($events, $event->post_title)
+
+            $in_array = array_search($event->post_title, array_column($events, 'post_title'));
+
+           
+
+            // dump(array_column($event, 'post_title'));
+
+            // dump($in_array);
+
+            // dump($events);
+
+            if($series && $in_array) {
+                // dump($events);
+                // dump($events[$in_array]);
+
+                $sub_events = $events[$in_array]['events'];
+
+                // dump($events[$in_array]['post_title']);
+                // dump($events[$in_array]['post_id']);
+                // dump($event->post_title);
+                // dump($event->ID);
+
+                // dump($sub_events);
+    
+                array_push($sub_events, $event);
+    
+                $events[$in_array]['events'] = $sub_events;
+                $events[$in_array]['end_date'] = cfs_event_date($event->ID)['end'];
+                $events[$in_array]['repeating'] = true;
+            }
+            else {
+                $date = cfs_event_date($event->ID);
+                $details = array(
+                    'post_title' => $event->post_title,
+                    'post_name'	=> $event->post_name,
+                    'featured_image' => get_post_thumbnail_id($event->ID),
+                    'start_date' => $date['start'],
+                    'end_date' => $date['end'],
+                    'excerpt' => get_the_excerpt($event->ID),
+                    'events' => array($event),
+                    'post_id' => $event->ID,
+                );
+
+                array_push($events, $details);
+    
+                // $events[$event->post_title] = $details;
+            }
+        }
+
+        // $limit = 9;
+
+        // dump($limit);
+
+        $events_pages = array_chunk($events, $limit, true);
+
+
         return array(
             'page' => $page,
-            'pages' => $post_query->max_num_pages,
-            'events' => $post_query->posts,
+            'pages' => count($events_pages),
+            'events' => $events_pages[$page - 1],
             'venue' => $venue,
             'tag' => $tag
         );

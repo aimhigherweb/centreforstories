@@ -99,6 +99,7 @@
 	<body
 		class="<?php echo classes($class); ?>" 
 		style="<?php echo $style; ?>"
+		id="top-of-page"
 	>
 		<?php if($gtm_tag) : ?>
 			<!-- Google Tag Manager (noscript) -->
@@ -121,7 +122,7 @@
 					$args
 				); 
 			?>
-			<a href="<?php echo preg_replace('/\/$/', "", $current_page); ?>#main" class="<?php echo classes([$styles['btt']]); ?>">
+			<a href="<?php echo preg_replace('/\/$/', "", $current_page); ?>#top-of-page" class="<?php echo classes([$styles['btt']]); ?>">
 			<?php echo inline_svg(get_template_directory_uri() . '/src/img/chevron.svg'); ?>
 				<span class="sr-only">Back to Top</span>
 			</a>

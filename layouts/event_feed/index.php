@@ -6,8 +6,12 @@
 		featured: true,
 		limit: 1
 	);
+	$featured = false;
 	$venue = false;
 	$tag = false;
+	$series = true;
+
+	// dump($featured);
 
 	if($featured && $featured['venue']) {
 		$venue = tribe_get_venue_object($featured['venue']);
@@ -53,10 +57,12 @@
 
 	if($venue) {
 		$title = 'Upcoming Events - ' . $venue->post_title;
+		$series = false;
 	}
 
 	if($tag) {
 		$title = 'Upcoming Events - #' . $tag->name;
+		$series = false;
 	}
 
 ?>
@@ -72,7 +78,8 @@
 			)
 		);
 	?>
-	<?php if($featured): ?>
+	<?php
+	 if($featured): ?>
 		<div class="<?php echo classes([$styles['featured']]); ?>">
 			<?php
 				get_template_part(
@@ -91,6 +98,9 @@
 			null,
 			array (
 				'featured' => $featured,
+				'query' => array(
+					'series' => $series
+				)
 			)
 		);
 	?>

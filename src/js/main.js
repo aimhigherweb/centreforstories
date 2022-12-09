@@ -22,6 +22,13 @@ const toggleLessonSidebar = () => {
 const expandRepeatingEvents = (eventId, feedClass) => {
 	const event = document.querySelector(`#${eventId}`)
 	const feed = document.querySelector(`.${feedClass}`)
+	const blockHeight = event.offsetHeight
+
+	feed.querySelectorAll('li[class*="events_feed-module__event').forEach((e) => {
+		if (e !== event && e.offsetHeight == blockHeight) {
+			e.style.height = `${blockHeight}px`
+		}
+	})
 
 	if (event.classList.contains('open')) {
 		event.classList.remove('open')
