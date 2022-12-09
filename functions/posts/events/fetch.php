@@ -229,10 +229,17 @@
 
         // $limit = 9;
 
-        // dump($limit);
+        if(count($events) == 0) {
+            return array(
+                'events' => false
+            );
+        }
 
-        $events_pages = array_chunk($events, $limit, true);
+        $events_pages = array($events);
 
+        if($limit > 0) {
+            $events_pages = array_chunk($events, $limit, true);
+        }
 
         return array(
             'page' => $page,
