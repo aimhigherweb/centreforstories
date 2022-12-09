@@ -164,43 +164,17 @@
         $pages = $post_query->max_num_pages;
         $events = $post_query->posts;
 
-        $i = 0;
-
         $events = array();
-
-        // dump($series);
 
         foreach($post_query->posts as $e) {
             $event = tribe_get_event($e->ID);
 
             $event->post_content = false;
 
-            // dump($event);
-
-            // check_array_field($events, $event->post_title)
-
             $in_array = array_search($event->post_title, array_column($events, 'post_title'));
 
-           
-
-            // dump(array_column($event, 'post_title'));
-
-            // dump($in_array);
-
-            // dump($events);
-
             if($series && $in_array) {
-                // dump($events);
-                // dump($events[$in_array]);
-
                 $sub_events = $events[$in_array]['events'];
-
-                // dump($events[$in_array]['post_title']);
-                // dump($events[$in_array]['post_id']);
-                // dump($event->post_title);
-                // dump($event->ID);
-
-                // dump($sub_events);
     
                 array_push($sub_events, $event);
     
@@ -222,12 +196,8 @@
                 );
 
                 array_push($events, $details);
-    
-                // $events[$event->post_title] = $details;
             }
         }
-
-        // $limit = 9;
 
         if(count($events) == 0) {
             return array(

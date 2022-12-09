@@ -2,16 +2,6 @@
 	$event_data = false;
 
 	if(check_array_field($args, 'query')) {
-		// $event_data = cfs_get_events(
-		// 	past: $args['query']['past'] ?? null,
-		// 	future: $args['query']['future'] ?? null,
-		// 	limit: $args['query']['limit'] ?? null,
-		// 	featured: $args['query']['featured'] ?? null,
-		// 	category: $args['query']['category'] ?? null,
-		// 	tag: $args['query']['tag'] ?? null,
-		// 	series: $args['query']['series'] ?? null,
-		// );
-
 		$event_data = call_user_func_array('cfs_get_events', $args['query']);
 	}
 	else {
@@ -37,11 +27,7 @@
 		)
 	);
 
-	$feed_classes = [$styles['feed']];
-
-
-	// dump($events);
-	
+	$feed_classes = [$styles['feed']];	
 ?>
 
 
@@ -49,8 +35,6 @@
 	<ul class="<?php echo classes($feed_classes); ?>">
 		<?php foreach($events as $event): 
 			$id = $event['post_name'] . rand();	
-
-			// dump($event);
 		?>
 			<li id="<?php echo $id; ?>" class="<?php echo classes([$styles['event']]); ?>">
 				<?php
