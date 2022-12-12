@@ -22,19 +22,28 @@ const toggleLessonSidebar = () => {
 const expandRepeatingEvents = (eventId, feedClass) => {
 	const event = document.querySelector(`#${eventId}`)
 	const feed = document.querySelector(`.${feedClass}`)
-	const blockHeight = event.offsetHeight
-
-	feed.querySelectorAll('li[class*="events_feed-module__event').forEach((e) => {
-		if (e !== event && e.offsetHeight == blockHeight) {
-			e.style.height = `${blockHeight}px`
-		}
-	})
 
 	if (event.classList.contains('open')) {
 		event.classList.remove('open')
 		feed.classList.remove('expanded')
+
+		setTimeout(function () {
+			feed.querySelectorAll('li[class*="events_feed-module__event').forEach((e) => {
+				if (e !== event) {
+					e.style.height = null
+				}
+			})
+		}, 5000);
+
+
 	}
 	else {
+		feed.querySelectorAll('li[class*="events_feed-module__event').forEach((e) => {
+			if (e !== event) {
+				e.style.height = `${e.offsetHeight}px`
+			}
+		})
+
 		event.classList.add('open')
 		feed.classList.add('expanded')
 	}

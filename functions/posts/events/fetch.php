@@ -80,7 +80,6 @@
                 )
             );
         }
-
         
 
         if($date_query) {
@@ -136,7 +135,6 @@
             );
         }
 
-
         if($featured) {
             $meta_query = set_query(
                 $meta_query, 
@@ -150,7 +148,7 @@
         $post_args = array(
             'post_type' => $type,
             'posts_per_page' => -1,
-            'paged' => $page,
+            'nopaging' => true,
             'orderby' => 'meta_value',
             'order' => $order,
             'meta_key' => '_EventStartDate',
@@ -165,6 +163,13 @@
         $events = $post_query->posts;
 
         $events = array();
+
+        // dump($post_query->query);
+
+        // dump(count($post_query->posts));
+        // foreach($post_query->posts as $e) {
+        //     dump($e->post_name);
+        // }
 
         foreach($post_query->posts as $e) {
             $event = tribe_get_event($e->ID);

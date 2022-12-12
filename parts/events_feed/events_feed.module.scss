@@ -18,6 +18,8 @@
 			max-height: 100vh;
 			margin-top: 20px;
 			margin-bottom: -32px;
+			transition-duration: 1s;
+			transition-timing-function: ease-in-out;
 		}
 	}
 }
