@@ -1,8 +1,52 @@
 <?php
 
 	acf_add_local_field_group(array(
+		'key' => 'group_6392e85b9d8ff',
+		'title' => 'Custom CTA Shortcode - Events',
+		'fields' => array(
+			array(
+				'key' => 'field_6392e88e26126',
+				'label' => 'CTA Block',
+				'name' => 'cta_shortcode',
+				'type' => 'text',
+				'instructions' => 'Set a shortcode here to override the event CTA block - [cta title="Help us do more" name="Support Us" url="/support-us" image="33789"]There is block content here.[/cta]',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '[cta title="Help us do more" name="Support Us" url="/support-us" image="33789"]There is block content here.[/cta]',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'tribe_events',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'acf_after_title',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+		'show_in_rest' => 0,
+	));
+
+	acf_add_local_field_group(array(
 		'key' => 'group_626f8d2c1c382',
-		'title' => 'Event',
+		'title' => 'Event Venue',
 		'fields' => array(
 			array(
 				'key' => 'field_626f8d65515b6',

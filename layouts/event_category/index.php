@@ -28,6 +28,7 @@
 	$title = $category->name;
 	$excerpt = $category->description;
 	$graphic = get_field('graphic', $category);
+	$content = get_field('content', $category);
 
 	foreach($cat_child as $child) {
 		$term = get_term_by('id', $child, $category->taxonomy);
@@ -71,7 +72,6 @@
 
 		$current = intval($matches[1]);
 	}
-
 	
 ?>
 
@@ -88,6 +88,9 @@
 		);
 	?>
 	<h2 class="<?php echo classes([$styles['heading']]); ?>"><?php echo $current; ?></h2>
+	<div>
+		<?php echo $content; ?>
+	</div>
 	<div class="<?php echo classes([$styles['feed']]); ?>">
 		<?php
 			get_template_part(

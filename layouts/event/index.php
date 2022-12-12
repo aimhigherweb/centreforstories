@@ -87,6 +87,15 @@
 	<p class="<?php echo classes([$styles['venue']]); ?>">
 		<?php echo $venue->post_title; ?>
 	</p>
+	<ul class="<?php echo classes([$styles['calendars']]); ?>">
+		<li>
+			
+			<a href="<?php echo tribe_get_single_ical_link(); ?>" target="_blank">Add to Calendar</a>
+		</li>
+		<li>
+			<a href="<?php echo tribe_get_gcal_link(); ?>" target="_blank">Add to Google Calendar</a>
+		</li>
+	</ul>
 	<?php echo the_content(); ?>
 	<?php if($organisers): ?>
 		<?php 
@@ -133,7 +142,10 @@
 			);
 		}
 	?>
-	<?php if (is_active_sidebar('event_cta')) : ?>
-		<?php dynamic_sidebar('event_cta'); ?>
-	<?php endif; ?>
+	<?php 
+		if(get_field('cta_shortcode')) :
+			echo do_shortcode(get_field('cta_shortcode'));
+		elseif (is_active_sidebar('event_cta')) :
+			dynamic_sidebar('event_cta'); 
+		endif; ?>
 </div>

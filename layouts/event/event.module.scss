@@ -42,6 +42,21 @@
 	}
 }
 
+.calendars {
+	@include mixins.overline_text('s');
+
+	display: flex;
+	flex-wrap: wrap;
+	margin: -10px;
+	padding: 0;
+
+	li {
+		margin: 10px;
+		padding: none;
+		list-style: none;
+	}
+}
+
 .feature_list {
 	display: flex;
 	flex-wrap: wrap;

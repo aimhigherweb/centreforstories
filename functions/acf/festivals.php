@@ -52,6 +52,25 @@
 				'max_size' => '',
 				'mime_types' => '',
 			),
+			array(
+				'key' => 'field_626882ce982cd_festival',
+				'label' => 'Page Content',
+				'name' => 'content',
+				'type' => 'wysiwyg',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'tabs' => 'all',
+				'toolbar' => 'basic',
+				'media_upload' => 0,
+				'delay' => 0,
+			),
 		),
 		'location' => array(
 			array(
