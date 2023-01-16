@@ -18,15 +18,17 @@
 	justify-content: center;
 	margin: 0 -10px;
 
-	> .wp-block-button.wp-block-button {
+	>.wp-block-button.wp-block-button {
 		margin: 10px;
 	}
 
 	.wp-block-button__link {
+		@include mixins.overline_text('s');
+
 		display: inline-block;
 		padding: 10px 20px;
 		border: 2px solid var.$colours_blue;
-		border-radius: 8px;
+		border-radius: 0;
 		background: var.$colours_blue;
 		color: var.$colours_white;
 		font-weight: 600;
@@ -64,6 +66,29 @@
 			}
 		}
 	}
+
+	.wp-block-button {
+		&.is-style-outline {
+			.wp-block-button__link {
+				border-color: var.$colours_blue;
+				background: none;
+				color: var.$colours_blue;
+
+				&:hover {
+					background: var.$colours_blue;
+					color: var.$colours_white;
+				}
+
+				&.has-text-color {
+					color: var(--text_colour);
+
+					&:hover {
+						background: var(--background_colour);
+					}
+				}
+			}
+		}
+	}
 }
 
 @media(min-width: 50em) {
@@ -73,14 +98,15 @@
 		margin: 0 -20px;
 
 		.wp-block-column.wp-block-column {
-			flex-basis: 42% ;
+			flex-basis: 42%;
 
 			margin: 0 20px;
 
 			@include mixins.child_reset;
 		}
 
-		h1, h2 {
+		h1,
+		h2 {
 			text-align: left;
 		}
 

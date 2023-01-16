@@ -21,7 +21,16 @@
 
 	$cta = get_field('cta');
 	$image = get_field('image');
-	$collections = array_slice(get_field('collections'), 0, 4);
+	$collections = get_field('collections');
+
+	if(is_array($collections)) {
+		$collections = array_slice(get_field('collections'), 0, 4);
+	}
+	else {
+		$collections = [];
+	}
+
+	
 	
 ?>
 

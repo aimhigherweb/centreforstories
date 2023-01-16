@@ -10,6 +10,10 @@
 
 *:focus {
 	outline: 3px solid var.$colours_red;
+
+	&:not(:focus-visible) {
+		outline: none;
+	}
 }
 
 body,

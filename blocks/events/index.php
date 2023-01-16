@@ -26,30 +26,9 @@
 		limit: 3,
 		featured: $featured,
 	);
-	$events = $event_data['events'];
+	$events = $event_data['events'];	
 
-	$events_object = array();
-
-	foreach($events as $event) {
-		$e = $event->post_title;
-		if(check_array_field($events_object, $e)) {
-			$e = $e . rand();	
-		}
-		
-		$date = cfs_event_date($event->ID);
-		$details = array(
-			'post_title' => $event->post_title,
-			'post_name'	=> $event->post_name,
-			'featured_image' => get_post_thumbnail_id($event->ID),
-			'start_date' => $date['start'],
-			'end_date' => $date['end'],
-			'excerpt' => get_the_excerpt($event->ID),
-			'events' => array($event),
-		);
-
-		$events_object[$e] = $details;
-	}
-	
+	// dump($events);
 ?>
 
 <div 
@@ -62,7 +41,7 @@
 		<?php echo get_field('heading'); ?>
 	</h2>
 	<ul class="<?php echo classes([$styles['feed']]); ?>">
-		<?php foreach($events_object as $event): ?>
+		<?php foreach($events as $event): ?>
 			<li class="<?php echo classes([$styles['event']]); ?>">
 				<?php
 					get_template_part(

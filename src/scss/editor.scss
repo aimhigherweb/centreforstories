@@ -3,7 +3,15 @@
 @import './global/typography.scss';
 @import './global/forms.scss';
 
-.block-editor-writing-flow, .editor-styles-wrapper, .is-root-container[class*='block-editor-block-list'] {
+.editor-styles-wrapper {
+	.wp-block-button__link {
+		border-radius: 0;
+	}
+}
+
+.block-editor-writing-flow,
+.editor-styles-wrapper,
+.is-root-container[class*='block-editor-block-list'] {
 	color: var.$colours_neutral;
 	font-family: var.$font_main;
 	font-size: 18px;
@@ -43,7 +51,7 @@
 		display: inline-block;
 		padding: 10px 20px;
 		border: 2px solid var.$colours_blue;
-		border-radius: 8px;
+		border-radius: 0;
 		background: var.$colours_blue;
 		color: var.$colours_white;
 		font-weight: 600;
@@ -64,7 +72,9 @@
 	}
 
 	.mce-toolbar {
-		button, .button, .btn {
+		button,
+		.button,
+		.btn {
 			margin: 0;
 			border-width: 1px;
 			background: transparent;
