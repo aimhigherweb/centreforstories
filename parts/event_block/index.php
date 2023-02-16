@@ -108,7 +108,7 @@
 						$repeat_tickets_message = 'Almost Gone';
 					}
 					else {
-						$repeat_tickets_message = false
+						$repeat_tickets_message = false;
 					}
 				}	
 			?>
