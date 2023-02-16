@@ -107,6 +107,9 @@
 					else if($repeat_tickets  < 5) {
 						$repeat_tickets_message = 'Almost Gone';
 					}
+					else {
+						$repeat_tickets_message = false
+					}
 				}	
 			?>
 				<li>
