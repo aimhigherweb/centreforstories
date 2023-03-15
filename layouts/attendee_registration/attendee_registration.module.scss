@@ -1,0 +1,27 @@
+.content {
+	@extend %content;
+
+	.registration_form {
+		:global(button[class*="tribe"]) {
+			@include mixins.buttons(var.$colours_blue, var.$colours_white, var.$colours_blue);
+		}
+	}
+}
+
+.registration_form {
+	margin-top: 40px;
+
+	:global(.tribe-tickets__registration-actions) {
+		display: none;
+	}
+
+	h1 {
+		display: none;
+	}
+}
+
+@media(min-width: 60em) {
+	.registration_form {
+		margin-top: 60px;
+	}
+}
