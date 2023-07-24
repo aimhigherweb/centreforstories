@@ -28,7 +28,6 @@
 
 	position: relative;
 	max-width: 400px;
-
 	height: 100%;
 	margin: 0 auto;
 }
@@ -51,7 +50,7 @@
 	&:focus {
 		outline: none;
 
-		&:before {
+		&::before {
 			outline: 3px solid var.$colours_red;
 		}
 	}

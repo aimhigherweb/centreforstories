@@ -45,6 +45,15 @@ module.exports = {
 		],
 		'block-no-empty': true,
 		'declaration-block-no-shorthand-property-overrides': true,
+		'declaration-block-no-redundant-longhand-properties': [
+			true,
+			{
+				ignoreShorthands: [
+					'grid-template',
+					'font'
+				]
+			}
+		],
 		'declaration-block-no-duplicate-properties': [true, { ignore: ["consecutive-duplicates"] }],
 		'property-no-unknown': [
 			true,

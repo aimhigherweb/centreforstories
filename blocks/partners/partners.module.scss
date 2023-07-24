@@ -14,17 +14,16 @@
 .heading {
 	@extend %heading;
 
-	&:after {
+	&::after {
 		background-color: var.$colours_forest;
 	}
 }
 
 .content {
-	width: mixins.max_width(100%, 0, 6);
 	max-width: 600px;
 	font-size: 1.125em;
 
-	> *:first-child {
+	>*:first-child {
 		font-size: 1.333em;
 	}
 }

@@ -2,7 +2,7 @@
 	@extend %block;
 	@include mixins.list_reset;
 
-	&:before {
+	&::before {
 		content: normal;
 	}
 
@@ -22,7 +22,7 @@
 .heading {
 	@extend %heading;
 
-	&:after {
+	&::after {
 		background-color: var.$colours_blue;
 	}
 }
@@ -44,12 +44,18 @@
 	width: calc(100% + 50px);
 	max-height: 320px;
 	margin: -25px -25px 25px;
+	overflow: hidden;
 	background: var.$colours_navy;
 
 	img {
-		display: block;
+		// display: block;
 		width: 100%;
-		height: 100%;
+
+		// max-width: 100%;
+		// height: 100%;
+		max-height: 320px;
+
+		// max-height: 320px;
 		object-fit: cover;
 		object-position: center;
 	}
@@ -61,18 +67,18 @@
 	margin: 12px 0;
 }
 
-@media(min-width: 30em) {
-	.image {
-		width: calc(100% + 50px);
-		height: auto;
-		margin: -25px -25px 25px;
+// @media(min-width: 30em) {
+// 	.image {
+// 		width: calc(100% + 50px);
+// 		height: auto;
+// 		margin: -25px -25px 25px;
 
-		img {
-			height: auto;
-			object-fit: contain;
-		}
-	}
-}
+// 		img {
+// 			height: auto;
+// 			object-fit: contain;
+// 		}
+// 	}
+// }
 
 @media(min-width: 50em) {
 	.block {

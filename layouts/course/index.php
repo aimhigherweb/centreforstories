@@ -52,7 +52,7 @@
         <?php if ( !$is_enrolled && $in_cart ) : ?>
             <p>This course is already in your cart.</p>
         <?php endif; ?>
-        <?php tutor_load_template('single.course.course-entry-box'); ?>
+        <?php get_template_part( 'tutor/templates/single/course/course-entry-box'); ?>
         <div class="update-info">
             <i class="tutor-icon-clock-line"></i> Last Updated: 
             <span class="date">
