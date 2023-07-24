@@ -16,7 +16,7 @@
 			array(
 				'name' => $template,
 				'dir' => TEMPLATEPATH . '/blocks/cta',
-				'env' => 'dev'
+				'env' => 'production'
 			)
 		);
 

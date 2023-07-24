@@ -2,15 +2,15 @@
 Theme Name: Centre for Stories
 Version: 1.0.0
 */
-@import './global/index.scss';
-
-@import './partials/tutor.scss';
+@import './global/index';
+@import './partials/tutor';
 
 body {
-	@import './partials/notes.scss';
+	@import './partials/notes';
+	@import './partials/lightbox';
 
 	main {
-		@import './partials/gutenberg.scss';
-		@import './partials/woocommerce.scss';
+		@import './partials/gutenberg';
+		@import './partials/woocommerce';
 	}
 }

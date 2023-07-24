@@ -34,6 +34,7 @@ form {
 		border: 2px solid var.$colours_navy;
 		border-radius: 0;
 		background: var.$colours_neutral_5;
+		accent-color: var.$colours_blue;
 
 		&::placeholder {
 			opacity: 1;
@@ -51,24 +52,24 @@ form {
 
 		&[type='radio'] {
 			&+label {
-				@include mixins.radio_input();
+				@include mixins.radio_input;
 			}
 
 			&:checked {
 				&+label {
-					@include mixins.radio_input_active();
+					@include mixins.radio_input_active;
 				}
 			}
 		}
 
 		&[type='checkbox'] {
 			&+label {
-				@include mixins.check_input();
+				@include mixins.check_input;
 			}
 
 			&:checked {
 				&+label {
-					@include mixins.check_input_active();
+					@include mixins.check_input_active;
 				}
 			}
 		}
@@ -117,7 +118,7 @@ form {
 		.wpforms-error {
 			background: rgba(var.$colours_error, 0.1);
 
-			&:not(input):not(textarea) {
+			&:not(input, textarea) {
 				margin-top: 10px;
 				padding: 5px 10px;
 				background: none;
@@ -147,7 +148,7 @@ form {
 	@include mixins.sr_only;
 }
 
-@media(min-width: 40em) {
+@media(width >= 40em) {
 	.wpforms-field-container {
 		position: relative;
 

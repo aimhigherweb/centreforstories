@@ -75,7 +75,7 @@
 		<meta charset="utf-8" />
 		<meta http-equiv="x-ua-compatible" content="ie=edge" />
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no" />
-		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css" />
+		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css?v0.0.53" />
 		<base href="<?php echo get_site_url(); ?>" />
 		
 		<?php if($gtm_tag) : ?>

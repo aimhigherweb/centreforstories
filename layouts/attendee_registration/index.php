@@ -10,7 +10,7 @@
 		array(
 			'name' => $template,
 			'dir' => __DIR__,
-			'env' => 'dev'
+			'env' => 'production'
 		)
 	);
 
@@ -18,6 +18,15 @@
 ?>
 
 <div class="<?php echo $styles['content']; ?>">
+	<?php 
+		get_template_part(
+			'parts/page_header/index',
+			null,
+			array(
+				'excerpt' => ''
+			)
+		);
+	?>
 	<?php get_template_part('parts/header_image/index'); ?>
 	<div class="<?php echo classes([$styles['registration_form']]); ?>">
 		<?php echo do_shortcode('[tribe_attendee_registration]');?>

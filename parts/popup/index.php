@@ -16,7 +16,7 @@
 		array(
 			'name' => $template,
 			'dir' => __DIR__,
-			'env' => 'dev'
+			'env' => 'production'
 		)
 	);
 ?>

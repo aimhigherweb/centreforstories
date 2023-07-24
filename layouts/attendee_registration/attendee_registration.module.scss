@@ -18,9 +18,21 @@
 	h1 {
 		display: none;
 	}
+
+	:global(.tribe-common-form-control-radio__label input[type="radio"]) {
+		position: static;
+		width: 20px;
+		height: 20px;
+		margin-right: 14px;
+		opacity: 1;
+	}
+
+	:global(.tribe-tickets__form.tribe-tickets__form .tribe-tickets__form-field--radio.tribe-tickets__form-field--radio) {
+		display: block;
+	}
 }
 
-@media(min-width: 60em) {
+@media(width >= 60em) {
 	.registration_form {
 		margin-top: 60px;
 	}

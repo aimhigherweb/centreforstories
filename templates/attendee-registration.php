@@ -20,6 +20,7 @@
 		array(
 			'template' => 'attendee_registration',
 			'page_id' => $page_data->ID,
+			'custom_page_header' => true
 		)
 	);
 

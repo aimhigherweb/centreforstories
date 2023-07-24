@@ -91,7 +91,8 @@
 	}
 }
 
-@media(min-width: 50em) {
+
+@media(width >= 50em) {
 	.wp-block-columns.wp-block-columns {
 		display: flex;
 		width: calc(100% + 40px);
@@ -99,7 +100,6 @@
 
 		.wp-block-column.wp-block-column {
 			flex-basis: 42%;
-
 			margin: 0 20px;
 
 			@include mixins.child_reset;
