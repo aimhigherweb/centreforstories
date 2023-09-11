@@ -117,7 +117,7 @@
     }
     add_filter('post_type_link', 'change_story_permalink', 1, 3);
 
-	function cfs_get_stories($limit = 9, $category = false, $collections = false, $post_in = false) {    
+	function cfs_get_stories($limit = 9, $category = false, $collections = false, $post_in = false, $tags = false) {    
 		wp_reset_query();
 		global $query_string;
         wp_parse_str( $query_string, $search_query );
@@ -125,6 +125,7 @@
         $page = 1;
 		$offset = 0;
 		$tax_query = false;
+		$search_cat = 'collection';
 
         if(isset($search_query, $search_query['paged'])) {
             $page = $search_query['paged'];
@@ -133,6 +134,11 @@
 		if($collections && !$category) {
             $category = $collections;
         }
+
+		if($tags) {
+			$category = $tags;
+			$search_cat = 'tag';
+		} 
 
 
 		if(isset($search_query, $search_query['collection']) && $search_query['collection'] !== 'archived') {
@@ -146,7 +152,7 @@
 		if($category) {
             $tax_query = array(
 				array(
-                    'taxonomy' => 'collection',
+                    'taxonomy' => $search_cat,
                     'field' => 'slug',
                     'terms' => $category,
                     'include_children' => true,
@@ -237,5 +243,26 @@
 		);
 	}
 
+	function cfs_get_story_tags() {
+		wp_reset_query();
 
+		$terms = get_terms(array(
+			'taxonomy' => 'tag',
+			'hide_empty' => true,
+		));
+
+		$term_data = array();
+		$tag_slugs = array();
+
+		foreach($terms as $term) {
+			$tag_slugs[] = $term->slug;
+
+			$term->permalink = get_term_link($term);
+		}
+
+		return array(
+			'terms' => $terms,
+			'tags' => $tag_slugs
+		);
+	}
 ?>

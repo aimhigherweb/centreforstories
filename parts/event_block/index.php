@@ -32,7 +32,7 @@
 	$ticket_message = false;
 
 	if($tickets && !check_array_field($event, 'repeating')) {
-		$tickets = $tickets[0]->stock_quantity;
+		$tickets = $tickets[0]->get_stock_quantity();
 
 		if($tickets == 0) {
 			$ticket_message = 'Sold Out';

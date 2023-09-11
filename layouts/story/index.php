@@ -22,6 +22,14 @@
 	$collection_page = false;
 	$collection_data = false;
 	$archived = false;
+	$current_tags = [];
+
+	
+	dump($_POST['tags']);
+
+	if(check_array_field($_POST, 'tags')) {
+		$current_tags = $_POST['tags'];
+	}
 
 	if(check_array_field($args, 'page_id')) {
 		$page_id = $args['page_id'];
@@ -31,11 +39,30 @@
 		$archived = true;
 	}
 
-	$collection_data = cfs_get_story_collections($archived);
-	$collection_slugs = $collection_data['collections'];
-	$collections = $collection_data['terms'];
 
-	$story_data = cfs_get_stories(collections: $collection_slugs);
+	$collections = false;
+	$tags = false;
+	$story_data = false;
+
+	if((check_array_field($args, 'story_archive') && $args['story_archive']) || check_array_field($search_query, 'collection')) {
+		$collection_data = cfs_get_story_collections($archived);
+		$collection_slugs = $collection_data['collections'];
+		$collections = $collection_data['terms'];
+
+		$story_data = cfs_get_stories(collections: $collection_slugs);
+	}
+	else {
+		$tag_data = cfs_get_story_tags();
+		$tag_slugs = $tag_data['tags'];
+		$tags = $tag_data['terms'];
+
+		set_query_var('tags', $current_tags);
+
+		$story_data = cfs_get_stories(tags: $current_tags);
+	}
+
+	dump(get_query_var('tags'));
+
 	$stories = $story_data['posts'];
 	$page = $story_data['page'];
 	$pages = $story_data['pages'];
@@ -90,39 +117,86 @@
 			); 
 		?>
 	<?php endif; ?>
-	<ul class="<?php echo classes([$styles['filters']]); ?>">
+	<?php if($collections) : ?>
+		<ul class="<?php echo classes([$styles['filters']]); ?>">
 		
-		<?php foreach($collections as $type): ?>
-			<li>
-				<ul>
-					
-					<li class="<?php echo classes([$styles['collection_type']]); ?>">
-						<?php echo $type['name']; ?>s:
-					</li>
-					<li>
-						<a
-							class="<?php echo classes([$styles['collection']]); ?>"
-							href="/stories"
-						>
-							All Stories
-						</a>
-					</li>
-					<?php foreach($type['terms'] as $collection):
-						$current = $collection->slug == $collection_page ? $styles['current'] : '';
-					?>
+			<?php foreach($collections as $type): ?>
+				<li>
+					<ul>
+						
+						<li class="<?php echo classes([$styles['collection_type']]); ?>">
+							<?php echo $type['name']; ?>s:
+						</li>
 						<li>
 							<a
-								class="<?php echo classes([$styles['collection'], $current]); ?>"
-								href="<?php echo $collection->permalink; ?>"
+								class="<?php echo classes([$styles['collection']]); ?>"
+								href="/stories"
 							>
-								<?php echo $collection->name; ?>
+								All Stories
 							</a>
 						</li>
-					<?php endforeach; ?>
-				</ul>
+						<?php foreach($type['terms'] as $collection):
+							$current = $collection->slug == $collection_page ? $styles['current'] : '';
+						?>
+							<li>
+								<a
+									class="<?php echo classes([$styles['collection'], $current]); ?>"
+									href="<?php echo $collection->permalink; ?>"
+								>
+									<?php echo $collection->name; ?>
+								</a>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	<?php elseif ($tags) : ?>
+		
+		<ul class="<?php echo classes([$styles['filters'],$styles['tags']]); ?>">
+			<li>
+				<form method="post">
+					<ul>
+						<li class="<?php echo classes([$styles['collection_type']]); ?>">
+							Story Tags:
+						</li>
+						<li>
+							<a
+								class="<?php echo classes([$styles['collection']]); ?>"
+								href="/stories"
+							>
+								All Stories
+							</a>
+						</li>
+			
+						<?php foreach($tags as $tag): ?>
+							<li>
+								<input type="checkbox"
+									class="<?php echo classes([$styles['tag']]); ?>"
+									href="<?php echo $tag->permalink; ?>"
+									name="tags[]"
+									<?php echo in_array($tag->slug, $current_tags) ? "checked" : ""; ?>
+									id="<?php echo $tag->slug; ?>"
+									value="<?php echo $tag->slug; ?>"
+								/>
+								<label for="<?php echo $tag->slug; ?>">
+									<?php echo $tag->name; ?>
+								</label>
+								
+							</li>
+						<?php endforeach; ?>
+						<li>
+							<button 
+								type="submit"
+							>
+								Filter Stories
+							</button>
+						</li>
+					</ul>
+				</form>
 			</li>
-		<?php endforeach; ?>
-	</ul>
+		</ul>
+	<?php endif; ?>
 	<?php if($stories): ?>
 		<ul class="<?php echo classes([$styles['feed']]); ?>">
 			<?php foreach($stories as $story): ?>

@@ -15,6 +15,7 @@
 			'template' => 'story',
 			'custom_page_header' => true,
 			'page_id' => $page_data->ID,
+			'story_archive' => true
 		)
 	);
 
