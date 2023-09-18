@@ -164,13 +164,6 @@
 
         $events = array();
 
-        // dump($post_query->query);
-
-        // dump(count($post_query->posts));
-        // foreach($post_query->posts as $e) {
-        //     dump($e->post_name);
-        // }
-
         foreach($post_query->posts as $e) {
             $event = tribe_get_event($e->ID);
 

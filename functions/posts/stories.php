@@ -126,6 +126,7 @@
 		$offset = 0;
 		$tax_query = false;
 		$search_cat = 'collection';
+		$operator = 'IN';
 
         if(isset($search_query, $search_query['paged'])) {
             $page = $search_query['paged'];
@@ -138,6 +139,7 @@
 		if($tags) {
 			$category = $tags;
 			$search_cat = 'tag';
+			$operator = 'AND';
 		} 
 
 
@@ -151,12 +153,13 @@
 
 		if($category) {
             $tax_query = array(
+				// 'relation' => $relation,
 				array(
                     'taxonomy' => $search_cat,
                     'field' => 'slug',
                     'terms' => $category,
                     'include_children' => true,
-                    'operator' => 'IN'
+                    'operator' => $operator
                 )
 			);
         }

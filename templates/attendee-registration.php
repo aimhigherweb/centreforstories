@@ -8,12 +8,6 @@
 
 	$page_data = get_page_by_path(current_page());
 
-	// dump(current_page());
-
-	// dump($page_data);
-
-	// dump($wp_query);
-
 	get_template_part(
 		'partials/layout/index',
 		null, 

@@ -27,8 +27,6 @@
 		featured: $featured,
 	);
 	$events = $event_data['events'];	
-
-	// dump($events);
 ?>
 
 <div 

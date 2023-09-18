@@ -11,8 +11,6 @@
 	$tag = false;
 	$series = true;
 
-	// dump($featured);
-
 	if($featured && $featured['venue']) {
 		$venue = tribe_get_venue_object($featured['venue']);
 		$featured = false;

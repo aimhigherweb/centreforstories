@@ -25,8 +25,6 @@
 	$current_tags = [];
 
 	
-	dump($_POST['tags']);
-
 	if(check_array_field($_POST, 'tags')) {
 		$current_tags = $_POST['tags'];
 	}
@@ -60,8 +58,6 @@
 
 		$story_data = cfs_get_stories(tags: $current_tags);
 	}
-
-	dump(get_query_var('tags'));
 
 	$stories = $story_data['posts'];
 	$page = $story_data['page'];
