@@ -33,7 +33,7 @@
 		/>
 	</div>
 	<p class="<?php echo classes([$styles['date']]); ?>">
-		<?php the_time( 'F j, Y' ); ?>
+		<?php echo get_the_date( 'F j, Y', $item ); ?>
 	</p>
 	<h3 class="<?php echo classes([$styles['title']]); ?>">
 		<?php echo $item->post_title; ?>

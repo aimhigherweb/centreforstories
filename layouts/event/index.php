@@ -66,11 +66,9 @@
 	}
 
 	$tickets = cfs_get_event_ticket($event_id);
-
 ?>
 
 <div class="<?php echo $styles['content']; ?>">
-	
 	<?php 
 		get_template_part(
 			'parts/page_header/index',
@@ -121,18 +119,21 @@
 		?>
 	<?php endif; ?>
 	<?php
-		if(check_field_value([
-			$venue,
-			$venue->geolocation,
-		])) {
+	// get_post_meta( tribe_get_venue_id(), '_VenueShowMap', true ) &&
+	// get_post_meta($event_id, '_EventShowMap', true)
+		if(
+			get_post_meta( tribe_get_venue_id(), '_VenueShowMap', true ) &&
+			get_post_meta($event_id, '_EventShowMap', true) &&
+			get_post_meta(tribe_get_venue_id(), '_VenueLat', true)
+		) {
 			get_template_part(
 				'parts/map/index',
 				null,
 				array(
 					'pin' => get_field('pin', tribe_get_venue_id()),
 					'map' => array(
-						'lat' => $venue->geolocation->latitude,
-						'lng' => $venue->geolocation->longitude,
+						'lat' => get_post_meta(tribe_get_venue_id(), '_VenueLat', true),
+						'lng' => get_post_meta(tribe_get_venue_id(), '_VenueLng', true),
 						'zoom' => get_field('zoom', tribe_get_venue_id()),
 					),
 					'map_link' => $venue->directions_link,

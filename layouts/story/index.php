@@ -23,10 +23,17 @@
 	$collection_data = false;
 	$archived = false;
 	$current_tags = [];
+	$pagination_query = "";
 
-	
+	parse_str($_SERVER['QUERY_STRING'], $url_query_params);	
+
 	if(check_array_field($_POST, 'tags')) {
 		$current_tags = $_POST['tags'];
+		$pagination_query = implode(',', $current_tags);
+	}
+	else if(check_array_field($url_query_params, 'tags')) {
+		$current_tags = explode(',', $url_query_params['tags']);
+		$pagination_query = $url_query_params['tags'];
 	}
 
 	if(check_array_field($args, 'page_id')) {
@@ -220,6 +227,7 @@
 				array(
 					'page' => $page,
 					'pages' => $pages,
+					'pagination_query' => $pagination_query
 				)
 			);
 		}

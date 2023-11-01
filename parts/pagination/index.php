@@ -18,18 +18,16 @@
 	$page = $args['page'];
 	$pages = $args['pages'];
 	$query_pagination = check_array_field($args, 'query');
-	
-
 
 	preg_match(
-		"/^\/((?:\w|\/|-)+?)(?:\/page)?(?:\/\d+)?\/?\??$/",
+		"/^\/((?:\w|\/|-)+?)(?:\/page)?(?:\/\d+)?\/?\??(?:\w|\d|=|-|&|_)+$/",
 		$_SERVER["REQUEST_URI"],
 		$path_matches
 	);
 
 	if(!check_array_field($path_matches, 1)) {
 		preg_match(
-			"/^\/((?:\w|\/|-)+?)(?:\/\?page=\d+)?\/?\??$/",
+			"/^\/((?:\w|\/|-)+?)(?:\/\?page=\d+)?\/?\??(?:\w|\d|=|-|&|_)+$/",
 			$_SERVER["REQUEST_URI"],
 			$path_matches
 		);
@@ -47,6 +45,17 @@
 
 	parse_str($_SERVER['QUERY_STRING'], $page_query);	
 
+	if(check_array_field($args, 'pagination_query')) {
+		if(empty($page_query)) {
+			$page_query = array(
+				'tags' => $args['pagination_query']
+			);
+		}
+		else if(!check_array_field($page_query, 'tags')) {
+			$page_query->tags = $args['pagination_query'];
+		}
+	}
+
 	$path = $path_matches[1];
 	$max_pages = 10;
 	$range = 3;
@@ -55,6 +64,7 @@
 	if($query_pagination) {
 		$page_path = $path . '/';
 	}
+	
 ?>
 
 <ul class="<?php echo classes([$styles['pagination']]); ?>">

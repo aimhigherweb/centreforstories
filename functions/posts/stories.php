@@ -140,8 +140,7 @@
 			$category = $tags;
 			$search_cat = 'tag';
 			$operator = 'AND';
-		} 
-
+		}
 
 		if(isset($search_query, $search_query['collection']) && $search_query['collection'] !== 'archived') {
             $category = [$search_query['collection']];
