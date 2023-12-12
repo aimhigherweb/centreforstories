@@ -20,14 +20,14 @@
 	$query_pagination = check_array_field($args, 'query');
 
 	preg_match(
-		"/^\/((?:\w|\/|-)+?)(?:\/page)?(?:\/\d+)?\/?\??(?:\w|\d|=|-|&|_)+$/",
+		"/^\/((?:\w|\/|-)+?)(?:\/page)?(?:\/\d+)?\/?\??((?:\w|\d|=|-|&|_)+)?$/",
 		$_SERVER["REQUEST_URI"],
 		$path_matches
 	);
 
 	if(!check_array_field($path_matches, 1)) {
 		preg_match(
-			"/^\/((?:\w|\/|-)+?)(?:\/\?page=\d+)?\/?\??(?:\w|\d|=|-|&|_)+$/",
+			"/^\/((?:\w|\/|-)+?)(?:\/\?page=\d+)?\/?\??((?:\w|\d|=|-|&|_)+)?$/",
 			$_SERVER["REQUEST_URI"],
 			$path_matches
 		);
@@ -55,6 +55,7 @@
 			$page_query->tags = $args['pagination_query'];
 		}
 	}
+
 
 	$path = $path_matches[1];
 	$max_pages = 10;
